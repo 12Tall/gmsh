@@ -370,7 +370,7 @@ struct F_Transfinite {
         break;
       }
       default:
-        Msg::Warning("Unknown case in Transfinite curve mesh");
+        Msg::Warning(_("Unknown case in Transfinite curve mesh"));
         val = 1.;
         break;
       }
@@ -462,7 +462,7 @@ static void copyMesh(GEdge *from, GEdge *to, int direction)
 {
   if(!from->getBeginVertex() || !from->getEndVertex() ||
      !to->getBeginVertex() || !to->getEndVertex()) {
-    Msg::Error("Cannot copy mesh on curves without begin/end points");
+    Msg::Error(_("Cannot copy mesh on curves without begin/end points"));
     return;
   }
 
@@ -521,7 +521,7 @@ static void fillCorrespondingNodes(GEdge *from, GEdge *to, int direction)
 {
   if(!from->getBeginVertex() || !from->getEndVertex() ||
      !to->getBeginVertex() || !to->getEndVertex()) {
-    Msg::Error("Cannot fill corresponding nodes on curves without begin/end points");
+    Msg::Error(_("Cannot fill corresponding nodes on curves without begin/end points"));
     return;
   }
 
@@ -535,7 +535,7 @@ static void fillCorrespondingNodes(GEdge *from, GEdge *to, int direction)
   to->correspondingVertices[vt1] = direction > 0 ? vs1 : vs0;
 
   if(to->mesh_vertices.size() != from->mesh_vertices.size()) {
-    Msg::Error("Incompatible meshes to fill node correspondance");
+    Msg::Error(_("Incompatible meshes to fill node correspondance"));
     return;
   }
 
@@ -599,7 +599,7 @@ static void filterPoints(GEdge *ge, int nMinimumPoints)
   for(std::size_t i = 0; i < ge->mesh_vertices.size(); i++) {
     MEdgeVertex *v = dynamic_cast<MEdgeVertex *>(ge->mesh_vertices[i]);
     if(!v) {
-      Msg::Error("Node not classified on curve in 1D mesh filtering");
+      Msg::Error(_("Node not classified on curve in 1D mesh filtering"));
       return;
     }
     double d = distance(v, v0);
@@ -737,7 +737,7 @@ static void addBoundaryLayerPoints(GEdge *ge, double &t_begin, double &t_end,
         return;
       }
       if(_addBegin.size()) {
-        Msg::Error("Different boundary layers cannot touch each other");
+        Msg::Error(_("Different boundary layers cannot touch each other"));
         return;
       }
       createPoints(gvb, ge, blf, _addBegin, dir);
@@ -751,7 +751,7 @@ static void addBoundaryLayerPoints(GEdge *ge, double &t_begin, double &t_end,
         return;
       }
       if(_addEnd.size()) {
-        Msg::Error("Different boundary layers cannot touch each other");
+        Msg::Error(_("Different boundary layers cannot touch each other"));
         return;
       }
       createPoints(gve, ge, blf, _addEnd, dir * -1.0);
@@ -946,7 +946,7 @@ void meshGEdge::operator()(GEdge *ge)
 
   GPoint beg_p, end_p;
   if(!ge->getBeginVertex() || !ge->getEndVertex()) {
-    Msg::Warning("Skipping curve with no begin or end point");
+    Msg::Warning(_("Skipping curve with no begin or end point"));
     return;
   }
   else if(ge->getBeginVertex() == ge->getEndVertex() &&

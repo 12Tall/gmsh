@@ -160,7 +160,7 @@ bool buildBoundary(const std::vector<MElement *> &elements,
     MVertex *v2 = e.getVertex(1);
     auto it = std::find(vsorted[0].begin(), vsorted[0].end(), v1);
     if(it == vsorted[0].end()) {
-      Msg::Error("buildBoundary(): vertex not found in sorted vertices, weird");
+      Msg::Error(_("buildBoundary(): vertex not found in sorted vertices, weird"));
       return false;
     }
     size_t i = it - vsorted[0].begin();
@@ -228,8 +228,7 @@ bool buildBoundaries(const std::vector<MElement *> &elements,
       }
     }
     if(a == nullptr || b == nullptr) {
-      Msg::Error(
-        "buildBoundaries(): vertex not found in sorted vertices, weird");
+      Msg::Error(_("buildBoundaries(): vertex not found in sorted vertices, weird"));
       return false;
     }
 
@@ -319,7 +318,7 @@ bool patchFromElements(GFace *gf, const std::vector<MElement *> &elements,
         for(size_t lv = 0; lv < e->getNumVertices(); ++lv) {
           MVertex *v = e->getVertex(lv);
           if(v == nullptr) {
-            Msg::Warning("patchFromElements: quad vertex is null");
+            Msg::Warning(_("patchFromElements: quad vertex is null"));
             return false;
           }
           else if(v->onWhat() == nullptr) {
@@ -345,7 +344,7 @@ bool patchFromElements(GFace *gf, const std::vector<MElement *> &elements,
   patch.intVertices.reserve(4 * elements.size());
   for(MElement *e : elements) {
     if(e == nullptr) {
-      Msg::Error("patchFromElements: given MElement* is nullptr");
+      Msg::Error(_("patchFromElements: given MElement* is nullptr"));
       return false;
     }
     for(size_t lv = 0; lv < e->getNumVertices(); ++lv) {
@@ -778,7 +777,7 @@ void getAllParametersWithPeriodJump(MVertex *v, GFace *gf,
           params.push_back((*it)->reparamOnFace(gf, range.high(), 1));
         }
         if(gv != (*it)->getBeginVertex() && gv != (*it)->getEndVertex()) {
-          Msg::Warning("Strange!");
+          Msg::Warning(_("Strange!"));
         }
         seam = true;
       }
@@ -893,7 +892,7 @@ std::vector<SPoint2> paramOnElement(GFace *gf, MElement *t)
         }
       }
       else {
-        Msg::Error("parametrization not found for element");
+        Msg::Error(_("parametrization not found for element"));
       }
     }
   }
@@ -977,7 +976,7 @@ bool getGFaceTriangles(GFace *gf, std::vector<MTriangle *> &triangles,
   const std::string BMESH_NAME = "bmesh_quadqs";
   if(backgroudMeshExists(BMESH_NAME)) {
     if(copyExisting) {
-      Msg::Error("copyExisting not supported here (but simple to fix)");
+      Msg::Error(_("copyExisting not supported here (but simple to fix)"));
       return false;
     }
     GlobalBackgroundMesh &bmesh = getBackgroundMesh(BMESH_NAME);
@@ -999,7 +998,7 @@ bool getGFaceTriangles(GFace *gf, std::vector<MTriangle *> &triangles,
     if(it != bmesh->faceBackgroundMeshes.end() &&
        it->second.triangles.size() > 0) {
       if(copyExisting) {
-        Msg::Error("copyExisting not supported here (but simple to fix)");
+        Msg::Error(_("copyExisting not supported here (but simple to fix)"));
         return false;
       }
       /* Get pointers to triangles in the background mesh */
@@ -1017,7 +1016,7 @@ bool getGFaceTriangles(GFace *gf, std::vector<MTriangle *> &triangles,
 bool fillSurfaceProjector(GFace *gf, SurfaceProjector *sp)
 {
   if(sp == nullptr) {
-    Msg::Error("fillSurfaceProjector: given SurfaceProjector* is null !");
+    Msg::Error(_("fillSurfaceProjector: given SurfaceProjector* is null !"));
     abort();
   }
 
@@ -1028,12 +1027,12 @@ bool fillSurfaceProjector(GFace *gf, SurfaceProjector *sp)
   std::vector<MTriangle *> trianglesToDel;
   bool okgt = getGFaceTriangles(gf, triangles, trianglesToDel);
   if(!okgt) {
-    Msg::Error("fillSurfaceProjector: case not supported, no triangles");
+    Msg::Error(_("fillSurfaceProjector: case not supported, no triangles"));
     return false;
   }
 
   bool oki = sp->initialize(gf, triangles);
-  if(!oki) { Msg::Error("failed to initialize the surface projector"); }
+  if(!oki) { Msg::Error(_("failed to initialize the surface projector")); }
 
   for(MTriangle *t : trianglesToDel) delete t;
 
@@ -1176,7 +1175,7 @@ bool fillGFaceInfo(GFace *gf, GFaceInfo &info)
   std::vector<MTriangle *> trianglesToDel;
   bool okgt = getGFaceTriangles(gf, triangles, trianglesToDel);
   if(!okgt) {
-    Msg::Error("fillSurfaceProjector: case not supported, no triangles");
+    Msg::Error(_("fillSurfaceProjector: case not supported, no triangles"));
     return false;
   }
 
@@ -1326,7 +1325,7 @@ bool appendQuadMeshStatistics(GModel *gm,
                               std::unordered_map<std::string, double> &stats,
                               const std::string &prefix)
 {
-  Msg::Debug("compute quad mesh statistics ...");
+  Msg::Debug(_("compute quad mesh statistics ..."));
   /* Stats on regularity of vertices */
   std::vector<MQuadrangle *> all_quads;
   {
@@ -1607,7 +1606,7 @@ void errorAndAbortIfNegativeElement(GFace *gf,
                                     const std::vector<MElement *> &elts,
                                     const std::string &msg)
 {
-  Msg::Debug("errorAndAbortIfNegativeElement ... (! SLOW !)");
+  Msg::Debug(_("errorAndAbortIfNegativeElement ... (! SLOW !)"));
   double vmin = DBL_MAX;
   for(MElement *e : elts) {
     double q = e->minSICNShapeMeasure();
@@ -1650,7 +1649,7 @@ void errorAndAbortIfInvalidVertex(MVertex *v, const std::string &msg)
 void errorAndAbortIfInvalidVertexInElements(const std::vector<MElement *> &elts,
                                             const std::string &msg)
 {
-  Msg::Debug("errorAndAbortIfInvalidVertexInElements ... (! SLOW !)");
+  Msg::Debug(_("errorAndAbortIfInvalidVertexInElements ... (! SLOW !)"));
   size_t numMax = GModel::current()->getMaxVertexNumber();
   for(MElement *e : elts) {
     if(e == nullptr) continue;
@@ -1744,7 +1743,7 @@ void errorAndAbortIfNonManifoldElements(const std::vector<MElement *> &elts,
 
 void errorAndAbortIfInvalidVertexInModel(GModel *gm, const std::string &msg)
 {
-  Msg::Debug("errorAndAbortIfInvalidVertexInModel ... (! SLOW !)");
+  Msg::Debug(_("errorAndAbortIfInvalidVertexInModel ... (! SLOW !)"));
   for(GVertex *gv : gm->getVertices()) {
     for(MVertex *v : gv->mesh_vertices) {
       errorAndAbortIfInvalidVertex(v, msg);

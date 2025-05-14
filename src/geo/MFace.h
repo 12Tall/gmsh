@@ -101,8 +101,7 @@ public:
       }
     }
     else
-      Msg::Error(
-        "Cannot interpolate inside a polygonal MFace with more than 4 edges");
+      Msg::Error(_("Cannot interpolate inside a polygonal MFace with more than 4 edges"));
     return p;
   }
 };

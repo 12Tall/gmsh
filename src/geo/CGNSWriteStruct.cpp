@@ -80,7 +80,7 @@ static void computeTransform2D(const std::vector<cgsize_t> &pointRange,
                                int type, int typeDonor, int transform[2])
 {
   if(pointRange.size() != 4 || pointDonorRange.size() != 4) {
-    Msg::Error("Invalid point ranges to compute transform - using default");
+    Msg::Error(_("Invalid point ranges to compute transform - using default"));
     transform[0] = 1;
     transform[1] = 2;
     return;
@@ -283,7 +283,7 @@ static void computeTransform3D(const std::vector<cgsize_t> &pointRange,
                                int transform[3])
 {
   if(pointRange.size() != 6 || pointDonorRange.size() != 6) {
-    Msg::Error("Invalid point ranges to compute transform - using default");
+    Msg::Error(_("Invalid point ranges to compute transform - using default"));
     transform[0] = 1;
     transform[1] = 2;
     transform[2] = 3;
@@ -526,7 +526,7 @@ int writeZonesStruct(GModel *model, double scalingFactor, int cgIndexFile,
   }
 
   if(meshDim < 0 || (faces.empty() && regions.empty())) {
-    Msg::Warning("No structured meshes to save");
+    Msg::Warning(_("No structured meshes to save"));
     return 0;
   }
 

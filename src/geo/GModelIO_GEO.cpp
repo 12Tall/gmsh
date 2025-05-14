@@ -168,7 +168,7 @@ bool GEO_Internals::addLine(int &tag, const std::vector<int> &pointTags)
     return false;
   }
   if(pointTags.size() < 2) {
-    Msg::Error("Line requires 2 points");
+    Msg::Error(_("Line requires 2 points"));
     return false;
   }
   if(tag < 0) tag = getMaxTag(1) + 1;
@@ -264,7 +264,7 @@ bool GEO_Internals::addSpline(int &tag, const std::vector<int> &pointTags)
     return false;
   }
   if(pointTags.size() < 2) {
-    Msg::Error("Spline curve requires at least 2 control points");
+    Msg::Error(_("Spline curve requires at least 2 control points"));
     return false;
   }
   if(tag < 0) tag = getMaxTag(1) + 1;
@@ -291,7 +291,7 @@ bool GEO_Internals::addBezier(int &tag, const std::vector<int> &pointTags)
   }
   if(tag < 0) tag = getMaxTag(1) + 1;
   if(pointTags.size() < 2) {
-    Msg::Error("Bezier curve requires at least 2 control points");
+    Msg::Error(_("Bezier curve requires at least 2 control points"));
     return false;
   }
   List_T *tmp = List_Create(2, 2, sizeof(int));
@@ -317,7 +317,7 @@ bool GEO_Internals::addBSpline(int &tag, const std::vector<int> &pointTags,
     return false;
   }
   if(pointTags.size() < 2) {
-    Msg::Error("BSpline curve requires at least 2 control points");
+    Msg::Error(_("BSpline curve requires at least 2 control points"));
     return false;
   }
   if(tag < 0) tag = getMaxTag(1) + 1;
@@ -357,11 +357,11 @@ bool GEO_Internals::_addCompoundSpline(int &tag,
     return false;
   }
   if(curveTags.empty()) {
-    Msg::Error("Compound spline curve requires at least 1 input curve");
+    Msg::Error(_("Compound spline curve requires at least 1 input curve"));
     return false;
   }
   if(numIntervals < 0) {
-    Msg::Error("Negative number of intervals in compound spline");
+    Msg::Error(_("Negative number of intervals in compound spline"));
     return false;
   }
   if(tag < 0) tag = getMaxTag(1) + 1;
@@ -471,7 +471,7 @@ static bool SortCurvesConsecutive(const std::vector<Curve *> &e,
     else {
       if(it0->second.second == nullptr) { it0->second.second = v1; }
       else {
-        Msg::Debug("A list of curves has points that are adjacent to 3 curves");
+        Msg::Debug(_("A list of curves has points that are adjacent to 3 curves"));
         return false;
       }
     }
@@ -480,7 +480,7 @@ static bool SortCurvesConsecutive(const std::vector<Curve *> &e,
     else {
       if(it1->second.second == nullptr) { it1->second.second = v0; }
       else {
-        Msg::Debug("Wrong topology for a list of curves");
+        Msg::Debug(_("Wrong topology for a list of curves"));
         Msg::Debug("Point %d is adjacent to more than 2 points %d %d", v1->Num,
                    it1->second.first->Num, it1->second.second->Num);
         return false;
@@ -510,7 +510,7 @@ static bool SortCurvesConsecutive(const std::vector<Curve *> &e,
 
     do {
       if(c.size() == 0) {
-        Msg::Warning("Wrong topology in a curve loop");
+        Msg::Warning(_("Wrong topology in a curve loop"));
         return false;
       }
       v.push_back(current);
@@ -564,7 +564,7 @@ bool GEO_Internals::addCurveLoops(const std::vector<int> &curveTags,
   }
   std::vector<std::vector<Vertex *> > vs;
   if(!SortCurvesConsecutive(curves, vs)) {
-    Msg::Error("Could not sort curves while creating curve loops");
+    Msg::Error(_("Could not sort curves while creating curve loops"));
     return false;
   }
 
@@ -612,7 +612,7 @@ bool GEO_Internals::addPlaneSurface(int &tag, const std::vector<int> &wireTags)
   }
   if(tag < 0) tag = getMaxTag(2) + 1;
   if(wireTags.empty()) {
-    Msg::Error("Plane surface requires at least one curve loop");
+    Msg::Error(_("Plane surface requires at least one curve loop"));
     return false;
   }
   List_T *tmp = List_Create(2, 2, sizeof(int));
@@ -652,7 +652,7 @@ bool GEO_Internals::addSurfaceFilling(int &tag,
   }
   if(tag < 0) tag = getMaxTag(2) + 1;
   if(wireTags.empty()) {
-    Msg::Error("Surface requires at least one curve loop");
+    Msg::Error(_("Surface requires at least one curve loop"));
     return false;
   }
   int ll = (int)std::abs(wireTags[0]);
@@ -917,7 +917,7 @@ bool GEO_Internals::intersectCurvesWithSurface(
     List_Read(shapes, i, &s);
     if(s.Type == MSH_POINT) { pointTags.push_back(s.Num); }
     else {
-      Msg::Error("Degenerated curve-surface intersection not implemented");
+      Msg::Error(_("Degenerated curve-surface intersection not implemented"));
       return false;
     }
   }
@@ -1132,7 +1132,7 @@ void GEO_Internals::setCompoundMesh(int dim, const std::vector<int> &tags)
 void GEO_Internals::setMeshSize(int dim, int tag, double size)
 {
   if(dim != 0) {
-    Msg::Error("Setting mesh size only available on GEO points");
+    Msg::Error(_("Setting mesh size only available on GEO points"));
     return;
   }
   Vertex *v = FindPoint(tag);
@@ -1206,7 +1206,7 @@ void GEO_Internals::setTransfiniteSurface(int tag, int arrangement,
         }
       }
       else {
-        Msg::Error("Transfinite surface requires 3 or 4 corner points");
+        Msg::Error(_("Transfinite surface requires 3 or 4 corner points"));
       }
     }
   }
@@ -1384,7 +1384,7 @@ bool sortEntities(const std::pair<int, int> &a,
 
 void GEO_Internals::synchronize(GModel *model, bool resetMeshAttributes)
 {
-  Msg::Debug("Syncing GEO_Internals with GModel");
+  Msg::Debug(_("Syncing GEO_Internals with GModel"));
 
   // if the entities do not exist in GModel, we create them; if they exist as
   // GEO entities in GModel but don't exist (anymore) in the internal CAD data,
@@ -1625,7 +1625,7 @@ void GEO_Internals::synchronize(GModel *model, bool resetMeshAttributes)
   // recompute global boundind box in CTX
   SetBoundingBox();
 
-  Msg::Debug("GModel imported:");
+  Msg::Debug(_("GModel imported:"));
   Msg::Debug("%d points", model->getNumVertices());
   Msg::Debug("%d curves", model->getNumEdges());
   Msg::Debug("%d surfaces", model->getNumFaces());
@@ -2035,7 +2035,7 @@ int GModel::exportDiscreteGEOInternals()
     }
   }
 
-  Msg::Debug("Geo internal model has:");
+  Msg::Debug(_("Geo internal model has:"));
   Msg::Debug("%d points", Tree_Nbr(_geo_internals->Points));
   Msg::Debug("%d curves", Tree_Nbr(_geo_internals->Curves));
   Msg::Debug("%d surfaces", Tree_Nbr(_geo_internals->Surfaces));

@@ -115,7 +115,7 @@ void ExtrudeParams::Extrude(double t, double &x, double &y, double &z)
     y += n[1] * t;
     z += n[2] * t;
     break;
-  default: Msg::Error("Unknown extrusion type"); break;
+  default: Msg::Error(_("Unknown extrusion type")); break;
   }
 }
 

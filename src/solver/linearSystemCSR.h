@@ -120,7 +120,7 @@ public:
 
   virtual void getFromMatrix(int row, int col, scalar &val) const
   {
-    Msg::Error("getFromMatrix not implemented for CSR");
+    Msg::Error(_("getFromMatrix not implemented for CSR"));
   }
   virtual void addToRightHandSide(int row, const scalar &val, int ith = 0)
   {
@@ -190,7 +190,7 @@ public:
   virtual int systemSolve()
 #if !defined(HAVE_GMM)
   {
-    Msg::Error("Gmm++ is not available in this version of Gmsh");
+    Msg::Error(_("Gmm++ is not available in this version of Gmsh"));
     return 0;
   }
 #endif

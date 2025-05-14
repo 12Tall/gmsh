@@ -189,7 +189,7 @@ static HXTStatus Hxt2Gmsh(std::vector<GRegion *> &regions, HXTMesh *m,
                           std::map<MVertex *, uint32_t> &v2c,
                           std::vector<MVertex *> &c2v)
 {
-  Msg::Debug("Start Hxt2Gmsh");
+  Msg::Debug(_("Start Hxt2Gmsh"));
 
   HXT_CHECK( hxtAlignedFree(&m->tetrahedra.neigh) );
   HXT_CHECK( hxtAlignedFree(&m->tetrahedra.flag) );
@@ -436,7 +436,7 @@ static HXTStatus Hxt2Gmsh(std::vector<GRegion *> &regions, HXTMesh *m,
     }
   }
 
-  Msg::Debug("End Hxt2Gmsh");
+  Msg::Debug(_("End Hxt2Gmsh"));
   return HXT_STATUS_OK;
 }
 
@@ -687,14 +687,14 @@ void delaunayMeshIn3DHxt(std::vector<MVertex *> &v,
 
 int meshGRegionHxt(std::vector<GRegion *> &regions)
 {
-  Msg::Error("Gmsh should be compiled with Hxt to enable this option");
+  Msg::Error(_("Gmsh should be compiled with Hxt to enable this option"));
   return -1;
 }
 
 void delaunayMeshIn3DHxt(std::vector<MVertex *> &v,
                          std::vector<MTetrahedron *> &tets)
 {
-  Msg::Error("Gmsh should be compiled with Hxt to enable this option");
+  Msg::Error(_("Gmsh should be compiled with Hxt to enable this option"));
 }
 
 #endif

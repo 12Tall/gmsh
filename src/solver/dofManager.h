@@ -265,7 +265,7 @@ public:
       val = it->second;
     }
     else {
-      Msg::Error("getFixedDof: Dof is not fixed");
+      Msg::Error(_("getFixedDof: Dof is not fixed"));
       return;
     }
   };

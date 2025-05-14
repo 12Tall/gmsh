@@ -136,7 +136,7 @@ PView *GMSH_IntegratePlugin::execute(PView *v)
         int type = data1->getType(firstStep, ent, ele);
         int numComp = data1->getNumComponents(firstStep, ent, ele);
         if(numComp != 1)
-          Msg::Error("Can only integrate scalar views over time");
+          Msg::Error(_("Can only integrate scalar views over time"));
         std::vector<double> *out =
           data2->incrementList(numComp, type, numNodes);
         std::vector<double> x(numNodes), y(numNodes), z(numNodes);

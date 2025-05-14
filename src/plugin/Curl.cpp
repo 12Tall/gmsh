@@ -40,7 +40,7 @@ PView *GMSH_CurlPlugin::execute(PView *v)
 
   PViewData *data1 = getPossiblyAdaptiveData(v1);
   if(data1->hasMultipleMeshes()) {
-    Msg::Error("Curl plugin cannot be run on multi-mesh views");
+    Msg::Error(_("Curl plugin cannot be run on multi-mesh views"));
     return v;
   }
 

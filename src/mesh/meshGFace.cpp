@@ -277,7 +277,7 @@ public:
 
     if(gf->compound.size()) return;
     if(periodic) {
-      Msg::Error("Full-quad recombination not ready yet for periodic surfaces");
+      Msg::Error(_("Full-quad recombination not ready yet for periodic surfaces"));
       return;
     }
     std::vector<GEdge *> edges = gf->edges();
@@ -295,7 +295,7 @@ public:
 	(*ite)->mesh_vertices.clear();
         for(std::size_t i = 0; i < (*ite)->lines.size(); i += 2) {
           if(i + 1 >= (*ite)->lines.size()) {
-            Msg::Error("1D mesh cannot be divided by 2");
+            Msg::Error(_("1D mesh cannot be divided by 2"));
             break;
           }
           MVertex *v1 = (*ite)->lines[i]->getVertex(0);
@@ -1708,7 +1708,7 @@ static bool meshGenerator(GFace *gf, int RECUR_ITER,
         ++itr)
       sstream << " " << itr->ge->tag();
     if(gf->meshStatistics.refineAllEdges) {
-      Msg::Info("8-| Splitting all edges and trying again");
+      Msg::Info(_("8-| Splitting all edges and trying again"));
     }
     else {
       Msg::Info(":-( There are %d intersections in the 1D mesh (curves%s)",
@@ -1920,14 +1920,14 @@ static bool meshGenerator(GFace *gf, int RECUR_ITER,
 
   {
     int nb_swap;
-    Msg::Debug("Delaunizing the initial mesh");
+    Msg::Debug(_("Delaunizing the initial mesh"));
     delaunayizeBDS(gf, *m, nb_swap);
   }
 
   // only delete the mesh data stored in the base GFace class
   gf->GFace::deleteMesh();
 
-  Msg::Debug("Starting to add internal nodes");
+  Msg::Debug(_("Starting to add internal nodes"));
   // start mesh generation
   if(!algoDelaunay2D(gf) && !onlyInitialMesh) {
     refineMeshBDS(gf, *m, CTX::instance()->mesh.refineSteps, true,
@@ -1972,7 +1972,7 @@ static bool meshGenerator(GFace *gf, int RECUR_ITER,
       bowyerWatsonParallelograms(gf);
     }
     else if(gf->getMeshingAlgo() == ALGO_2D_PACK_PRLGRMS_CSTR) {
-      Msg::Error("ALGO_2D_PACK_PRLGRMS_CSTR deprecated");
+      Msg::Error(_("ALGO_2D_PACK_PRLGRMS_CSTR deprecated"));
       // bowyerWatsonParallelogramsConstrained(gf, gf->constr_vertices);
     }
     else if(gf->getMeshingAlgo() == ALGO_2D_DELAUNAY ||
@@ -2173,13 +2173,13 @@ static bool buildConsecutiveListOfVertices(
                        dist1, dist2, tol, signedEdges[i - 1].getEdge()->tag(),
                        ge->tag());
             if(initial_dir == 0) {
-              Msg::Debug("... will try with alternate initial orientation");
+              Msg::Debug(_("... will try with alternate initial orientation"));
               coords.clear();
               verts.clear();
               break;
             }
             else {
-              Msg::Debug("... will try with larger tolerance");
+              Msg::Debug(_("... will try with larger tolerance"));
               return false;
             }
           }
@@ -2221,13 +2221,13 @@ static bool buildConsecutiveListOfVertices(
                        dist1, dist2, dist3, dist4, tol,
                        signedEdges[i - 1].getEdge()->tag(), ge->tag());
             if(initial_dir == 0) {
-              Msg::Debug("... will try with alternate initial orientation");
+              Msg::Debug(_("... will try with alternate initial orientation"));
               coords.clear();
               verts.clear();
               break;
             }
             else {
-              Msg::Debug("... will try with larger tolerance");
+              Msg::Debug(_("... will try with larger tolerance"));
               return false;
             }
           }
@@ -2387,7 +2387,7 @@ static bool meshGeneratorPeriodic(GFace *gf, int RECUR_ITER,
       }
       if(!ok) {
         gf->meshStatistics.status = GFace::FAILED;
-        Msg::Error("The 1D mesh seems not to be forming a closed loop");
+        Msg::Error(_("The 1D mesh seems not to be forming a closed loop"));
         delete m;
         return false;
       }
@@ -2754,7 +2754,7 @@ static bool meshGeneratorPeriodic(GFace *gf, int RECUR_ITER,
                 edgesNotRecovered.size(), sstream.str().c_str());
     }
     if(repairSelfIntersecting1dMesh) {
-      Msg::Info("8-| Splitting those edges and trying again");
+      Msg::Info(_("8-| Splitting those edges and trying again"));
       if(gf->meshStatistics.refineAllEdges) {
         std::vector<GEdge *> eds = gf->edges();
         edgesNotRecovered.clear();
@@ -2897,7 +2897,7 @@ static bool meshGeneratorPeriodic(GFace *gf, int RECUR_ITER,
 
   if(algoDelaunay2D(gf)) {
     // Call this function to untangle elements in Cartesian space
-    Msg::Debug("Delaunizing the initial mesh");
+    Msg::Debug(_("Delaunizing the initial mesh"));
     int nb_swap;
     delaunayizeBDS(gf, *m, nb_swap);
   }
@@ -2905,7 +2905,7 @@ static bool meshGeneratorPeriodic(GFace *gf, int RECUR_ITER,
     // tag points that are degenerated
     modifyInitialMeshToRemoveDegeneracies(gf, *m, &recoverMap);
 
-    Msg::Debug("Delaunizing the initial mesh");
+    Msg::Debug(_("Delaunizing the initial mesh"));
     int nb_swap;
     delaunayizeBDS(gf, *m, nb_swap);
 
@@ -2988,7 +2988,7 @@ static bool meshGeneratorPeriodic(GFace *gf, int RECUR_ITER,
           mv2 = new MVertex(mv1->x(), mv1->y(), mv1->z(), mv1->onWhat());
         }
         else
-          Msg::Error("Could not reconstruct seam");
+          Msg::Error(_("Could not reconstruct seam"));
         if(mv2) {
           it->second = mv2;
           equivalence[mv2] = mv1;
@@ -3055,7 +3055,7 @@ static bool meshGeneratorPeriodic(GFace *gf, int RECUR_ITER,
     else if(gf->getMeshingAlgo() == ALGO_2D_PACK_PRLGRMS)
       bowyerWatsonParallelograms(gf, &equivalence, &parametricCoordinates);
     else if(gf->getMeshingAlgo() == ALGO_2D_PACK_PRLGRMS_CSTR) {
-      Msg::Error("ALGO_2D_PACK_PRLGRMS_CSTR deprecated");
+      Msg::Error(_("ALGO_2D_PACK_PRLGRMS_CSTR deprecated"));
       // bowyerWatsonParallelogramsConstrained(
       //   gf, gf->constr_vertices, &equivalence, &parametricCoordinates);
     }

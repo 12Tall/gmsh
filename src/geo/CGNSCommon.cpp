@@ -22,7 +22,7 @@ int cgnsError(const char *file, const int line, const int fileIndex)
   else
     Msg::Error("CGNS error %s (%s:%i)", cg_get_error(), file, line);
   if(fileIndex != -1) {
-    if(cg_close(fileIndex)) { Msg::Error("Unable to close CGNS file"); }
+    if(cg_close(fileIndex)) { Msg::Error(_("Unable to close CGNS file")); }
   }
   return 0;
 }

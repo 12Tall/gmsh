@@ -73,7 +73,7 @@ PView *GMSH_TriangulatePlugin::execute(PView *v)
   PViewData *data1 = v1->getData();
 
   if(data1->hasMultipleMeshes()) {
-    Msg::Error("Triangulate plugin cannot be applied to multi-mesh views");
+    Msg::Error(_("Triangulate plugin cannot be applied to multi-mesh views"));
     return v1;
   }
 
@@ -97,7 +97,7 @@ PView *GMSH_TriangulatePlugin::execute(PView *v)
   }
 
   if(points.size() < 3) {
-    Msg::Error("Need at least 3 points to triangulate");
+    Msg::Error(_("Need at least 3 points to triangulate"));
     for(std::size_t i = 0; i < points.size(); i++) delete points[i];
     return v1;
   }
@@ -189,7 +189,7 @@ PView *GMSH_TriangulatePlugin::execute(PView *v)
 
 PView *GMSH_TriangulatePlugin::execute(PView *v)
 {
-  Msg::Error("Plugin(Triangulate) requires mesh module");
+  Msg::Error(_("Plugin(Triangulate) requires mesh module"));
   return v;
 }
 

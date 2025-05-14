@@ -173,7 +173,7 @@ int msh2medNodeIndex(int msh, int k)
     static const int map[13] = {0, 3, 2, 1, 4, 6, 10, 8, 5, 7, 12, 11, 9};
     return map[k];
   }
-  default: Msg::Error("Unknown MED element type"); return k;
+  default: Msg::Error(_("Unknown MED element type")); return k;
   }
 }
 
@@ -226,7 +226,7 @@ int med2mshNodeIndex(med_geometrie_element med, int k)
     static const int map[13] = {0, 3, 2, 1, 4, 8, 5, 9, 7, 12, 6, 11, 10};
     return map[k];
   }
-  default: Msg::Error("Unknown MED element type"); return k;
+  default: Msg::Error(_("Unknown MED element type")); return k;
   }
 }
 
@@ -244,7 +244,7 @@ int GModel::readMED(const std::string &name)
   Msg::Info("Reading MED file V%d.%d.%d using MED library V%d.%d.%d", vf[0],
             vf[1], vf[2], v[0], v[1], v[2]);
   if(vf[0] < 2 || (vf[0] == 2 && vf[1] < 2)) {
-    Msg::Error("Cannot read MED file older than V2.2");
+    Msg::Error(_("Cannot read MED file older than V2.2"));
     return 0;
   }
 
@@ -265,7 +265,7 @@ int GModel::readMED(const std::string &name)
 #else
     if(MEDmaaInfo(fid, i + 1, meshName, &spaceDim, &meshType, meshDesc) < 0) {
 #endif
-      Msg::Error("Unable to read mesh information");
+      Msg::Error(_("Unable to read mesh information"));
       return 0;
     }
     meshNames.push_back(meshName);
@@ -323,7 +323,7 @@ int GModel::readMED(const std::string &name, int meshIndex)
   if(MEDmaaInfo(fid, meshIndex + 1, meshName, &spaceDim, &meshType, meshDesc) <
      0) {
 #endif
-    Msg::Error("Unable to read mesh information");
+    Msg::Error(_("Unable to read mesh information"));
     return 0;
   }
 
@@ -340,7 +340,7 @@ int GModel::readMED(const std::string &name, int meshIndex)
     Msg::Info("Reading %d-D unstructured mesh '%s'", spaceDim, meshName);
   }
   else {
-    Msg::Error("Reading structured MED meshes is not supported");
+    Msg::Error(_("Reading structured MED meshes is not supported"));
     return 0;
   }
   med_int vf[3];
@@ -357,11 +357,11 @@ int GModel::readMED(const std::string &name, int meshIndex)
     MEDnEntMaa(fid, meshName, MED_COOR, MED_NOEUD, MED_NONE, MED_NOD);
 #endif
   if(numNodes < 0) {
-    Msg::Error("Could not read number of MED nodes");
+    Msg::Error(_("Could not read number of MED nodes"));
     return 0;
   }
   if(numNodes == 0) {
-    Msg::Error("No nodes in MED mesh");
+    Msg::Error(_("No nodes in MED mesh"));
     return 0;
   }
   std::vector<MVertex *> verts(numNodes);
@@ -376,7 +376,7 @@ int GModel::readMED(const std::string &name, int meshIndex)
   if(MEDcoordLire(fid, meshName, spaceDim, &coord[0], MED_FULL_INTERLACE,
                   MED_ALL, 0, 0, &rep, &coordName[0], &coordUnit[0]) < 0) {
 #endif
-    Msg::Error("Could not read MED node coordinates");
+    Msg::Error(_("Could not read MED node coordinates"));
     return 0;
   }
 
@@ -428,7 +428,7 @@ int GModel::readMED(const std::string &name, int meshIndex)
     if(MEDconnLire(fid, meshName, spaceDim, &conn[0], MED_FULL_INTERLACE, 0,
                    MED_ALL, MED_MAILLE, type, MED_NOD) < 0) {
 #endif
-      Msg::Error("Could not read MED elements");
+      Msg::Error(_("Could not read MED elements"));
       return 0;
     }
     std::vector<med_int> elementFamily(numEle, 0);
@@ -439,8 +439,7 @@ int GModel::readMED(const std::string &name, int meshIndex)
     if(MEDfamLire(fid, meshName, &elementFamily[0], numEle, MED_MAILLE, type) <
        0) {
 #endif
-      Msg::Info(
-        "No family number for elements: using 0 as default family number");
+      Msg::Info(_("No family number for elements: using 0 as default family number"));
     }
     std::vector<med_int> eleTags(numEle);
 #if(MED_MAJOR_NUM >= 3)
@@ -483,7 +482,7 @@ int GModel::readMED(const std::string &name, int meshIndex)
   // read family info
   med_int numFamilies = MEDnFam(fid, meshName);
   if(numFamilies < 0) {
-    Msg::Error("Could not read MED families");
+    Msg::Error(_("Could not read MED families"));
     return 0;
   }
   for(int i = 0; i < numFamilies; i++) {
@@ -496,7 +495,7 @@ int GModel::readMED(const std::string &name, int meshIndex)
     med_int numGroups = MEDnGroupe(fid, meshName, i + 1);
 #endif
     if(numAttrib < 0 || numGroups < 0) {
-      Msg::Error("Could not read MED groups or attributes");
+      Msg::Error(_("Could not read MED groups or attributes"));
       return 0;
     }
     std::vector<med_int> attribId(numAttrib + 1);
@@ -614,7 +613,7 @@ fillElementsMED(med_int family, std::vector<T *> &elements,
   int msh = elements[0]->getTypeForMSH();
   type = msh2medElementType(msh);
   if(type == MED_NONE) {
-    Msg::Warning("Unsupported element type in MED format");
+    Msg::Warning(_("Unsupported element type in MED format"));
     return;
   }
   for(std::size_t i = 0; i < elements.size(); i++) {
@@ -644,7 +643,7 @@ static void writeElementsMED(med_idt &fid, const char *meshName,
                     MED_FAUX, &tags[0], MED_VRAI, &fam[0], (med_int)fam.size(),
                     MED_MAILLE, type, MED_NOD) < 0)
 #endif
-    Msg::Error("Could not write MED elements");
+    Msg::Error(_("Could not write MED elements"));
 }
 
 int GModel::writeMED(const std::string &name, bool saveAll,
@@ -670,7 +669,7 @@ int GModel::writeMED(const std::string &name, bool saveAll,
 
   // write header
   if(MEDfichDesEcr(fid, (char *)"MED file generated by Gmsh") < 0) {
-    Msg::Error("Unable to write MED descriptor");
+    Msg::Error(_("Unable to write MED descriptor"));
     return 0;
   }
 
@@ -691,7 +690,7 @@ int GModel::writeMED(const std::string &name, bool saveAll,
   if(MEDmaaCr(fid, meshName, 3, MED_NON_STRUCTURE,
               (char *)"Mesh created with Gmsh") < 0) {
 #endif
-    Msg::Error("Could not create MED mesh");
+    Msg::Error(_("Could not create MED mesh"));
     return 0;
   }
 
@@ -717,7 +716,7 @@ int GModel::writeMED(const std::string &name, bool saveAll,
 #else
     if(MEDfamCr(fid, meshName, (char *)"F_0", 0, 0, 0, 0, 0, 0, 0) < 0)
 #endif
-      Msg::Error("Could not create MED family 0");
+      Msg::Error(_("Could not create MED family 0"));
 
     // create one family per elementary entity, with one group per
     // physical entity and no attributes
@@ -776,7 +775,7 @@ int GModel::writeMED(const std::string &name, bool saveAll,
       }
     }
     if(fam.empty()) {
-      Msg::Error("No nodes to write in MED mesh");
+      Msg::Error(_("No nodes to write in MED mesh"));
       return 0;
     }
 #if(MED_MAJOR_NUM >= 3)
@@ -792,7 +791,7 @@ int GModel::writeMED(const std::string &name, bool saveAll,
                     MED_CART, coordName, coordUnit, 0, MED_FAUX, &tags[0],
                     MED_VRAI, &fam[0], (med_int)fam.size()) < 0)
 #endif
-      Msg::Error("Could not write nodes");
+      Msg::Error(_("Could not write nodes"));
   }
 
   // write the elements

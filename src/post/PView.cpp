@@ -21,7 +21,7 @@ void PView::_init(int tag)
 {
   if(tag >= 0) {
     if(tag == 0)
-      Msg::Warning("Using tag == 0 in view is discouraged; view tags should be >= 1");
+      Msg::Warning(_("Using tag == 0 in view is discouraged; view tags should be >= 1"));
     _tag = tag;
     _globalTag = std::max(_globalTag, _tag) + 1;
   }
@@ -79,7 +79,7 @@ PView::PView(PView *ref, bool copyOptions, int tag)
     if(orig)
       _aliasOf = orig->getTag();
     else {
-      Msg::Warning("Original view for alias does not exist anymore");
+      Msg::Warning(_("Original view for alias does not exist anymore"));
       _aliasOf = ref->getTag();
     }
   }
@@ -118,7 +118,7 @@ void PView::addStep(std::vector<double> &y)
   if(d)
     d->addStep(y);
   else
-    Msg::Error("Can only add step data to list-based datasets");
+    Msg::Error(_("Can only add step data to list-based datasets"));
 }
 
 PView::PView(const std::string &name, std::vector<double> &x,
@@ -173,7 +173,7 @@ void PView::addStep(GModel *model,
   if(d)
     d->addData(model, data, d->getNumTimeSteps(), time, 1, numComp);
   else
-    Msg::Error("Can only add step data to mesh-based datasets");
+    Msg::Error(_("Can only add step data to mesh-based datasets"));
 }
 
 PView::~PView()
@@ -303,7 +303,7 @@ void PView::combine(bool time, int how, bool remove, bool copyOptions)
         data = new PViewDataGModel(d2->getType());
       }
       else {
-        Msg::Error("Cannot combine hybrid list/mesh-based datasets");
+        Msg::Error(_("Cannot combine hybrid list/mesh-based datasets"));
         continue;
       }
       PView *p = new PView(data);

@@ -138,7 +138,7 @@ PView *GMSH_DistancePlugin::execute(PView *v)
   GModel *m = GModel::current();
   int totNumNodes = m->getNumMeshVertices();
   if(!totNumNodes) {
-    Msg::Error("Plugin(Distance) needs a mesh");
+    Msg::Error(_("Plugin(Distance) needs a mesh"));
     return v;
   }
 

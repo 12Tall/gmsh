@@ -34,7 +34,7 @@ static void MMG2gmsh(GRegion *gr, MMG5_pMesh mmg,
   double cx, cy, cz;
 
   if(MMG3D_Get_meshSize(mmg, &np, &ne, nullptr, &nt, nullptr, &na) != 1)
-    Msg::Error("Mmg3d: unable to get mesh size");
+    Msg::Error(_("Mmg3d: unable to get mesh size"));
 
   // Store the nodes from the Mmg structures into the gmsh structures
 
@@ -123,10 +123,10 @@ static void gmsh2MMG(GRegion *gr, MMG5_pMesh mmg, MMG5_pSol sol,
   int ne = gr->tetrahedra.size();
 
   if(MMG3D_Set_meshSize(mmg, np, ne, 0, nt, 0, 0) != 1)
-    Msg::Error("Mmg3d: unable to set mesh size");
+    Msg::Error(_("Mmg3d: unable to set mesh size"));
 
   if(MMG3D_Set_solSize(mmg, sol, MMG5_Vertex, np, MMG5_Tensor) != 1)
-    Msg::Error("Mmg3d: unable to set metric size");
+    Msg::Error(_("Mmg3d: unable to set metric size"));
 
   std::map<MVertex *, std::pair<double, int> > LCS;
   for(auto it = f.begin(); it != f.end(); ++it) {
@@ -303,18 +303,18 @@ void refineMeshMMG(GRegion *gr)
     // Mmg parameters : verbosity + nosurf option
     int verb_mmg = (Msg::GetVerbosity() < 2) ? -1 : Msg::GetVerbosity() - 4;
     if(MMG3D_Set_iparameter(mmg, sol, MMG3D_IPARAM_verbose, verb_mmg) != 1)
-      Msg::Error("Mmsg3d: unable to set verbosity");
+      Msg::Error(_("Mmsg3d: unable to set verbosity"));
 
     // Set the nosurf parameter to 1 to preserve the boundaries
     if(MMG3D_Set_iparameter(mmg, sol, MMG3D_IPARAM_nosurf, 1) != 1)
-      Msg::Error("Mmg3d: unable to preserve the boundaries");
+      Msg::Error(_("Mmg3d: unable to preserve the boundaries"));
 
     // Set the hausdorff parameter
     double sqrt3Inv = 0.57735026919;
     double hausd = 0.01 * sqrt3Inv * gr->bounds().diag();
 
     if(MMG3D_Set_dparameter(mmg, sol, MMG3D_DPARAM_hausd, hausd) != 1) {
-      Msg::Error("Mmg3d: unable to set the hausdorff parameter");
+      Msg::Error(_("Mmg3d: unable to set the hausdorff parameter"));
     }
 
     if(MMG3D_mmg3dlib(mmg, sol) != MMG5_SUCCESS) {

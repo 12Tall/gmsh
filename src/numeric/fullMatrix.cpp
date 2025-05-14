@@ -85,7 +85,7 @@ void fullVector<std::complex<double> >::axpy(
 template <> void fullMatrix<int>::setAll(const fullMatrix<int> &m)
 {
   if(_r != m._r || _c != m._c) {
-    Msg::Error("fullMatrix size does not match");
+    Msg::Error(_("fullMatrix size does not match"));
     return;
   }
   int N = _r * _c;
@@ -95,7 +95,7 @@ template <> void fullMatrix<int>::setAll(const fullMatrix<int> &m)
 template <> void fullMatrix<double>::setAll(const fullMatrix<double> &m)
 {
   if(_r != m._r || _c != m._c) {
-    Msg::Error("fullMatrix size does not match");
+    Msg::Error(_("fullMatrix size does not match"));
     return;
   }
   int N = _r * _c;
@@ -108,7 +108,7 @@ void fullMatrix<std::complex<double> >::setAll(
   const fullMatrix<std::complex<double> > &m)
 {
   if(_r != m._r || _c != m._c) {
-    Msg::Error("fullMatrix size does not match");
+    Msg::Error(_("fullMatrix size does not match"));
     return;
   }
   int N = _r * _c;
@@ -325,7 +325,7 @@ template <> bool fullMatrix<double>::invert(fullMatrix<double> &result) const
     if(result._ownData || !result._data)
       result.resize(M, N, false);
     else {
-      Msg::Error("FullMatrix: Bad dimension, I cannot write in proxy");
+      Msg::Error(_("FullMatrix: Bad dimension, I cannot write in proxy"));
       return false;
     }
   }
@@ -432,7 +432,7 @@ bool fullMatrix<double>::svd(fullMatrix<double> &V, fullVector<double> &S)
   V = VT.transpose();
   if(info == 0) return true;
   if(info > 0)
-    Msg::Error("SVD did not converge");
+    Msg::Error(_("SVD did not converge"));
   else
     Msg::Error("Wrong %d-th argument in SVD decomposition", -info);
   return false;

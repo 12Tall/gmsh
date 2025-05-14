@@ -4,7 +4,9 @@
 // Please report all issues on https://gitlab.onelab.info/gmsh/gmsh/issues.
 
 #include <stdlib.h>
+#include <iostream>
 #include "GmshGlobal.h"
+#include "I18n.h"
 
 #if (defined(WIN32) || defined(_WIN32)) && (defined(__MINGW32__) || (defined(_MSC_VER) && !defined(HAVE_FLTK)))
 
@@ -44,6 +46,10 @@ int main(int argc, char *argv[])
 
 #endif
 
+// setlocale(LC_ALL, ""); 
+// bindtextdomain("gmsh", "./locale");
+// textdomain("gmsh");
+std::cout << _("About Gmsh") << std::endl;
 #if defined(HAVE_FLTK)
   return GmshMainFLTK(argc, argv);
 #else

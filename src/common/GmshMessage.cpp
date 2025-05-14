@@ -1126,7 +1126,7 @@ double Msg::GetOnelabNumber(const std::string &name, double defaultValue,
   }
 #endif
   if(errorIfMissing)
-    Msg::Error("GetNumber requires a ONELAB client");
+    Msg::Error(_("GetNumber requires a ONELAB client"));
   return defaultValue;
 }
 
@@ -1148,7 +1148,7 @@ std::string Msg::GetOnelabString(const std::string &name,
   }
 #endif
   if(errorIfMissing)
-    Msg::Error("GetString requires a ONELAB client");
+    Msg::Error(_("GetString requires a ONELAB client"));
   return defaultValue;
 }
 

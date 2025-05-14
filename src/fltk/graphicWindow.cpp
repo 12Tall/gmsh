@@ -205,7 +205,7 @@ static void file_open_recent_cb(Fl_Widget *w, void *data)
 static void file_clear_cb(Fl_Widget *w, void *data)
 {
   if(CTX::instance()->lock || FlGui::instance()->onelab->isBusy()) {
-    Msg::Info("I'm busy! Ask me that later...");
+    Msg::Info(_("I'm busy! Ask me that later..."));
     return;
   }
   ClearProject();
@@ -232,7 +232,7 @@ static void file_remote_cb(Fl_Widget *w, void *data)
 
   if(str == "start") {
     if(server) {
-      Msg::Error("Cannot start: remote Gmsh is already running");
+      Msg::Error(_("Cannot start: remote Gmsh is already running"));
       return;
     }
     c->setExecutable(connectionChooser());
@@ -788,7 +788,7 @@ static void geometry_edit_cb(Fl_Widget *w, void *data)
 void onelab_reload_cb(Fl_Widget *w, void *data)
 {
   if(CTX::instance()->lock || FlGui::instance()->onelab->isBusy()) {
-    Msg::Info("I'm busy! Ask me that later...");
+    Msg::Info(_("I'm busy! Ask me that later..."));
     return;
   }
 
@@ -1000,8 +1000,7 @@ static void add_new_multiline(const std::string &type)
       drawContext::global()->draw();
     }
     if(ib == 'r') {
-      Msg::Warning(
-        "Entity de-selection not supported yet during multi-line creation");
+      Msg::Warning(_("Entity de-selection not supported yet during multi-line creation"));
     }
     if(ib == 'e') {
       if(p.size() >= 2)
@@ -1053,8 +1052,7 @@ static void add_new_line()
       p.push_back(FlGui::instance()->selectedVertices[0]->tag());
     }
     if(ib == 'r') {
-      Msg::Warning(
-        "Entity de-selection not supported yet during curve creation");
+      Msg::Warning(_("Entity de-selection not supported yet during curve creation"));
     }
     if(ib == 'u') {
       if(p.size()) {
@@ -1108,8 +1106,7 @@ static void add_new_circle_arc()
       p.push_back(FlGui::instance()->selectedVertices[0]->tag());
     }
     if(ib == 'r') {
-      Msg::Warning(
-        "Entity de-selection not supported yet during circle creation");
+      Msg::Warning(_("Entity de-selection not supported yet during circle creation"));
     }
     if(ib == 'u') {
       if(p.size()) {
@@ -1167,8 +1164,7 @@ static void add_new_ellipse_arc()
       p.push_back(FlGui::instance()->selectedVertices[0]->tag());
     }
     if(ib == 'r') {
-      Msg::Warning(
-        "Entity de-selection not supported yet during ellipse creation");
+      Msg::Warning(_("Entity de-selection not supported yet during ellipse creation"));
     }
     if(ib == 'u') {
       if(p.size()) {
@@ -1616,7 +1612,7 @@ static void action_point_line_surface_volume(int action,
         drawContext::global()->draw();
       }
     }
-    if(ib == 'i') { Msg::Error("Inverting selection!"); }
+    if(ib == 'i') { Msg::Error(_("Inverting selection!")); }
     if(ib == 'e') {
       if(dimTags.size()) {
         switch(action) {
@@ -1773,7 +1769,7 @@ static void action_point_line_surface_volume(int action,
             dimTagsSaved.clear();
           }
           break;
-        default: Msg::Error("Unknown action on selected entities"); break;
+        default: Msg::Error(_("Unknown action on selected entities")); break;
         }
         dimTags.clear();
         FlGui::instance()->resetVisibility();
@@ -1941,8 +1937,7 @@ static void geometry_elementary_boolean_cb(Fl_Widget *w, void *data)
       }
     }
     if(ib == 'r') {
-      Msg::Warning(
-        "Entity de-selection not supported yet during boolean operation");
+      Msg::Warning(_("Entity de-selection not supported yet during boolean operation"));
     }
     if(ib == 'u') {
       if(selectObject && object.size()) {
@@ -1961,12 +1956,12 @@ static void geometry_elementary_boolean_cb(Fl_Widget *w, void *data)
     if(ib == 'e') {
       if(selectObject) {
         if(object.empty())
-          Msg::Error("At least one object must be selected");
+          Msg::Error(_("At least one object must be selected"));
         else
           selectObject = false;
       }
       else if(tool.empty() && mode != "BooleanFragments") {
-        Msg::Error("At least one tool must be selected");
+        Msg::Error(_("At least one tool must be selected"));
       }
       else {
         scriptBoolean(GModel::current()->getFileName(), mode, object, tool,
@@ -2040,8 +2035,7 @@ static void geometry_elementary_fillet_cb(Fl_Widget *w, void *data)
       }
     }
     if(ib == 'r') {
-      Msg::Warning(
-        "Entity de-selection not supported yet during boolean operation");
+      Msg::Warning(_("Entity de-selection not supported yet during boolean operation"));
     }
     if(ib == 'u') {
       if(selectRegions && regions.size()) {
@@ -2058,12 +2052,12 @@ static void geometry_elementary_fillet_cb(Fl_Widget *w, void *data)
     if(ib == 'e') {
       if(selectRegions) {
         if(regions.empty())
-          Msg::Error("At least one volume must be selected");
+          Msg::Error(_("At least one volume must be selected"));
         else
           selectRegions = false;
       }
       else if(edges.empty()) {
-        Msg::Error("At least one curve must be selected");
+        Msg::Error(_("At least one curve must be selected"));
       }
       else {
         scriptFillet(GModel::current()->getFileName(), regions, edges,
@@ -2330,7 +2324,7 @@ static void mesh_modify_parts(Fl_Widget *w, void *data,
       else if(action == "reverse")
         GModel::current()->reverseInvisibleElements();
       else
-        Msg::Error("Unknown action on mesh part");
+        Msg::Error(_("Unknown action on mesh part"));
       ele.clear();
       ent.clear();
     }
@@ -2411,7 +2405,7 @@ static void mesh_degree_cb(Fl_Widget *w, void *data)
 static void mesh_optimize_cb(Fl_Widget *w, void *data)
 {
   if(CTX::instance()->lock) {
-    Msg::Info("I'm busy! Ask me that later...");
+    Msg::Info(_("I'm busy! Ask me that later..."));
     return;
   }
   CTX::instance()->lock = 1;
@@ -2475,7 +2469,7 @@ static void mesh_recombine_cb(Fl_Widget *w, void *data)
 static void mesh_optimize_netgen_cb(Fl_Widget *w, void *data)
 {
   if(CTX::instance()->lock) {
-    Msg::Info("I'm busy! Ask me that later...");
+    Msg::Info(_("I'm busy! Ask me that later..."));
     return;
   }
   CTX::instance()->lock = 1;
@@ -2663,13 +2657,13 @@ static void mesh_define_transfinite(int dim)
                   p, GModel::current()->getFileName(),
                   FlGui::instance()->meshContext->choice[1]->text());
               else
-                Msg::Error("Wrong number of points for mesh constraint");
+                Msg::Error(_("Wrong number of points for mesh constraint"));
               break;
             case 3:
               if((p.size() == 0 + 1 || p.size() == 6 + 1 || p.size() == 8 + 1))
                 scriptSetTransfiniteVolume(p, GModel::current()->getFileName());
               else
-                Msg::Error("Wrong number of points for transfinite volume");
+                Msg::Error(_("Wrong number of points for transfinite volume"));
               break;
             }
             GModel::current()->setSelection(0);
@@ -2812,8 +2806,7 @@ static void mesh_define_embedded_cb(Fl_Widget *w, void *data)
       }
     }
     if(ib == 'r') {
-      Msg::Warning(
-        "Entity de-selection not supported yet during boolean operation");
+      Msg::Warning(_("Entity de-selection not supported yet during boolean operation"));
     }
     if(ib == 'u') {
       if(selectEntities && entities.size()) {
@@ -2826,7 +2819,7 @@ static void mesh_define_embedded_cb(Fl_Widget *w, void *data)
     if(ib == 'e') {
       if(selectEntities) {
         if(entities.empty())
-          Msg::Error("At least one entity must be selected");
+          Msg::Error(_("At least one entity must be selected"));
         else
           selectEntities = false;
       }
@@ -2917,7 +2910,7 @@ static Fl_Menu_Item bar_table[] = {
     {"&Keyboard and Mouse Usage",  FL_CTRL+'h', (Fl_Callback *)help_basic_cb, nullptr, FL_MENU_DIVIDER},
     {"&Current Options and Workspace", FL_CTRL+FL_SHIFT+'h', (Fl_Callback *)status_options_cb, (void*)"?", 0},
     {"&Restore all Options to Default Settings", 0, (Fl_Callback *)options_restore_defaults_cb, nullptr, FL_MENU_DIVIDER},
-    {"&About Gmsh",           0, (Fl_Callback *)help_about_cb, nullptr},
+    {_("&About Gmsh"),           0, (Fl_Callback *)help_about_cb, nullptr},
     {nullptr},
   {nullptr}
 };
@@ -4313,7 +4306,7 @@ void graphicWindow::setStereo(bool st)
     }
     gl[i]->show();
   }
-  Msg::Info("new gl window for stereo vision!");
+  Msg::Info(_("new gl window for stereo vision!"));
 }
 
 void graphicWindow::setAnimButtons(int mode)

@@ -264,7 +264,7 @@ public:
   ~TetMeshConnectivity(){};
   void initialize(GRegion *region)
   {
-    Msg::Info("Initialize Connectivity Information...");
+    Msg::Info(_("Initialize Connectivity Information..."));
     clear();
     initialize_vertex_to_vertices(region);
     initialize_vertex_to_elements(region);

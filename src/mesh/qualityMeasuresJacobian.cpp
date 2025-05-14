@@ -861,7 +861,7 @@ namespace jacobianBasedQuality {
                          bool debug)
   {
     if(domains.empty()) {
-      Msg::Warning("Empty vector in Bezier subdivision, nothing to do");
+      Msg::Warning(_("Empty vector in Bezier subdivision, nothing to do"));
       return;
     }
     double minL = domains[0]->minL();

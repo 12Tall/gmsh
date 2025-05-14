@@ -569,7 +569,7 @@ bool ChainComplex::deform(
       (*insert.first).second = coeff;
     }
     else if(!insert.second && (*insert.first).second != 0) {
-      Msg::Error("Invalid chain smoothening add!");
+      Msg::Error(_("Invalid chain smoothening add!"));
     }
     n++;
   }

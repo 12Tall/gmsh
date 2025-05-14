@@ -108,13 +108,13 @@ public:
   }
   virtual void setVertex(int num, MVertex *v)
   {
-    Msg::Error("Vertex set not supported for this element");
+    Msg::Error(_("Vertex set not supported for this element"));
   }
 
   // give an MVertex as input and get its local number
   virtual void getVertexInfo(const MVertex *vertex, int &ithVertex) const
   {
-    Msg::Error("Vertex information not available for this element");
+    Msg::Error(_("Vertex information not available for this element"));
   }
 
   // get the vertex using the I-deas UNV ordering
@@ -178,7 +178,7 @@ public:
   virtual bool getEdgeInfo(const MEdge &edge, int &ithEdge, int &sign) const;
   virtual int numEdge2numVertex(int numEdge, int numVert) const
   {
-    Msg::Error("Edge information not available for this element");
+    Msg::Error(_("Edge information not available for this element"));
     return -1;
   }
 
@@ -205,7 +205,7 @@ public:
   virtual bool getFaceInfo(const MFace &face, int &ithFace, int &sign,
                            int &rot) const
   {
-    Msg::Error("Face information not available for this element");
+    Msg::Error(_("Face information not available for this element"));
     return false;
   }
 
@@ -402,7 +402,7 @@ public:
 
   virtual double getAngleAtVertex(MVertex *v)
   {
-    Msg::Warning("Angle at element node not coded for this element type");
+    Msg::Warning(_("Angle at element node not coded for this element type"));
     return 0.;
   }
 

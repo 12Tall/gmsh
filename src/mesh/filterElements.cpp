@@ -168,7 +168,7 @@ bool rtree_callback(MElement *e1, void *pe2)
     wrapper->_overlap = overlap2D(e1, e2);
     return !wrapper->_overlap;
   }
-  Msg::Error("overlapping of elements in 3D not done yet");
+  Msg::Error(_("overlapping of elements in 3D not done yet"));
   return true;
 }
 

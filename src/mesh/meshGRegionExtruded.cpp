@@ -218,7 +218,7 @@ static void extrudeMesh(GFace *from, GRegion *to, MVertexRTree &pos)
   }
 
   if(from->quadrangles.size() && !ep->mesh.Recombine) {
-    Msg::Error("Cannot extrude quadrangles without Recombine");
+    Msg::Error(_("Cannot extrude quadrangles without Recombine"));
   }
   else {
     for(std::size_t i = 0; i < from->quadrangles.size(); i++) {
@@ -507,7 +507,7 @@ int SubdivideExtrudedMesh(GModel *m)
 
   if(regions.empty()) return 0;
 
-  Msg::Info("Subdividing extruded mesh");
+  Msg::Info(_("Subdividing extruded mesh"));
 
   std::set<std::pair<MVertex *, MVertex *> > edges;
 
@@ -525,7 +525,7 @@ int SubdivideExtrudedMesh(GModel *m)
       Msg::Info("Swapping %d", swap);
       if(j && j == swap) {
         if(ntry == 1) {
-          Msg::Info("Subdivision failed, trying alternative split");
+          Msg::Info(_("Subdivision failed, trying alternative split"));
           edges.clear();
           break;
         }
@@ -594,7 +594,7 @@ int SubdivideExtrudedMesh(GModel *m)
     }
     if(!nPending) break;
     if(nIter++ > 10) {
-      Msg::Warning("Could not remesh all subdivided surfaces");
+      Msg::Warning(_("Could not remesh all subdivided surfaces"));
       break;
     }
   }

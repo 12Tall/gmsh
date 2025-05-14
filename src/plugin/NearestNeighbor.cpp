@@ -88,7 +88,7 @@ PView *GMSH_NearestNeighborPlugin::execute(PView *v)
   delete[] index;
   delete[] dist;
 #else
-  Msg::Error("Nearest neighbor computation requires ANN");
+  Msg::Error(_("Nearest neighbor computation requires ANN"));
 #endif
 
   data1->setName(v1->getData()->getName() + "_NearestNeighbor");

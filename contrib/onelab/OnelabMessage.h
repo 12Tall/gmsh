@@ -11,6 +11,7 @@
 #include <set>
 #include <stdarg.h>
 #include "onelab.h"
+#include "I18n.h"
 
 class GmshClient;
 

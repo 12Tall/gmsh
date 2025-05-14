@@ -227,7 +227,7 @@ static void highordertools_runopti_cb(Fl_Widget *w, void *data)
   }
   }
 #else
-  Msg::Error("High-order mesh optimization requires the OPTHOM module");
+  Msg::Error(_("High-order mesh optimization requires the OPTHOM module"));
 #endif
 
   FixPeriodicMesh(GModel::current());

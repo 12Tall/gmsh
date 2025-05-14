@@ -364,7 +364,7 @@ public:
   void operator+=(const fullMatrix<scalar> &other)
   {
     if(_r != other._r || _c != other._c) {
-      Msg::Error("Cannot sum dense matrices of different sizes");
+      Msg::Error(_("Cannot sum dense matrices of different sizes"));
       return;
     }
     for(int i = 0; i < _r * _c; ++i) _data[i] += other._data[i];
@@ -437,7 +437,7 @@ public:
 #elif !defined(HAVE_BLAS)
   {
     if(_r != m._r || _c != m._c) {
-      Msg::Error("Dense matrix sizes do not match in setAll");
+      Msg::Error(_("Dense matrix sizes do not match in setAll"));
       return;
     }
     for(int i = 0; i < _r * _c; i++) _data[i] = m._data[i];
@@ -616,7 +616,7 @@ public:
   }
 #elif !defined(HAVE_LAPACK)
   {
-    Msg::Error("LU factorization and substitution requires Eigen or LAPACK");
+    Msg::Error(_("LU factorization and substitution requires Eigen or LAPACK"));
     return false;
   }
 #endif
@@ -624,7 +624,7 @@ public:
   bool luFactor(fullVector<int> &ipiv)
 #if defined(HAVE_EIGEN) || !defined(HAVE_LAPACK)
   {
-    Msg::Error("LU factorization requires LAPACK");
+    Msg::Error(_("LU factorization requires LAPACK"));
     return false;
   }
 #endif
@@ -633,7 +633,7 @@ public:
                     fullVector<scalar> &result)
 #if defined(HAVE_EIGEN) || !defined(HAVE_LAPACK)
   {
-    Msg::Error("LU substitution requires LAPACK");
+    Msg::Error(_("LU substitution requires LAPACK"));
     return false;
   }
 #endif
@@ -654,7 +654,7 @@ public:
   }
 #elif !defined(HAVE_LAPACK)
   {
-    Msg::Error("Matrix inversion requires Eigen or LAPACK");
+    Msg::Error(_("Matrix inversion requires Eigen or LAPACK"));
     return false;
   }
 #endif
@@ -673,7 +673,7 @@ public:
   }
 #elif !defined(HAVE_LAPACK)
   {
-    Msg::Error("Dense matrix inversion requires LAPACK");
+    Msg::Error(_("Dense matrix inversion requires LAPACK"));
     return false;
   }
 #endif
@@ -686,7 +686,7 @@ public:
   }
 #elif !defined(HAVE_LAPACK)
   {
-    Msg::Error("Dense matrix inversion requires Eigen or LAPACK");
+    Msg::Error(_("Dense matrix inversion requires Eigen or LAPACK"));
     return false;
   }
 #endif
@@ -732,7 +732,7 @@ public:
     EigenMat ma(_data, _r, _c);
     Eigen::EigenSolver<Eigen::Matrix<scalar, Eigen::Dynamic, Eigen::Dynamic> > es(ma);
     if(es.info() != Eigen::Success) {
-      Msg::Warning("Eigen could not compute eigenvalues/eigenvectors");
+      Msg::Warning(_("Eigen could not compute eigenvalues/eigenvectors"));
       return false;
     }
     EigenVec vr(eigenValReal._data, eigenValReal._r);

@@ -233,11 +233,11 @@ int CGNSZone::readConnectivities(const std::map<std::string, int> &name2Zone,
 
     // check if connection type is OK
     if(connectType != CGNS_ENUMV(Abutting1to1)) {
-      Msg::Warning("Non-conformal connection not supported in CGNS reader");
+      Msg::Warning(_("Non-conformal connection not supported in CGNS reader"));
       continue;
     }
     if(location != CGNS_ENUMV(Vertex)) {
-      Msg::Warning("Only vertex connections are supported in CGNS reader");
+      Msg::Warning(_("Only vertex connections are supported in CGNS reader"));
       continue;
     }
 

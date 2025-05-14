@@ -113,9 +113,9 @@ int GModel::readSTL(const std::string &name, double tolerance)
   // us the format was ASCII but we could not read any vertices)
   if(binary || empty) {
     if(binary)
-      Msg::Info("Mesh is in binary format");
+      Msg::Info(_("Mesh is in binary format"));
     else
-      Msg::Info("Wrong ASCII header or empty file: trying binary read");
+      Msg::Info(_("Wrong ASCII header or empty file: trying binary read"));
     rewind(fp);
     while(!feof(fp)) {
       char header[80];
@@ -125,7 +125,7 @@ int GModel::readSTL(const std::string &name, double tolerance)
       size_t ret = fread(&nfacets, sizeof(unsigned int), 1, fp);
       bool swap = false;
       if(nfacets > 100000000) {
-        Msg::Info("Swapping bytes from binary file");
+        Msg::Info(_("Swapping bytes from binary file"));
         swap = true;
         SwapBytes((char *)&nfacets, sizeof(unsigned int), 1);
       }
@@ -153,7 +153,7 @@ int GModel::readSTL(const std::string &name, double tolerance)
 
   // cleanup names
   if(names.size() != points.size()) {
-    Msg::Debug("Invalid number of names in STL file - should never happen");
+    Msg::Debug(_("Invalid number of names in STL file - should never happen"));
     names.resize(points.size());
   }
   for(std::size_t i = 0; i < names.size(); i++) {

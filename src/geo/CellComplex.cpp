@@ -49,15 +49,15 @@ CellComplex::CellComplex(GModel *model, std::vector<MElement *> &domainElements,
 
   _reduced = false;
 
-  Msg::Debug("Cells in domain:");
+  Msg::Debug(_("Cells in domain:"));
   Msg::Debug(" %d volumes, %d faces, %d edges, and %d vertices",
              getNumCells(3, 1), getNumCells(2, 1), getNumCells(1, 1),
              getNumCells(0, 1));
-  Msg::Debug("Cells in subdomain:");
+  Msg::Debug(_("Cells in subdomain:"));
   Msg::Debug(" %d volumes, %d faces, %d edges, and %d vertices",
              getNumCells(3, 2), getNumCells(2, 2), getNumCells(1, 2),
              getNumCells(0, 2));
-  Msg::Debug("Cells in relative domain:");
+  Msg::Debug(_("Cells in relative domain:"));
   Msg::Debug(" %d volumes, %d faces, %d edges, and %d vertices",
              getNumCells(3, 0), getNumCells(2, 0), getNumCells(1, 0),
              getNumCells(0, 0));
@@ -246,7 +246,7 @@ void CellComplex::insertCell(Cell *cell)
 {
   std::pair<citer, bool> insertInfo = _cells[cell->getDim()].insert(cell);
   if(!insertInfo.second) {
-    Msg::Debug("Cell not inserted");
+    Msg::Debug(_("Cell not inserted"));
     Cell *oldCell = (*insertInfo.first);
     cell->printCell();
     oldCell->printCell();
@@ -279,7 +279,7 @@ void CellComplex::removeCell(Cell *cell, bool other, bool del)
       _numRelativeCells[dim] -= 1;
   }
   if(!erased)
-    Msg::Debug("Tried to remove a cell from the cell complex \n");
+    Msg::Debug(_("Tried to remove a cell from the cell complex \n"));
   else if(!del)
     _removedcells.push_back(cell);
 }
@@ -832,12 +832,12 @@ bool CellComplex::coherent()
         int ori = (*it).second;
         auto cit = _cells[bdCell->getDim()].find(bdCell);
         if(cit == lastCell(bdCell->getDim())) {
-          Msg::Debug("Boundary cell not in cell complex! Boundary removed");
+          Msg::Debug(_("Boundary cell not in cell complex! Boundary removed"));
           cell->removeBoundaryCell(bdCell, false);
           coherent = false;
         }
         if(!bdCell->hasCoboundary(cell)) {
-          Msg::Debug("Incoherent boundary/coboundary pair! Fixed");
+          Msg::Debug(_("Incoherent boundary/coboundary pair! Fixed"));
           bdCell->addCoboundaryCell(ori, cell, false);
           coherent = false;
         }
@@ -849,12 +849,12 @@ bool CellComplex::coherent()
         int ori = (*it).second;
         auto cit = _cells[cbdCell->getDim()].find(cbdCell);
         if(cit == lastCell(cbdCell->getDim())) {
-          Msg::Debug("Coboundary cell not in cell complex! Coboundary removed");
+          Msg::Debug(_("Coboundary cell not in cell complex! Coboundary removed"));
           cell->removeCoboundaryCell(cbdCell, false);
           coherent = false;
         }
         if(!cbdCell->hasBoundary(cell)) {
-          Msg::Debug("Incoherent coboundary/boundary pair! Fixed");
+          Msg::Debug(_("Incoherent coboundary/boundary pair! Fixed"));
           cbdCell->addBoundaryCell(ori, cell, false);
           coherent = false;
         }
@@ -904,7 +904,7 @@ int CellComplex::getNumCells(int dim, int domain)
 Cell *CellComplex::getACell(int dim, int domain)
 {
   int num = getNumCells(dim, domain);
-  if(num < 0) Msg::Debug("Domain cell counts not in sync.");
+  if(num < 0) Msg::Debug(_("Domain cell counts not in sync."));
 
   if(num <= 0) {
     if(domain == 0)
@@ -922,7 +922,7 @@ Cell *CellComplex::getACell(int dim, int domain)
        (domain == 2 && cell->inSubdomain()))
       return cell;
   }
-  Msg::Debug("Domain cell counts not in sync.");
+  Msg::Debug(_("Domain cell counts not in sync."));
   return nullptr;
 }
 
@@ -960,14 +960,14 @@ bool CellComplex::restoreComplex()
       }
     }
 
-    Msg::Info("Restored Cell Complex:");
+    Msg::Info(_("Restored Cell Complex:"));
     Msg::Info("%d volumes, %d faces, %d edges, and %d vertices", getSize(3),
               getSize(2), getSize(1), getSize(0));
     _reduced = false;
     return true;
   }
   else {
-    Msg::Error("Cannot restore cell complex");
+    Msg::Error(_("Cannot restore cell complex"));
     return false;
   }
 }

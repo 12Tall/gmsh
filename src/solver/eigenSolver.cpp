@@ -114,7 +114,7 @@ bool eigenSolver::solve(int numEigenValues, std::string which,
   Msg::Debug("SLEPc stopping condition: tol=%g, maxit=%d", tol, maxit);
 
   // solve
-  Msg::Info("SLEPc solving...");
+  Msg::Info(_("SLEPc solving..."));
   double t1 = Cpu(), w1 = TimeOfDay();
   _check(EPSSolve(eps));
 
@@ -131,11 +131,11 @@ bool eigenSolver::solve(int numEigenValues, std::string which,
   else if(reason == EPS_DIVERGED_ITS)
     Msg::Error("SLEPc diverged after %d iterations", its);
   else if(reason == EPS_DIVERGED_BREAKDOWN)
-    Msg::Error("SLEPc generic breakdown in method");
+    Msg::Error(_("SLEPc generic breakdown in method"));
 #if(SLEPC_VERSION_MAJOR < 3 ||                                                 \
     (SLEPC_VERSION_MAJOR == 3 && SLEPC_VERSION_MINOR < 2))
   else if(reason == EPS_DIVERGED_NONSYMMETRIC)
-    Msg::Error("The operator is nonsymmetric");
+    Msg::Error(_("The operator is nonsymmetric"));
 #endif
 
   // get number of converged approximate eigenpairs
@@ -198,18 +198,18 @@ bool eigenSolver::solve(int numEigenValues, std::string which,
   _check(EPSDestroy(&eps));
 
   if(reason == EPS_CONVERGED_TOL) {
-    Msg::Debug("SLEPc done");
+    Msg::Debug(_("SLEPc done"));
     return true;
   }
   else {
-    Msg::Warning("SLEPc failed");
+    Msg::Warning(_("SLEPc failed"));
     return false;
   }
 }
 
 void eigenSolver::normalize_mode(std::vector<int> modeView, double scale)
 {
-  Msg::Info("Normalize all eigenvectors");
+  Msg::Info(_("Normalize all eigenvectors"));
   for(std::size_t imode = 0; imode < modeView.size(); imode++) {
     int i = modeView[imode];
     double norm = 0.;
@@ -219,7 +219,7 @@ void eigenSolver::normalize_mode(std::vector<int> modeView, double scale)
       if(normval > norm) norm = normval;
     }
     if(norm == 0) {
-      Msg::Error("zero eigenvector");
+      Msg::Error(_("zero eigenvector"));
       return;
     }
     for(std::size_t j = 0; j < _eigenVectors[i].size(); j++) {

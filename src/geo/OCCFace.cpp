@@ -299,7 +299,7 @@ bool OCCFace::_project(const double p[3], double uv[2], double xyz[3]) const
   _projector.LowerDistanceParameters(uv[0], uv[1]);
 
   if(uv[0] < _umin || uv[0] > _umax || uv[1] < _vmin || uv[1] > _vmax)
-    Msg::Debug("Point projection is out of surface parameter bounds");
+    Msg::Debug(_("Point projection is out of surface parameter bounds"));
 
   if(xyz) {
     pnt = _projector.NearestPoint();

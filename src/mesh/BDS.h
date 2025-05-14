@@ -214,7 +214,7 @@ public:
       _n[3] = e3->commonvertex(e4);
       if(_n[0] && _n[1] && _n[2] && _n[3]) return true;
     }
-    Msg::Error("Invalid points in face");
+    Msg::Error(_("Invalid points in face"));
     return false;
   }
 

@@ -798,7 +798,7 @@ GPoint discreteFace::intersectionWithCircle(const SVector3 &n1,
 
   GPoint pp(0);
   pp.setNoSuccess();
-  // Msg::Warning("Could not intersect with circle");
+  // Msg::Warning(_("Could not intersect with circle"));
   return pp;
 }
 

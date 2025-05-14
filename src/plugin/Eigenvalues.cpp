@@ -44,7 +44,7 @@ PView *GMSH_EigenvaluesPlugin::execute(PView *v)
 
   PViewData *data1 = getPossiblyAdaptiveData(v1);
   if(data1->hasMultipleMeshes()) {
-    Msg::Error("Eigenvalues plugin cannot be run on multi-mesh views");
+    Msg::Error(_("Eigenvalues plugin cannot be run on multi-mesh views"));
     return v;
   }
 

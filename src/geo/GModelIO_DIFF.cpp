@@ -191,7 +191,7 @@ int GModel::readDIFF(const std::string &name)
       if((int)vertexMap.size() == numVertices &&
          ((minVertex == 1 && maxVertex == numVertices) ||
           (minVertex == 0 && maxVertex == numVertices - 1))) {
-        Msg::Info("Vertex numbering is dense");
+        Msg::Info(_("Vertex numbering is dense"));
         vertexVector.resize(vertexMap.size() + 1);
         if(minVertex == 1)
           vertexVector[0] = nullptr;
@@ -365,7 +365,7 @@ int GModel::readDIFF(const std::string &name)
       case TYPE_PRI: elements[6][reg].push_back(e); break;
       case TYPE_PYR: elements[7][reg].push_back(e); break;
       default:
-        Msg::Error("Wrong type of element");
+        Msg::Error(_("Wrong type of element"));
         fclose(fp);
         return 0;
       }
@@ -397,7 +397,7 @@ int GModel::writeDIFF(const std::string &name, bool binary, bool saveAll,
                       double scalingFactor)
 {
   if(binary) {
-    Msg::Error("Binary DIFF output is not implemented");
+    Msg::Error(_("Binary DIFF output is not implemented"));
     return 0;
   }
 

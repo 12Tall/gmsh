@@ -56,7 +56,7 @@ PView *GMSH_GaussPointsPlugin::execute(PView *v)
   }
 
   if(entities.empty()) {
-    Msg::Error("No entities");
+    Msg::Error(_("No entities"));
     return v;
   }
 

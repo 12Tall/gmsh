@@ -93,7 +93,7 @@ double MQuadrangle::getAngleAtVertex(MVertex *v)
     return angle3Vertices(_v[1], _v[2], _v[3]);
   else if(v == _v[3])
     return angle3Vertices(_v[2], _v[3], _v[0]);
-  Msg::Warning("Unknown node in quadrangle for angle computation");
+  Msg::Warning(_("Unknown node in quadrangle for angle computation"));
   return 0.;
 }
 

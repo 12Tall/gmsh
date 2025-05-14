@@ -268,7 +268,7 @@ static void view_applybgmesh_cb(Fl_Widget *w, void *data)
   if(index >= 0 && index < (int)PView::list.size())
     GModel::current()->getFields()->setBackgroundMesh(index);
 #else
-  Msg::Error("Background mesh requires mesh module");
+  Msg::Error(_("Background mesh requires mesh module"));
 #endif
 }
 

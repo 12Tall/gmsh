@@ -143,7 +143,7 @@ GeomMeshMatcher::matchEdges(GModel *m1, GModel *m2,
     std::vector<std::vector<GEdge *> > lists;
 
     if(v1 == v2) {
-      Msg::Debug("Found a closed curve");
+      Msg::Debug(_("Found a closed curve"));
       closed_curves.push_back(e1);
 
       for(auto eit2 = m2->firstEdge(); eit2 != m2->lastEdge(); eit2++) {
@@ -535,7 +535,7 @@ int GeomMeshMatcher::forceTomatch(GModel *geom, GModel *mesh, const double TOL)
             ge->lines.push_back(new MLine(v2, v1));
         }
         else
-          Msg::Error("Could not find curve");
+          Msg::Error(_("Could not find curve"));
       }
       else {
         if(!v1)
@@ -882,12 +882,12 @@ int GeomMeshMatcher::match(GModel *geom, GModel *mesh)
   std::map<MVertex *, MVertex *> _mesh_to_geom;
 
   if(ok) {
-    Msg::Info("Copying mesh nodes and elements to CAD model entities...");
+    Msg::Info(_("Copying mesh nodes and elements to CAD model entities..."));
     copy_vertices(geom, mesh, _mesh_to_geom, coresp_v, coresp_e, coresp_f,
                   coresp_r);
     copy_elements(geom, mesh, _mesh_to_geom, coresp_v, coresp_e, coresp_f,
                   coresp_r);
-    Msg::Info("Applying periodicity to CAD model entities...");
+    Msg::Info(_("Applying periodicity to CAD model entities..."));
     if(!apply_periodicity(*coresp_v))
       copy_periodicity(*coresp_v, _mesh_to_geom);
     if(!apply_periodicity(*coresp_e))
@@ -905,7 +905,7 @@ int GeomMeshMatcher::match(GModel *geom, GModel *mesh)
     Msg::StatusBar(true, "Successfully matched mesh to CAD (Wall %gs, CPU %gs)",
                    TimeOfDay() - w1, Cpu() - t1);
   else
-    Msg::Error("Failed to match mesh to CAD");
+    Msg::Error(_("Failed to match mesh to CAD"));
 
   return ok ? 1 : 0;
 }

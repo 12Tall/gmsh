@@ -121,7 +121,7 @@ template <class scalar> void linearSystemPETSc<scalar>::preAllocateEntries()
 {
   if(_entriesPreAllocated) return;
   if(!_isAllocated){
-    Msg::Error("System must be allocated first");
+    Msg::Error(_("System must be allocated first"));
     return;
   }
   int blockSize = _getBlockSizeFromParameters();
@@ -281,7 +281,7 @@ template <class scalar>
 void linearSystemPETSc<scalar>::getFromMatrix(int row, int col,
                                               scalar &val) const
 {
-  Msg::Error("getFromMatrix not implemented for PETSc");
+  Msg::Error(_("getFromMatrix not implemented for PETSc"));
 }
 
 template <class scalar>

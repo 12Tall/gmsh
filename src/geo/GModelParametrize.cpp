@@ -127,7 +127,7 @@ void classifyFaces(GModel *gm, double curveAngleThreshold)
     if(ho) break;
   }
   if(ho) {
-    Msg::Warning("Reverting to first order mesh for classification");
+    Msg::Warning(_("Reverting to first order mesh for classification"));
     gm->setOrderN(1, 0, 0, 0);
   }
 
@@ -170,7 +170,7 @@ void classifyFaces(GModel *gm, double curveAngleThreshold)
   }
 
   if(touched.empty()) {
-    Msg::Warning("No triangles to reclassify in surface mesh");
+    Msg::Warning(_("No triangles to reclassify in surface mesh"));
     return;
   }
 
@@ -199,7 +199,7 @@ void classifyFaces(GModel *gm, double curveAngleThreshold)
           MEdge e = t->getEdge(i);
           auto it = tris.find(e);
           if(it == tris.end()) {
-            Msg::Error("Could not find triangle linked to edge");
+            Msg::Error(_("Could not find triangle linked to edge"));
             break;
           }
           MLine ll(e.getVertex(0), e.getVertex(1));
@@ -502,7 +502,7 @@ void classifyFaces(GModel *gm, double angleThreshold, bool includeBoundary,
   Msg::StatusBar(true, "Done classifying surfaces (Wall %gs, CPU %gs)", w2 - w1,
                  t2 - t1);
 #else
-  Msg::Error("Surface classification requires the mesh module");
+  Msg::Error(_("Surface classification requires the mesh module"));
 #endif
 }
 
@@ -584,11 +584,11 @@ bool computeParametrization(const std::vector<MTriangle *> &triangles,
   }
   std::vector<std::vector<MVertex *>> vs;
   if(!SortEdgeConsecutive(es, vs)) {
-    Msg::Error("Wrong topology of boundary mesh for parametrization");
+    Msg::Error(_("Wrong topology of boundary mesh for parametrization"));
     return false;
   }
   if(vs.empty() || vs[0].size() < 2) {
-    Msg::Error("Invalid exterior boundary mesh for parametrization");
+    Msg::Error(_("Invalid exterior boundary mesh for parametrization"));
     return false;
   }
 
@@ -903,7 +903,7 @@ bool makePartitionSimplyConnected(std::vector<MTriangle *> &t,
 void computeEdgeCut(GModel *gm, std::vector<MLine *> &cut,
                     int max_elems_per_cut)
 {
-  Msg::Info("Splitting triangulations to make them parametrizable:");
+  Msg::Info(_("Splitting triangulations to make them parametrizable:"));
 
   for(auto it = gm->firstFace(); it != gm->lastFace(); ++it) {
     int part = 0;
@@ -957,12 +957,12 @@ void computeEdgeCut(GModel *gm, std::vector<MLine *> &cut,
             if(p >= 0 && p < np)
               t[p].push_back((*it)->triangles[i]);
             else
-              Msg::Error("Invalid partition index");
+              Msg::Error(_("Invalid partition index"));
           }
           for(std::size_t i = 0; i < t.size(); i++) {
             std::vector<std::vector<MTriangle *>> ts;
             if(!makePartitionSimplyConnected(t[i], ts)) {
-              Msg::Warning("Could not make partition simply connected");
+              Msg::Warning(_("Could not make partition simply connected"));
               break;
             }
             for(std::size_t j = 0; j < ts.size(); j++) {
@@ -972,7 +972,7 @@ void computeEdgeCut(GModel *gm, std::vector<MLine *> &cut,
           }
         }
 #else
-        Msg::Error("Partitioning surface requires Mesh module");
+        Msg::Error(_("Partitioning surface requires Mesh module"));
 #endif
       }
     }

@@ -77,7 +77,7 @@ PView *GMSH_SummationPlugin::execute(PView *view)
       }
       pviewsdata.push_back(getPossiblyAdaptiveData(pviews.back()));
       if(pviewsdata.back()->hasMultipleMeshes()) {
-        Msg::Error("Summation plugin cannot be applied to multi-mesh views");
+        Msg::Error(_("Summation plugin cannot be applied to multi-mesh views"));
         return view;
       }
     }
@@ -93,7 +93,7 @@ PView *GMSH_SummationPlugin::execute(PView *view)
       continue; // empty time step
     if((pviewsdata[0]->getNumEntities() != pviewsdata[j]->getNumEntities()) ||
        (pviewsdata[0]->getNumElements() != pviewsdata[j]->getNumElements())) {
-      Msg::Error("Summation plugin: views based on different grid.");
+      Msg::Error(_("Summation plugin: views based on different grid."));
     }
   }
   // get min/max indices of time steps

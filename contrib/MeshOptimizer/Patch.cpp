@@ -159,7 +159,7 @@ Patch::Patch(const std::map<MElement *, GEntity *> &element2entity,
       }
     }
     if(unknownVert)
-      Msg::Error("Unknown nodes in boundary element at patch initialization");
+      Msg::Error(_("Unknown nodes in boundary element at patch initialization"));
   }
 
   // Initial coordinates

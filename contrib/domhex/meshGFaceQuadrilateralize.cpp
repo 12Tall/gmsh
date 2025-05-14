@@ -88,7 +88,7 @@ void edgeFront::updateStatus(BDS_Edge *e)
       return;
     }
   }
-  Msg::Error("Something wrong in updateStatus");
+  Msg::Error(_("Something wrong in updateStatus"));
 }
 
 SVector3 norm_edge(BDS_Point *p1, BDS_Point *p2)
@@ -166,7 +166,7 @@ SVector3 edgeFront::normal(BDS_Edge *e) const
   else if(e == t->e3)
     p3 = t->e2->commonvertex(t->e1);
   else {
-    Msg::Error("Could not compute fron normal");
+    Msg::Error(_("Could not compute fron normal"));
     return SVector3();
   }
 
@@ -514,7 +514,7 @@ bool edgeFront::emptyFront(int tag)
     if(left) getFrontEdges(left->othervertex(e->p1), fe1);
     //    printf("strange\n");
     break;
-  default: Msg::Error("Unknown case in emptyFront"); return false;
+  default: Msg::Error(_("Unknown case in emptyFront")); return false;
   }
 
   if(fe1.size() || fe2.size() || !left || !right || !formQuad(e, left, right)) {
@@ -540,7 +540,7 @@ int gmshQMorph(GFace *gf)
   // assert first that there exist a triangulation of
   // the face
   if(!gf->triangles.size()) {
-    Msg::Warning("Cannot Quadrilaterize a face that has not been triangulated");
+    Msg::Warning(_("Cannot Quadrilaterize a face that has not been triangulated"));
     return -1;
   }
 

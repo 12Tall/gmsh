@@ -66,10 +66,10 @@ static void testIfBoundaryIsRecovered(GRegion *gr)
     }
   }
   if(edges.empty() && faces.empty()) {
-    Msg::Info("All edges and faces are present in the initial mesh");
+    Msg::Info(_("All edges and faces are present in the initial mesh"));
   }
   else {
-    Msg::Error("All edges and faces are not present in the initial mesh");
+    Msg::Error(_("All edges and faces are not present in the initial mesh"));
   }
 }
 
@@ -658,7 +658,7 @@ void non_recursive_classify(MTet4 *t, std::list<MTet4 *> &theRegion,
     t = _stackounette.top();
     _stackounette.pop();
     if(!t) {
-      Msg::Warning("A tetrahedron is not connected to a boundary face");
+      Msg::Warning(_("A tetrahedron is not connected to a boundary face"));
       touchesOutsideBox = true;
     }
     else if(!t->onWhat()) {
@@ -1033,7 +1033,7 @@ void optimizeMesh(GRegion *gr, const qmTetrahedron::Measures &qm)
     Msg::Warning("%d ill-shaped tets are still in the mesh", illegals.size());
   }
   else {
-    Msg::Info("No ill-shaped tets in the mesh :-)");
+    Msg::Info(_("No ill-shaped tets in the mesh :-)"));
   }
 
   for(int i = 0; i < nbRanges; i++) {
@@ -1305,7 +1305,7 @@ void insertVerticesInRegion(GRegion *gr, int maxIter,
         std::set<GFace *> faces_bound;
         GRegion *bidon = (GRegion *)123;
         double _t1 = Cpu(), _w1 = TimeOfDay();
-        Msg::Debug("start with a non classified tet");
+        Msg::Debug(_("start with a non classified tet"));
         non_recursive_classify(*it, theRegion, faces_bound, bidon, gr->model(),
                                search);
         double _t2 = Cpu(), _w2 = TimeOfDay();
@@ -1334,7 +1334,7 @@ void insertVerticesInRegion(GRegion *gr, int maxIter,
         }
         else {
           // the tets are in the void
-          Msg::Info("Found void region");
+          Msg::Info(_("Found void region"));
           for(auto it2 = theRegion.begin(); it2 != theRegion.end(); ++it2)
             (*it2)->setDeleted(true);
         }

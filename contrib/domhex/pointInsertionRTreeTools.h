@@ -172,8 +172,7 @@ public:
   virtual int get_first_layer() { return (*points.begin())->layer; }
   virtual SVector3 get_first_direction()
   {
-    Msg::Error(
-      "listOfPointsScalarSmoothness::get_first_direction NOT applicable");
+    Msg::Error(_("listOfPointsScalarSmoothness::get_first_direction NOT applicable"));
     return SVector3(0.);
   }
   virtual void erase_first()
@@ -219,7 +218,7 @@ public:
   virtual int get_first_layer() { return (points.front())->layer; }
   virtual SVector3 get_first_direction()
   {
-    Msg::Error("listOfPointsFifo::get_first_direction NOT applicable");
+    Msg::Error(_("listOfPointsFifo::get_first_direction NOT applicable"));
     return SVector3(0.);
   }
   virtual void erase_first()

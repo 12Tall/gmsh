@@ -92,8 +92,8 @@ void Homology::_createCellComplex()
   Msg::StatusBar(true, "Creating cell complex...");
   double t1 = Cpu(), w1 = TimeOfDay();
 
-  if(_domainEntities.empty()) Msg::Error("Domain is empty");
-  if(_subdomainEntities.empty()) Msg::Info("Subdomain is empty");
+  if(_domainEntities.empty()) Msg::Error(_("Domain is empty"));
+  if(_subdomainEntities.empty()) Msg::Info(_("Subdomain is empty"));
 
   std::vector<MElement *> domainElements;
   std::vector<MElement *> subdomainElements;
@@ -113,7 +113,7 @@ void Homology::_createCellComplex()
                                  immuneElements, _saveOrig);
 
   if(_cellComplex->getSize(0) == 0) {
-    Msg::Error("Cell Complex is empty: check the domain and the mesh");
+    Msg::Error(_("Cell Complex is empty: check the domain and the mesh"));
   }
   double t2 = Cpu(), w2 = TimeOfDay();
   Msg::StatusBar(true, "Done creating cell complex (Wall %gs, CPU %gs)",
@@ -397,7 +397,7 @@ void Homology::findCompatibleBasisPair(int master, std::vector<int> dim)
     int det = m.determinant();
     if(abs(det) != 1 || !m.invertInPlace()) {
       Msg::Warning("Cannot produce compatible %d-(co)homology bases.", d);
-      Msg::Debug("Incidence matrix: ");
+      Msg::Debug(_("Incidence matrix: "));
       for(int i = 0; i < n; i++)
         for(int j = 0; j < n; j++) Msg::Debug("(%d, %d) = %d", i, j, m(i, j));
       continue;

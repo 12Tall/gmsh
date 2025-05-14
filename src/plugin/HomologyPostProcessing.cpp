@@ -131,7 +131,7 @@ bool GMSH_HomologyPostProcessingPlugin::invertIntegerMatrix(
     for(int j = 0; j < n; j++) m(i, j) = matrix.at(i * n + j);
 
   if(!m.invertInPlace()) {
-    Msg::Error("Matrix is not unimodular");
+    Msg::Error(_("Matrix is not unimodular"));
     return false;
   }
 
@@ -232,7 +232,7 @@ PView *GMSH_HomologyPostProcessingPlugin::execute(PView *v)
     curBasis.push_back(Chain<int>(m, basisPhysicals.at(i)));
   }
   if(curBasis.empty()) {
-    Msg::Error("No operated chains given");
+    Msg::Error(_("No operated chains given"));
     return nullptr;
   }
   int dim = curBasis.at(0).getDim();
@@ -252,9 +252,9 @@ PView *GMSH_HomologyPostProcessingPlugin::execute(PView *v)
   }
 
   if(!curBasis2.empty())
-    Msg::Debug("Incidence matrix: ");
+    Msg::Debug(_("Incidence matrix: "));
   else
-    Msg::Debug("Transformation matrix: ");
+    Msg::Debug(_("Transformation matrix: "));
   for(int i = 0; i < rows; i++)
     for(int j = 0; j < cols; j++)
       Msg::Debug("(%d, %d) = %d", i, j, matrix.at(i * cols + j));

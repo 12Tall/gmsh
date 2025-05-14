@@ -109,14 +109,13 @@ bool localNetworkSolverClient::receiveMessage()
   double timer = TimeOfDay();
 
   if(!getGmshServer()) {
-    OLMsg::Error("Abnormal server termination (no valid server)");
+    OLMsg::Error(_("Abnormal server termination (no valid server)"));
     return false;
   }
 
   int type, length, swap;
   if(!getGmshServer()->ReceiveHeader(&type, &length, &swap)) {
-    OLMsg::Error(
-      "Abnormal server termination (did not receive message header)");
+    OLMsg::Error(_("Abnormal server termination (did not receive message header)"));
     return false;
   }
   else if(_socketMsg)
@@ -124,7 +123,7 @@ bool localNetworkSolverClient::receiveMessage()
 
   std::string message(length, ' ');
   if(!getGmshServer()->ReceiveMessage(length, &message[0])) {
-    OLMsg::Error("Abnormal server termination (did not receive message body)r");
+    OLMsg::Error(_("Abnormal server termination (did not receive message body)r"));
     return false;
   }
   else if(_socketMsg)
@@ -361,7 +360,7 @@ bool localNetworkSolverClient::run()
       break;
     }
     if(!getGmshServer()) {
-      OLMsg::Error("Abnormal server termination (no valid server)");
+      OLMsg::Error(_("Abnormal server termination (no valid server)"));
       stop = true;
     }
     else if(!getGmshServer()->NonBlockingWait(0.001, 0., sock)) {
@@ -381,7 +380,7 @@ bool localNetworkSolverClient::run()
   OLMsg::StatusBar(2, true, "Done running '%s'", _name.c_str());
 
   // if(command.empty()){
-  //   OLMsg::Info("Client disconnected: starting new connection");
+  //   OLMsg::Info(_("Client disconnected: starting new connection"));
   //   goto new_connection;
   // }
 
@@ -535,7 +534,7 @@ bool localSolverClient::checkCommandLine()
     OLMsg::SetVisible(getName() + "/CommandLine", false);
     OLMsg::SetVisible(getName() + "/HostName", false);
     OLMsg::SetVisible(getName() + "/RemoteDir", false);
-    OLMsg::Info("Command line ok");
+    OLMsg::Info(_("Command line ok"));
   }
   else {
     OLMsg::Error("Invalid commandline <%s> for client <%s>",
@@ -744,7 +743,7 @@ bool remoteClient::syncOutputFile(const std::string &wdir,
 
 void MetaModel::construct()
 {
-  OLMsg::Info("===== CONSTRUCTING");
+  OLMsg::Info(_("===== CONSTRUCTING"));
   std::string fileName =
     getWorkingDir() + genericNameFromArgs + onelabExtension;
   openOnelabBlock();
@@ -756,7 +755,7 @@ void MetaModel::construct()
 
 void MetaModel::analyze()
 {
-  OLMsg::Info("===== ANALYZING");
+  OLMsg::Info(_("===== ANALYZING"));
   std::string fileName =
     getWorkingDir() + genericNameFromArgs + onelabExtension;
   openOnelabBlock();
@@ -767,7 +766,7 @@ void MetaModel::analyze()
 
 void MetaModel::compute()
 {
-  OLMsg::Info("===== COMPUTING");
+  OLMsg::Info(_("===== COMPUTING"));
   std::string fileName =
     getWorkingDir() + genericNameFromArgs + onelabExtension;
   openOnelabBlock();
@@ -1070,7 +1069,7 @@ bool RemoteInterfacedClient::checkCommandLine()
   success = remoteClient::checkCommandLine(getCommandLine());
   if(success) {
     OLMsg::SetOnelabString(getName() + "/CommandLine", getCommandLine(), false);
-    OLMsg::Info("Command line ok");
+    OLMsg::Info(_("Command line ok"));
   }
   else {
     // setCommandLine("");
@@ -1092,7 +1091,7 @@ void RemoteInterfacedClient::compute()
 
   if(getList("InputFiles", choices)) {
     for(unsigned int i = 0; i < choices.size(); i++)
-      if(syncInputFile(getWorkingDir(), choices[i])) OLMsg::Info("ok");
+      if(syncInputFile(getWorkingDir(), choices[i])) OLMsg::Info(_("ok"));
   }
 
   std::string rmcmd = "";
@@ -1116,7 +1115,7 @@ void RemoteInterfacedClient::compute()
 
   if(getList("OutputFiles", choices)) {
     for(unsigned int i = 0; i < choices.size(); i++)
-      if(syncOutputFile(getWorkingDir(), choices[i])) OLMsg::Info("ok");
+      if(syncOutputFile(getWorkingDir(), choices[i])) OLMsg::Info(_("ok"));
   }
 }
 
@@ -1140,7 +1139,7 @@ bool RemoteNativeClient::checkCommandLine()
   success = remoteClient::checkCommandLine(getCommandLine());
   if(success) {
     OLMsg::SetOnelabString(getName() + "/CommandLine", getCommandLine(), false);
-    OLMsg::Info("Command line ok");
+    OLMsg::Info(_("Command line ok"));
   }
   else {
     // setCommandLine("");
@@ -1162,7 +1161,7 @@ void RemoteNativeClient::analyze()
 
   if(getList("InputFiles", choices)) {
     for(unsigned int i = 0; i < choices.size(); i++)
-      if(syncInputFile(getWorkingDir(), choices[i])) OLMsg::Info("ok");
+      if(syncInputFile(getWorkingDir(), choices[i])) OLMsg::Info(_("ok"));
   }
 
   if(!run())
@@ -1181,7 +1180,7 @@ void RemoteNativeClient::compute()
 
   if(getList("InputFiles", choices)) {
     for(unsigned int i = 0; i < choices.size(); i++)
-      if(syncInputFile(getWorkingDir(), choices[i])) OLMsg::Info("ok");
+      if(syncInputFile(getWorkingDir(), choices[i])) OLMsg::Info(_("ok"));
   }
 
   std::string rmcmd = "";
@@ -1202,7 +1201,7 @@ void RemoteNativeClient::compute()
 
   if(getList("OutputFiles", choices)) {
     for(unsigned int i = 0; i < choices.size(); i++)
-      if(syncOutputFile(getWorkingDir(), choices[i])) OLMsg::Info("ok");
+      if(syncOutputFile(getWorkingDir(), choices[i])) OLMsg::Info(_("ok"));
   }
 }
 
@@ -1221,7 +1220,7 @@ bool RemoteEncapsulatedClient::checkCommandLine()
   success = remoteClient::checkCommandLine(getCommandLine());
   if(success) {
     OLMsg::SetOnelabString(getName() + "/CommandLine", getCommandLine(), false);
-    OLMsg::Info("Command line ok");
+    OLMsg::Info(_("Command line ok"));
   }
   else {
     //   setCommandLine("");
@@ -1250,7 +1249,7 @@ void RemoteEncapsulatedClient::compute()
 
   if(getList("InputFiles", choices)) {
     for(unsigned int i = 0; i < choices.size(); i++)
-      if(syncInputFile(getWorkingDir(), choices[i])) OLMsg::Info("ok");
+      if(syncInputFile(getWorkingDir(), choices[i])) OLMsg::Info(_("ok"));
   }
 
   std::string rmcmd = "";
@@ -1281,7 +1280,7 @@ void RemoteEncapsulatedClient::compute()
 
   if(getList("OutputFiles", choices)) {
     for(unsigned int i = 0; i < choices.size(); i++)
-      if(syncOutputFile(getWorkingDir(), choices[i])) OLMsg::Info("ok");
+      if(syncOutputFile(getWorkingDir(), choices[i])) OLMsg::Info(_("ok"));
   }
 }
 
@@ -1511,7 +1510,7 @@ array read_array(std::string fileName, char sep)
     array.push_back(record);
   }
   if(!infile.eof()) {
-    OLMsg::Error("Error reading array\n");
+    OLMsg::Error(_("Error reading array\n"));
     array.resize(0);
   }
   return array;

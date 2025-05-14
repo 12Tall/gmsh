@@ -59,7 +59,7 @@ public:
   {
     GmshServer *server = _remote->getGmshServer();
     if(!server) {
-      Msg::Error("Remote server not running: please start server");
+      Msg::Error(_("Remote server not running: please start server"));
       return 1;
     }
     setDirty(true);

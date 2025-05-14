@@ -11,7 +11,7 @@
 
 void create_jpeg(FILE *outfile, PixelBuffer *buffer, int quality, int smoothing)
 {
-  Msg::Error("This version of Gmsh was compiled without JPEG support");
+  Msg::Error(_("This version of Gmsh was compiled without JPEG support"));
 }
 
 #else
@@ -33,7 +33,7 @@ static void my_output_message(j_common_ptr cinfo)
 void create_jpeg(FILE *outfile, PixelBuffer *buffer, int quality, int smoothing)
 {
   if(buffer->getFormat() != GL_RGB || buffer->getType() != GL_UNSIGNED_BYTE) {
-    Msg::Error("JPEG only implemented for GL_RGB and GL_UNSIGNED_BYTE");
+    Msg::Error(_("JPEG only implemented for GL_RGB and GL_UNSIGNED_BYTE"));
     return;
   }
 

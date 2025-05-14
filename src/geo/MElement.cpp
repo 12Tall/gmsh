@@ -207,7 +207,7 @@ bool MElement::getEdgeInfo(const MEdge &edge, int &ithEdge, int &sign) const
 MFaceN MElement::getHighOrderFace(int num, int sign, int rot)
 {
   if(getDim() < 2 || getDim() > 3) {
-    Msg::Error("Wrong dimension for getHighOrderFace");
+    Msg::Error(_("Wrong dimension for getHighOrderFace"));
     return MFaceN();
   }
 
@@ -462,7 +462,7 @@ void MElement::getShapeFunctions(double u, double v, double w, double s[],
   if(fs)
     fs->f(u, v, w, s);
   else
-    Msg::Error("Function space not implemented for this type of element");
+    Msg::Error(_("Function space not implemented for this type of element"));
 }
 
 void MElement::getGradShapeFunctions(double u, double v, double w,
@@ -472,7 +472,7 @@ void MElement::getGradShapeFunctions(double u, double v, double w,
   if(fs)
     fs->df(u, v, w, s);
   else
-    Msg::Error("Function space not implemented for this type of element");
+    Msg::Error(_("Function space not implemented for this type of element"));
 }
 
 void MElement::getHessShapeFunctions(double u, double v, double w,
@@ -482,7 +482,7 @@ void MElement::getHessShapeFunctions(double u, double v, double w,
   if(fs)
     fs->ddf(u, v, w, s);
   else
-    Msg::Error("Function space not implemented for this type of element");
+    Msg::Error(_("Function space not implemented for this type of element"));
 }
 
 void MElement::getThirdDerivativeShapeFunctions(double u, double v, double w,
@@ -493,7 +493,7 @@ void MElement::getThirdDerivativeShapeFunctions(double u, double v, double w,
   if(fs)
     fs->dddf(u, v, w, s);
   else
-    Msg::Error("Function space not implemented for this type of element");
+    Msg::Error(_("Function space not implemented for this type of element"));
 }
 
 SPoint3 MElement::barycenter_infty() const
@@ -1066,7 +1066,7 @@ double MElement::getEigenvaluesMetric(double u, double v, double w,
   }
 
   default:
-    Msg::Error("wrong dimension for getEigenvaluesMetric function");
+    Msg::Error(_("wrong dimension for getEigenvaluesMetric function"));
     return -1;
   }
 }
@@ -1452,7 +1452,7 @@ void MElement::writeMSH2(FILE *fp, double version, bool binary, int num,
     if(ghosts)
       for(int i = 0; i < numGhosts; i++) blob[8 + i] = -(*ghosts)[i];
     if(par) blob[8 + numGhosts] = parentNum;
-    if(poly) Msg::Error("Unable to write polygons/polyhedra in binary files.");
+    if(poly) Msg::Error(_("Unable to write polygons/polyhedra in binary files."));
     fwrite(blob, sizeof(int), 4 + numTags, fp);
   }
 
@@ -1716,8 +1716,7 @@ void MElement::writeMATLAB(FILE *fp, int filetype, int elementary, int physical,
   // Matlab use the same names as MSH
   if(!getTypeForMSH()) return;
   if(binary) {
-    Msg::Warning(
-      "Binary format not available for Matlab, saving into ASCII format");
+    Msg::Warning(_("Binary format not available for Matlab, saving into ASCII format"));
     binary = false;
   }
 

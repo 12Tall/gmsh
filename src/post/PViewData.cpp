@@ -124,30 +124,30 @@ void PViewData::getScalarValue(int step, int ent, int ele, int nod, double &val,
 void PViewData::setNode(int step, int ent, int ele, int nod, double x, double y,
                         double z)
 {
-  Msg::Error("Cannot change node coordinates in this view");
+  Msg::Error(_("Cannot change node coordinates in this view"));
 }
 
 void PViewData::setValue(int step, int ent, int ele, int nod, int comp,
                          double val)
 {
-  Msg::Error("Cannot change field value in this view");
+  Msg::Error(_("Cannot change field value in this view"));
 }
 
 GModel *PViewData::getModel(int step)
 {
-  Msg::Error("Cannot get model from this view");
+  Msg::Error(_("Cannot get model from this view"));
   return nullptr;
 }
 
 GEntity *PViewData::getEntity(int step, int ent)
 {
-  Msg::Error("Cannot get entity from this view");
+  Msg::Error(_("Cannot get entity from this view"));
   return nullptr;
 }
 
 MElement *PViewData::getElement(int step, int ent, int ele)
 {
-  Msg::Error("Cannot get element from this view");
+  Msg::Error(_("Cannot get element from this view"));
   return nullptr;
 }
 
@@ -230,18 +230,18 @@ int PViewData::getSizeInterpolationScheme()
 
 void PViewData::smooth()
 {
-  Msg::Error("Smoothing is not implemented for this type of data");
+  Msg::Error(_("Smoothing is not implemented for this type of data"));
 }
 
 bool PViewData::combineTime(nameData &nd)
 {
-  Msg::Error("Combine time is not implemented for this type of data");
+  Msg::Error(_("Combine time is not implemented for this type of data"));
   return false;
 }
 
 bool PViewData::combineSpace(nameData &nd)
 {
-  Msg::Error("Combine space is not implemented for this type of data");
+  Msg::Error(_("Combine space is not implemented for this type of data"));
   return false;
 }
 

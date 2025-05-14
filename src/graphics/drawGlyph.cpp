@@ -200,7 +200,7 @@ void drawContext::drawImage(const std::string &name, double x, double y,
     else
       ok = (sscanf(format.c_str(), "%lfx%lf", &w, &h) == 2);
     if(!ok)
-      Msg::Warning("Bad image format: use `@wxh' or `@wxh,wx,wy,wz,hx,hy,hz'");
+      Msg::Warning(_("Bad image format: use `@wxh' or `@wxh,wx,wy,wz,hx,hy,hz'"));
     if(format.find('#') != std::string::npos)
       billboard = true; // texture will always face camera
   }
@@ -217,7 +217,7 @@ void drawContext::drawImage(const std::string &name, double x, double y,
     img = &_imageTextures[file];
   }
   if(!img->tex) {
-    Msg::Debug("No texture for image - skipping image draw");
+    Msg::Debug(_("No texture for image - skipping image draw"));
     return;
   }
 

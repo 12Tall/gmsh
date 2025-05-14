@@ -342,7 +342,7 @@ static void drawGlyphs(drawContext *ctx, PView *p)
      opt->intervalsType != PViewOptions::Numeric)
     return;
 
-  Msg::Debug("drawing extra glyphs (this is slow...)");
+  Msg::Debug(_("drawing extra glyphs (this is slow...)"));
 
   // speedup drawing of textured fonts on cocoa mac version
 #if defined(HAVE_FLTK) && defined(__APPLE__)
@@ -630,7 +630,7 @@ void drawContext::drawPost()
 
   for(std::size_t i = 0; i < PView::list.size(); i++) {
     bool changed = PView::list[i]->fillVertexArrays();
-    if(changed) Msg::Debug("post-pro vertex arrays have changed");
+    if(changed) Msg::Debug(_("post-pro vertex arrays have changed"));
 #if defined(HAVE_FLTK) && defined(__APPLE__)
     // FIXME: resetting texture pile fixes bug with recent macOS versions
     if(changed) gl_texture_pile_height(gl_texture_pile_height());

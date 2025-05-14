@@ -271,7 +271,7 @@ namespace BoundaryLayerCurver {
         w = _normalToTheMesh;
       }
       if(w.norm() == 0) {
-        Msg::Error("normal to the CAD or 2Dmesh is nul. BL curving will fail.");
+        Msg::Error(_("normal to the CAD or 2Dmesh is nul. BL curving will fail."));
       }
       n = crossprod(w, t);
     }
@@ -1181,7 +1181,7 @@ namespace BoundaryLayerCurver {
       MElement *currentElement = stackElements[i];
       MEdge topEdge;
       if(!computeCommonEdge(currentElement, stackElements[i + 1], topEdge)) {
-        Msg::Error("Did not find common edge");
+        Msg::Error(_("Did not find common edge"));
       }
 
       // Eeach edge that is not the bottom edge nor the top edge links a bottom
@@ -1448,7 +1448,7 @@ void curve2DBoundaryLayer(VecPairMElemVecMElem &bndEl2column, SVector3 normal,
 {
   double length = normal.normalize();
   if(length == 0) {
-    Msg::Error("normal must be non-zero for boundary layer curving");
+    Msg::Error(_("normal must be non-zero for boundary layer curving"));
     return;
   }
 

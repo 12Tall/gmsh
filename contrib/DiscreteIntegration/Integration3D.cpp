@@ -622,7 +622,7 @@ void DI_Element::getShapeFunctions(double u, double v, double w, double s[], int
   //printf("type elem =%d  order =%d\n", type(), o);
   const nodalBasis* fs = getFunctionSpace(o);
   if(fs) fs->f(u, v, w, s);
-  else Msg::Error("Function space not implemented for this type of element");
+  else Msg::Error(_("Function space not implemented for this type of element"));
 }
 
 void DI_Element::getGradShapeFunctions(double u, double v, double w, double s[][3],
@@ -630,7 +630,7 @@ void DI_Element::getGradShapeFunctions(double u, double v, double w, double s[][
 {
   const nodalBasis* fs = getFunctionSpace(o);
   if(fs) fs->df(u, v, w, s);
-  else Msg::Error("Function space not implemented for this type of element");
+  else Msg::Error(_("Function space not implemented for this type of element"));
 }
 void DI_Element::setPolynomialOrder (int o) {
   if(polOrder_ == o) return;
@@ -643,7 +643,7 @@ void DI_Element::setPolynomialOrder (int o) {
   if(o == 1) return;
 
   const nodalBasis *fs = getFunctionSpace(o);
-  if(!fs) Msg::Error("Function space not implemented for this type of element");
+  if(!fs) Msg::Error(_("Function space not implemented for this type of element"));
 
   mid_ = new DI_Point[nbMid()];
   int j = nbVert();
@@ -669,7 +669,7 @@ void DI_Element::setPolynomialOrder (int o, const DI_Element *e, const std::vect
   if(o == 1) return;
 
   const nodalBasis *fs = getFunctionSpace(o);
-  if(!fs) Msg::Error("Function space not implemented for this type of element");
+  if(!fs) Msg::Error(_("Function space not implemented for this type of element"));
 
   mid_ = new DI_Point[nbMid()];
   int j = nbVert();

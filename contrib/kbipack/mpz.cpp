@@ -25,7 +25,7 @@
 void overflow()
 {
   printf("ERROR: Integer overflow detected! Compile with GMP library to fix this.\n");
-  Msg::Error("Integer overflow detected! Compile with GMP library to fix this.");
+  Msg::Error(_("Integer overflow detected! Compile with GMP library to fix this."));
 }
 
 long int addcheck(long int a, long int b){

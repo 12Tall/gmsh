@@ -72,7 +72,7 @@ namespace {
     case TYPE_PYR: allElt[7][entity].push_back(e); break;
     case TYPE_POLYG: allElt[8][entity].push_back(e); break;
     case TYPE_POLYH: allElt[9][entity].push_back(e); break;
-    default: Msg::Error("Wrong type of element");
+    default: Msg::Error(_("Wrong type of element"));
     }
 
     return e;

@@ -869,7 +869,7 @@ bool OCC_Internals::addVertex(int &tag, double x, double y, double z,
     BRepBuilderAPI_MakeVertex v(aPnt);
     v.Build();
     if(!v.IsDone()) {
-      Msg::Error("Could not create point");
+      Msg::Error(_("Could not create point"));
       return false;
     }
     result = v.Vertex();
@@ -899,7 +899,7 @@ bool OCC_Internals::addLine(int &tag, int startTag, int endTag)
     return false;
   }
   if(startTag == endTag) {
-    Msg::Error("Start and end points of line should be different");
+    Msg::Error(_("Start and end points of line should be different"));
     return false;
   }
   TopoDS_Edge result;
@@ -909,7 +909,7 @@ bool OCC_Internals::addLine(int &tag, int startTag, int endTag)
     BRepBuilderAPI_MakeEdge e(start, end);
     e.Build();
     if(!e.IsDone()) {
-      Msg::Error("Could not create line");
+      Msg::Error(_("Could not create line"));
       return false;
     }
     result = e.Edge();
@@ -927,7 +927,7 @@ bool OCC_Internals::addLine(int &tag, const std::vector<int> &pointTags)
   if(pointTags.size() == 2) return addLine(tag, pointTags[0], pointTags[1]);
 
   // FIXME: if tag < 0 we could create multiple lines
-  Msg::Error("OpenCASCADE polyline currently not supported");
+  Msg::Error(_("OpenCASCADE polyline currently not supported"));
   return false;
 }
 
@@ -974,7 +974,7 @@ bool OCC_Internals::addCircleArc(int &tag, int startTag, int middleTag,
       Standard_Real Radius = aP1.Distance(aP2);
       gce_MakeCirc MC(aP2, p, Radius);
       if(!MC.IsDone()) {
-        Msg::Error("Could not build circle using two points and center");
+        Msg::Error(_("Could not build circle using two points and center"));
         return false;
       }
       Circ = MC.Value();
@@ -982,7 +982,7 @@ bool OCC_Internals::addCircleArc(int &tag, int startTag, int middleTag,
     else {
       gce_MakeCirc MC(aP1, aP2, aP3);
       if(!MC.IsDone()) {
-        Msg::Error("Could not build circle through three points");
+        Msg::Error(_("Could not build circle through three points"));
         return false;
       }
       Circ = MC.Value();
@@ -1004,7 +1004,7 @@ bool OCC_Internals::addCircleArc(int &tag, int startTag, int middleTag,
     BRepBuilderAPI_MakeEdge e(arc, start, end);
     e.Build();
     if(!e.IsDone()) {
-      Msg::Error("Could not create circle arc");
+      Msg::Error(_("Could not create circle arc"));
       return false;
     }
     result = e.Edge();
@@ -1076,7 +1076,7 @@ bool OCC_Internals::addEllipseArc(int &tag, int startTag, int centerTag,
     Standard_Real a2 = (x1v * x2u - x1u * x2v) / (x1v - x2v);
     Standard_Real b2 = (x1u * x2v - x1v * x2u) / (x1u - x2u);
     if(a2 <= 0.0 || b2 <= 0.0) {
-      Msg::Error("Invalid radii during creation of ellipse arc");
+      Msg::Error(_("Invalid radii during creation of ellipse arc"));
       return false;
     }
     Standard_Real a; // major radius
@@ -1088,14 +1088,14 @@ bool OCC_Internals::addEllipseArc(int &tag, int startTag, int centerTag,
       Axes = gp_Ax2(centerPnt, u ^ v, u);
     }
     else {
-      Msg::Warning("Major radius smaller than minor radius");
+      Msg::Warning(_("Major radius smaller than minor radius"));
       a = Sqrt(b2);
       b = Sqrt(a2);
       Axes = gp_Ax2(centerPnt, v ^ u, v);
     }
     gce_MakeElips ME(Axes, a, b);
     if(!ME.IsDone()) {
-      Msg::Error("Could not build ellipse");
+      Msg::Error(_("Could not build ellipse"));
       return false;
     }
     const gp_Elips &Elips = ME.Value();
@@ -1110,7 +1110,7 @@ bool OCC_Internals::addEllipseArc(int &tag, int startTag, int centerTag,
     BRepBuilderAPI_MakeEdge e(arc, start, end);
     e.Build();
     if(!e.IsDone()) {
-      Msg::Error("Could not create ellipse arc");
+      Msg::Error(_("Could not create ellipse arc"));
       return false;
     }
     result = e.Edge();
@@ -1133,7 +1133,7 @@ bool OCC_Internals::addCircle(int &tag, double x, double y, double z, double r,
     return false;
   }
   if(r <= 0) {
-    Msg::Error("Circle radius should be positive");
+    Msg::Error(_("Circle radius should be positive"));
     return false;
   }
 
@@ -1168,7 +1168,7 @@ bool OCC_Internals::addCircle(int &tag, double x, double y, double z, double r,
         new Geom_TrimmedCurve(C, angle1, angle2, true);
       BRepBuilderAPI_MakeEdge e(arc);
       if(!e.IsDone()) {
-        Msg::Error("Could not create circle arc");
+        Msg::Error(_("Could not create circle arc"));
         return false;
       }
       result = e.Edge();
@@ -1192,11 +1192,11 @@ bool OCC_Internals::addEllipse(int &tag, double x, double y, double z,
     return false;
   }
   if(ry > rx) {
-    Msg::Error("Major radius rx should be larger than minor radius ry");
+    Msg::Error(_("Major radius rx should be larger than minor radius ry"));
     return false;
   }
   if(ry <= 0 || rx <= 0) {
-    Msg::Error("Ellipse radii should be positive");
+    Msg::Error(_("Ellipse radii should be positive"));
     return false;
   }
 
@@ -1232,7 +1232,7 @@ bool OCC_Internals::addEllipse(int &tag, double x, double y, double z,
         new Geom_TrimmedCurve(E, angle1, angle2, true);
       BRepBuilderAPI_MakeEdge e(arc);
       if(!e.IsDone()) {
-        Msg::Error("Could not create ellipse arc");
+        Msg::Error(_("Could not create ellipse arc"));
         return false;
       }
       result = e.Edge();
@@ -1289,7 +1289,7 @@ bool OCC_Internals::_addBSpline(int &tag, const std::vector<int> &pointTags,
     return false;
   }
   if(pointTags.size() < 2) {
-    Msg::Error("Number of control points should be at least 2");
+    Msg::Error(_("Number of control points should be at least 2"));
     return false;
   }
 
@@ -1344,13 +1344,13 @@ bool OCC_Internals::_addBSpline(int &tag, const std::vector<int> &pointTags,
       }
       intp.Perform();
       if(!intp.IsDone()) {
-        Msg::Error("Could not interpolate spline");
+        Msg::Error(_("Could not interpolate spline"));
         return false;
       }
       Handle(Geom_BSplineCurve) curve = intp.Curve();
       BRepBuilderAPI_MakeEdge e(curve, start, end);
       if(!e.IsDone()) {
-        Msg::Error("Could not create spline");
+        Msg::Error(_("Could not create spline"));
         return false;
       }
       result = e.Edge();
@@ -1360,7 +1360,7 @@ bool OCC_Internals::_addBSpline(int &tag, const std::vector<int> &pointTags,
       Handle(Geom_BezierCurve) curve = new Geom_BezierCurve(ctrlPoints);
       BRepBuilderAPI_MakeEdge e(curve, start, end);
       if(!e.IsDone()) {
-        Msg::Error("Could not create Bezier curve");
+        Msg::Error(_("Could not create Bezier curve"));
         return false;
       }
       result = e.Edge();
@@ -1399,18 +1399,17 @@ bool OCC_Internals::_addBSpline(int &tag, const std::vector<int> &pointTags,
       }
       for(std::size_t i = 0; i < multiplicities.size(); i++) {
         if(multiplicities[i] < 1) {
-          Msg::Error("BSpline multiplicities should be >= 1");
+          Msg::Error(_("BSpline multiplicities should be >= 1"));
           return false;
         }
         if(i != 0 && i != multiplicities.size() - 1 &&
            multiplicities[i] > degree) {
-          Msg::Error(
-            "BSpline interior knot multiplicities should be <= degree");
+          Msg::Error(_("BSpline interior knot multiplicities should be <= degree"));
           return false;
         }
         if((i == 0 || i == multiplicities.size() - 1) &&
            multiplicities[i] > degree + 1) {
-          Msg::Error("BSpline end knot multiplicities should be <= degree + 1");
+          Msg::Error(_("BSpline end knot multiplicities should be <= degree + 1"));
           return false;
         }
       }
@@ -1469,7 +1468,7 @@ bool OCC_Internals::_addBSpline(int &tag, const std::vector<int> &pointTags,
                                       CTX::instance()->geom.tolerance)) {
         BRepBuilderAPI_MakeEdge e(curve, start, end);
         if(!e.IsDone()) {
-          Msg::Error("Could not create BSpline curve (with end points)");
+          Msg::Error(_("Could not create BSpline curve (with end points)"));
           return false;
         }
         result = e.Edge();
@@ -1477,7 +1476,7 @@ bool OCC_Internals::_addBSpline(int &tag, const std::vector<int> &pointTags,
       else { // will create new topo vertices as necessary
         BRepBuilderAPI_MakeEdge e(curve);
         if(!e.IsDone()) {
-          Msg::Error("Could not create BSpline curve (without end points)");
+          Msg::Error(_("Could not create BSpline curve (without end points)"));
           return false;
         }
         result = e.Edge();
@@ -1526,7 +1525,7 @@ bool OCC_Internals::addBSpline(int &tag, const std::vector<int> &pointTags,
 {
   int np = pointTags.size();
   if(np < 2) {
-    Msg::Error("BSpline curve requires at least 2 control points");
+    Msg::Error(_("BSpline curve requires at least 2 control points"));
     return false;
   }
   int d = degree;
@@ -1598,12 +1597,12 @@ bool OCC_Internals::addWire(int &tag, const std::vector<int> &curveTags,
     }
     w.Build();
     if(!w.IsDone()) {
-      Msg::Error("Could not create wire");
+      Msg::Error(_("Could not create wire"));
       return false;
     }
     wire = w.Wire();
     if(checkClosed && !wire.Closed()) {
-      Msg::Error("Curve loop is not closed");
+      Msg::Error(_("Curve loop is not closed"));
       return false;
     }
     if(tag < 0) tag = getMaxTag(-1) + 1;
@@ -1632,7 +1631,7 @@ static bool makeRectangle(TopoDS_Face &result, double x, double y, double z,
                           double dx, double dy, double roundedRadius)
 {
   if(!dx || !dy) {
-    Msg::Error("Rectangle with zero width or height");
+    Msg::Error(_("Rectangle with zero width or height"));
     return false;
   }
   try {
@@ -1744,11 +1743,11 @@ static bool makeDisk(TopoDS_Face &result, double xc, double yc, double zc,
                      const std::vector<double> &V = std::vector<double>())
 {
   if(ry > rx) {
-    Msg::Error("Major radius rx should be larger than minor radius ry");
+    Msg::Error(_("Major radius rx should be larger than minor radius ry"));
     return false;
   }
   if(ry <= 0 || rx <= 0) {
-    Msg::Error("Disk radius should be positive");
+    Msg::Error(_("Disk radius should be positive"));
     return false;
   }
   try {
@@ -1820,7 +1819,7 @@ bool OCC_Internals::addPlaneSurface(int &tag, const std::vector<int> &wireTags)
 
   TopoDS_Face result;
   if(wires.size() == 0) {
-    Msg::Error("Plane surface requires at least one curve loop");
+    Msg::Error(_("Plane surface requires at least one curve loop"));
     return false;
   }
 
@@ -1834,7 +1833,7 @@ bool OCC_Internals::addPlaneSurface(int &tag, const std::vector<int> &wireTags)
     }
     f.Build();
     if(!f.IsDone()) {
-      Msg::Error("Could not create surface");
+      Msg::Error(_("Could not create surface"));
       return false;
     }
     result = f.Face();
@@ -1910,7 +1909,7 @@ bool OCC_Internals::addSurfaceFilling(
     }
     f.Build();
     if(!f.IsDone()) {
-      Msg::Error("Could not build surface filling");
+      Msg::Error(_("Could not build surface filling"));
       return false;
     }
     // face filling duplicates the edges, so we need to go back to the
@@ -2019,8 +2018,7 @@ bool OCC_Internals::addBSplineFilling(int &tag, int wireTag,
       f.Init(bsplines[0], bsplines[1], t);
     }
     else {
-      Msg::Error(
-        "BSpline filling requires between 2 and 4 boundary BSpline curves");
+      Msg::Error(_("BSpline filling requires between 2 and 4 boundary BSpline curves"));
       return false;
     }
     ShapeFix_Face sff;
@@ -2066,8 +2064,7 @@ bool OCC_Internals::addBezierFilling(int &tag, int wireTag,
         beziers.push_back(Handle(Geom_BezierCurve)::DownCast(curve));
       }
       else {
-        Msg::Error(
-          "Bounding curve for Bezier filling should be a Bezier curve");
+        Msg::Error(_("Bounding curve for Bezier filling should be a Bezier curve"));
       }
     }
 
@@ -2089,8 +2086,7 @@ bool OCC_Internals::addBezierFilling(int &tag, int wireTag,
       f.Init(beziers[0], beziers[1], t);
     }
     else {
-      Msg::Error(
-        "Bezier filling requires between 2 and 4 boundary Bezier curves");
+      Msg::Error(_("Bezier filling requires between 2 and 4 boundary Bezier curves"));
       return false;
     }
     ShapeFix_Face sff;
@@ -2200,7 +2196,7 @@ static bool makeTrimmedSurface(const Handle(Geom_Surface) & surf,
       }
       w.Build();
       if(!w.IsDone()) {
-        Msg::Error("Could not create wire");
+        Msg::Error(_("Could not create wire"));
         return false;
       }
       TopoDS_Wire wire = w.Wire();
@@ -2210,7 +2206,7 @@ static bool makeTrimmedSurface(const Handle(Geom_Surface) & surf,
     for(std::size_t i = 1; i < wiresProj.size(); i++) f.Add(wiresProj[i]);
     f.Build();
     if(!f.IsDone()) {
-      Msg::Error("Could not create surface");
+      Msg::Error(_("Could not create surface"));
       return false;
     }
     result = f.Face();
@@ -2237,12 +2233,12 @@ bool OCC_Internals::addBSplineSurface(
 
   // deal with default values
   if(numPointsU < 1) {
-    Msg::Error("Wrong number of control points along U for BSpline surface");
+    Msg::Error(_("Wrong number of control points along U for BSpline surface"));
     return false;
   }
   int numPointsV = pointTags.size() / numPointsU;
   if(numPointsU * numPointsV != (int)pointTags.size()) {
-    Msg::Error("Wrong number of control points for BSpline surface");
+    Msg::Error(_("Wrong number of control points for BSpline surface"));
     return false;
   }
   int dU = degreeU, dV = degreeV;
@@ -2257,7 +2253,7 @@ bool OCC_Internals::addBSplineSurface(
   // automatic default weights if not provided:
   if(w.empty()) w.resize(pointTags.size(), 1);
   if(w.size() != pointTags.size()) {
-    Msg::Error("Wrong number of weights for BSpline surface");
+    Msg::Error(_("Wrong number of weights for BSpline surface"));
     return false;
   }
   bool periodicU = true;
@@ -2300,7 +2296,7 @@ bool OCC_Internals::addBSplineSurface(
     }
   }
   if(kU.size() != mU.size()) {
-    Msg::Error("Number of BSpline knots and multiplicities should be equal");
+    Msg::Error(_("Number of BSpline knots and multiplicities should be equal"));
     return false;
   }
   // automatic default knots and multiplicities along V if not provided:
@@ -2329,7 +2325,7 @@ bool OCC_Internals::addBSplineSurface(
     }
   }
   if(kV.size() != mV.size()) {
-    Msg::Error("Number of BSpline knots and multiplicities should be equal");
+    Msg::Error(_("Number of BSpline knots and multiplicities should be equal"));
     return false;
   }
 
@@ -2405,12 +2401,12 @@ bool OCC_Internals::addBezierSurface(int &tag,
 
   // deal with default values
   if(numPointsU < 1) {
-    Msg::Error("Wrong number of control points along U for Bezier surface");
+    Msg::Error(_("Wrong number of control points along U for Bezier surface"));
     return false;
   }
   int numPointsV = pointTags.size() / numPointsU;
   if(numPointsU * numPointsV != (int)pointTags.size()) {
-    Msg::Error("Wrong number of control points for Bezier surface");
+    Msg::Error(_("Wrong number of control points for Bezier surface"));
     return false;
   }
 
@@ -2609,11 +2605,11 @@ static bool makeSphere(TopoDS_Solid &result, double xc, double yc, double zc,
                        double angle3)
 {
   if(radius <= 0) {
-    Msg::Error("Sphere radius should be positive");
+    Msg::Error(_("Sphere radius should be positive"));
     return false;
   }
   if(angle3 <= 0 || angle3 > 2 * M_PI) {
-    Msg::Error("Cannot build sphere with angle <= 0 or angle > 2*Pi");
+    Msg::Error(_("Cannot build sphere with angle <= 0 or angle > 2*Pi"));
     return false;
   }
   try {
@@ -2621,7 +2617,7 @@ static bool makeSphere(TopoDS_Solid &result, double xc, double yc, double zc,
     BRepPrimAPI_MakeSphere s(p, radius, angle1, angle2, angle3);
     s.Build();
     if(!s.IsDone()) {
-      Msg::Error("Could not create sphere");
+      Msg::Error(_("Could not create sphere"));
       return false;
     }
     result = TopoDS::Solid(s.Shape());
@@ -2652,7 +2648,7 @@ static bool makeBox(TopoDS_Solid &result, double x, double y, double z,
                     double dx, double dy, double dz)
 {
   if(!dx || !dy || !dz) {
-    Msg::Error("Degenerate box");
+    Msg::Error(_("Degenerate box"));
     return false;
   }
   try {
@@ -2661,7 +2657,7 @@ static bool makeBox(TopoDS_Solid &result, double x, double y, double z,
     BRepPrimAPI_MakeBox b(P1, P2);
     b.Build();
     if(!b.IsDone()) {
-      Msg::Error("Could not create box");
+      Msg::Error(_("Could not create box"));
       return false;
     }
     result = TopoDS::Solid(b.Shape());
@@ -2692,11 +2688,11 @@ static bool makeCylinder(TopoDS_Solid &result, double x, double y, double z,
 {
   const double H = sqrt(dx * dx + dy * dy + dz * dz);
   if(!H) {
-    Msg::Error("Cannot build cylinder of zero height");
+    Msg::Error(_("Cannot build cylinder of zero height"));
     return false;
   }
   if(angle <= 0 || angle > 2 * M_PI) {
-    Msg::Error("Cannot build cylinder with angle <= 0 or angle > 2*Pi");
+    Msg::Error(_("Cannot build cylinder with angle <= 0 or angle > 2*Pi"));
     return false;
   }
   try {
@@ -2706,7 +2702,7 @@ static bool makeCylinder(TopoDS_Solid &result, double x, double y, double z,
     BRepPrimAPI_MakeCylinder c(axis, r, H, angle);
     c.Build();
     if(!c.IsDone()) {
-      Msg::Error("Could not create cylinder");
+      Msg::Error(_("Could not create cylinder"));
       return false;
     }
     result = TopoDS::Solid(c.Shape());
@@ -2737,7 +2733,7 @@ static bool makeTorus(TopoDS_Solid &result, double x, double y, double z,
                       const std::vector<double> &N = std::vector<double>())
 {
   if(r1 <= 0 || r2 <= 0) {
-    Msg::Error("Torus radii should be positive");
+    Msg::Error(_("Torus radii should be positive"));
     return false;
   }
   try {
@@ -2754,7 +2750,7 @@ static bool makeTorus(TopoDS_Solid &result, double x, double y, double z,
     BRepPrimAPI_MakeTorus t(axis, r1, r2, angle);
     t.Build();
     if(!t.IsDone()) {
-      Msg::Error("Could not create torus");
+      Msg::Error(_("Could not create torus"));
       return false;
     }
     result = TopoDS::Solid(t.Shape());
@@ -2786,11 +2782,11 @@ static bool makeCone(TopoDS_Solid &result, double x, double y, double z,
 {
   const double H = sqrt(dx * dx + dy * dy + dz * dz);
   if(!H) {
-    Msg::Error("Cannot build cone of zero height");
+    Msg::Error(_("Cannot build cone of zero height"));
     return false;
   }
   if(angle <= 0) {
-    Msg::Error("Cone angle should be positive");
+    Msg::Error(_("Cone angle should be positive"));
     return false;
   }
   try {
@@ -2800,7 +2796,7 @@ static bool makeCone(TopoDS_Solid &result, double x, double y, double z,
     BRepPrimAPI_MakeCone c(anAxes, r1, r2, H, angle);
     c.Build();
     if(!c.IsDone()) {
-      Msg::Error("Could not create cone");
+      Msg::Error(_("Could not create cone"));
       return false;
     }
     result = TopoDS::Solid(c.Shape());
@@ -2844,7 +2840,7 @@ static bool makeWedge(TopoDS_Solid &result, double x, double y, double z,
     BRepPrimAPI_MakeWedge w(axis, dx, dy, dz, ltx);
     w.Build();
     if(!w.IsDone()) {
-      Msg::Error("Could not create wedge");
+      Msg::Error(_("Could not create wedge"));
       return false;
     }
     result = TopoDS::Solid(w.Shape());
@@ -2883,7 +2879,7 @@ bool OCC_Internals::addThruSections(
     return false;
   }
   if(wireTags.size() < 2) {
-    Msg::Error("ThruSections require at least 2 wires");
+    Msg::Error(_("ThruSections require at least 2 wires"));
     return false;
   }
   TopoDS_Shape result;
@@ -2928,7 +2924,7 @@ bool OCC_Internals::addThruSections(
       }
       TopoDS_Wire wire = TopoDS::Wire(_tagWire.Find(wireTags[i]));
       if(makeSolid && !wire.Closed()) {
-        Msg::Error("Making solid requires closed wires");
+        Msg::Error(_("Making solid requires closed wires"));
         return false;
       }
       ts.AddWire(wire);
@@ -2936,7 +2932,7 @@ bool OCC_Internals::addThruSections(
     ts.CheckCompatibility(Standard_False);
     ts.Build();
     if(!ts.IsDone()) {
-      Msg::Error("Could not create ThruSection");
+      Msg::Error(_("Could not create ThruSection"));
       return false;
     }
     result = ts.Shape();
@@ -2988,7 +2984,7 @@ bool OCC_Internals::addThickSolid(int tag, int solidTag,
     ts.Build();
 #endif
     if(!ts.IsDone()) {
-      Msg::Error("Could not build thick solid");
+      Msg::Error(_("Could not build thick solid"));
       return false;
     }
     result = ts.Shape();
@@ -3012,7 +3008,7 @@ void OCC_Internals::_setExtrudedAttributes(
   if(extrude_attributes && r && angle >= 2 * M_PI) {
     // OCC removes the origin edge from e.g. disks, which makes it impossible to
     // generate the 2D surface mesh by extrusion of the 1D edge mesh
-    Msg::Warning("Extruded meshes by revolution only for angle < 2*Pi");
+    Msg::Warning(_("Extruded meshes by revolution only for angle < 2*Pi"));
     extrude_attributes = false;
   }
 
@@ -3243,7 +3239,7 @@ bool OCC_Internals::_extrudePerDim(
       BRepPrimAPI_MakePrism p(c, gp_Vec(dx, dy, dz), Standard_False);
       p.Build();
       if(!p.IsDone()) {
-        Msg::Error("Could not extrude");
+        Msg::Error(_("Could not extrude"));
         return false;
       }
       result = p.Shape();
@@ -3257,7 +3253,7 @@ bool OCC_Internals::_extrudePerDim(
       BRepPrimAPI_MakeRevol r(c, axisOfRevolution, angle, Standard_False);
       r.Build();
       if(!r.IsDone()) {
-        Msg::Error("Could not revolve");
+        Msg::Error(_("Could not revolve"));
         return false;
       }
       result = r.Shape();
@@ -3296,19 +3292,17 @@ bool OCC_Internals::_extrudePerDim(
       else if(trihedron == "GuidePlanWithContact")
         mode = GeomFill_IsGuidePlanWithContact;
       else
-        Msg::Warning(
-          "Unknown trihedron mode for pipe: using 'DiscreteTrihedron'");
+        Msg::Warning(_("Unknown trihedron mode for pipe: using 'DiscreteTrihedron'"));
       BRepOffsetAPI_MakePipe p(wire, c, mode);
       p.Build();
       if(!p.IsDone()) {
-        Msg::Error("Could not create pipe");
+        Msg::Error(_("Could not create pipe"));
         return false;
       }
       result = p.Shape();
       // const BRepFill_Pipe &pipe(p.Pipe());
       if(e)
-        Msg::Warning(
-          "Structured meshes not yet available with OpenCASCADE pipe");
+        Msg::Warning(_("Structured meshes not yet available with OpenCASCADE pipe"));
       // Check if
       //   pipe.FirstShape() gives us "bottom"
       //   pipe.LastShape() gives us "top"
@@ -3358,7 +3352,7 @@ bool OCC_Internals::_extrude(int mode,
   for(std::size_t i = 0; i < inDimTags.size(); i++) {
     int dim = inDimTags[i].first;
     if(dim < 0 || dim > 3) {
-      Msg::Error("Wrong input dimension in extrusion");
+      Msg::Error(_("Wrong input dimension in extrusion"));
       return false;
     }
     inTags[dim].push_back(inDimTags[i].second);
@@ -3430,7 +3424,7 @@ bool OCC_Internals::_fillet(int mode, const std::vector<int> &volumeTags,
     faces.push_back(TopoDS::Face(_tagFace.Find(surfaceTags[i])));
   }
   if(mode && edges.size() != faces.size()) {
-    Msg::Error("Different number of curves and surfaces for chamfer");
+    Msg::Error(_("Different number of curves and surfaces for chamfer"));
     return false;
   }
 
@@ -3467,7 +3461,7 @@ bool OCC_Internals::_fillet(int mode, const std::vector<int> &volumeTags,
       }
       f.Build();
       if(!f.IsDone()) {
-        Msg::Error("Could not compute fillet");
+        Msg::Error(_("Could not compute fillet"));
         return false;
       }
       result = f.Shape();
@@ -3484,7 +3478,7 @@ bool OCC_Internals::_fillet(int mode, const std::vector<int> &volumeTags,
       }
       f.Build();
       if(!f.IsDone()) {
-        Msg::Error("Could not compute chamfer");
+        Msg::Error(_("Could not compute chamfer"));
         return false;
       }
       result = f.Shape();
@@ -3591,7 +3585,7 @@ bool OCC_Internals::defeature(const std::vector<int> &volumeTags,
   TopoDS_Shape result = defeat.Shape();
 
   if(result.IsNull()) {
-    Msg::Error("Defeaturing produced empty shape");
+    Msg::Error(_("Defeaturing produced empty shape"));
     return false;
   }
 
@@ -3602,7 +3596,7 @@ bool OCC_Internals::defeature(const std::vector<int> &volumeTags,
   _multiBind(result, -1, outDimTags, true, true);
   return true;
 #else
-  Msg::Error("Defeaturing requires OpenCASCADE >= 7.5.0");
+  Msg::Error(_("Defeaturing requires OpenCASCADE >= 7.5.0"));
   return false;
 #endif
 }
@@ -3633,8 +3627,7 @@ bool OCC_Internals::fillet2D(int &tag, const int edgeTag1, const int edgeTag2,
   w.Add(ed2);
   w.Build();
   if(!w.IsDone()) {
-    Msg::Error(
-      "Could not create temporary wire from given edges. Are edges connected?");
+    Msg::Error(_("Could not create temporary wire from given edges. Are edges connected?"));
     return false;
   }
   wire = w.Wire();
@@ -3644,8 +3637,7 @@ bool OCC_Internals::fillet2D(int &tag, const int edgeTag1, const int edgeTag2,
 
   mf.Build();
   if(!mf.IsDone()) {
-    Msg::Error(
-      "Could not create temporary face from given edges. Are edges planar?");
+    Msg::Error(_("Could not create temporary face from given edges. Are edges planar?"));
     return false;
   }
   face = mf.Face();
@@ -3682,7 +3674,7 @@ bool OCC_Internals::fillet2D(int &tag, const int edgeTag1, const int edgeTag2,
 
   ChFi2d_FilletAPI f(ed1, ed2, p);
   if(!f.Perform(radius)) {
-    Msg::Error("Could not compute fillet");
+    Msg::Error(_("Could not compute fillet"));
     return false;
   }
 
@@ -3723,7 +3715,7 @@ bool OCC_Internals::chamfer2D(int &tag, const int edgeTag1, const int edgeTag2,
   ChFi2d_ChamferAPI cha(ed1, ed2);
 
   if(!cha.Perform()) {
-    Msg::Error("Could not compute chamfer");
+    Msg::Error(_("Could not compute chamfer"));
     return false;
   }
 
@@ -3753,7 +3745,7 @@ bool OCC_Internals::offsetCurve(const int curveLoopTag, double offset,
   BRepOffsetAPI_MakeOffset of(wire, GeomAbs_Arc);
   of.Perform(offset);
   if(!of.IsDone()) {
-    Msg::Error("Could not compute offset curve");
+    Msg::Error(_("Could not compute offset curve"));
     return false;
   }
 
@@ -4012,7 +4004,7 @@ bool OCC_Internals::booleanOperator(
 #if OCC_VERSION_HEX > 0x070100
       if(fragments.HasErrors() &&
          fragments.HasError(STANDARD_TYPE(BOPAlgo_AlertTooFewArguments))) {
-        Msg::Warning("Boolean fragments skipped - too few arguments");
+        Msg::Warning(_("Boolean fragments skipped - too few arguments"));
         return true;
       }
 #endif
@@ -4322,7 +4314,7 @@ bool OCC_Internals::_transform(
   if(tfo) {
     tfo->Perform(c, Standard_True);
     if(!tfo->IsDone()) {
-      Msg::Error("Could not apply transformation");
+      Msg::Error(_("Could not apply transformation"));
       return false;
     }
     result = tfo->Shape();
@@ -4330,7 +4322,7 @@ bool OCC_Internals::_transform(
   else if(gtfo) {
     gtfo->Perform(c, Standard_True);
     if(!gtfo->IsDone()) {
-      Msg::Error("Could not apply transformation");
+      Msg::Error(_("Could not apply transformation"));
       return false;
     }
     result = gtfo->Shape();
@@ -4358,7 +4350,7 @@ bool OCC_Internals::_transform(
 
   if(inShapes.size() != inDimTags.size() ||
      inShapes.size() != outShapes.size()) {
-    Msg::Error("OpenCASCADE transform changed the number of shapes");
+    Msg::Error(_("OpenCASCADE transform changed the number of shapes"));
     return false;
   }
   for(std::size_t i = 0; i < inDimTags.size(); i++) {
@@ -5142,7 +5134,7 @@ bool OCC_Internals::exportShapes(GModel *model, const std::string &fileName,
         }
       }
       else {
-        Msg::Error("Could not create STEP data");
+        Msg::Error(_("Could not create STEP data"));
         return false;
       }
     }
@@ -5156,7 +5148,7 @@ bool OCC_Internals::exportShapes(GModel *model, const std::string &fileName,
         }
       }
       else {
-        Msg::Error("Could not create IGES data");
+        Msg::Error(_("Could not create IGES data"));
         return false;
       }
     }
@@ -5482,7 +5474,7 @@ bool const sortByInvDim(std::pair<int, int> const &lhs,
 
 void OCC_Internals::synchronize(GModel *model)
 {
-  Msg::Debug("Syncing OCC_Internals with GModel");
+  Msg::Debug(_("Syncing OCC_Internals with GModel"));
 
   // make sure to remove from GModel all entities that have been deleted in
   // OCC_Internals since the last synchronization
@@ -5645,7 +5637,7 @@ void OCC_Internals::synchronize(GModel *model)
   // recompute global boundind box in CTX
   SetBoundingBox();
 
-  Msg::Debug("GModel imported:");
+  Msg::Debug(_("GModel imported:"));
   Msg::Debug("%d points", model->getNumVertices());
   Msg::Debug("%d curves", model->getNumEdges());
   Msg::Debug("%d surfaces", model->getNumFaces());
@@ -5877,7 +5869,7 @@ void OCC_Internals::_healShape(TopoDS_Shape &myshape, double tolerance,
   }
 
   if(fixDegenerated) {
-    Msg::Info(" - Fixing degenerated edges and faces");
+    Msg::Info(_(" - Fixing degenerated edges and faces"));
 
     {
       ShapeBuild_ReShape rebuild;
@@ -5901,17 +5893,17 @@ void OCC_Internals::_healShape(TopoDS_Shape &myshape, double tolerance,
         if(sff.Status(ShapeExtend_DONE1) || sff.Status(ShapeExtend_DONE2) ||
            sff.Status(ShapeExtend_DONE3) || sff.Status(ShapeExtend_DONE4) ||
            sff.Status(ShapeExtend_DONE5)) {
-          Msg::Info(" . Repaired face");
+          Msg::Info(_(" . Repaired face"));
           if(sff.Status(ShapeExtend_DONE1))
-            Msg::Info(" . Some wires are fixed");
+            Msg::Info(_(" . Some wires are fixed"));
           else if(sff.Status(ShapeExtend_DONE2))
-            Msg::Info(" . Orientation of wires fixed");
+            Msg::Info(_(" . Orientation of wires fixed"));
           else if(sff.Status(ShapeExtend_DONE3))
-            Msg::Info(" . Missing seam added");
+            Msg::Info(_(" . Missing seam added"));
           else if(sff.Status(ShapeExtend_DONE4))
-            Msg::Info(" . Small area wire removed");
+            Msg::Info(_(" . Small area wire removed"));
           else if(sff.Status(ShapeExtend_DONE5))
-            Msg::Info(" . Natural bounds added");
+            Msg::Info(_(" . Natural bounds added"));
 
           TopoDS_Face newface = sff.Face();
           rebuild.Replace(face, newface);
@@ -5931,7 +5923,7 @@ void OCC_Internals::_healShape(TopoDS_Shape &myshape, double tolerance,
   }
 
   if(fixSmallEdges) {
-    Msg::Info(" - Fixing small edges");
+    Msg::Info(_(" - Fixing small edges"));
 
     {
       ShapeBuild_ReShape rebuild;
@@ -5952,7 +5944,7 @@ void OCC_Internals::_healShape(TopoDS_Shape &myshape, double tolerance,
              !(sfw.StatusSmall(ShapeExtend_FAIL1) ||
                sfw.StatusSmall(ShapeExtend_FAIL2) ||
                sfw.StatusSmall(ShapeExtend_FAIL3))) {
-            Msg::Info(" . Fixed small edge in wire");
+            Msg::Info(_(" . Fixed small edge in wire"));
             replace = true;
           }
           else if(sfw.StatusSmall(ShapeExtend_FAIL1))
@@ -5987,7 +5979,7 @@ void OCC_Internals::_healShape(TopoDS_Shape &myshape, double tolerance,
         GProp_GProps system;
         BRepGProp::LinearProperties(edge, system);
         if(system.Mass() < tolerance) {
-          Msg::Info("  - Removing degenerated edge");
+          Msg::Info(_("  - Removing degenerated edge"));
           rebuild.Remove(edge);
         }
       }
@@ -6009,35 +6001,35 @@ void OCC_Internals::_healShape(TopoDS_Shape &myshape, double tolerance,
     sfwf.ModeDropSmallEdges() = Standard_True;
 
     if(sfwf.FixWireGaps()) {
-      Msg::Info(" - Fixing wire gaps");
-      if(sfwf.StatusWireGaps(ShapeExtend_OK)) Msg::Info("  no gaps found");
+      Msg::Info(_(" - Fixing wire gaps"));
+      if(sfwf.StatusWireGaps(ShapeExtend_OK)) Msg::Info(_("  no gaps found"));
       if(sfwf.StatusWireGaps(ShapeExtend_DONE1))
-        Msg::Info(" . Some 2D gaps fixed");
+        Msg::Info(_(" . Some 2D gaps fixed"));
       if(sfwf.StatusWireGaps(ShapeExtend_DONE2))
-        Msg::Info(" . Some 3D gaps fixed");
+        Msg::Info(_(" . Some 3D gaps fixed"));
       if(sfwf.StatusWireGaps(ShapeExtend_FAIL1))
-        Msg::Info(" . Failed to fix some 2D gaps");
+        Msg::Info(_(" . Failed to fix some 2D gaps"));
       if(sfwf.StatusWireGaps(ShapeExtend_FAIL2))
-        Msg::Info(" . Failed to fix some 3D gaps");
+        Msg::Info(_(" . Failed to fix some 3D gaps"));
     }
 
     sfwf.SetPrecision(tolerance);
 
     if(sfwf.FixSmallEdges()) {
-      Msg::Info(" - Fixing wire frames");
+      Msg::Info(_(" - Fixing wire frames"));
       if(sfwf.StatusSmallEdges(ShapeExtend_OK))
-        Msg::Info(" . No small edges found");
+        Msg::Info(_(" . No small edges found"));
       if(sfwf.StatusSmallEdges(ShapeExtend_DONE1))
-        Msg::Info(" . Some small edges fixed");
+        Msg::Info(_(" . Some small edges fixed"));
       if(sfwf.StatusSmallEdges(ShapeExtend_FAIL1))
-        Msg::Info(" . Failed to fix some small edges");
+        Msg::Info(_(" . Failed to fix some small edges"));
     }
 
     myshape = sfwf.Shape();
   }
 
   if(fixSmallFaces) {
-    Msg::Info(" - Fixing spot and strip faces");
+    Msg::Info(_(" - Fixing spot and strip faces"));
     ShapeFix_FixSmallFace sffsm;
     sffsm.Init(myshape);
     sffsm.SetPrecision(tolerance);
@@ -6046,7 +6038,7 @@ void OCC_Internals::_healShape(TopoDS_Shape &myshape, double tolerance,
   }
 
   if(sewFaces) {
-    Msg::Info(" - Sewing faces");
+    Msg::Info(_(" - Sewing faces"));
 
     BRepOffsetAPI_Sewing sewedObj(tolerance);
 
@@ -6060,7 +6052,7 @@ void OCC_Internals::_healShape(TopoDS_Shape &myshape, double tolerance,
     if(!sewedObj.SewedShape().IsNull())
       myshape = sewedObj.SewedShape();
     else
-      Msg::Info(" . Could not sew");
+      Msg::Info(_(" . Could not sew"));
   }
 
   {
@@ -6073,7 +6065,7 @@ void OCC_Internals::_healShape(TopoDS_Shape &myshape, double tolerance,
   }
 
   if(makeSolids) {
-    Msg::Info(" - Making solids");
+    Msg::Info(_(" - Making solids"));
 
     BRepBuilderAPI_MakeSolid ms;
     int count = 0;
@@ -6082,7 +6074,7 @@ void OCC_Internals::_healShape(TopoDS_Shape &myshape, double tolerance,
       ms.Add(TopoDS::Shell(exp0.Current()));
     }
 
-    if(!count) { Msg::Info(" . Could not make solid (no shells)"); }
+    if(!count) { Msg::Info(_(" . Could not make solid (no shells)")); }
     else {
       BRepCheck_Analyzer ba(ms);
       if(ba.IsValid()) {
@@ -6102,7 +6094,7 @@ void OCC_Internals::_healShape(TopoDS_Shape &myshape, double tolerance,
         }
       }
       else
-        Msg::Info(" . Could not make solid");
+        Msg::Info(_(" . Could not make solid"));
     }
   }
 
@@ -6609,7 +6601,7 @@ int GModel::readOCCXAO(const std::string &fn)
       int index = 0, ref = 0;
       if(vertex->QueryIntAttribute("index", &index) != XML_SUCCESS ||
          vertex->QueryIntAttribute("reference", &ref) != XML_SUCCESS) {
-        Msg::Error("Missing index or reference for vertex");
+        Msg::Error(_("Missing index or reference for vertex"));
       }
       else {
         TopoDS_Shape subShape = mainMap.FindKey(ref);
@@ -6641,7 +6633,7 @@ int GModel::readOCCXAO(const std::string &fn)
       int index = 0, ref = 0;
       if(edge->QueryIntAttribute("index", &index) != XML_SUCCESS ||
          edge->QueryIntAttribute("reference", &ref) != XML_SUCCESS) {
-        Msg::Error("Missing index or reference for edge");
+        Msg::Error(_("Missing index or reference for edge"));
       }
       else {
         TopoDS_Shape subShape = mainMap.FindKey(ref);
@@ -6667,7 +6659,7 @@ int GModel::readOCCXAO(const std::string &fn)
       int index = 0, ref = 0;
       if(face->QueryIntAttribute("index", &index) != XML_SUCCESS ||
          face->QueryIntAttribute("reference", &ref) != XML_SUCCESS) {
-        Msg::Error("Missing index or reference for face");
+        Msg::Error(_("Missing index or reference for face"));
       }
       else {
         TopoDS_Shape subShape = mainMap.FindKey(ref);
@@ -6693,7 +6685,7 @@ int GModel::readOCCXAO(const std::string &fn)
       int index = 0, ref = 0;
       if(solid->QueryIntAttribute("index", &index) != XML_SUCCESS ||
          solid->QueryIntAttribute("reference", &ref) != XML_SUCCESS) {
-        Msg::Error("Missing index or reference for solid");
+        Msg::Error(_("Missing index or reference for solid"));
       }
       else {
         TopoDS_Shape subShape = mainMap.FindKey(ref);
@@ -6757,14 +6749,14 @@ int GModel::readOCCXAO(const std::string &fn)
         }
       }
       else {
-        Msg::Error("Missing name or dimension for group");
+        Msg::Error(_("Missing name or dimension for group"));
       }
       group = group->NextSiblingElement("group");
     }
   }
 
 #else
-  Msg::Error("Gmsh requires OpenCASCADE and TinyXML2 to import XAO files");
+  Msg::Error(_("Gmsh requires OpenCASCADE and TinyXML2 to import XAO files"));
   return 0;
 #endif
 
@@ -6792,7 +6784,7 @@ int GModel::readOCCIGES(const std::string &fn)
 int GModel::writeOCCBREP(const std::string &fn)
 {
   if(!_occ_internals) {
-    Msg::Error("No OpenCASCADE model found");
+    Msg::Error(_("No OpenCASCADE model found"));
     return 0;
   }
   _occ_internals->exportShapes(this, fn, "brep",
@@ -6803,7 +6795,7 @@ int GModel::writeOCCBREP(const std::string &fn)
 int GModel::writeOCCXAO(const std::string &fn)
 {
   if(!_occ_internals) {
-    Msg::Error("No OpenCASCADE model found");
+    Msg::Error(_("No OpenCASCADE model found"));
     return 0;
   }
   _occ_internals->exportShapes(this, fn, "xao",
@@ -6814,7 +6806,7 @@ int GModel::writeOCCXAO(const std::string &fn)
 int GModel::writeOCCSTEP(const std::string &fn)
 {
   if(!_occ_internals) {
-    Msg::Error("No OpenCASCADE model found");
+    Msg::Error(_("No OpenCASCADE model found"));
     return 0;
   }
   _occ_internals->exportShapes(this, fn, "step",
@@ -6825,7 +6817,7 @@ int GModel::writeOCCSTEP(const std::string &fn)
 int GModel::writeOCCIGES(const std::string &fn)
 {
   if(!_occ_internals) {
-    Msg::Error("No OpenCASCADE model found");
+    Msg::Error(_("No OpenCASCADE model found"));
     return 0;
   }
   _occ_internals->exportShapes(this, fn, "iges",
@@ -6840,7 +6832,7 @@ int GModel::importOCCShape(const void *shape)
   std::vector<std::pair<int, int>> outDimTags;
   _occ_internals->importShapes((TopoDS_Shape *)shape, false, outDimTags);
 #else
-  Msg::Error("Gmsh requires OpenCASCADE to import TopoDS_Shape");
+  Msg::Error(_("Gmsh requires OpenCASCADE to import TopoDS_Shape"));
 #endif
   _occ_internals->synchronize(this);
   snapVertices();

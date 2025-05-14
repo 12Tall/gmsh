@@ -225,7 +225,7 @@ void voroMetal3D::execute(std::vector<SPoint3> &vertices,
 
   std::ofstream file6("table.txt");
   if(!file6.is_open()) {
-    Msg::Error("Could not open file 'table.txt'");
+    Msg::Error(_("Could not open file 'table.txt'"));
     return;
   }
 
@@ -247,19 +247,19 @@ void voroMetal3D::execute(std::vector<SPoint3> &vertices,
 
   std::ofstream file("MicrostructurePolycrystal3D.pos");
   if(!file.is_open()) {
-    Msg::Error("Could not open file 'MicrostructurePolycrystal3D.pos'");
+    Msg::Error(_("Could not open file 'MicrostructurePolycrystal3D.pos'"));
     return;
   }
   file << "View \"test\" {\n";
 
   std::ofstream file2("MicrostructurePolycrystal3D.geo");
   if(!file2.is_open()) {
-    Msg::Error("Could not open file 'MicrostructurePolycrystal3D.geo'");
+    Msg::Error(_("Could not open file 'MicrostructurePolycrystal3D.geo'"));
     return;
   }
   std::ofstream file5("SET.map");
   if(!file5.is_open()) {
-    Msg::Error("Could not open file 'SET.map'");
+    Msg::Error(_("Could not open file 'SET.map'"));
     return;
   }
   file2 << "c=" << h << ";\n";
@@ -552,14 +552,14 @@ void voroMetal3D::correspondence(double e, double xMax, double yMax,
   count = 0;
   std::ofstream file("MicrostructurePolycrystal3D.pos");
   if(!file.is_open()) {
-    Msg::Error("Could not open file 'MicrostructurePolycrystal3D.pos'");
+    Msg::Error(_("Could not open file 'MicrostructurePolycrystal3D.pos'"));
     return;
   }
   file << "View \"test\" {\n";
 
   std::ofstream file2("PERIODIC.map");
   if(!file2.is_open()) {
-    Msg::Error("Could not open file 'PERIODIC.map'");
+    Msg::Error(_("Could not open file 'PERIODIC.map'"));
     return;
   }
 
@@ -772,14 +772,14 @@ void voroMetal3D::correspondence(double e, double xMax, double yMax,
   std::ofstream file3;
   file3.open("MicrostructurePolycrystal3D.geo", std::ios::out | std::ios::app);
   if(!file3.is_open()) {
-    Msg::Error("Could not open file 'MicrostructurePolycrystal3D.geo'");
+    Msg::Error(_("Could not open file 'MicrostructurePolycrystal3D.geo'"));
     return;
   }
   file3.precision(17);
 
   std::ofstream file4("MicrostructurePolycrystal3D2.pos");
   if(!file4.is_open()) {
-    Msg::Error("Could not open file 'MicrostructurePolycrystal3D2.pos'");
+    Msg::Error(_("Could not open file 'MicrostructurePolycrystal3D2.pos'"));
     return;
   }
   file4 << "View \"test\" {\n";
@@ -1377,7 +1377,7 @@ PView *GMSH_VoroMetalPlugin::execute(PView *v)
 
 PView *GMSH_VoroMetalPlugin::execute(PView *v)
 {
-  Msg::Error("Plugin(VoroMetal) requires mesh module and voro++");
+  Msg::Error(_("Plugin(VoroMetal) requires mesh module and voro++"));
   return v;
 }
 

@@ -125,7 +125,7 @@ static void scriptAddCommand(const std::string &text,
   fprintf(fp, "//+\n%s\n", text.c_str());
   fclose(fp);
 #else
-  Msg::Error("GEO file creation not available without Gmsh parser");
+  Msg::Error(_("GEO file creation not available without Gmsh parser"));
 #endif
 
   // mark Gmsh data as changed in onelab

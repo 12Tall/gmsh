@@ -148,7 +148,7 @@ public:
     double udet = 0.;
     STensor3 ithis;
     if(det == 0.)
-      Msg::Error("det=0 in STensor inversion");
+      Msg::Error(_("det=0 in STensor inversion"));
     else
       udet = 1. / det;
     ithis(0, 0) =

@@ -529,15 +529,15 @@ static int makeGraph(GModel *model, Graph &graph, int selectDim)
   idx_t numVertex = 0;
 
   if(graph.nn() == 0) {
-    Msg::Warning("No mesh nodes were found");
+    Msg::Warning(_("No mesh nodes were found"));
     return 1;
   }
   if(graph.ne() == 0) {
-    Msg::Warning("No mesh elements were found");
+    Msg::Warning(_("No mesh elements were found"));
     return 1;
   }
   if(graph.dim() == 0) {
-    Msg::Warning("Cannot partition a point");
+    Msg::Warning(_("Cannot partition a point"));
     return 1;
   }
 
@@ -715,10 +715,10 @@ static int partitionGraph(Graph &graph, bool verbose)
 
     switch(metisError) {
     case METIS_OK: break;
-    case METIS_ERROR_INPUT: Msg::Error("METIS input error"); return 1;
-    case METIS_ERROR_MEMORY: Msg::Error("METIS memory error"); return 1;
+    case METIS_ERROR_INPUT: Msg::Error(_("METIS input error")); return 1;
+    case METIS_ERROR_MEMORY: Msg::Error(_("METIS memory error")); return 1;
     case METIS_ERROR:
-    default: Msg::Error("METIS error"); return 1;
+    default: Msg::Error(_("METIS error")); return 1;
     }
 
     // Check and correct the topology
@@ -740,7 +740,7 @@ static int partitionGraph(Graph &graph, bool verbose)
     graph.partition(epart);
     if(verbose) Msg::Info("%d partitions, %d total edge-cuts", numPart, objval);
   } catch(...) {
-    Msg::Error("METIS exception");
+    Msg::Error(_("METIS exception"));
     return 2;
   }
 #endif
@@ -1826,7 +1826,7 @@ static void createPartitionTopology(
   std::set<GVertex *, GEntityPtrLessThan> vertices = model->getVertices();
 
   if(meshDim >= 3) {
-    Msg::Info(" - Creating partition surfaces");
+    Msg::Info(_(" - Creating partition surfaces"));
 
     for(std::size_t i = 0; i < model->getNumPartitions(); i++) {
       for(auto it = boundaryElements[i].begin();
@@ -1870,7 +1870,7 @@ static void createPartitionTopology(
   }
 
   if(meshDim >= 2) {
-    Msg::Info(" - Creating partition curves");
+    Msg::Info(_(" - Creating partition curves"));
 
     if(meshDim == 2) {
       for(std::size_t i = 0; i < model->getNumPartitions(); i++) {
@@ -1957,7 +1957,7 @@ static void createPartitionTopology(
   }
 
   if(meshDim >= 1) {
-    Msg::Info(" - Creating partition points");
+    Msg::Info(_(" - Creating partition points"));
     if(meshDim == 1) {
       for(std::size_t i = 0; i < model->getNumPartitions(); i++) {
         for(auto it = boundaryElements[i].begin();
@@ -2254,7 +2254,7 @@ int PartitionFaceMinEdgeLength(GFace *gf, int np, double tol)
                  " partition - changing tolerance to %g", gf->tag(),
                  gf->triangles.size(), ubvec);
     if(ubvec > CTX::instance()->lc) {
-      Msg::Warning("Tolerance too large - aborting partitioning");
+      Msg::Warning(_("Tolerance too large - aborting partitioning"));
       break;
     }
   }
@@ -2541,7 +2541,7 @@ int PartitionUsingThisSplit(GModel *model,
     MElement *el = item.first;
     int part = item.second;
     if(part == 0) {
-      Msg::Error("Partition tag cannot be 0");
+      Msg::Error(_("Partition tag cannot be 0"));
       return 1;
     }
     if(part > 0) elmToPartition[el] = part;
@@ -2553,7 +2553,7 @@ int PartitionUsingThisSplit(GModel *model,
   graph.nparts(numPart);
 
   if(elmToPartition.size() != graph.ne()) {
-    Msg::Error("All elements are not partitioned");
+    Msg::Error(_("All elements are not partitioned"));
     return 1;
   }
 
@@ -2662,7 +2662,7 @@ int ConvertOldPartitioningToNewOne(GModel *model)
 
 int PartitionMesh(GModel *model, int numPart)
 {
-  Msg::Error("Gmsh must be compiled with METIS support to partition meshes");
+  Msg::Error(_("Gmsh must be compiled with METIS support to partition meshes"));
   return 0;
 }
 
@@ -2673,13 +2673,13 @@ int ConvertOldPartitioningToNewOne(GModel *model) { return 0; }
 int PartitionUsingThisSplit(
   GModel *model, std::vector<std::pair<MElement *, int> > &elmToPartition)
 {
-  Msg::Error("Gmsh must be compiled with METIS support to partition meshes");
+  Msg::Error(_("Gmsh must be compiled with METIS support to partition meshes"));
   return 0;
 }
 
 int PartitionFaceMinEdgeLength(GFace *gf, int np, double tol)
 {
-  Msg::Error("Gmsh must be compiled with METIS support to partition meshes");
+  Msg::Error(_("Gmsh must be compiled with METIS support to partition meshes"));
   return 0;
 }
 

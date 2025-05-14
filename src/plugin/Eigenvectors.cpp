@@ -52,7 +52,7 @@ PView *GMSH_EigenvectorsPlugin::execute(PView *v)
 
   PViewData *data1 = getPossiblyAdaptiveData(v1);
   if(data1->hasMultipleMeshes()) {
-    Msg::Error("Eigenvectors plugin cannot be run on multi-mesh views");
+    Msg::Error(_("Eigenvectors plugin cannot be run on multi-mesh views"));
     return v;
   }
 
@@ -107,7 +107,7 @@ PView *GMSH_EigenvectorsPlugin::execute(PView *v)
             if(di(0) || di(1) || di(2)) nbcomplex++;
           }
           else {
-            Msg::Error("Could not compute eigenvalues/vectors");
+            Msg::Error(_("Could not compute eigenvalues/vectors"));
           }
         }
       }

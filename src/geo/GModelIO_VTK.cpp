@@ -152,7 +152,7 @@ int GModel::readVTK(const std::string &name, bool bigEndian)
   } // title
 
   if(fscanf(fp, "%s", buffer) != 1) // ASCII or BINARY
-    Msg::Error("Failed reading buffer");
+    Msg::Error(_("Failed reading buffer"));
   bool binary = false;
   if(!strcmp(buffer, "BINARY")) binary = true;
 
@@ -167,7 +167,7 @@ int GModel::readVTK(const std::string &name, bool bigEndian)
 
   if((strcmp(buffer, "DATASET") && strcmp(buffer2, "UNSTRUCTURED_GRID")) ||
      (strcmp(buffer, "DATASET") && strcmp(buffer2, "POLYDATA"))) {
-    Msg::Error("VTK reader can only read unstructured or polydata datasets");
+    Msg::Error(_("VTK reader can only read unstructured or polydata datasets"));
     fclose(fp);
     return 0;
   }
@@ -176,7 +176,7 @@ int GModel::readVTK(const std::string &name, bool bigEndian)
   std::size_t numVertices;
   if(fscanf(fp, "%s %zu %s", buffer, &numVertices, buffer2) != 3) return 0;
   if(strcmp(buffer, "POINTS") || !numVertices) {
-    Msg::Warning("No points in dataset");
+    Msg::Warning(_("No points in dataset"));
     fclose(fp);
     return 0;
   }
@@ -186,7 +186,7 @@ int GModel::readVTK(const std::string &name, bool bigEndian)
   else if(!strcmp(buffer2, "float"))
     datasize = sizeof(float);
   else {
-    Msg::Warning("VTK reader only accepts float or double datasets");
+    Msg::Warning(_("VTK reader only accepts float or double datasets"));
     fclose(fp);
     return 0;
   }
@@ -240,7 +240,7 @@ int GModel::readVTK(const std::string &name, bool bigEndian)
     Msg::Info("Reading %zu lines", numElements);
   }
   else {
-    Msg::Warning("No cells or polygons in dataset");
+    Msg::Warning(_("No cells or polygons in dataset"));
     fclose(fp);
     return 0;
   }
@@ -294,7 +294,7 @@ int GModel::readVTK(const std::string &name, bool bigEndian)
         return 0;
       }
       if(strcmp(buffer, "CELL_TYPES") || numElements != cells.size()) {
-        Msg::Error("No or invalid number of cells types");
+        Msg::Error(_("No or invalid number of cells types"));
         fclose(fp);
         return 0;
       }
@@ -447,7 +447,7 @@ int GModel::readVTK(const std::string &name, bool bigEndian)
       }
     }
     else {
-      Msg::Error("Line import not done for binary VTK files");
+      Msg::Error(_("Line import not done for binary VTK files"));
     }
   }
 

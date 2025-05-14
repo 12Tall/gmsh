@@ -115,7 +115,7 @@ int GMSH_SpanningTreePlugin::run()
 
   // Check if we have something
   if(element[0].empty() && element[1].empty() && element[2].empty()) {
-    Msg::Warning("No elements found in the given physcials: abording!");
+    Msg::Warning(_("No elements found in the given physcials: abording!"));
     return 0;
   }
 

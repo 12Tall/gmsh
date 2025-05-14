@@ -431,7 +431,7 @@ void OLMsg::MergeFile(const std::string &name)
     }
   }
   else
-    OLMsg::Info("Not connected to Gmsh");
+    OLMsg::Info(_("Not connected to Gmsh"));
 }
 
 void OLMsg::FinalizeOnelab()

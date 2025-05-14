@@ -55,7 +55,7 @@ int metamodel(const std::string &action)
 {
   int errors;
 
-  OLMsg::Info("Start metamodel");
+  OLMsg::Info(_("Start metamodel"));
   OLMsg::hasGmsh = OLMsg::GetOnelabNumber("IsMetamodel");
   OLMsg::ResetErrorCounter();
 
@@ -99,7 +99,7 @@ int metamodel(const std::string &action)
 
   if((errors = OLMsg::GetErrorCount())) {
     OLMsg::Error("Leave metamodel - %d errors", errors);
-    OLMsg::Info("=====  O  N  E  L  A  B  =====");
+    OLMsg::Info(_("=====  O  N  E  L  A  B  ====="));
     return 0;
   }
 
@@ -107,6 +107,6 @@ int metamodel(const std::string &action)
   OLMsg::SetOnelabNumber("Gmsh/NeedReloadGeom", 0, false);
 
   OLMsg::Info("Leave metamodel - need reload=%d", reload);
-  OLMsg::Info("=====  O  N  E  L  A  B  =====");
+  OLMsg::Info(_("=====  O  N  E  L  A  B  ====="));
   return reload;
 }

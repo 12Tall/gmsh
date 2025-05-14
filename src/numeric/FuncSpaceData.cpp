@@ -40,7 +40,7 @@ FuncSpaceData::FuncSpaceData(const MElement *el, bool pyr, int nij, int nk,
     _serendipity(serendip), _nij(nij), _nk(nk), _pyramidalSpace(pyr)
 {
   if(el->getType() != TYPE_PYR)
-    Msg::Error("Creation of pyramidal space data for a non-pyramid element !");
+    Msg::Error(_("Creation of pyramidal space data for a non-pyramid element !"));
 }
 
 FuncSpaceData::FuncSpaceData(int tag)
@@ -63,13 +63,13 @@ FuncSpaceData::FuncSpaceData(int type, bool pyr, int nij, int nk, bool serendip)
     _serendipity(serendip), _nij(nij), _nk(nk), _pyramidalSpace(pyr)
 {
   if(_parentType != TYPE_PYR)
-    Msg::Error("Creation of pyramidal space data for a non-pyramid element!");
+    Msg::Error(_("Creation of pyramidal space data for a non-pyramid element!"));
 }
 
 void FuncSpaceData::getOrderForBezier(int order[3], int exponentZ) const
 {
   if(_pyramidalSpace && exponentZ < 0) {
-    Msg::Error("getOrderForBezier needs third exponent for pyramidal space!");
+    Msg::Error(_("getOrderForBezier needs third exponent for pyramidal space!"));
     order[0] = order[1] = order[2] = -1;
     return;
   }

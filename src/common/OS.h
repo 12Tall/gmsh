@@ -8,6 +8,7 @@
 
 #include <string>
 #include <stdio.h>
+#include "I18n.h"
 
 FILE *Fopen(const char *f, const char *mode);
 std::string GetEnvironmentVar(const std::string &var);

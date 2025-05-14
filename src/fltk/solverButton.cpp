@@ -20,7 +20,7 @@ typedef unsigned long intptr_t;
 static void solver_rename_cb(Fl_Widget *w, void *data)
 {
   if(FlGui::instance()->onelab->isBusy()) {
-    Msg::Warning("Cannot rename client while solver is running");
+    Msg::Warning(_("Cannot rename client while solver is running"));
     return;
   }
 
@@ -39,7 +39,7 @@ static void solver_rename_cb(Fl_Widget *w, void *data)
 static void solver_change_exe_cb(Fl_Widget *w, void *data)
 {
   if(FlGui::instance()->onelab->isBusy()) {
-    Msg::Warning("Cannot change executable name while solver is running");
+    Msg::Warning(_("Cannot change executable name while solver is running"));
     return;
   }
 
@@ -68,7 +68,7 @@ static void solver_change_exe_cb(Fl_Widget *w, void *data)
 static void solver_remove_cb(Fl_Widget *w, void *data)
 {
   if(FlGui::instance()->onelab->isBusy()) {
-    Msg::Warning("Cannot remove client while solver is running");
+    Msg::Warning(_("Cannot remove client while solver is running"));
     return;
   }
 

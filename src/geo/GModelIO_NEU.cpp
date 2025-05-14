@@ -156,7 +156,7 @@ int GModel::writeNEU(const std::string &name, bool saveAll,
   }
 
   if(lowestId == std::numeric_limits<int>::max()) {
-    Msg::Warning("No 3d-physicals");
+    Msg::Warning(_("No 3d-physicals"));
     fclose(fp);
     return 1;
   }

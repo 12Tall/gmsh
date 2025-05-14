@@ -309,7 +309,7 @@ namespace ClosureGen {
         int n0 = cl[edges[iEdge]];
         int n1 = cl[edges[iEdge + 1]];
         int oEdge = nodes2edges[n0][n1];
-        if(oEdge == -1) Msg::Error("invalid p1 closure or invalid edges list");
+        if(oEdge == -1) Msg::Error(_("invalid p1 closure or invalid edges list"));
         for(int i = 0; i < order - 1; i++)
           cl.push_back(numNodes + oEdge / 2 * (order - 1) +
                        ((oEdge % 2) ? order - 2 - i : i));
@@ -685,7 +685,7 @@ namespace ClosureGen {
                          faces[iFace][iNode] :
                          closureFull[i][faces[iFace][iNode]];
           auto it = nodeSum2Face.find(nodeSum);
-          if(it == nodeSum2Face.end()) Msg::Error("Prism face not found");
+          if(it == nodeSum2Face.end()) Msg::Error(_("Prism face not found"));
           int mappedFaceId = it->second;
           if(mappedFaceId > 1) {
             closureFull[i].push_back(nextFaceNode + mappedFaceId - 2);

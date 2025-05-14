@@ -110,8 +110,8 @@ void openglWindow::show()
      patched for macOS mojave
 
 #if defined(__APPLE__) && (MAC_OS_X_VERSION_MAX_ALLOWED >=
-MAC_OS_X_VERSION_10_14) Msg::Info("OpenGL hack for macOS 10.14: see
-http://www.fltk.org/str.php?L3496"); resize(x(), y(), w()+1, h()); resize(x(),
+MAC_OS_X_VERSION_10_14) Msg::Info(_("OpenGL hack for macOS 10.14: see
+http://www.fltk.org/str.php?L3496")); resize(x(), y(), w()+1, h()); resize(x(),
 y(), w()-1, h()); #endif
 
   */
@@ -180,7 +180,7 @@ void openglWindow::draw()
   if(_lock) return;
   _lock = true;
 
-  Msg::Debug("openglWindow::draw()");
+  Msg::Debug(_("openglWindow::draw()"));
 
   if(!context_valid()) { _ctx->invalidateQuadricsAndDisplayLists(); }
 

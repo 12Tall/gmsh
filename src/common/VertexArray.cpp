@@ -284,7 +284,7 @@ int VertexArray::decodeHeader(int length, const char *bytes, int swap,
   }
 
   if(swap){
-    Msg::Error("Should swap bytes in vertex array--not implemented yet");
+    Msg::Error(_("Should swap bytes in vertex array--not implemented yet"));
     return 0;
   }
 

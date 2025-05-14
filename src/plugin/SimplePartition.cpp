@@ -84,12 +84,12 @@ int GMSH_SimplePartitionPlugin::run()
   GModel *m = GModel::current();
 
   if(!m->getNumMeshElements()) {
-    Msg::Error("Plugin(SimplePartition) requires a mesh");
+    Msg::Error(_("Plugin(SimplePartition) requires a mesh"));
     return 0;
   }
 
   if(numSlicesX < 1 || numSlicesY < 1 || numSlicesZ < 1) {
-    Msg::Error("Number of slices should be strictly positive");
+    Msg::Error(_("Number of slices should be strictly positive"));
     return 0;
   }
   m->unpartitionMesh();
@@ -171,7 +171,7 @@ int GMSH_SimplePartitionPlugin::run()
   }
 
 #else
-  Msg::Error("Gmsh must be compiled with Mesh support to partition meshes");
+  Msg::Error(_("Gmsh must be compiled with Mesh support to partition meshes"));
 #endif
 
   return 0;

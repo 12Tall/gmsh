@@ -245,7 +245,7 @@ void MVertex::writeMATLAB(FILE *fp, int filetype, bool binary,
 {
   if(_index < 0) return; // negative index vertices are never saved
   if(binary) {
-    Msg::Warning("Binary format not available for Matlab, saving in ASCII");
+    Msg::Warning(_("Binary format not available for Matlab, saving in ASCII"));
     binary = false;
   }
   fprintf(fp, "%.16g %.16g %.16g;\n", x() * scalingFactor, y() * scalingFactor,
@@ -448,7 +448,7 @@ static void getAllParameters(MVertex *v, GFace *gf,
           params.push_back((*it)->reparamOnFace(gf, range.high(), 1));
         }
         if(gv != (*it)->getBeginVertex() && gv != (*it)->getEndVertex()) {
-          Msg::Warning("Strange!");
+          Msg::Warning(_("Strange!"));
         }
         seam = true;
       }

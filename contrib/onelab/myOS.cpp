@@ -202,7 +202,7 @@ int SystemCall(const std::string &command, bool blocking)
   return 0;
 #else
   if(!system(NULL)) {
-    OLMsg::Error("Could not find /bin/sh: aborting system call");
+    OLMsg::Error(_("Could not find /bin/sh: aborting system call"));
     return 1;
   }
   std::string cmd(command);

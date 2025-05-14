@@ -20,10 +20,10 @@ void mumpserror(int id, int subid)
     case -6:
       Msg::Error("Matrix is singular in structure, structural rank: %d", subid);
       break;
-    case -10: Msg::Error("Matrix is numerically singular"); break;
-    case -13: Msg::Error("Not enough memory"); break;
-    case -40: Msg::Error("Matrix is not symmetric positive definite"); break;
-    default: Msg::Error("Check MUMPS user's guide"); break;
+    case -10: Msg::Error(_("Matrix is numerically singular")); break;
+    case -13: Msg::Error(_("Not enough memory")); break;
+    case -40: Msg::Error(_("Matrix is not symmetric positive definite")); break;
+    default: Msg::Error(_("Check MUMPS user's guide")); break;
     }
   }
 }
@@ -102,7 +102,7 @@ int linearSystemMUMPS<double>::systemSolve()
 
   id.comm_fortran = USE_COMM_WORLD;
 
-  Msg::Debug("MUMPS initialization");
+  Msg::Debug(_("MUMPS initialization"));
   id.job = -1;
   dmumps_c(&id);
   mumpserror(id.info[0], id.info[1]);
@@ -125,15 +125,15 @@ int linearSystemMUMPS<double>::systemSolve()
   id.icntl[5 - 1] = 0;
   id.icntl[18 - 1] = 0;
 
-  Msg::Debug("MUMPS analysis, LU factorization, and back substitution");
+  Msg::Debug(_("MUMPS analysis, LU factorization, and back substitution"));
   id.job = 6;
   dmumps_c(&id);
   mumpserror(id.info[0], id.info[1]);
 
-  Msg::Debug("MUMPS destroy");
+  Msg::Debug(_("MUMPS destroy"));
   id.job = -2;
   dmumps_c(&id);
-  Msg::Debug("MUMPS end");
+  Msg::Debug(_("MUMPS end"));
   mumpserror(id.info[0], id.info[1]);
 
   _x.clear();
@@ -199,7 +199,7 @@ void linearSystemMUMPS<double>::addToMatrix(int row, int col, const double &val)
 void linearSystemMUMPS<double>::getFromMatrix(int row, int col,
                                               double &val) const
 {
-  // Msg::Error("getFromMatrix not implemented for linearSystemMUMPS");
+  // Msg::Error(_("getFromMatrix not implemented for linearSystemMUMPS"));
   if((int)_ij.size() <= row) {
     val = 0.;
     return;

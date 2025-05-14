@@ -147,7 +147,7 @@ int GModel::writeP3D(const std::string &name, bool saveAll,
       regions.push_back(*it);
 
   if(faces.empty() && regions.empty()) {
-    Msg::Warning("No structured grids to save");
+    Msg::Warning(_("No structured grids to save"));
     fclose(fp);
     return 0;
   }

@@ -441,16 +441,16 @@ void packingOfParallelograms(GFace *gf, std::vector<MVertex *> &packed,
   if(fields->getBackgroundField() > 0) {
     cross_field = fields->get(fields->getBackgroundField());
     if(cross_field->numComponents() != 3) {// we hae a true scaled cross fields !!
-      Msg::Error ("Packing of Parallelograms require a scaled cross field");
-      Msg::Error ("Do first gmsh yourmeshname.msh -crossfield to create yourmeshname_scaled_crossfield.pos");
-      Msg::Error ("Then do yourmeshname.geo -bgm yourmeshname_scaled_crossfield.pos");
+      Msg::Error(_("Packing of Parallelograms require a scaled cross field"));
+      Msg::Error(_("Do first gmsh yourmeshname.msh -crossfield to create yourmeshname_scaled_crossfield.pos"));
+      Msg::Error(_("Then do yourmeshname.geo -bgm yourmeshname_scaled_crossfield.pos"));
       return;
     }
   }
   else {
-    Msg::Error ("Packing of Parallelograms require a scaled cross field");
-    Msg::Error ("Do first gmsh yourmeshname.msh -crossfield to create yourmeshname_scaled_crossfield.pos");
-    Msg::Error ("Then do yourmeshname.geo -bgm yourmeshname_scaled_crossfield.pos");
+    Msg::Error(_("Packing of Parallelograms require a scaled cross field"));
+    Msg::Error(_("Do first gmsh yourmeshname.msh -crossfield to create yourmeshname_scaled_crossfield.pos"));
+    Msg::Error(_("Then do yourmeshname.geo -bgm yourmeshname_scaled_crossfield.pos"));
     return;
   }
 

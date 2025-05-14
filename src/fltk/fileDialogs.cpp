@@ -1804,11 +1804,11 @@ int genericMeshFileDialog(const char *name, const char *title, int format,
 static void _saveViews(const std::string &name, int which, int format,
                        bool canAppend)
 {
-  if(PView::list.empty()) { Msg::Error("No views to save"); }
+  if(PView::list.empty()) { Msg::Error(_("No views to save")); }
   else if(which == 0) {
     int iview = FlGui::instance()->options->view.index;
     if(iview < 0 || iview >= (int)PView::list.size()) {
-      Msg::Info("No or invalid current view: saving View[0]");
+      Msg::Info(_("No or invalid current view: saving View[0]"));
       iview = 0;
     }
     PView::list[iview]->write(name, format);
@@ -1817,7 +1817,7 @@ static void _saveViews(const std::string &name, int which, int format,
     int numVisible = 0;
     for(std::size_t i = 0; i < PView::list.size(); i++)
       if(PView::list[i]->getOptions()->visible) numVisible++;
-    if(!numVisible) { Msg::Error("No visible view"); }
+    if(!numVisible) { Msg::Error(_("No visible view")); }
     else {
       bool first = true;
       for(std::size_t i = 0; i < PView::list.size(); i++) {
@@ -1925,11 +1925,11 @@ static void _saveAdaptedViews(const std::string &name, int useDefaultName,
                               int which, bool isBinary, int adaptLev,
                               double adaptErr, int npart, bool canAppend)
 {
-  if(PView::list.empty()) { Msg::Error("No views to save"); }
+  if(PView::list.empty()) { Msg::Error(_("No views to save")); }
   else if(which == 0) {
     int iview = FlGui::instance()->options->view.index;
     if(iview < 0 || iview >= (int)PView::list.size()) {
-      Msg::Info("No or invalid current view: saving View[0]");
+      Msg::Info(_("No or invalid current view: saving View[0]"));
       iview = 0;
     }
     PView::list[iview]->writeAdapt(name, useDefaultName, isBinary, adaptLev,
@@ -1939,7 +1939,7 @@ static void _saveAdaptedViews(const std::string &name, int useDefaultName,
     int numVisible = 0;
     for(std::size_t i = 0; i < PView::list.size(); i++)
       if(PView::list[i]->getOptions()->visible) numVisible++;
-    if(!numVisible) { Msg::Error("No visible view"); }
+    if(!numVisible) { Msg::Error(_("No visible view")); }
     else {
       bool first = true;
       for(std::size_t i = 0; i < PView::list.size(); i++) {

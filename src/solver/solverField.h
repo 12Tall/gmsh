@@ -42,11 +42,11 @@ public:
 private:
   virtual void getKeys(MElement *ele, std::vector<Dof> &keys) const
   {
-    Msg::Error("getKeys for SolverField shouldn't be called");
+    Msg::Error(_("getKeys for SolverField shouldn't be called"));
   }
   virtual void getKeys(MVertex *ver, std::vector<Dof> &keys) const
   {
-    Msg::Error("getKeys for SolverField shouldn't be called");
+    Msg::Error(_("getKeys for SolverField shouldn't be called"));
   }
 
 public:

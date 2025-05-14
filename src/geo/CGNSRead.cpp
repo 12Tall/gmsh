@@ -119,7 +119,7 @@ int readScale(int fileIndex, int baseIndex, double &scale)
   if(cgnsErr != CG_OK) return cgnsError(__FILE__, __LINE__, fileIndex);
   cgnsErr = cg_units_read(&mass, &length, &time, &temperature, &angle);
   if(cgnsErr == CG_NODE_NOT_FOUND) {
-    Msg::Info("Length unit in CGNS file not defined, therefore not rescaling");
+    Msg::Info(_("Length unit in CGNS file not defined, therefore not rescaling"));
     return 1.;
   }
   else if(cgnsErr != CG_OK)
@@ -127,28 +127,28 @@ int readScale(int fileIndex, int baseIndex, double &scale)
 
   switch(length) {
   case CGNS_ENUMT(Centimeter):
-    Msg::Info("Length unit in CGNS file is cm, rescaling");
+    Msg::Info(_("Length unit in CGNS file is cm, rescaling"));
     scale = 0.01;
     break;
   case CGNS_ENUMT(Millimeter):
-    Msg::Info("Length unit in CGNS file is mm, rescaling");
+    Msg::Info(_("Length unit in CGNS file is mm, rescaling"));
     scale = 0.001;
     break;
   case CGNS_ENUMT(Foot):
-    Msg::Info("Length unit in CGNS file is feet, rescaling");
+    Msg::Info(_("Length unit in CGNS file is feet, rescaling"));
     scale = 0.3048;
     break;
   case CGNS_ENUMT(Inch):
-    Msg::Info("Length unit in CGNS file is inch, rescaling");
+    Msg::Info(_("Length unit in CGNS file is inch, rescaling"));
     scale = 0.0254;
     break;
   case CGNS_ENUMT(Meter):
-    Msg::Info("Length unit in CGNS file is meter, not rescaling");
+    Msg::Info(_("Length unit in CGNS file is meter, not rescaling"));
     break;
   case CG_Null:
   case CG_UserDefined:
   default:
-    Msg::Info("Length unit in CGNS file not defined, therefore not rescaling");
+    Msg::Info(_("Length unit in CGNS file not defined, therefore not rescaling"));
     break;
   }
 

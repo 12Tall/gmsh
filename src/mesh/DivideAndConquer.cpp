@@ -534,7 +534,7 @@ void DocRecord::ConvertDListToVoronoiData()
 void DocRecord::voronoiCell(PointNumero pt, std::vector<SPoint2> &pts) const
 {
   if(!_adjacencies) {
-    Msg::Error("No adjacencies were created");
+    Msg::Error(_("No adjacencies were created"));
     return;
   }
   const int n = _adjacencies[pt].t_length;
@@ -859,7 +859,7 @@ void DocRecord::MakeMeshWithPoints()
 
   if(AdjacentNullptrExists()) { ConvertDListToTriangles(); }
   else {
-    Msg::Error("Adjacent nullptrs found");
+    Msg::Error(_("Adjacent nullptrs found"));
   }
 
   RemoveAllDList();

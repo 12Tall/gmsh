@@ -85,7 +85,7 @@ void HighOrderMeshElasticAnalogy(GModel *m, bool onlyVisible)
       v.insert(v.end(), (*it)->hexahedra.begin(), (*it)->hexahedra.end());
       v.insert(v.end(), (*it)->prisms.begin(), (*it)->prisms.end());
       if((*it)->pyramids.size())
-        Msg::Error("Pyramids not yet handled in high-order elastic analogy");
+        Msg::Error(_("Pyramids not yet handled in high-order elastic analogy"));
       hot.applySmoothingTo(v, 1.e32, false);
     }
   }
@@ -204,7 +204,7 @@ static void addOneLayer(const std::vector<MElement *> &v,
 double highOrderTools::applySmoothingTo(GFace *gf, double tres, bool mixed)
 {
   if(!gf) {
-    Msg::Error("Cannot smooth that face");
+    Msg::Error(_("Cannot smooth that face"));
     return -1;
   }
   std::vector<MElement *> v;
@@ -611,7 +611,7 @@ double highOrderTools::_applyIncrementalDisplacement(
 #endif
 
   // assume that the mesh is OK, yet already curved
-  Msg::Info("Generating elastic system...");
+  Msg::Info(_("Generating elastic system..."));
   dofManager<double> myAssembler(lsys);
   elasticityMixedTerm El_mixed(nullptr, 1.0, .333, _tag);
   elasticityTerm El(nullptr, 1.0, .333, _tag);
@@ -841,7 +841,7 @@ void highOrderTools::makePosViewWithJacobians(const char *fn)
 
 void HighOrderMeshElasticAnalogy(GModel *m, bool onlyVisible)
 {
-  Msg::Error("Elastic analogy high-order optimzer requires the solver module");
+  Msg::Error(_("Elastic analogy high-order optimzer requires the solver module"));
 }
 
 #endif

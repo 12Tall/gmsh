@@ -211,7 +211,7 @@ SPoint2 OCCEdge::reparamOnFace(const GFace *face, double epar, int dir) const
 bool OCCEdge::_project(const double p[3], double &u, double xyz[3]) const
 {
   if(_curve.IsNull()) {
-    Msg::Error("OpenCASCADE curve is null in projection");
+    Msg::Error(_("OpenCASCADE curve is null in projection"));
     return false;
   }
 
@@ -227,7 +227,7 @@ bool OCCEdge::_project(const double p[3], double &u, double xyz[3]) const
   u = _projector.LowerDistanceParameter();
 
   if(u < _s0 || u > _s1)
-    Msg::Debug("Point projection is out of curve parameter bounds");
+    Msg::Debug(_("Point projection is out of curve parameter bounds"));
 
   if(xyz) {
     pnt = _projector.NearestPoint();

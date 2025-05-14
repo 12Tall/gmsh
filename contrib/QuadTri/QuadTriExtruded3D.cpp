@@ -72,7 +72,7 @@ createForbidden(std::vector<MVertex *> v,
                 std::set<std::pair<MVertex *, MVertex *> > &forbidden_edges)
 {
   if(v.size() != 4) {
-    Msg::Error("In createForbidden(), number of vertices not equal 4.");
+    Msg::Error(_("In createForbidden(), number of vertices not equal 4."));
     return;
   }
   int ind_low = 0;
@@ -91,8 +91,7 @@ forbiddenExists(std::vector<MVertex *> v,
                 std::set<std::pair<MVertex *, MVertex *> > &forbidden_edges)
 {
   if(v.size() != 4) {
-    Msg::Error(
-      "forbiddenExists() was passed a vector argument that was not of size 4.");
+    Msg::Error(_("forbiddenExists() was passed a vector argument that was not of size 4."));
     return 0;
   }
 
@@ -2153,8 +2152,7 @@ static void bruteForceEdgeQuadToTriHexa(
   // verify number of vertices
   // int n_lat;
   if(verts.size() != 8) {
-    Msg::Error(
-      "In bruteForceEdgeQuadToTriHexa(), number of vertices not equal 8.");
+    Msg::Error(_("In bruteForceEdgeQuadToTriHexa(), number of vertices not equal 8."));
     return;
   }
   // else
@@ -2359,7 +2357,7 @@ static int ExtrudeDiags(
         if(v[p] == v2) ind2 = p;
       }
       if(ind1 < 0 || ind2 < 0) {
-        Msg::Error("Error in ExtrudeDiags(): could not find vertex indices.");
+        Msg::Error(_("Error in ExtrudeDiags(): could not find vertex indices."));
         return 0;
       }
       // source verts:
@@ -4320,7 +4318,7 @@ static void MeshWithInternalVertex(GRegion *to, MElement *source,
     Msg::Error("Could not find extruded vertex (%.16g, %.16g, %.16g) in "
                "geometrical entity %d",
                centroid[0], centroid[1], centroid[2], to->tag());
-    Msg::Error("MeshWithInternalVertex() failed to find body-centered vertex.");
+    Msg::Error(_("MeshWithInternalVertex() failed to find body-centered vertex."));
     return;
   }
 
@@ -4412,7 +4410,7 @@ static inline void QuadToTriPriPyrTet(
 
   // BAD SHAPE
   if(m > 2 || m < 0) {
-    Msg::Error("In QuadToTriPriPyrTet(), bad number of degenerate corners.");
+    Msg::Error(_("In QuadToTriPriPyrTet(), bad number of degenerate corners."));
     return;
   }
 
@@ -5450,7 +5448,7 @@ static inline void QuadToTriHexPri(
 
   // BAD SHAPE
   if(m > 2 || m < 0) {
-    Msg::Error("In QuadToTriHexPri(), bad number of degenerate corners.");
+    Msg::Error(_("In QuadToTriHexPri(), bad number of degenerate corners."));
     return;
   }
 

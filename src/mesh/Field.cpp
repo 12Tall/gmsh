@@ -1296,13 +1296,13 @@ public:
     saAttr.bInheritHandle = TRUE;
     saAttr.lpSecurityDescriptor = nullptr;
     if(!CreatePipe(&_hIn, &hChildStd_OUT_Wr, &saAttr, 0))
-      Msg::Error("StdoutRd CreatePipe");
+      Msg::Error(_("StdoutRd CreatePipe"));
     if(!CreatePipe(&hChildStd_IN_Rd, &_hOut, &saAttr, 0))
-      Msg::Error("Stdin CreatePipe");
+      Msg::Error(_("Stdin CreatePipe"));
     if(!CreatePipe(&_hIn, &hChildStd_OUT_Wr, &saAttr, 0))
-      Msg::Error("StdoutRd CreatePipe");
+      Msg::Error(_("StdoutRd CreatePipe"));
     if(!SetHandleInformation(_hIn, HANDLE_FLAG_INHERIT, 0))
-      Msg::Error("Stdout SetHandleInformation");
+      Msg::Error(_("Stdout SetHandleInformation"));
     STARTUPINFO siStartInfo;
     BOOL bSuccess = FALSE;
     ZeroMemory(&piProcInfo, sizeof(PROCESS_INFORMATION));
@@ -1651,7 +1651,7 @@ public:
       }
     }
     else {
-      Msg::Warning("No vector or scalar value found in PostView field");
+      Msg::Warning(_("No vector or scalar value found in PostView field"));
     }
 
     if(l <= 0 && _cropNegativeValues) return MAX_LC;
@@ -1678,7 +1678,7 @@ public:
       }
     }
     else {
-      Msg::Warning("No vector value found in PostView field");
+      Msg::Warning(_("No vector value found in PostView field"));
     }
   }
   void operator()(double x, double y, double z, SMetric3 &metr,
@@ -3244,7 +3244,7 @@ void Field::putOnNewView(int viewTag)
 {
 #if defined(HAVE_POST)
   if(GModel::current()->getMeshStatus() < 1) {
-    Msg::Error("No mesh available to create the view: please mesh your model!");
+    Msg::Error(_("No mesh available to create the view: please mesh your model!"));
     return;
   }
   std::map<int, std::vector<double> > d;
@@ -3312,14 +3312,14 @@ double GenericField::operator()(double x, double y, double z, GEntity *ge)
   for(auto itcbs = cbs_with_data.begin(); itcbs != cbs_with_data.end();
       itcbs++, it++) {
     bool ok = (itcbs->first)(x, y, z, itcbs->second, (*it));
-    if(!ok) { Msg::Warning("GenericField error from callback"); }
+    if(!ok) { Msg::Warning(_("GenericField error from callback")); }
   }
 
   // Go over all extended callback functions
   for(auto itcbs = cbs_extended_with_data.begin();
       itcbs != cbs_extended_with_data.end(); itcbs++, it++) {
     bool ok = (itcbs->first)(x, y, z, ge, itcbs->second, (*it));
-    if(!ok) { Msg::Warning("GenericField error from callback"); }
+    if(!ok) { Msg::Warning(_("GenericField error from callback")); }
   }
 
   // Take minimum value

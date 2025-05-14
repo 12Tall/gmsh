@@ -47,11 +47,10 @@ HighOrderMeshPeriodicity::HighOrderMeshPeriodicity(
 
 void HighOrderMeshPeriodicity::fixPeriodicity()
 {
-  Msg::Debug("Correcting high order optimization for periodic connections");
+  Msg::Debug(_("Correcting high order optimization for periodic connections"));
   _relocateMasterVertices();
   _copyBackMasterVertices();
-  Msg::Debug(
-    "Finished correcting high order optimization for periodic connections");
+  Msg::Debug(_("Finished correcting high order optimization for periodic connections"));
 }
 
 void HighOrderMeshPeriodicity::_relocateMasterVertices()
@@ -291,7 +290,7 @@ HighOrderMeshPeriodicity::_inverse(const std::vector<double> &tfo)
 {
   std::vector<double> result(16, 0.);
   if(tfo.size() < 16) {
-    Msg::Error("Wrong size of affine transformation matrix");
+    Msg::Error(_("Wrong size of affine transformation matrix"));
     return result;
   }
   // Note that the last row of tfo must be (0 0 0 1)...

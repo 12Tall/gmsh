@@ -495,7 +495,7 @@ bool localSolverClient::resolveLogicExpr(std::vector<std::string> arguments)
     }
   }
   else
-    OLMsg::Error("Invalid logical expression");
+    OLMsg::Error(_("Invalid logical expression"));
   return condition;
 }
 

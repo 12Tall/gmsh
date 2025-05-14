@@ -1166,7 +1166,7 @@ void gmshGenerateOrderedMonomials(FuncSpaceData data,
                                   fullMatrix<double> &monomials)
 {
   if(data.getSerendipity())
-    Msg::Warning("Ordered monomials for serendipity elements not implemented");
+    Msg::Warning(_("Ordered monomials for serendipity elements not implemented"));
 
   int idx, order = data.getSpaceOrder();
 

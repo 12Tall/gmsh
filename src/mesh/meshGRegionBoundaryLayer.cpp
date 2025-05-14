@@ -247,7 +247,7 @@ public:
             MVertex *v = edges[i]->lines[j]->getVertex(k);
             auto it = _vertices.find(v);
             if(it == _vertices.end())
-              Msg::Error("Unknown node in boundary layer");
+              Msg::Error(_("Unknown node in boundary layer"));
             it->add_line(edges[i]->lines[j], edges[i]);
           }
         }
@@ -264,14 +264,14 @@ public:
         auto it = t_normals.find(t->getFace(0));
         SVector3 n;
         if(it == t_normals.end())
-          Msg::Error("Unknown face in boundary layer");
+          Msg::Error(_("Unknown face in boundary layer"));
         else
           n = it->second;
         for(int k = 0; k < 3; k++) {
           MVertex *v = t->getVertex(k);
           auto it = _vertices.find(v);
           if(it == _vertices.end())
-            Msg::Error("Unknown node in boundary layer");
+            Msg::Error(_("Unknown node in boundary layer"));
           it->add_triangle(t, n, bls[i]);
         }
       }
@@ -650,8 +650,7 @@ public:
                                                          new_vertices);
             }
             else {
-              Msg::Warning(
-                "there is a seam... and we should extrude on that seam");
+              Msg::Warning(_("there is a seam... and we should extrude on that seam"));
             }
           }
         }
@@ -719,7 +718,7 @@ public:
             }
           }
           if(!gf)
-            Msg::Error("Topological error in 3D boundary layer generation");
+            Msg::Error(_("Topological error in 3D boundary layer generation"));
           GPoint gp = gf->closestPoint(p, initialGuess);
           printf("adding a point %g %g %g in face %d\n", n.x(), n.y(), n.z(),
                  gf->tag());
@@ -942,7 +941,7 @@ public:
             t = bounds.high() - thk / tgt.norm();
           }
           else
-            Msg::Error("Topological error in boundary layer");
+            Msg::Error(_("Topological error in boundary layer"));
           GPoint gp = ge->point(t);
           MEdgeVertex *mev = new MEdgeVertex(gp.x(), gp.y(), gp.z(), ge, t);
           ge->mesh_vertices.push_back(mev);
@@ -1276,20 +1275,20 @@ bool createBoundaryLayerOneLayer(GRegion *gr, std::vector<GFace *> &bls)
 
   if(basic) { mgr.extrude_vertices_basic(); }
   else {
-    Msg::Info("Classifying ridges (INTERNAL / EXTERNAL / FLAT)");
+    Msg::Info(_("Classifying ridges (INTERNAL / EXTERNAL / FLAT)"));
     mgr.classify_ridges();
-    Msg::Info("Extrusion of vertices for internal corners");
+    Msg::Info(_("Extrusion of vertices for internal corners"));
     mgr.extrude_vertices_on_edges();
-    Msg::Info("Extrusion of vertices for internal edges");
+    Msg::Info(_("Extrusion of vertices for internal edges"));
     mgr.extrude_vertices_on_faces();
-    Msg::Info("Extruding ridges on faces");
+    Msg::Info(_("Extruding ridges on faces"));
     mgr.extrude_ridges_on_faces();
-    Msg::Info("Treating REGULAR vertices");
+    Msg::Info(_("Treating REGULAR vertices"));
     mgr.extrude_vertices();
-    Msg::Info("Treating corners with one external ridge and others internal");
+    Msg::Info(_("Treating corners with one external ridge and others internal"));
     mgr.extrude_one_external();
 
-    Msg::Info("Generating ONLE LAYER of 3D elements");
+    Msg::Info(_("Generating ONLE LAYER of 3D elements"));
     mgr.extrude_external_corners();
     mgr.extrude_ridges();
   }

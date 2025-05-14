@@ -434,7 +434,7 @@ static bool GetGeometryOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_geometry_tolerance(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -447,7 +447,7 @@ static bool GetGeometryOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_geometry_scaling_factor(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -506,7 +506,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
       CTX::instance()->batchSomeValue = atof(argv[i].c_str());
     }
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -517,7 +517,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
       CTX::instance()->batchSomeValue = atof(argv[i].c_str());
     }
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -532,7 +532,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
       opt_mesh_partition_num(0, GMSH_SET, atoi(argv[i++].c_str()));
     }
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -634,7 +634,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
                  "Gmsh optimizes tetrahedral meshes by default");
     Msg::Warning("Use '-optimize_threshold threshold' to "
                  "control which elements are optimized");
-    Msg::Warning("Option '-optimize_threshold 0' leads to no optimization");
+    Msg::Warning(_("Option '-optimize_threshold 0' leads to no optimization"));
     opt_mesh_optimize(0, GMSH_SET, 1);
     i++;
   }
@@ -643,7 +643,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_optimize_threshold(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -660,7 +660,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_ho_threshold_min(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -669,7 +669,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_ho_threshold_max(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -678,7 +678,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_ho_nlayers(0, GMSH_SET, atoi(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -687,7 +687,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       CTX::instance()->debugSurface = atoi(argv[i++].c_str());
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -696,7 +696,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_aniso_max(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing anisotropy ratio");
+      Msg::Error(_("Missing anisotropy ratio"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -705,7 +705,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_smooth_ratio(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing smooth ratio");
+      Msg::Error(_("Missing smooth ratio"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -714,7 +714,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       CTX::instance()->bgmFileName = argv[i++];
     else {
-      Msg::Error("Missing file name");
+      Msg::Error(_("Missing file name"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -725,7 +725,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
       CTX::instance()->batch = 9;
     }
     else{
-      Msg::Error("Missing number of layers per gap");
+      Msg::Error(_("Missing number of layers per gap"));
       if(exitOnError) Msg::Exit(1);
     }
     i++;
@@ -735,7 +735,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
         CTX::instance()->mesh.lcFromCurvature = 0;
     }
     else{
-      Msg::Error("Missing number of elements density");
+      Msg::Error(_("Missing number of elements density"));
       if(exitOnError) Msg::Exit(1);
     }
     i++;
@@ -743,11 +743,11 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
       CTX::instance()->mesh.gradation = atof(argv[i].c_str());
       if(CTX::instance()->mesh.gradation <= 1.){
         CTX::instance()->mesh.gradation = 1.05;
-        Msg::Info("Gradation must be > 1 : set to 1.05");
+        Msg::Info(_("Gradation must be > 1 : set to 1.05"));
       }
     }
     else{
-      Msg::Error("Missing gradation");
+      Msg::Error(_("Missing gradation"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -757,7 +757,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
       opt_mesh_msh_file_version(0, GMSH_SET, atof(argv[i++].c_str()));
     }
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -790,7 +790,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_scaling_factor(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -799,7 +799,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_rand_factor(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -808,12 +808,12 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size()) {
       opt_mesh_lc_factor(0, GMSH_SET, atof(argv[i++].c_str()));
       if(CTX::instance()->mesh.lcFactor <= 0.0) {
-        Msg::Error("Mesh element size factor must be > 0");
+        Msg::Error(_("Mesh element size factor must be > 0"));
         if(exitOnError) Msg::Exit(1);
       }
     }
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -822,7 +822,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_lc_min(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -831,12 +831,12 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size()) {
       opt_mesh_lc_max(0, GMSH_SET, atof(argv[i++].c_str()));
       if(CTX::instance()->mesh.lcMax <= 0.0) {
-        Msg::Error("Maximum length size must be > 0");
+        Msg::Error(_("Maximum length size must be > 0"));
         if(exitOnError) Msg::Exit(1);
       }
     }
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -845,7 +845,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_lc_extend_from_boundary(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -859,7 +859,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_tolerance_edge_length(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -869,12 +869,12 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
       opt_mesh_lc_integration_precision(0, GMSH_SET,
                                         atof(argv[i++].c_str()));
       if(CTX::instance()->mesh.lcIntegrationPrecision <= 0.0) {
-        Msg::Error("Integration accuracy must be > 0");
+        Msg::Error(_("Integration accuracy must be > 0"));
         if(exitOnError) Msg::Exit(1);
       }
     }
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -883,7 +883,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_allow_swap_edge_angle(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -893,7 +893,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
       opt_mesh_lc_from_curvature(0, GMSH_SET, atof(argv[i++].c_str()));
     }
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -906,7 +906,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_nb_smoothing(0, GMSH_SET, atoi(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -915,7 +915,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_order(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -924,7 +924,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_mesh_num_sub_edges(0, GMSH_SET, atof(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -934,7 +934,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       CTX::instance()->meshStatReportFileName = argv[i++];
     else {
-      Msg::Error("Missing argument");
+      Msg::Error(_("Missing argument"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -944,7 +944,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       CTX::instance()->meshStatReportFileName = argv[i++];
     else {
-      Msg::Error("Missing argument");
+      Msg::Error(_("Missing argument"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -997,13 +997,13 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
       else if(argv[i] == "initial3d")
         opt_mesh_algo3d(0, GMSH_SET, ALGO_3D_INITIAL_ONLY);
       else {
-        Msg::Error("Unknown mesh algorithm");
+        Msg::Error(_("Unknown mesh algorithm"));
         if(exitOnError) Msg::Exit(1);
       }
       i++;
     }
     else {
-      Msg::Error("Missing algorithm");
+      Msg::Error(_("Missing algorithm"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1036,7 +1036,7 @@ static bool GetMeshOption(const std::vector<std::string> &argv,
       i++;
     }
     else {
-      Msg::Error("Missing format");
+      Msg::Error(_("Missing format"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1078,7 +1078,7 @@ static bool GetPostProcessingOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_post_link(0, GMSH_SET, atoi(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1120,7 +1120,7 @@ static bool GetSolverOption(const std::vector<std::string> &argv,
       i += 1;
     }
     else {
-      Msg::Error("Missing client name and/or address of ONELAB server");
+      Msg::Error(_("Missing client name and/or address of ONELAB server"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1129,7 +1129,7 @@ static bool GetSolverOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       Msg::InitializeOnelab("GmshRemote", argv[i++]);
     else {
-      Msg::Error("Missing string");
+      Msg::Error(_("Missing string"));
       if(exitOnError) Msg::Exit(1);
     }
     CTX::instance()->batch = -3;
@@ -1145,7 +1145,7 @@ static bool GetSolverOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_solver_octave_interpreter(0, GMSH_SET, argv[i++]);
     else {
-      Msg::Error("Missing interpreter name");
+      Msg::Error(_("Missing interpreter name"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1154,7 +1154,7 @@ static bool GetSolverOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_solver_python_interpreter(0, GMSH_SET, argv[i++]);
     else {
-      Msg::Error("Missing interpreter name");
+      Msg::Error(_("Missing interpreter name"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1178,7 +1178,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
     i++;
     if(i < argv.size()) { Msg::SetLogFileName(argv[i++]); }
     else {
-      Msg::Error("Missing filename");
+      Msg::Error(_("Missing filename"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1234,7 +1234,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
         opt_general_watch_file_pattern(0, GMSH_SET, tmp);
     }
     else {
-      Msg::Error("Missing string");
+      Msg::Error(_("Missing string"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1243,7 +1243,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       ParseString(argv[i++]);
     else {
-      Msg::Error("Missing string");
+      Msg::Error(_("Missing string"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1267,7 +1267,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
       i += 2;
     }
     else {
-      Msg::Error("Missing name and/or value for string definition");
+      Msg::Error(_("Missing name and/or value for string definition"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1292,7 +1292,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
       i += 2;
     }
     else {
-      Msg::Error("Missing name and/or value for number definition");
+      Msg::Error(_("Missing name and/or value for number definition"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1318,8 +1318,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
       Msg::GetCommandLineNumbers()[n] = v;
     }
     else {
-      Msg::Error(
-                 "Missing name and/or value for definition of list of numbers");
+      Msg::Error(_("Missing name and/or value for definition of list of numbers"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1328,7 +1327,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       ParseFile(argv[i++], true);
     else {
-      Msg::Error("Missing file name");
+      Msg::Error(_("Missing file name"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1342,7 +1341,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       CTX::instance()->outputFileName = argv[i++];
     else {
-      Msg::Error("Missing file name");
+      Msg::Error(_("Missing file name"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1351,7 +1350,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       CTX::instance()->numWindows = atoi(argv[i++].c_str());
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1360,7 +1359,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       CTX::instance()->numTiles = atoi(argv[i++].c_str());
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1369,7 +1368,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_general_background_image_filename(0, GMSH_SET, argv[i++]);
     else {
-      Msg::Error("Missing filename");
+      Msg::Error(_("Missing filename"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1401,7 +1400,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       Msg::SetVerbosity(atoi(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1410,7 +1409,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_general_num_threads(0, GMSH_SET, atoi(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1445,7 +1444,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_general_fontsize(0, GMSH_SET, atoi(argv[i++].c_str()));
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1454,7 +1453,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       CTX::instance()->deltaFontSize = atoi(argv[i++].c_str());
     else {
-      Msg::Error("Missing number");
+      Msg::Error(_("Missing number"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1463,7 +1462,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_general_gui_theme(0, GMSH_SET, argv[i++]);
     else {
-      Msg::Error("Missing argument");
+      Msg::Error(_("Missing argument"));
       if(exitOnError) Msg::Exit(1);
     }
   }
@@ -1472,7 +1471,7 @@ static bool GetOtherOption(const std::vector<std::string> &argv,
     if(i < argv.size())
       opt_general_display(0, GMSH_SET, argv[i++]);
     else {
-      Msg::Error("Missing argument");
+      Msg::Error(_("Missing argument"));
       if(exitOnError) Msg::Exit(1);
     }
   }

@@ -1960,7 +1960,7 @@ optionWindow::optionWindow(int deltaFontSize)
         i++;
         j++;
         if(i >= general.color.size()) {
-          Msg::Error("General color widget vector should be resized");
+          Msg::Error(_("General color widget vector should be resized"));
           break;
         }
       }
@@ -2401,7 +2401,7 @@ optionWindow::optionWindow(int deltaFontSize)
         i++;
         j++;
         if(i >= geo.color.size()) {
-          Msg::Error("Geometry color widget vector should be resized");
+          Msg::Error(_("Geometry color widget vector should be resized"));
           break;
         }
       }
@@ -2898,7 +2898,7 @@ optionWindow::optionWindow(int deltaFontSize)
         i++;
         j++;
         if(i >= mesh.color.size()) {
-          Msg::Error("Mesh color widget vector should be resized");
+          Msg::Error(_("Mesh color widget vector should be resized"));
           break;
         }
       }
@@ -3809,7 +3809,7 @@ optionWindow::optionWindow(int deltaFontSize)
         i++;
         j++;
         if(i >= view.color.size()) {
-          Msg::Error("View color widget vector should be resized");
+          Msg::Error(_("View color widget vector should be resized"));
           break;
         }
       }

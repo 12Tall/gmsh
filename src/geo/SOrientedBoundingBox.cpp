@@ -193,7 +193,7 @@ SOrientedBoundingBox::buildOBB(std::vector<SPoint3> &vertices)
   B.mult(B.transpose(), covariance);
   covariance.scale(1. / (num_vertices - 1));
   /*
-  Msg::Debug("Covariance matrix");
+  Msg::Debug(_("Covariance matrix"));
   Msg::Debug("%f %f %f", covariance(0,0),covariance(0,1),covariance(0,2) );
   Msg::Debug("%f %f %f", covariance(1,0),covariance(1,1),covariance(1,2) );
   Msg::Debug("%f %f %f", covariance(2,0),covariance(2,1),covariance(2,2) );
@@ -545,7 +545,7 @@ SOrientedBoundingBox::buildOBB(std::vector<SPoint3> &vertices)
   return new SOrientedBoundingBox(center, size[0], size[1], size[2], Axis1,
                                   Axis2, Axis3);
 #else
-  Msg::Error("SOrientedBoundingBox requires mesh module");
+  Msg::Error(_("SOrientedBoundingBox requires mesh module"));
   return 0;
 #endif
 }

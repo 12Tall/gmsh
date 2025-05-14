@@ -123,7 +123,7 @@ void dofManagerBase::_parallelFinalize()
         Dof d(recv0[index][j * 2], recv0[index][j * 2 + 1]);
         auto it = unknown.find(d);
         if(it == unknown.end())
-          Msg::Error("ghost Dof does not exist on parent process");
+          Msg::Error(_("ghost Dof does not exist on parent process"));
         send1[index][j] = it->second;
         parentByProc[index][j] = d;
       }

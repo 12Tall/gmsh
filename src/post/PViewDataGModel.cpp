@@ -613,7 +613,7 @@ int PViewDataGModel::getNumValues(int step, int ent, int ele)
     return getNumComponents(step, ent, ele);
   }
   else {
-    Msg::Error("getNumValues() should not be used on this type of view");
+    Msg::Error(_("getNumValues() should not be used on this type of view"));
     return getNumComponents(step, ent, ele);
   }
 }
@@ -632,7 +632,7 @@ void PViewDataGModel::getValue(int step, int ent, int ele, int idx, double &val)
     val = _steps[step]->getData(num)[comp];
   }
   else {
-    Msg::Error("getValue(index) should not be used on this type of view");
+    Msg::Error(_("getValue(index) should not be used on this type of view"));
   }
 }
 
@@ -769,7 +769,7 @@ bool PViewDataGModel::combineTime(nameData &nd)
   for(std::size_t i = 0; i < nd.data.size(); i++) {
     data[i] = dynamic_cast<PViewDataGModel *>(nd.data[i]);
     if(!data[i]) {
-      Msg::Error("Cannot combine hybrid data");
+      Msg::Error(_("Cannot combine hybrid data"));
       return false;
     }
   }

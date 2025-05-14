@@ -14,6 +14,8 @@
 
 #include "GmshConfig.h"
 
+#include "I18n.h"
+
 class GmshClient;
 namespace onelab {
   class client;

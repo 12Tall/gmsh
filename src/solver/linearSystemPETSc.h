@@ -151,7 +151,7 @@ template <class scalar> class linearSystemPETSc : public linearSystem<scalar> {
 public:
   linearSystemPETSc()
   {
-    Msg::Error("PETSc is not available in this version of Gmsh");
+    Msg::Error(_("PETSc is not available in this version of Gmsh"));
   }
   bool isAllocated() const { return false; }
   void allocate(int nbRows) {}

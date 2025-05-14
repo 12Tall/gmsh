@@ -724,7 +724,7 @@ static void getNodeCopies(GFace *gf,
           else if(v->onWhat()->dim() == 1)
             v->getParameter(0, t);
           else
-            Msg::Error("a seam edge without CAD ?");
+            Msg::Error(_("a seam edge without CAD ?"));
           param = e->reparamOnFace(gf, t, direction);
         }
         else {

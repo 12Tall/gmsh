@@ -64,7 +64,7 @@ public:
         if(!strcmp(menu_font_names[i].label(), fontname)) return i;
     }
     Msg::Error("Unknown font \"%s\" (using \"Helvetica\" instead)", fontname);
-    Msg::Info("Available fonts:");
+    Msg::Info(_("Available fonts:"));
     for(int i = 0; i < NUM_FONTS; i++)
       Msg::Info("  \"%s\"", menu_font_names[i].label());
     return 4;
@@ -107,7 +107,7 @@ public:
     }
     Msg::Error("Unknown font alignment \"%s\" (using \"Left\" instead)",
                alignstr);
-    Msg::Info("Available font alignments:");
+    Msg::Info(_("Available font alignments:"));
     Msg::Info("  \"Left\" (or \"BottomLeft\")");
     Msg::Info("  \"Center\" (or \"BottomCenter\")");
     Msg::Info("  \"Right\" (or \"BottomRight\")");

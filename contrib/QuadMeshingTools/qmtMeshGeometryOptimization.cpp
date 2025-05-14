@@ -500,8 +500,7 @@ namespace QMT {
       std::vector<MVertex *> bnd;
       bool okb = buildBoundary(adjElts, bnd);
       if(!okb) {
-        Msg::Warning(
-          "buildCondensedStructure: failed to build boundary for stencil");
+        Msg::Warning(_("buildCondensedStructure: failed to build boundary for stencil"));
         return false;
       }
       if(bnd.back() == bnd.front()) bnd.pop_back();
@@ -527,7 +526,7 @@ namespace QMT {
         if(v0 != NULL) break;
       }
       if(v0 == NULL) {
-        Msg::Warning("buildCondensedStructure: failed to found v0");
+        Msg::Warning(_("buildCondensedStructure: failed to found v0"));
         return false;
       }
       for(size_t j = 0; j < bnd.size(); ++j) {
@@ -553,7 +552,7 @@ namespace QMT {
         auto it = old2new.find(bnd[j]);
         if(it != old2new.end()) { oneRings[v][j] = it->second; }
         else {
-          Msg::Error("buildCondensedStructure: vertex not found in old2new");
+          Msg::Error(_("buildCondensedStructure: vertex not found in old2new"));
           return false;
         }
       }
@@ -576,8 +575,7 @@ namespace QMT {
     bool okc = buildCondensedStructure(elements, freeVertices, old2new, new2old,
                                        quads, v2q, oneRings, points);
     if(!okc) {
-      Msg::Warning(
-        "buildCondensedStructure: failed to build condensed representation");
+      Msg::Warning(_("buildCondensedStructure: failed to build condensed representation"));
       return false;
     }
 
@@ -716,7 +714,7 @@ namespace QMT {
         SPoint2 uv2(0., 0.);
         bool okr = reparamMeshVertexOnFaceWithRef(patch.gf, v2, uv, uv2);
         if(!okr) {
-          Msg::Debug("getPlanarParametrization | failed to reparam v2");
+          Msg::Debug(_("getPlanarParametrization | failed to reparam v2"));
           return false;
         }
         vertexParam[v2] = uv2;
@@ -801,12 +799,12 @@ namespace QMT {
       uvs[v][1] = x_v[v];
     }
     if(!solveOk) {
-      Msg::Error("failed to solve linear system to solve uv");
+      Msg::Error(_("failed to solve linear system to solve uv"));
       return false;
     }
 
 #else
-    Msg::Error("solveLaplaceLinearSystem requires the EIGEN module");
+    Msg::Error(_("solveLaplaceLinearSystem requires the EIGEN module"));
     return -1;
 #endif
     return true;
@@ -1090,7 +1088,7 @@ int patchOptimizeGeometryGlobal(GFaceMeshPatch &patch, GeomOptimStats &stats)
   bool oks =
     buildCondensedStructure(patch.intVertices, patch.elements, old2new, v2v);
   if(!oks) {
-    Msg::Debug("optimize geometry global: failed to build edge graph");
+    Msg::Debug(_("optimize geometry global: failed to build edge graph"));
     return -1;
   }
 
@@ -1116,7 +1114,7 @@ int patchOptimizeGeometryGlobal(GFaceMeshPatch &patch, GeomOptimStats &stats)
       MVertex *v = patch.bdrVertices[loop][i];
       auto it = old2new.find(v);
       if(it == old2new.end()) {
-        Msg::Warning("optimize geometry global: bdr vertex not found in old2new");
+        Msg::Warning(_("optimize geometry global: bdr vertex not found in old2new"));
         return -1;
       }
       size_t idx = it->second;
@@ -1134,7 +1132,7 @@ int patchOptimizeGeometryGlobal(GFaceMeshPatch &patch, GeomOptimStats &stats)
   /* Laplacian smoothing via linear system */
   bool ok = solveLaplaceLinearSystem(nInterior, v2v, uvs);
   if(!ok) {
-    Msg::Warning("optimize geometry global: failed to solve linear system");
+    Msg::Warning(_("optimize geometry global: failed to solve linear system"));
     return -1;
   }
 
@@ -1201,8 +1199,7 @@ bool kernelLoopWithParametrization(GFaceMeshPatch &patch,
     gf, patch.elements, patch.intVertices, point_uv, one_ring_first,
     one_ring_values, new2old);
   if(!okb) {
-    Msg::Warning(
-      "optimize geometry kernel: failed to build adjacency datastructures");
+    Msg::Warning(_("optimize geometry kernel: failed to build adjacency datastructures"));
     return false;
   }
   OneRing ring;
@@ -1249,7 +1246,7 @@ bool kernelLoopWithParametrization(GFaceMeshPatch &patch,
       vec5 pos = point_uv[v];
       vec3 normal = sign * gf->normal(SPoint2(pos[3], pos[4]));
       if(length2(normal) == 0.) {
-        Msg::Warning("optimize geometry kernel: CAD normal length is 0 !");
+        Msg::Warning(_("optimize geometry kernel: CAD normal length is 0 !"));
         continue;
       }
       normalize(normal);
@@ -1314,7 +1311,7 @@ bool movePointWithKernelAndProjection(
   bool smartVariant = false)
 {
   if(project && sp == nullptr) {
-    Msg::Error("cannot project with surface projector");
+    Msg::Error(_("cannot project with surface projector"));
     return false;
   }
 
@@ -1342,7 +1339,7 @@ bool movePointWithKernelAndProjection(
     if(project) { /* Projection on surface */
       proj = sp->closestPoint(newPos.data(), false, false);
       if(!proj.succeeded()) {
-        Msg::Debug("kernel smoothing: projection failed");
+        Msg::Debug(_("kernel smoothing: projection failed"));
         return false;
       }
       newPos = {proj.x(), proj.y(), proj.z()};
@@ -1392,7 +1389,7 @@ bool movePointWithKernelAndProjection(
     if(project) { /* Projection on surface */
       proj = sp->closestPoint(newPos.data(), false, false);
       if(!proj.succeeded()) {
-        Msg::Debug("kernel smoothing: projection failed");
+        Msg::Debug(_("kernel smoothing: projection failed"));
         return false;
       }
       newPos = {proj.x(), proj.y(), proj.z()};
@@ -1421,7 +1418,7 @@ bool kernelLoopWithProjection(GFaceMeshPatch &patch,
 {
   GFace *gf = patch.gf;
   if(opt.sp == nullptr) {
-    Msg::Error("kernel loop with projection: no surface projector");
+    Msg::Error(_("kernel loop with projection: no surface projector"));
     return false;
   }
 
@@ -1439,8 +1436,7 @@ bool kernelLoopWithProjection(GFaceMeshPatch &patch,
       buildCondensedStructure(patch.elements, patch.intVertices, old2new,
                               new2old, quads, v2q, oneRings, points);
     if(!okc) {
-      Msg::Warning(
-        "kernelLoopWithProjection: failed to build condensed representation");
+      Msg::Warning(_("kernelLoopWithProjection: failed to build condensed representation"));
       return false;
     }
     compress(oneRings, one_ring_first, one_ring_values);
@@ -1821,8 +1817,7 @@ bool patchProjectOnSurface(GFaceMeshPatch &patch, SurfaceProjector *sp)
       }
     }
     else {
-      Msg::Error(
-        "patch projection: no parametrization and no surface projector");
+      Msg::Error(_("patch projection: no parametrization and no surface projector"));
       return false;
     }
   }
@@ -1924,7 +1919,7 @@ bool optimizeGeometryQuadMesh(GFace *gf, SurfaceProjector *sp, double timeMax,
     SmoothingKernel kernelRegular = SmoothingKernel::WinslowFDM;
 
     if(false && gf->tag() == 100170) {
-      Msg::Warning("SPECIAL SMOOTHING FOR DEBUGGING");
+      Msg::Warning(_("SPECIAL SMOOTHING FOR DEBUGGING"));
       niter = 100;
       countMax = 5;
       opt.dxGlobalMax = 1.e-5;
@@ -1965,7 +1960,7 @@ bool optimizeGeometryQuadMesh(GFace *gf, SurfaceProjector *sp, double timeMax,
       if(minSICNa < 0.75 * minSICNb) keep = false;
 
       if(false && gf->tag() == 100170) {
-        Msg::Warning("SPECIAL SMOOTHING FOR DEBUGGING");
+        Msg::Warning(_("SPECIAL SMOOTHING FOR DEBUGGING"));
         keep = true;
         niter *= 1.5;
         running = true;
@@ -2148,8 +2143,7 @@ bool GeometryOptimizer::initialize(GFaceMeshPatch &patch, SurfaceProjector *_sp)
   bool okc = buildCondensedStructure(patch.elements, patch.intVertices, old2new,
                                      new2old, quads, v2q, oneRings, points);
   if(!okc) {
-    Msg::Warning(
-      "GeometryOptimizer initialize: failed to build condensed representation");
+    Msg::Warning(_("GeometryOptimizer initialize: failed to build condensed representation"));
     return false;
   }
   compress(oneRings, one_ring_first, one_ring_values);
@@ -2318,11 +2312,11 @@ bool GeometryOptimizer::smoothWithWinslowUntangler(PlanarMethod planar,
                                                    double nonPlanarRatioMax)
 {
   if(nFree == 0) {
-    Msg::Debug("geometry optimize: no free vertices, nothing to optimize");
+    Msg::Debug(_("geometry optimize: no free vertices, nothing to optimize"));
     return true;
   }
   if(nFree == points.size()) {
-    Msg::Debug("geometry optimize: no locked vertices, cannot optimize");
+    Msg::Debug(_("geometry optimize: no locked vertices, cannot optimize"));
     return false;
   }
   vector<bool> locked(points.size(), false);
@@ -2358,7 +2352,7 @@ bool GeometryOptimizer::smoothWithWinslowUntangler(PlanarMethod planar,
     computeMeanPlaneSimple(vInit, mp);
     double denom = std::pow(mp.a, 2) + std::pow(mp.b, 2) + std::pow(mp.c, 2);
     if(denom < 1.e-16) {
-      Msg::Warning("geometry optimize: invalid mean plane");
+      Msg::Warning(_("geometry optimize: invalid mean plane"));
       return false;
     }
     normal = SVector3(mp.a, mp.b, mp.c);
@@ -2399,7 +2393,7 @@ bool GeometryOptimizer::smoothWithWinslowUntangler(PlanarMethod planar,
     std::unordered_map<MVertex *, SPoint2> vertexParam;
     bool okp = getPlanarParametrization(*patchPtr, vertexParam);
     if(!okp) {
-      Msg::Debug("- Untangle: failed to get planar parametrization from CAD");
+      Msg::Debug(_("- Untangle: failed to get planar parametrization from CAD"));
       return false;
     }
     for(size_t v = 0; v < points.size(); ++v) {
@@ -2426,7 +2420,7 @@ bool GeometryOptimizer::smoothWithWinslowUntangler(PlanarMethod planar,
   buildTrianglesAndTargetsFromElements(points_2D, quads, triangles,
                                        triIdealShapes);
 #else
-  Msg::Error("smoothWithWinslowUntangler requires WinslowUntangler");
+  Msg::Error(_("smoothWithWinslowUntangler requires WinslowUntangler"));
 #endif
 
   /* Planar smoothing with Winslow untangler */
@@ -2446,9 +2440,9 @@ bool GeometryOptimizer::smoothWithWinslowUntangler(PlanarMethod planar,
   bool oku =
     untangle_triangles_2D(points_2D, locked, triangles, triIdealShapes, lambda,
                           iterMaxInner, iterMaxOuter, nFailMax, timeMax);
-  if(!oku) { Msg::Debug("---- failed to untangle"); }
+  if(!oku) { Msg::Debug(_("---- failed to untangle")); }
 #else
-  Msg::Error("smoothWithWinslowUntangler requires WinslowUntangler");
+  Msg::Error(_("smoothWithWinslowUntangler requires WinslowUntangler"));
 #endif
 
   // {
@@ -2482,7 +2476,7 @@ bool GeometryOptimizer::smoothWithWinslowUntangler(PlanarMethod planar,
           if(uvs.size() > 0) { uvs[v] = {proj.u(), proj.v()}; }
         }
         else {
-          Msg::Warning("sp proj failed");
+          Msg::Warning(_("sp proj failed"));
         }
       }
       if(patchPtr->gf->haveParametrization() &&
@@ -2498,7 +2492,7 @@ bool GeometryOptimizer::smoothWithWinslowUntangler(PlanarMethod planar,
           if(uvs.size() > 0) { uvs[v] = {proj.u(), proj.v()}; }
         }
         else {
-          Msg::Warning("CAD proj failed");
+          Msg::Warning(_("CAD proj failed"));
         }
       }
     }
@@ -2568,7 +2562,7 @@ bool GeometryOptimizer::smoothWithWinslowUntangler(PlanarMethod planar,
 
 bool optimizeGeometryQuadqs(GModel *gm)
 {
-  Msg::Info("Optimize geometry of quad mesh ...");
+  Msg::Info(_("Optimize geometry of quad mesh ..."));
 
   vector<GFace *> faces = model_faces(gm);
   for(size_t f = 0; f < faces.size(); ++f) {

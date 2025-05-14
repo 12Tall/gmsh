@@ -72,7 +72,7 @@ namespace QMT {
   {
     if(B_disk_quadrangulations.size() != 0) return false;
 
-    Msg::Info("loading disk quadrangulations ...");
+    Msg::Info(_("loading disk quadrangulations ..."));
     B_disk_quadrangulations.reserve(20);
     B_BVL_ids.reserve(20);
     // std::string data(disk_quadrangulations);
@@ -379,8 +379,7 @@ namespace QMT {
       for(MElement *e : newElements) delete e;
       newVertices.clear();
       newElements.clear();
-      Msg::Error(
-        "getDiskQuadrangulationRemeshing: bdr quad edge not found, weird");
+      Msg::Error(_("getDiskQuadrangulationRemeshing: bdr quad edge not found, weird"));
       return false;
     }
 
@@ -547,8 +546,7 @@ int remeshLocalWithDiskQuadrangulation(
     bool ok = getDiskQuadrangulationRemeshing(
       gf, bdrVertices, rotation, quads, patch.intVertices, patch.elements);
     if(!ok) {
-      Msg::Debug(
-        "disk quandrangulation remeshing: failed to remesh small cavity");
+      Msg::Debug(_("disk quandrangulation remeshing: failed to remesh small cavity"));
       continue;
     }
     Msg::Debug("disk quadrangulation remeshing: try %li/%li, dq=[%li,%i], %li "

@@ -43,13 +43,13 @@ int initializeOctantBuckets(double *_orig, double *_size, int _maxElem,
   (*globalPara)->numBuckets = initial_buckets_num;
   *buckets_head = new octantBucket;
   if(!(*buckets_head)) {
-    Msg::Error("Could not allocate octree buckets");
+    Msg::Error(_("Could not allocate octree buckets"));
     return (0);
   } // if could not allocate buckets
 
   buckets = new octantBucket[8];
   if(!buckets) {
-    Msg::Error("Could not allocate octree buckets");
+    Msg::Error(_("Could not allocate octree buckets"));
     return (0);
   }
 
@@ -170,7 +170,7 @@ int addElement2Bucket(octantBucket *_bucket, void *_element, double *_minBB,
         ptr2 = ptr1;
         ptr1 = ptr1->next;
         if(ptrBucket == nullptr) {
-          Msg::Error("Null bucket in octree");
+          Msg::Error(_("Null bucket in octree"));
           return 0;
         }
         ptr2->next = ptrBucket->lhead;
@@ -226,7 +226,7 @@ octantBucket *findElementBucket(octantBucket *_buckets_head, double *_pt)
       }
     } // for loop i
     if(i == num) {
-      // Msg::Error("No bucket contains the given point!");
+      // Msg::Error(_("No bucket contains the given point!"));
       return nullptr;
     }
   } // for while loop
@@ -245,7 +245,7 @@ int subdivideOctantBucket(octantBucket *_bucket, globalInfo *_globalPara)
   // _bucket->next  = (octantBucket *) calloc(numBuck,sizeof(octantBucket));
 
   if(!_bucket->next) {
-    Msg::Error("Could not allocate octree buckets");
+    Msg::Error(_("Could not allocate octree buckets"));
     return 0;
   }
 
@@ -309,7 +309,7 @@ void *searchElement(octantBucket *_buckets_head, double *_pt,
   if(ptrBucket == nullptr) {
     // this is not an error
     // TODO RE ENABLE MSG
-    // Msg::Debug("Could not find point in octree (in search element)");
+    // Msg::Debug(_("Could not find point in octree (in search element)"));
     return nullptr;
   }
 
@@ -403,7 +403,7 @@ void *searchAllElements(octantBucket *_buckets_head, double *_pt,
 
   ptrBucket = findElementBucket(_buckets_head, _pt);
   if(ptrBucket == nullptr) {
-    Msg::Debug("Could not find point in octree (in search all elements)");
+    Msg::Debug(_("Could not find point in octree (in search all elements)"));
     return nullptr;
   }
 
@@ -441,7 +441,7 @@ void *searchAllElements(octantBucket *_buckets_head, double *_pt,
 
   if(flag1) return (void *)(_elements);
 
-  // Msg::Warning("This point is not found in any element! It is not in the
-  // domain");
+  // Msg::Warning(_("This point is not found in any element! It is not in the
+  // domain"));
   return nullptr;
 }

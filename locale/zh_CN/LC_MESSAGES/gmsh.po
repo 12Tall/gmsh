@@ -1,0 +1,4920 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-14 09:56+0800\n"
+"PO-Revision-Date: 2025-05-14 09:58+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#: src/post/PViewDataGModel.cpp:616
+msgid "getNumValues() should not be used on this type of view"
+msgstr "不应在此类视图中使用 getNumValues()"
+
+#: src/post/PViewDataGModel.cpp:635
+msgid "getValue(index) should not be used on this type of view"
+msgstr "不应在此类视图上使用 getValue(index)"
+
+#: src/post/PViewDataGModel.cpp:772 src/post/PViewDataList.cpp:713
+#: src/post/PViewDataList.cpp:840
+msgid "Cannot combine hybrid data"
+msgstr "无法合并混合数据"
+
+#: src/post/PViewDataList.cpp:67
+msgid "Wrong number of values while adding step in list-based view"
+msgstr "在基于列表的视图中添加步骤时，数值数量出错"
+
+#: src/post/PViewDataList.cpp:705
+msgid "Cannot combine views having different number of time steps"
+msgstr "无法合并具有不同时间步数的视图"
+
+#: src/post/PViewDataList.cpp:976
+msgid "No constant number of nodes for polygons and polyhedra"
+msgstr "多边形和多面体的节点数量不固定"
+
+#: src/post/PViewDataList.cpp:1209
+msgid "Wrong type in PViewDataList"
+msgstr "PViewDataList 中的错误类型"
+
+#: src/post/PViewDataGModelIO_MED.cpp:64 src/post/PViewDataGModelIO_MED.cpp:108
+msgid "Could not get number of components for MED field"
+msgstr "无法获取 MED 字段的组件数"
+
+#: src/post/PViewDataGModelIO_MED.cpp:82 src/post/PViewDataGModelIO_MED.cpp:126
+msgid "Could not get MED field info"
+msgstr "无法获取 MED 字段信息"
+
+#: src/post/PViewDataGModelIO_MED.cpp:186
+msgid "Nothing to import from MED file"
+msgstr "没有从 MED 文件导入任何内容"
+
+#: src/post/PViewDataGModelIO_MED.cpp:214
+msgid "Could not read step info"
+msgstr "无法读取步骤信息"
+
+#: src/post/PViewDataGModelIO_MED.cpp:273
+msgid "Could not read field values"
+msgstr "无法读取字段值"
+
+#: src/post/PViewDataGModelIO_MED.cpp:304
+msgid "Could not read Gauss points"
+msgstr "无法读取高斯点"
+
+#: src/post/PViewDataGModelIO_MED.cpp:322
+msgid "MED has full profile"
+msgstr "MED 拥有完整的个人资料"
+
+#: src/post/PViewDataGModelIO_MED.cpp:329
+msgid "Could not read profile"
+msgstr "无法读取个人资料"
+
+#: src/post/PViewDataGModelIO_MED.cpp:335
+msgid "MED profile is empty -- using continuous sequence"
+msgstr "MED 配置文件为空 -- 使用连续序列"
+
+#: src/post/PViewDataGModelIO_MED.cpp:397
+msgid "Wrong index in profile"
+msgstr "配置文件中的索引错误"
+
+#: src/post/PViewDataGModelIO_MED.cpp:428
+msgid "Export not done for multi-mesh views"
+msgstr "未对多网格视图进行导出"
+
+#: src/post/PViewDataGModelIO_MED.cpp:433
+msgid "Can only export node-based datasets for now"
+msgstr ""
+
+#: src/post/PViewDataGModelIO_MED.cpp:480
+msgid "Nothing to save"
+msgstr ""
+
+#: src/post/PViewDataGModelIO_MED.cpp:489
+msgid "Could not create MED profile"
+msgstr ""
+
+#: src/post/PViewDataGModelIO_MED.cpp:502
+msgid "Could not create MED field"
+msgstr ""
+
+#: src/post/PViewDataGModelIO_MED.cpp:517
+msgid "Could not get valid number of nodes in mesh"
+msgstr ""
+
+#: src/post/PViewDataGModelIO_MED.cpp:525
+msgid "Skipping incompatible step"
+msgstr ""
+
+#: src/post/PViewDataGModelIO_MED.cpp:546
+msgid "Could not write MED field"
+msgstr ""
+
+#: src/post/adaptiveData.cpp:1215 src/post/adaptiveData.cpp:2248
+msgid "No adapted vertices to interpolate"
+msgstr ""
+
+#: src/post/adaptiveData.cpp:1247 src/post/adaptiveData.cpp:2279
+msgid "Can only adapt scalar, vector or tensor data"
+msgstr ""
+
+#: src/post/adaptiveData.cpp:1797
+msgid "Unknown format"
+msgstr ""
+
+#: src/post/adaptiveData.cpp:2424
+msgid "Node mapping in buildMapping has zero size"
+msgstr ""
+
+#: src/post/PViewDataGModelIO_MSH.cpp:103
+msgid "Exporting multi-mesh view in separate files"
+msgstr ""
+
+#: src/post/PViewDataGModelIO_MSH.cpp:107
+msgid "Cannot force NodeData for this dataset: saving native data"
+msgstr ""
+
+#: src/post/PViewDataGModelIO_MSH.cpp:111
+msgid "Cannot force ElementData for this dataset: saving native data"
+msgstr ""
+
+#: src/post/PViewDataListIO.cpp:25 src/post/PViewDataListIO.cpp:31
+#: src/post/PViewDataListIO.cpp:44 src/post/PViewDataListIO.cpp:51
+#: src/post/PViewDataListIO.cpp:61 src/post/PViewDataListIO.cpp:109
+#: src/post/PViewDataListIO.cpp:120 src/post/PViewDataListIO.cpp:133
+#: src/post/PViewDataListIO.cpp:150 src/post/PViewDataListIO.cpp:166
+#: src/post/PViewIO.cpp:40
+msgid "Read error"
+msgstr ""
+
+#: src/post/PViewDataListIO.cpp:105
+msgid "Detected post-processing view format <= 1.0"
+msgstr ""
+
+#: src/post/PViewDataListIO.cpp:115
+msgid "Detected post-processing view format 1.1"
+msgstr ""
+
+#: src/post/PViewDataListIO.cpp:138
+msgid "Detected post-processing view format 1.4"
+msgstr ""
+
+#: src/post/PViewDataListIO.cpp:170 src/geo/GModelIO_STL.cpp:128
+#: src/geo/GModelIO_MSH2.cpp:153 src/geo/GModelIO_MSH3.cpp:242
+#: src/geo/GModelIO_MSH4.cpp:1289
+msgid "Swapping bytes from binary file"
+msgstr ""
+
+#: src/post/PViewDataListIO.cpp:407 src/post/PViewDataListIO.cpp:637
+#: src/post/PViewDataIO.cpp:110
+msgid "Writing adapted dataset (will only export current time step)"
+msgstr ""
+
+#: src/post/PViewDataListIO.cpp:453
+msgid "Write error"
+msgstr ""
+
+#: src/post/PViewDataListIO.cpp:814
+msgid "Wrong list index to import"
+msgstr ""
+
+#: src/post/OctreePost.cpp:293
+msgid "to select 'Adapt visualization grid' first"
+msgstr ""
+
+#: src/post/PViewData.cpp:127
+msgid "Cannot change node coordinates in this view"
+msgstr ""
+
+#: src/post/PViewData.cpp:133
+msgid "Cannot change field value in this view"
+msgstr ""
+
+#: src/post/PViewData.cpp:138
+msgid "Cannot get model from this view"
+msgstr ""
+
+#: src/post/PViewData.cpp:144
+msgid "Cannot get entity from this view"
+msgstr ""
+
+#: src/post/PViewData.cpp:150
+msgid "Cannot get element from this view"
+msgstr ""
+
+#: src/post/PViewData.cpp:233
+msgid "Smoothing is not implemented for this type of data"
+msgstr ""
+
+#: src/post/PViewData.cpp:238
+msgid "Combine time is not implemented for this type of data"
+msgstr ""
+
+#: src/post/PViewData.cpp:244
+msgid "Combine space is not implemented for this type of data"
+msgstr ""
+
+#: src/post/PViewIO.cpp:62
+msgid "Could not read data in list format"
+msgstr ""
+
+#: src/post/PViewIO.cpp:268
+msgid "Could not read data in MED file"
+msgstr ""
+
+#: src/post/PViewDataIO.cpp:24
+msgid "No surface elements to save"
+msgstr ""
+
+#: src/post/PViewDataIO.cpp:114
+msgid "Cannot export multi-mesh datasets in .pos format"
+msgstr ""
+
+#: src/post/PViewDataIO.cpp:118
+msgid "Discarding interpolation matrices when saving in .pos format"
+msgstr ""
+
+#: src/post/PViewDataIO.cpp:120
+msgid "Only parsed .pos files can be exported for this view type"
+msgstr ""
+
+#: src/post/PViewDataIO.cpp:205
+msgid "MSH export not implemented for this view type"
+msgstr ""
+
+#: src/post/PViewDataIO.cpp:211
+msgid "MED export only available for mesh-based post-processing views"
+msgstr ""
+
+#: src/post/PViewDataIO.cpp:239
+msgid "Cannot import vector in an empty view; skipping"
+msgstr ""
+
+#: src/post/PViewDataIO.cpp:277
+msgid "importLists not available for this view data type"
+msgstr ""
+
+#: src/post/PViewDataIO.cpp:282
+msgid "getListPointers not available for this view data type"
+msgstr ""
+
+#: src/post/PViewDataIO.cpp:292
+msgid "sendToServer: cannot vectorize PView"
+msgstr ""
+
+#: src/post/PViewDataIO.cpp:296
+msgid "sendToServer: cannot send a PView with more than one step"
+msgstr ""
+
+#: src/post/PViewDataIO.cpp:300
+msgid "sendToServer: cannot send a PView with more than one data"
+msgstr ""
+
+#: src/post/PViewDataGModelIO.cpp:273
+msgid "sendToServer currently only implemented for nodal datasets"
+msgstr ""
+
+#: src/post/PViewDataGModelIO.cpp:289
+msgid "Can not send heterogeneous view to server"
+msgstr ""
+
+#: src/post/PView.cpp:24
+msgid "Using tag == 0 in view is discouraged; view tags should be >= 1"
+msgstr ""
+
+#: src/post/PView.cpp:82
+msgid "Original view for alias does not exist anymore"
+msgstr ""
+
+#: src/post/PView.cpp:121
+msgid "Can only add step data to list-based datasets"
+msgstr ""
+
+#: src/post/PView.cpp:176
+msgid "Can only add step data to mesh-based datasets"
+msgstr ""
+
+#: src/post/PView.cpp:306
+msgid "Cannot combine hybrid list/mesh-based datasets"
+msgstr ""
+
+#: src/mesh/meshMetric.cpp:82
+msgid "Can't intersect metrics, no metric registered"
+msgstr ""
+
+#: src/mesh/meshMetric.cpp:796 src/mesh/meshMetric.cpp:833
+msgid "No metric defined"
+msgstr ""
+
+#: src/mesh/meshRenumber.cpp:203
+msgid "RCMK renumbering..."
+msgstr ""
+
+#: src/mesh/meshRenumber.cpp:234
+msgid "Hilbert renumbering..."
+msgstr ""
+
+#: src/mesh/meshRenumber.cpp:263
+msgid "Done Hilbert renumbering"
+msgstr ""
+
+#: src/mesh/meshRenumber.cpp:276
+msgid "METIS renumbering (nested dissection)..."
+msgstr ""
+
+#: src/mesh/meshRenumber.cpp:295
+msgid "Renumbering with METIS failed"
+msgstr ""
+
+#: src/mesh/meshRenumber.cpp:305
+msgid "Done METIS renumbering"
+msgstr ""
+
+#: src/mesh/meshRenumber.cpp:309
+msgid "Gmsh must be compiled with METIS support for METIS renumbering"
+msgstr ""
+
+#: src/mesh/meshGRegionMMG.cpp:37
+msgid "Mmg3d: unable to get mesh size"
+msgstr ""
+
+#: src/mesh/meshGRegionMMG.cpp:126
+msgid "Mmg3d: unable to set mesh size"
+msgstr ""
+
+#: src/mesh/meshGRegionMMG.cpp:129
+msgid "Mmg3d: unable to set metric size"
+msgstr ""
+
+#: src/mesh/meshGRegionMMG.cpp:306
+msgid "Mmsg3d: unable to set verbosity"
+msgstr ""
+
+#: src/mesh/meshGRegionMMG.cpp:310
+msgid "Mmg3d: unable to preserve the boundaries"
+msgstr ""
+
+#: src/mesh/meshGRegionMMG.cpp:317
+msgid "Mmg3d: unable to set the hausdorff parameter"
+msgstr ""
+
+#: src/mesh/meshCombine3D.cpp:209
+msgid "Hybrid mesh statistics"
+msgstr ""
+
+#: src/mesh/meshCombine3D.cpp:222
+msgid "Gmsh must be compiled with HXT to enable hybrid mesh generation"
+msgstr ""
+
+#: src/mesh/meshCombine3D.cpp:272
+msgid "MakeMeshConformal: wrong mesh topology"
+msgstr ""
+
+#: src/mesh/meshGFaceBipartiteLabelling.cpp:360
+msgid "This requires quad meshing tools"
+msgstr ""
+
+#: src/mesh/meshTriangulation.cpp:727
+msgid "a seam edge without CAD ?"
+msgstr ""
+
+#: src/mesh/DivideAndConquer.cpp:537
+msgid "No adjacencies were created"
+msgstr ""
+
+#: src/mesh/DivideAndConquer.cpp:862
+msgid "Adjacent nullptrs found"
+msgstr ""
+
+#: src/mesh/meshGFaceBDS.cpp:706
+msgid "Degenerated edge on u = cst axis: treated as well now!"
+msgstr ""
+
+#: src/mesh/meshGFaceBDS.cpp:959 src/mesh/meshGFaceBDS.cpp:961
+#: src/mesh/meshGFaceBDS.cpp:968 src/mesh/meshGFaceBDS.cpp:970
+msgid " ---------------------------------------"
+msgstr ""
+
+#: src/mesh/meshGFaceBDS.cpp:960
+msgid " CPU Report "
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:103
+msgid "Build background field (view 'guiding_field') ..."
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:105
+msgid "build background field: incoherent sizes in input"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:193
+msgid "Post-processing module required to create background field view"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:329
+msgid "Scalar background field not found"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:367
+msgid "build background triangulation ..."
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:471
+msgid "Quadqs method: no background mesh"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:484
+msgid "Build background mesh and guiding field ..."
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:492
+msgid "vector background field exists, using it as a guiding field"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:496
+msgid "disabled current vector background field, building a new one"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:502
+msgid "scalar background field exists, using it as size map"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:515
+msgid "delete current GModel mesh"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:541
+#: src/mesh/meshQuadQuasiStructured.cpp:3170
+msgid "failed to import model mesh in background mesh"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:546
+msgid "delete GModel mesh"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:791
+msgid "failed to compute minimal size on CAD curves"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:817
+msgid "failed to compute one-way size map smoothing"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:865 src/geo/GFace.cpp:1875
+msgid "failed to build background guiding field"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:914
+msgid "view type is wrong"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:1051
+msgid "getBoundaryIdealAndAllowedValences: bdr vertex not found in adj"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:1456
+#: src/mesh/meshQuadQuasiStructured.cpp:1599
+#: src/mesh/meshQuadQuasiStructured.cpp:1803
+#: src/mesh/meshQuadQuasiStructured.cpp:2032
+msgid "failed to apply diff, abort"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:2035
+msgid "-- interior patch fixed"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:2038
+msgid "-- failed to fix interior patch"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:2065
+#: src/mesh/meshQuadQuasiStructured.cpp:2306
+msgid "Refine mesh (midpoint subdivision, with background projection) ..."
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:2185
+#: src/mesh/meshQuadQuasiStructured.cpp:2479
+msgid "failed to initialize surface projector"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:2281
+msgid "Refine mesh (midpoint subdivision, with CAD projection) ..."
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:2670
+msgid "optimize quad topology: failed to improve corner valences"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:2682
+msgid "optimize quad topology: failed to improve curve valences"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:2693
+msgid "optimize quad topology: failed to improve interior valences"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:2739
+msgid "insert extruded layer: vertex not found in adj"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:2911
+msgid "Generating empty surface meshes ..."
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:2950
+msgid "Deleting empty surface meshes ..."
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:2965
+msgid "done."
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:3102
+msgid ""
+"Optimize topology of quad meshes with disk quadrangulation remeshing ..."
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:3132
+msgid "negative quality on some quads"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:3166
+msgid "no background mesh, creating one with the current quad mesh"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:3468
+#: src/mesh/meshQuadQuasiStructured.cpp:3507
+msgid "Module QUADMESHINGTOOLS required to use QuadqsContextUpdater"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:3478
+msgid "set special quadqs options in the global context"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:3499
+msgid "restore options in the global context"
+msgstr ""
+
+#: src/mesh/meshQuadQuasiStructured.cpp:3513
+msgid "Cleaning quadqs background mesh and field"
+msgstr ""
+
+#: src/mesh/automaticMeshSizeField.cpp:2572
+msgid "No volume in the model : looping over faces instead."
+msgstr ""
+
+#: src/mesh/automaticMeshSizeField.cpp:2580
+msgid "Erreur : Pas de volume dans le modèle."
+msgstr ""
+
+#: src/mesh/automaticMeshSizeField.cpp:2611
+msgid "Surface mesh is empty"
+msgstr ""
+
+#: src/mesh/automaticMeshSizeField.cpp:2646
+msgid "meshFace == NULL"
+msgstr ""
+
+#: src/mesh/automaticMeshSizeField.cpp:2836
+msgid "2D size field is not yet operational"
+msgstr ""
+
+#: src/mesh/automaticMeshSizeField.cpp:2895
+msgid "Detecting features..."
+msgstr ""
+
+#: src/mesh/automaticMeshSizeField.cpp:2900
+msgid "Refining octree..."
+msgstr ""
+
+#: src/mesh/automaticMeshSizeField.cpp:2905
+#: src/mesh/automaticMeshSizeField.cpp:2917
+msgid "Smoothing size gradient..."
+msgstr ""
+
+#: src/mesh/automaticMeshSizeField.cpp:2954
+msgid "Something went wrong when computing the octree"
+msgstr ""
+
+#: src/mesh/automaticMeshSizeField.cpp:2956
+msgid ""
+"Gmsh has to be compiled with HXT and P4EST to use automaticMeshSizeField"
+msgstr ""
+
+#: src/mesh/meshMesquite.cpp:156 src/mesh/meshMesquite.cpp:160
+#: src/mesh/meshUntangle.cpp:52
+msgid ""
+"Gmsh must be compiled with the UNTANGLE lib to be able to untangle a tet mesh"
+msgstr ""
+
+#: src/mesh/meshOctreeLibOL.cpp:326
+msgid "failed to initialize SurfaceProjector"
+msgstr ""
+
+#: src/mesh/meshOctreeLibOL.cpp:359
+msgid "Surface projector: analytical formula for given shape not supported"
+msgstr ""
+
+#: src/mesh/meshOctreeLibOL.cpp:403
+msgid "SurfaceProjector initialize: failed to build STL triangulation"
+msgstr ""
+
+#: src/mesh/meshOctreeLibOL.cpp:574
+msgid "SurfaceProjector::closestPoint(): no analytical formula for shape"
+msgstr ""
+
+#: src/mesh/qualityMeasuresJacobian.cpp:864
+msgid "Empty vector in Bezier subdivision, nothing to do"
+msgstr ""
+
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:899
+msgid "Impossible case in triangle search"
+msgstr ""
+
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:933
+msgid "Could not insert point"
+msgstr ""
+
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1041
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1303
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1519
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1663
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1740
+msgid "Invalid meshing data structure"
+msgstr ""
+
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1046
+msgid "No triangles in initial mesh"
+msgstr ""
+
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1359
+msgid "no point found"
+msgstr ""
+
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1467
+msgid "build background mesh (Bowyer Watson, fixed size) ..."
+msgstr ""
+
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1648
+msgid "bowyerWatsonParallelograms: call packingOfParallelograms()"
+msgstr ""
+
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1652
+msgid "bowyerWatsonParallelograms: call Filler2D::pointInsertion2D()"
+msgstr ""
+
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1657
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1736
+msgid "Packing of parallelograms algorithm requires DOMHEX"
+msgstr ""
+
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1724
+msgid "bowyerWatsonParallelogramsConstrained deprecated"
+msgstr ""
+
+#: src/mesh/meshGFaceDelaunayInsertion.cpp:1862
+msgid "Cannot insert a point in 2D Delaunay"
+msgstr ""
+
+#: src/mesh/Generator.cpp:111
+msgid "All embedded edges and faces are present in the final mesh"
+msgstr ""
+
+#: src/mesh/Generator.cpp:425
+msgid "Aborted 1D meshing"
+msgstr ""
+
+#: src/mesh/Generator.cpp:582
+msgid "Aborted 2D meshing"
+msgstr ""
+
+#: src/mesh/Generator.cpp:808
+msgid "Aborted 3D meshing"
+msgstr ""
+
+#: src/mesh/Generator.cpp:964 src/mesh/Generator.cpp:971
+#: src/mesh/Generator.cpp:987 src/fltk/highOrderToolsWindow.cpp:230
+msgid "High-order mesh optimization requires the OPTHOM module"
+msgstr ""
+
+#: src/mesh/Generator.cpp:1404 src/fltk/graphicWindow.cpp:208
+#: src/fltk/graphicWindow.cpp:791 src/fltk/graphicWindow.cpp:2408
+#: src/fltk/graphicWindow.cpp:2472 src/fltk/onelabGroup.cpp:179
+#: src/common/OpenFile.cpp:725
+msgid "I'm busy! Ask me that later..."
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryRecovery.cpp:229
+msgid "Points have been tetrahedralized"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryRecovery.cpp:264
+msgid "The point set is trivial"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryRecovery.cpp:295
+msgid "Reconstructing mesh..."
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryRecovery.cpp:497
+msgid " - Creating surface mesh"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryRecovery.cpp:555
+msgid " - Identifying boundary edges"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryRecovery.cpp:658
+msgid " - Recovering boundary"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryRecovery.cpp:678
+msgid "Statistics:\n"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryRecovery.cpp:735
+msgid "Writing to GRegion..."
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryRecovery.cpp:942
+msgid "Steiner points not handled for quad surface mesh"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryRecovery.cpp:1232
+msgid "Out of memory in boundary mesh recovery"
+msgstr ""
+
+#: src/mesh/meshGRegionLocalMeshMod.cpp:96
+msgid "Error of connexion"
+msgstr ""
+
+#: src/mesh/meshGRegionLocalMeshMod.cpp:102
+msgid "Strange edge cavity (tet is deleted)"
+msgstr ""
+
+#: src/mesh/meshGRegionLocalMeshMod.cpp:118
+msgid "Strange edge cavity (local edge not found)"
+msgstr ""
+
+#: src/mesh/meshGRegionLocalMeshMod.cpp:411
+msgid "Impossible to swap face"
+msgstr ""
+
+#: src/mesh/meshGRegionLocalMeshMod.cpp:534
+#: src/mesh/meshGRegionLocalMeshMod.cpp:627
+msgid "Impossible to collapse node"
+msgstr ""
+
+#: src/mesh/meshGRegionLocalMeshMod.cpp:772
+msgid "Fletcher-Reeves minimizer routine must be reimplemented"
+msgstr ""
+
+#: src/mesh/delaunay3d.cpp:132
+msgid "Symbolic perturbation failed in icCircle Predicate"
+msgstr ""
+
+#: src/mesh/delaunay3d.cpp:844 src/mesh/delaunay3d.cpp:852
+msgid "Jump-and-walk failed (no neighbor)"
+msgstr ""
+
+#: src/mesh/delaunay3d.cpp:1099
+msgid "Datastructure broken in triangulation"
+msgstr ""
+
+#: src/mesh/delaunay3d.cpp:1296
+msgid "Error in triangulation"
+msgstr ""
+
+#: src/mesh/gmshCrossFields.cpp:226
+msgid "impossible situation"
+msgstr ""
+
+#: src/mesh/gmshCrossFields.cpp:952
+msgid "Less than 2 groupOfCross2d in assembleExtraConnexions"
+msgstr ""
+
+#: src/mesh/gmshCrossFields.cpp:2437 src/mesh/gmshCrossFields.cpp:2446
+#: src/mesh/gmshCrossFields.cpp:2458
+msgid "error in JumpyPairs 1"
+msgstr ""
+
+#: src/mesh/gmshCrossFields.cpp:2467
+msgid "error in JumpyPairs 2"
+msgstr ""
+
+#: src/mesh/gmshCrossFields.cpp:2470
+msgid "error in JumpyPairs 3"
+msgstr ""
+
+#: src/mesh/gmshCrossFields.cpp:3654
+msgid "Success in computing potentials (all jumps are OK)"
+msgstr ""
+
+#: src/mesh/gmshCrossFields.cpp:3656
+msgid "Quad Layout Failure"
+msgstr ""
+
+#: src/mesh/gmshCrossFields.cpp:3724
+msgid "Computing a cross field"
+msgstr ""
+
+#: src/mesh/gmshCrossFields.cpp:3824
+msgid "Cutting the mesh"
+msgstr ""
+
+#: src/mesh/gmshCrossFields.cpp:3828
+msgid "Classifying the model"
+msgstr ""
+
+#: src/mesh/gmshCrossFields.cpp:3886 src/mesh/gmshCrossFields.cpp:3899
+#: src/mesh/gmshCrossFields.cpp:3913
+msgid "Cross field computation requires solver and post-pro module"
+msgstr ""
+
+#: src/mesh/meshGFaceOptimize.cpp:61 src/mesh/meshGFaceOptimize.cpp:65
+msgid "Invalid quadrangle in recombination"
+msgstr ""
+
+#: src/mesh/meshGFaceOptimize.cpp:184
+msgid "Some NULL points exist in 2D mesh"
+msgstr ""
+
+#: src/mesh/meshGFaceOptimize.cpp:491
+msgid "surfaceFaceUV only for first order elements"
+msgstr ""
+
+#: src/mesh/meshGFaceOptimize.cpp:995
+msgid "laplacian smoothing ..."
+msgstr ""
+
+#: src/mesh/meshGFaceOptimize.cpp:1137
+msgid "Perfect Match failed in quadrangulation, try something else"
+msgstr ""
+
+#: src/mesh/meshGFaceOptimize.cpp:1318
+msgid "Skipping topological optimization - mesh topology is not complete"
+msgstr ""
+
+#: src/mesh/meshGRegionExtruded.cpp:221
+msgid "Cannot extrude quadrangles without Recombine"
+msgstr ""
+
+#: src/mesh/meshGRegionExtruded.cpp:510
+msgid "Subdividing extruded mesh"
+msgstr ""
+
+#: src/mesh/meshGRegionExtruded.cpp:528
+msgid "Subdivision failed, trying alternative split"
+msgstr ""
+
+#: src/mesh/meshGRegionExtruded.cpp:597
+msgid "Could not remesh all subdivided surfaces"
+msgstr ""
+
+#: src/mesh/meshRelocateVertex.cpp:533
+msgid "Error in Pyramid Untangling"
+msgstr ""
+
+#: src/mesh/meshRelocateVertex.cpp:590
+msgid "Using new pyramid optimization"
+msgstr ""
+
+#: src/mesh/meshRelocateVertex.cpp:598
+msgid "Using old pyramid optimization"
+msgstr ""
+
+#: src/mesh/BDS.cpp:61
+msgid "Could not open file 'param_mesh_as_it_is_in_3D.pos'"
+msgstr ""
+
+#: src/mesh/BDS.cpp:207
+msgid "Invalid point in parametric triangle surface computation"
+msgstr ""
+
+#: src/mesh/BDS.cpp:879
+msgid "Unable to detect the new edge in BDS_SwapEdgeTestQuality\n"
+msgstr ""
+
+#: src/mesh/BDS.cpp:1117
+msgid "No opposite face in edge collapse"
+msgstr ""
+
+#: src/mesh/BDS.cpp:1165
+msgid "Invalid point in edge collapse"
+msgstr ""
+
+#: src/mesh/BDS.cpp:1203
+msgid "Something wrong in edge collapse"
+msgstr ""
+
+#: src/mesh/BackgroundMeshTools.cpp:128
+msgid "Curvature control impossible to compute for a volume"
+msgstr ""
+
+#: src/mesh/BackgroundMeshTools.cpp:258
+msgid "No entity in background mesh size evaluation"
+msgstr ""
+
+#: src/mesh/meshGFace.cpp:280
+msgid "Full-quad recombination not ready yet for periodic surfaces"
+msgstr ""
+
+#: src/mesh/meshGFace.cpp:298
+msgid "1D mesh cannot be divided by 2"
+msgstr ""
+
+#: src/mesh/meshGFace.cpp:1711
+msgid "8-| Splitting all edges and trying again"
+msgstr ""
+
+#: src/mesh/meshGFace.cpp:1923 src/mesh/meshGFace.cpp:2900
+#: src/mesh/meshGFace.cpp:2908
+msgid "Delaunizing the initial mesh"
+msgstr ""
+
+#: src/mesh/meshGFace.cpp:1930
+msgid "Starting to add internal nodes"
+msgstr ""
+
+#: src/mesh/meshGFace.cpp:1975 src/mesh/meshGFace.cpp:3058
+msgid "ALGO_2D_PACK_PRLGRMS_CSTR deprecated"
+msgstr ""
+
+#: src/mesh/meshGFace.cpp:2176 src/mesh/meshGFace.cpp:2224
+msgid "... will try with alternate initial orientation"
+msgstr ""
+
+#: src/mesh/meshGFace.cpp:2182 src/mesh/meshGFace.cpp:2230
+msgid "... will try with larger tolerance"
+msgstr ""
+
+#: src/mesh/meshGFace.cpp:2390
+msgid "The 1D mesh seems not to be forming a closed loop"
+msgstr ""
+
+#: src/mesh/meshGFace.cpp:2757
+msgid "8-| Splitting those edges and trying again"
+msgstr ""
+
+#: src/mesh/meshGFace.cpp:2991
+msgid "Could not reconstruct seam"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryLayer.cpp:250
+#: src/mesh/meshGRegionBoundaryLayer.cpp:274
+msgid "Unknown node in boundary layer"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryLayer.cpp:267
+msgid "Unknown face in boundary layer"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryLayer.cpp:653
+msgid "there is a seam... and we should extrude on that seam"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryLayer.cpp:721
+msgid "Topological error in 3D boundary layer generation"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryLayer.cpp:944
+msgid "Topological error in boundary layer"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryLayer.cpp:1278
+msgid "Classifying ridges (INTERNAL / EXTERNAL / FLAT)"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryLayer.cpp:1280
+msgid "Extrusion of vertices for internal corners"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryLayer.cpp:1282
+msgid "Extrusion of vertices for internal edges"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryLayer.cpp:1284
+msgid "Extruding ridges on faces"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryLayer.cpp:1286
+msgid "Treating REGULAR vertices"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryLayer.cpp:1288
+msgid "Treating corners with one external ridge and others internal"
+msgstr ""
+
+#: src/mesh/meshGRegionBoundaryLayer.cpp:1291
+msgid "Generating ONLE LAYER of 3D elements"
+msgstr ""
+
+#: src/mesh/qualityMeasures.cpp:651
+msgid "Unknown quality measure"
+msgstr ""
+
+#: src/mesh/meshRefine.cpp:409
+msgid "Full hexahedron subdivision is not implemented for pyramids"
+msgstr ""
+
+#: src/mesh/meshGRegionCarveHole.cpp:22
+msgid "Gmsh must be compiled with ANN support to carve holes in meshes"
+msgstr ""
+
+#: src/mesh/BoundaryLayers.cpp:46
+msgid "Boundary layer index should be 0 or 1"
+msgstr ""
+
+#: src/mesh/sizeField.cpp:78
+msgid "failed to smooth size map"
+msgstr ""
+
+#: src/mesh/meshGFaceTransfinite.cpp:1223
+msgid "transfinite automatic: assigning number of points ..."
+msgstr ""
+
+#: src/mesh/meshGFaceBamg.cpp:182
+msgid "BAMG failed"
+msgstr ""
+
+#: src/mesh/meshGFaceBamg.cpp:244
+msgid "This version of Gmsh is not compiled with BAMG support"
+msgstr ""
+
+#: src/mesh/filterElements.cpp:171
+msgid "overlapping of elements in 3D not done yet"
+msgstr ""
+
+#: src/mesh/meshGEdge.cpp:373
+msgid "Unknown case in Transfinite curve mesh"
+msgstr ""
+
+#: src/mesh/meshGEdge.cpp:465
+msgid "Cannot copy mesh on curves without begin/end points"
+msgstr ""
+
+#: src/mesh/meshGEdge.cpp:524
+msgid "Cannot fill corresponding nodes on curves without begin/end points"
+msgstr ""
+
+#: src/mesh/meshGEdge.cpp:538
+msgid "Incompatible meshes to fill node correspondance"
+msgstr ""
+
+#: src/mesh/meshGEdge.cpp:602
+msgid "Node not classified on curve in 1D mesh filtering"
+msgstr ""
+
+#: src/mesh/meshGEdge.cpp:740 src/mesh/meshGEdge.cpp:754
+msgid "Different boundary layers cannot touch each other"
+msgstr ""
+
+#: src/mesh/meshGEdge.cpp:949
+msgid "Skipping curve with no begin or end point"
+msgstr ""
+
+#: src/mesh/meshGRegionNetgen.cpp:155
+msgid "Tetrahedron with unknown node - should never be here!"
+msgstr ""
+
+#: src/mesh/meshGRegionNetgen.cpp:222
+msgid "Bad scaling in meshNormalsPointOutOfTheRegion"
+msgstr ""
+
+#: src/mesh/meshGRegionNetgen.cpp:316
+msgid "Frontal algorithm requires Netgen"
+msgstr ""
+
+#: src/mesh/meshGRegionNetgen.cpp:322
+msgid "Cannot use frontal 3D algorithm with quadrangles on boundary"
+msgstr ""
+
+#: src/mesh/meshGRegionNetgen.cpp:353
+msgid "Skipping Netgen optimizer for hybrid mesh"
+msgstr ""
+
+#: src/mesh/meshGRegionNetgen.cpp:358
+msgid "Netgen optimizer is not compiled in this version of Gmsh"
+msgstr ""
+
+#: src/mesh/Field.cpp:1299 src/mesh/Field.cpp:1303
+msgid "StdoutRd CreatePipe"
+msgstr ""
+
+#: src/mesh/Field.cpp:1301
+msgid "Stdin CreatePipe"
+msgstr ""
+
+#: src/mesh/Field.cpp:1305
+msgid "Stdout SetHandleInformation"
+msgstr ""
+
+#: src/mesh/Field.cpp:1654
+msgid "No vector or scalar value found in PostView field"
+msgstr ""
+
+#: src/mesh/Field.cpp:1681
+msgid "No vector value found in PostView field"
+msgstr ""
+
+#: src/mesh/Field.cpp:3247 src/plugin/NewView.cpp:67
+msgid "No mesh available to create the view: please mesh your model!"
+msgstr ""
+
+#: src/mesh/Field.cpp:3315 src/mesh/Field.cpp:3322
+msgid "GenericField error from callback"
+msgstr ""
+
+#: src/mesh/meshGRegion.cpp:51
+msgid "Generating pyramids for hybrid mesh..."
+msgstr ""
+
+#: src/mesh/meshGRegion.cpp:95
+msgid "HXT 3D mesh failed"
+msgstr ""
+
+#: src/mesh/meshGRegion.cpp:197
+msgid "Optimizing pyramids for hybrid mesh..."
+msgstr ""
+
+#: src/mesh/meshGRegion.cpp:201
+msgid "Done optimizing pyramids for hybrid mesh"
+msgstr ""
+
+#: src/mesh/meshGRegionDelaunayInsertion.cpp:69
+msgid "All edges and faces are present in the initial mesh"
+msgstr ""
+
+#: src/mesh/meshGRegionDelaunayInsertion.cpp:72
+msgid "All edges and faces are not present in the initial mesh"
+msgstr ""
+
+#: src/mesh/meshGRegionDelaunayInsertion.cpp:661
+msgid "A tetrahedron is not connected to a boundary face"
+msgstr ""
+
+#: src/mesh/meshGRegionDelaunayInsertion.cpp:1036
+msgid "No ill-shaped tets in the mesh :-)"
+msgstr ""
+
+#: src/mesh/meshGRegionDelaunayInsertion.cpp:1308
+msgid "start with a non classified tet"
+msgstr ""
+
+#: src/mesh/meshGRegionDelaunayInsertion.cpp:1337
+msgid "Found void region"
+msgstr ""
+
+#: src/mesh/BackgroundMesh.cpp:82
+msgid "Building cross field using closest distance"
+msgstr ""
+
+#: src/mesh/BackgroundMesh.cpp:281
+msgid "cannot reparametrize a point in crossField"
+msgstr ""
+
+#: src/mesh/BackgroundMesh.cpp:571
+msgid "No octree in background mesh"
+msgstr ""
+
+#: src/mesh/BackgroundMesh.cpp:724 contrib/domhex/BackgroundMesh3D.cpp:224
+#: contrib/domhex/BackgroundMesh2D.cpp:94
+msgid "Rebuilding BackgroundMesh element octree"
+msgstr ""
+
+#: src/mesh/BackgroundMesh.cpp:753
+msgid "GlobalBackgroundMesh destructor call"
+msgstr ""
+
+#: src/mesh/BackgroundMesh.cpp:767
+msgid "GlobalBackgroundMesh: import GModel mesh ..."
+msgstr ""
+
+#: src/mesh/BackgroundMesh.cpp:771
+msgid "- delete existing mesh (for overwrite)"
+msgstr ""
+
+#: src/mesh/BackgroundMesh.cpp:780
+msgid "- import mesh from GModel"
+msgstr ""
+
+#: src/mesh/BackgroundMesh.cpp:827
+msgid "GlobalBackgroundMesh: failed to import mesh (1)"
+msgstr ""
+
+#: src/mesh/BackgroundMesh.cpp:865
+msgid "GlobalBackgroundMesh: failed to import mesh (2)"
+msgstr ""
+
+#: src/mesh/BackgroundMesh.cpp:882
+msgid "GlobalBackgroundMesh: failed to import mesh (3)"
+msgstr ""
+
+#: src/mesh/HighOrder.cpp:284
+msgid "Cannot reparametrize a mesh node in high order meshing"
+msgstr ""
+
+#: src/mesh/HighOrder.cpp:657
+msgid "Something wrong in reorientQuadPoints"
+msgstr ""
+
+#: src/mesh/HighOrder.cpp:883
+msgid "Error in face lookup for retrieval of high order face nodes"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:532
+msgid "No mesh nodes were found"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:536
+msgid "No mesh elements were found"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:540
+msgid "Cannot partition a point"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:718
+msgid "METIS input error"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:719
+msgid "METIS memory error"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:721
+msgid "METIS error"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:743
+msgid "METIS exception"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:1829
+msgid " - Creating partition surfaces"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:1873
+msgid " - Creating partition curves"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:1960
+msgid " - Creating partition points"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:2257
+msgid "Tolerance too large - aborting partitioning"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:2544
+msgid "Partition tag cannot be 0"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:2556
+msgid "All elements are not partitioned"
+msgstr ""
+
+#: src/mesh/meshPartition.cpp:2665 src/mesh/meshPartition.cpp:2676
+#: src/mesh/meshPartition.cpp:2682 src/fltk/partitionDialog.cpp:455
+msgid "Gmsh must be compiled with METIS support to partition meshes"
+msgstr ""
+
+#: src/mesh/meshGRegionHxt.cpp:192
+msgid "Start Hxt2Gmsh"
+msgstr ""
+
+#: src/mesh/meshGRegionHxt.cpp:439
+msgid "End Hxt2Gmsh"
+msgstr ""
+
+#: src/mesh/meshGRegionHxt.cpp:690 src/mesh/meshGRegionHxt.cpp:697
+msgid "Gmsh should be compiled with Hxt to enable this option"
+msgstr ""
+
+#: Gmsh.l:35
+msgid "Input in flex scanner failed"
+msgstr ""
+
+#: Gmsh.l:380
+msgid "End of file in commented region"
+msgstr ""
+
+#: Gmsh.l:402
+msgid "End of file in string"
+msgstr ""
+
+#: Gmsh.l:406
+msgid "String too long"
+msgstr ""
+
+#: Gmsh.l:447
+msgid "Search pattern too long in skip"
+msgstr ""
+
+#: Gmsh.l:456 Gmsh.l:542
+msgid "Unexpected end of file"
+msgstr ""
+
+#: Gmsh.l:534
+msgid "Search pattern too long in skipTest"
+msgstr ""
+
+#: src/solver/linearSystem.cpp:13
+msgid "this system is already allocated, parameters cannot be set"
+msgstr ""
+
+#: src/solver/linearSystemCSR.cpp:359
+msgid "NSTACK too small while sorting the columns of the matrix"
+msgstr ""
+
+#: src/solver/linearSystemEigen.cpp:61 src/solver/linearSystemEigen.cpp:66
+msgid "Eigen: failed to solve linear system with CholeskyLLT"
+msgstr ""
+
+#: src/solver/linearSystemEigen.cpp:74 src/solver/linearSystemEigen.cpp:79
+msgid "Eigen: failed to solve linear system with CholeskyLDLT"
+msgstr ""
+
+#: src/solver/linearSystemEigen.cpp:87 src/solver/linearSystemEigen.cpp:92
+msgid "Eigen: failed to solve linear system with SparseLU"
+msgstr ""
+
+#: src/solver/linearSystemEigen.cpp:102 src/solver/linearSystemEigen.cpp:107
+msgid "Eigen: failed to solve linear system with SparseQR"
+msgstr ""
+
+#: src/solver/linearSystemEigen.cpp:115 src/solver/linearSystemEigen.cpp:120
+msgid "Eigen: failed to solve linear system with Conjugate Gradient"
+msgstr ""
+
+#: src/solver/linearSystemEigen.cpp:143 src/solver/linearSystemEigen.cpp:148
+msgid "Eigen: failed to solve linear system with BiCGSTAB"
+msgstr ""
+
+#: src/solver/linearSystemMUMPS.cpp:23
+msgid "Matrix is numerically singular"
+msgstr ""
+
+#: src/solver/linearSystemMUMPS.cpp:24
+msgid "Not enough memory"
+msgstr ""
+
+#: src/solver/linearSystemMUMPS.cpp:25
+msgid "Matrix is not symmetric positive definite"
+msgstr ""
+
+#: src/solver/linearSystemMUMPS.cpp:26
+msgid "Check MUMPS user's guide"
+msgstr ""
+
+#: src/solver/linearSystemMUMPS.cpp:105
+msgid "MUMPS initialization"
+msgstr ""
+
+#: src/solver/linearSystemMUMPS.cpp:128
+msgid "MUMPS analysis, LU factorization, and back substitution"
+msgstr ""
+
+#: src/solver/linearSystemMUMPS.cpp:133
+msgid "MUMPS destroy"
+msgstr ""
+
+#: src/solver/linearSystemMUMPS.cpp:136
+msgid "MUMPS end"
+msgstr ""
+
+#: src/solver/elasticitySolver.cpp:178
+msgid "Cannot read line."
+msgstr ""
+
+#: src/solver/eigenSolver.cpp:117
+msgid "SLEPc solving..."
+msgstr ""
+
+#: src/solver/eigenSolver.cpp:134
+msgid "SLEPc generic breakdown in method"
+msgstr ""
+
+#: src/solver/eigenSolver.cpp:138
+msgid "The operator is nonsymmetric"
+msgstr ""
+
+#: src/solver/eigenSolver.cpp:201
+msgid "SLEPc done"
+msgstr ""
+
+#: src/solver/eigenSolver.cpp:205
+msgid "SLEPc failed"
+msgstr ""
+
+#: src/solver/eigenSolver.cpp:212
+msgid "Normalize all eigenvectors"
+msgstr ""
+
+#: src/solver/eigenSolver.cpp:222
+msgid "zero eigenvector"
+msgstr ""
+
+#: src/solver/linearSystemPETSc.cpp:51
+msgid "'blockSize' parameters must be set for linearSystemPETScBlock"
+msgstr ""
+
+#: src/solver/dofManager.cpp:126
+msgid "ghost Dof does not exist on parent process"
+msgstr ""
+
+#: src/geo/OCCFace.cpp:302
+msgid "Point projection is out of surface parameter bounds"
+msgstr ""
+
+#: src/geo/GModelCreateTopologyFromMesh.cpp:666
+msgid "Topology exists: no need to create one from mesh"
+msgstr ""
+
+#: src/geo/GModelCreateTopologyFromMesh.cpp:673
+msgid "Creating topology from mesh..."
+msgstr ""
+
+#: src/geo/GModelAutoExtrude.cpp:260
+msgid " - extra curves not connected to source/target surfaces"
+msgstr ""
+
+#: src/geo/GModelAutoExtrude.cpp:335
+#, c-format
+msgid "Unknown volume %d for automatic extrusion constraints"
+msgstr ""
+
+#: src/geo/GModelAutoExtrude.cpp:345
+msgid "No candidates found for automatic extrusion constraints"
+msgstr ""
+
+#: src/geo/GVertex.cpp:33
+msgid "Cannot set position of this kind of point"
+msgstr ""
+
+#: src/geo/CGNSWrite.cpp:622
+msgid "Gmsh is not compiled with CGNS CPEX0045 capability"
+msgstr ""
+
+#: src/geo/MElement.cpp:210
+msgid "Wrong dimension for getHighOrderFace"
+msgstr ""
+
+#: src/geo/MElement.cpp:465 src/geo/MElement.cpp:475 src/geo/MElement.cpp:485
+#: src/geo/MElement.cpp:496 contrib/DiscreteIntegration/Integration3D.cpp:625
+#: contrib/DiscreteIntegration/Integration3D.cpp:633
+#: contrib/DiscreteIntegration/Integration3D.cpp:646
+#: contrib/DiscreteIntegration/Integration3D.cpp:672
+msgid "Function space not implemented for this type of element"
+msgstr ""
+
+#: src/geo/MElement.cpp:1069
+msgid "wrong dimension for getEigenvaluesMetric function"
+msgstr ""
+
+#: src/geo/MElement.cpp:1455
+msgid "Unable to write polygons/polyhedra in binary files."
+msgstr ""
+
+#: src/geo/MElement.cpp:1719 src/geo/GModelIO_MATLAB.cpp:59
+msgid "Binary format not available for Matlab, saving into ASCII format"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:171
+msgid "Line requires 2 points"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:267
+msgid "Spline curve requires at least 2 control points"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:294
+msgid "Bezier curve requires at least 2 control points"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:320 src/geo/GModelIO_OCC.cpp:1528
+msgid "BSpline curve requires at least 2 control points"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:360
+msgid "Compound spline curve requires at least 1 input curve"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:364
+msgid "Negative number of intervals in compound spline"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:474
+msgid "A list of curves has points that are adjacent to 3 curves"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:483
+msgid "Wrong topology for a list of curves"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:513
+msgid "Wrong topology in a curve loop"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:567
+msgid "Could not sort curves while creating curve loops"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:615 src/geo/GModelIO_OCC.cpp:1822
+msgid "Plane surface requires at least one curve loop"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:655
+msgid "Surface requires at least one curve loop"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:920
+msgid "Degenerated curve-surface intersection not implemented"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:1135
+msgid "Setting mesh size only available on GEO points"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:1209
+msgid "Transfinite surface requires 3 or 4 corner points"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:1387
+msgid "Syncing GEO_Internals with GModel"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:1628 src/geo/GModelIO_OCC.cpp:5640
+msgid "GModel imported:"
+msgstr ""
+
+#: src/geo/GModelIO_GEO.cpp:2038
+msgid "Geo internal model has:"
+msgstr ""
+
+#: src/geo/GFace.cpp:972
+msgid "Metric eigenvalue is not implemented for this type of surface"
+msgstr ""
+
+#: src/geo/GFace.cpp:1033
+msgid "Imaginary eigenvalues in metric"
+msgstr ""
+
+#: src/geo/GFace.cpp:1039
+msgid "Could not compute metric eigenvectors"
+msgstr ""
+
+#: src/geo/GFace.cpp:1143
+msgid "Inverse surface mapping could not converge"
+msgstr ""
+
+#: src/geo/GFace.cpp:1270
+msgid "Closest point failed, computing from parametric coordinate"
+msgstr ""
+
+#: src/geo/GFace.cpp:1276
+msgid "Closest point not implemented for this type of surface"
+msgstr ""
+
+#: src/geo/GFace.cpp:2122
+msgid "Setting mesh master using transformation"
+msgstr ""
+
+#: src/geo/GFace.cpp:2372 src/geo/GFace.cpp:2387
+msgid "parallel planes do not intersect"
+msgstr ""
+
+#: src/geo/GModelParametrize.cpp:130
+msgid "Reverting to first order mesh for classification"
+msgstr ""
+
+#: src/geo/GModelParametrize.cpp:173
+msgid "No triangles to reclassify in surface mesh"
+msgstr ""
+
+#: src/geo/GModelParametrize.cpp:202
+msgid "Could not find triangle linked to edge"
+msgstr ""
+
+#: src/geo/GModelParametrize.cpp:505
+msgid "Surface classification requires the mesh module"
+msgstr ""
+
+#: src/geo/GModelParametrize.cpp:587
+msgid "Wrong topology of boundary mesh for parametrization"
+msgstr ""
+
+#: src/geo/GModelParametrize.cpp:591
+msgid "Invalid exterior boundary mesh for parametrization"
+msgstr ""
+
+#: src/geo/GModelParametrize.cpp:906
+msgid "Splitting triangulations to make them parametrizable:"
+msgstr ""
+
+#: src/geo/GModelParametrize.cpp:960
+msgid "Invalid partition index"
+msgstr ""
+
+#: src/geo/GModelParametrize.cpp:965
+msgid "Could not make partition simply connected"
+msgstr ""
+
+#: src/geo/GModelParametrize.cpp:975
+msgid "Partitioning surface requires Mesh module"
+msgstr ""
+
+#: src/geo/GeomMeshMatcher.cpp:146
+msgid "Found a closed curve"
+msgstr ""
+
+#: src/geo/GeomMeshMatcher.cpp:538
+msgid "Could not find curve"
+msgstr ""
+
+#: src/geo/GeomMeshMatcher.cpp:885
+msgid "Copying mesh nodes and elements to CAD model entities..."
+msgstr ""
+
+#: src/geo/GeomMeshMatcher.cpp:890
+msgid "Applying periodicity to CAD model entities..."
+msgstr ""
+
+#: src/geo/GeomMeshMatcher.cpp:908
+msgid "Failed to match mesh to CAD"
+msgstr ""
+
+#: src/geo/SOrientedBoundingBox.cpp:548
+msgid "SOrientedBoundingBox requires mesh module"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:176 src/geo/GModelIO_MED.cpp:229
+msgid "Unknown MED element type"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:247
+msgid "Cannot read MED file older than V2.2"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:268 src/geo/GModelIO_MED.cpp:326
+msgid "Unable to read mesh information"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:343
+msgid "Reading structured MED meshes is not supported"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:360
+msgid "Could not read number of MED nodes"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:364
+msgid "No nodes in MED mesh"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:379
+msgid "Could not read MED node coordinates"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:431
+msgid "Could not read MED elements"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:442
+msgid "No family number for elements: using 0 as default family number"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:485
+msgid "Could not read MED families"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:498
+msgid "Could not read MED groups or attributes"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:616
+msgid "Unsupported element type in MED format"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:646
+msgid "Could not write MED elements"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:672
+msgid "Unable to write MED descriptor"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:693
+msgid "Could not create MED mesh"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:719
+msgid "Could not create MED family 0"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:778
+msgid "No nodes to write in MED mesh"
+msgstr ""
+
+#: src/geo/GModelIO_MED.cpp:794
+msgid "Could not write nodes"
+msgstr ""
+
+#: src/geo/MElementCut.cpp:701
+msgid "This type of element cannot be split."
+msgstr ""
+
+#: src/geo/MElementCut.cpp:1697
+msgid "Gmsh need to be compiled with levelset support to cut mesh"
+msgstr ""
+
+#: src/geo/GModelIO_GEOM.cpp:41
+msgid "No nodes or elements found"
+msgstr ""
+
+#: src/geo/GModelIO_GEOM.cpp:69
+msgid "Unknown element type in .geom reader"
+msgstr ""
+
+#: src/geo/closestPoint.cpp:44
+msgid "Unknown curve in closestPointFinder"
+msgstr ""
+
+#: src/geo/closestPoint.cpp:57
+msgid "Gmsh should be compiled with ANN to support closestPointFinder"
+msgstr ""
+
+#: src/geo/ExtrudeParams.cpp:118 src/geo/Geo.cpp:2730 src/geo/Geo.cpp:2895
+#: src/geo/Geo.cpp:3189
+msgid "Unknown extrusion type"
+msgstr ""
+
+#: src/geo/CellComplex.cpp:52
+msgid "Cells in domain:"
+msgstr ""
+
+#: src/geo/CellComplex.cpp:56
+msgid "Cells in subdomain:"
+msgstr ""
+
+#: src/geo/CellComplex.cpp:60
+msgid "Cells in relative domain:"
+msgstr ""
+
+#: src/geo/CellComplex.cpp:249
+msgid "Cell not inserted"
+msgstr ""
+
+#: src/geo/CellComplex.cpp:282
+msgid "Tried to remove a cell from the cell complex \n"
+msgstr ""
+
+#: src/geo/CellComplex.cpp:835
+msgid "Boundary cell not in cell complex! Boundary removed"
+msgstr ""
+
+#: src/geo/CellComplex.cpp:840
+msgid "Incoherent boundary/coboundary pair! Fixed"
+msgstr ""
+
+#: src/geo/CellComplex.cpp:852
+msgid "Coboundary cell not in cell complex! Coboundary removed"
+msgstr ""
+
+#: src/geo/CellComplex.cpp:857
+msgid "Incoherent coboundary/boundary pair! Fixed"
+msgstr ""
+
+#: src/geo/CellComplex.cpp:907 src/geo/CellComplex.cpp:925
+msgid "Domain cell counts not in sync."
+msgstr ""
+
+#: src/geo/CellComplex.cpp:963
+msgid "Restored Cell Complex:"
+msgstr ""
+
+#: src/geo/CellComplex.cpp:970
+msgid "Cannot restore cell complex"
+msgstr ""
+
+#: src/geo/GModelIO_OFF.cpp:24
+msgid "Invalid OFF header"
+msgstr ""
+
+#: src/geo/GModelIO_OFF.cpp:29
+msgid "Empty OFF mesh"
+msgstr ""
+
+#: src/geo/GModelIO_OFF.cpp:40
+msgid "Could not read vertex"
+msgstr ""
+
+#: src/geo/GModelIO_OFF.cpp:49 src/geo/GModelIO_OFF.cpp:54
+#: src/geo/GModelIO_OFF.cpp:62
+msgid "Could not read face"
+msgstr ""
+
+#: src/geo/GModelIO_OFF.cpp:71
+msgid "Could not read line"
+msgstr ""
+
+#: src/geo/GModelIO_P3D.cpp:150
+msgid "No structured grids to save"
+msgstr ""
+
+#: src/geo/GModelIO_STL.cpp:116 src/geo/GModelIO_MSH2.cpp:145
+#: src/geo/GModelIO_MSH3.cpp:234 src/geo/GModelIO_MSH4.cpp:1281
+msgid "Mesh is in binary format"
+msgstr ""
+
+#: src/geo/GModelIO_STL.cpp:118
+msgid "Wrong ASCII header or empty file: trying binary read"
+msgstr ""
+
+#: src/geo/GModelIO_STL.cpp:156
+msgid "Invalid number of names in STL file - should never happen"
+msgstr ""
+
+#: src/geo/GModelIO_NEU.cpp:159
+msgid "No 3d-physicals"
+msgstr ""
+
+#: src/geo/Geo.cpp:43
+msgid "Cannot compare position of null points"
+msgstr ""
+
+#: src/geo/Geo.cpp:414
+msgid "(If you understand what this implies, you can disable this error"
+msgstr ""
+
+#: src/geo/Geo.cpp:415
+msgid "message by selecting `Enable expert mode' in the option dialog."
+msgstr ""
+
+#: src/geo/Geo.cpp:416
+msgid "Otherwise, please subdivide the arc in smaller pieces.)"
+msgstr ""
+
+#: src/geo/Geo.cpp:877
+msgid "Only automatic transfinite surface specifications can be copied"
+msgstr ""
+
+#: src/geo/Geo.cpp:930
+msgid "Only automatic transfinite volume specifications can be copied"
+msgstr ""
+
+#: src/geo/Geo.cpp:1410
+msgid "Cannot transform curve with no begin/end points"
+msgstr ""
+
+#: src/geo/Geo.cpp:1755
+msgid "New Coherence..."
+msgstr ""
+
+#: src/geo/Geo.cpp:2780 src/geo/Geo.cpp:2797
+msgid "Cannot extrude curve with no begin or end point"
+msgstr ""
+
+#: src/geo/GModelIO_MSH2.cpp:321 src/geo/GModelIO_MSH3.cpp:426
+#: src/geo/GModelIO_DIFF.cpp:194 src/geo/GModelIO_MSH4.cpp:694
+msgid "Vertex numbering is dense"
+msgstr ""
+
+#: src/geo/GModelIO_MSH2.cpp:610 src/geo/GModelIO_DIFF.cpp:368
+#: src/geo/CGNSZoneUnstruct.cpp:75
+msgid "Wrong type of element"
+msgstr ""
+
+#: src/geo/GModelIO_MSH2.cpp:1194
+msgid "Writing ghost cells in debug file 'ghosts.pos'"
+msgstr ""
+
+#: src/geo/MVertex.cpp:248
+msgid "Binary format not available for Matlab, saving in ASCII"
+msgstr ""
+
+#: src/geo/MVertex.cpp:451 contrib/QuadMeshingTools/qmtMeshUtils.cpp:780
+msgid "Strange!"
+msgstr ""
+
+#: src/geo/GModelIO_UNV.cpp:61
+msgid "Reading nodes"
+msgstr ""
+
+#: src/geo/GModelIO_UNV.cpp:75
+msgid "Reading elements"
+msgstr ""
+
+#: src/geo/GModelIO_UNV.cpp:96
+msgid "No element type: guessing from number of nodes"
+msgstr ""
+
+#: src/geo/GModelIO_UNV.cpp:273
+msgid "Reading groups"
+msgstr ""
+
+#: src/geo/GModelIO_ACTRAN.cpp:47
+msgid "Did not find ACTRAN header"
+msgstr ""
+
+#: src/geo/closestVertex.cpp:35
+msgid "Gmsh must be compiled with ANN support for finding closest nodes"
+msgstr ""
+
+#: src/geo/gmshLevelset.cpp:185
+msgid "Levelset computation on CAD surface not implemented"
+msgstr ""
+
+#: src/geo/gmshLevelset.cpp:569
+msgid "Levelset Points : call computeLS() before calling operator()\n"
+msgstr ""
+
+#: src/geo/GModelIO_DIFF.cpp:400
+msgid "Binary DIFF output is not implemented"
+msgstr ""
+
+#: src/geo/OCCEdge.cpp:214
+msgid "OpenCASCADE curve is null in projection"
+msgstr ""
+
+#: src/geo/OCCEdge.cpp:230
+msgid "Point projection is out of curve parameter bounds"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:698
+msgid "Vertex numbering is fairly dense - still caching with a vector"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:702
+msgid "Vertex numbering is not dense"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:927
+msgid "Element numbering is dense"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:931
+msgid "Element numbering is fairly dense - still caching with a vector"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:935
+msgid "Element numbering is not dense"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:1300
+msgid "Can only read MSH 4.0 format in ASCII mode"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:1335
+msgid "Could not read entities"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:1342
+msgid "Could not read partitioned entities"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:1357
+msgid "Could not read nodes"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:1392
+msgid "Could not read elements"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:1421
+msgid "Could not read periodic section"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:1428
+msgid "Could not read ghost elements"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:1435
+msgid "Could not read parametrizations"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:2850
+msgid "Can only write MSH 4.0 format in ASCII mode"
+msgstr ""
+
+#: src/geo/GModelIO_MSH4.cpp:2904
+msgid "No partition entities found, saving mesh as unpartitioned"
+msgstr ""
+
+#: src/geo/GEdgeLoop.cpp:59
+msgid "Something wrong in curve loop 1"
+msgstr ""
+
+#: src/geo/GEdgeLoop.cpp:76
+msgid "Something wrong in curve loop 2"
+msgstr ""
+
+#: src/geo/GEdgeLoop.cpp:128
+msgid "Could not find next curve in loop, aborting"
+msgstr ""
+
+#: src/geo/GEdgeLoop.cpp:160
+msgid "More than two degenerated edges in one model face of an OCC model"
+msgstr ""
+
+#: src/geo/GModelIO_VTK.cpp:155
+msgid "Failed reading buffer"
+msgstr ""
+
+#: src/geo/GModelIO_VTK.cpp:170
+msgid "VTK reader can only read unstructured or polydata datasets"
+msgstr ""
+
+#: src/geo/GModelIO_VTK.cpp:179
+msgid "No points in dataset"
+msgstr ""
+
+#: src/geo/GModelIO_VTK.cpp:189
+msgid "VTK reader only accepts float or double datasets"
+msgstr ""
+
+#: src/geo/GModelIO_VTK.cpp:243
+msgid "No cells or polygons in dataset"
+msgstr ""
+
+#: src/geo/GModelIO_VTK.cpp:297
+msgid "No or invalid number of cells types"
+msgstr ""
+
+#: src/geo/GModelIO_VTK.cpp:450
+msgid "Line import not done for binary VTK files"
+msgstr ""
+
+#: src/geo/GModelIO_X3D.cpp:168
+msgid "Error in x3d coloring"
+msgstr ""
+
+#: src/geo/GModelIO_X3D.cpp:200 src/geo/GModelIO_X3D.cpp:214
+#: src/geo/GModelIO_X3D.cpp:247 src/geo/GModelIO_X3D.cpp:261
+#: src/geo/GModelIO_X3D.cpp:310
+msgid "X3D not implemented yet without STL"
+msgstr ""
+
+#: src/geo/GModelIO_X3D.cpp:487
+msgid "separating volumes into separate files"
+msgstr ""
+
+#: src/geo/GModelIO_X3D.cpp:521
+msgid "writing single file"
+msgstr ""
+
+#: src/geo/gmshEdge.cpp:242
+msgid "Unknown curve type in reparamOnFace"
+msgstr ""
+
+#: src/geo/GModel.cpp:139
+msgid "No current model available: creating one"
+msgstr ""
+
+#: src/geo/GModel.cpp:662
+msgid "Weird point: impossible to snap"
+msgstr ""
+
+#: src/geo/GModel.cpp:1174 src/geo/GModel.cpp:1319 src/geo/GModel.cpp:1489
+#: src/geo/GModel.cpp:1509 src/geo/GModel.cpp:1525 src/geo/GModel.cpp:1542
+#: src/geo/GModel.cpp:1562 src/geo/GModel.cpp:2359
+msgid "Mesh module not compiled"
+msgstr ""
+
+#: src/geo/GModel.cpp:1257
+msgid "Orienting volumes according to topology"
+msgstr ""
+
+#: src/geo/GModel.cpp:1282
+msgid "setAllVolumePositiveTopology needs at least one tetrahedron to start"
+msgstr ""
+
+#: src/geo/GModel.cpp:1773
+msgid "Renumbering for potentially partial mesh save"
+msgstr ""
+
+#: src/geo/GModel.cpp:1979 src/geo/GModel.cpp:2002
+msgid "Rebuilding mesh element octree"
+msgstr ""
+
+#: src/geo/GModel.cpp:2017
+msgid "We have a dense node numbering in the cache"
+msgstr ""
+
+#: src/geo/GModel.cpp:2021
+msgid "We have a fairly dense node numbering - still using cache vector"
+msgstr ""
+
+#: src/geo/GModel.cpp:2047 src/geo/GModel.cpp:2141
+msgid "Rebuilding mesh element cache"
+msgstr ""
+
+#: src/geo/GModel.cpp:2052
+msgid "We have a dense element numbering in the cache"
+msgstr ""
+
+#: src/geo/GModel.cpp:2056
+msgid "We have a fairly dense element numbering - still using cache vector"
+msgstr ""
+
+#: src/geo/GModel.cpp:2087 src/geo/GModel.cpp:2101
+msgid "Rebuilding mesh node cache"
+msgstr ""
+
+#: src/geo/GModel.cpp:2349 src/geo/GModel.cpp:2370
+msgid "Mesh or Metis module not compiled"
+msgstr ""
+
+#: src/geo/GModel.cpp:2739
+msgid "Checking for duplicate nodes..."
+msgstr ""
+
+#: src/geo/GModel.cpp:2766
+msgid "Checking for duplicate elements..."
+msgstr ""
+
+#: src/geo/GModel.cpp:2790
+msgid "Checking for isolated nodes..."
+msgstr ""
+
+#: src/geo/GModel.cpp:2857
+msgid "No duplicate nodes found"
+msgstr ""
+
+#: src/geo/GModel.cpp:2959
+msgid "Aligning periodic boundaries"
+msgstr ""
+
+#: src/geo/GModel.cpp:3111
+msgid "Invalid source/target elements"
+msgstr ""
+
+#: src/geo/GModel.cpp:3134
+msgid "Done aligning periodic boundaries"
+msgstr ""
+
+#: src/geo/GModel.cpp:3228
+msgid "Making discrete regions simply connected..."
+msgstr ""
+
+#: src/geo/GModel.cpp:3282
+msgid "Done making discrete regions simply connected"
+msgstr ""
+
+#: src/geo/GModel.cpp:3287
+msgid "Making discrete faces simply connected..."
+msgstr ""
+
+#: src/geo/GModel.cpp:3337
+msgid "Done making discrete faces simply connected"
+msgstr ""
+
+#: src/geo/GModel.cpp:3344
+msgid "Make simply connected regions and surfaces"
+msgstr ""
+
+#: src/geo/GModel.cpp:3408
+msgid "Element not found for simply connected regions"
+msgstr ""
+
+#: src/geo/GModel.cpp:3486
+msgid "Element not found for simply connected surfaces"
+msgstr ""
+
+#: src/geo/GModel.cpp:3513
+msgid "Cutting mesh..."
+msgstr ""
+
+#: src/geo/GModel.cpp:3515
+msgid "Splitting mesh..."
+msgstr ""
+
+#: src/geo/GModel.cpp:3677
+msgid "Invalid homology computation dimensions given"
+msgstr ""
+
+#: src/geo/GModel.cpp:3711
+msgid "Homology computation requires KBIPACK"
+msgstr ""
+
+#: src/geo/GModel.cpp:3723
+msgid "Size field computation requires both HXT and P4EST"
+msgstr ""
+
+#: src/geo/CGNSWriteStruct.cpp:83 src/geo/CGNSWriteStruct.cpp:286
+msgid "Invalid point ranges to compute transform - using default"
+msgstr ""
+
+#: src/geo/CGNSWriteStruct.cpp:529
+msgid "No structured meshes to save"
+msgstr ""
+
+#: src/geo/GModelIO_PLY.cpp:78
+msgid "Reading binary PLY files is experimental"
+msgstr ""
+
+#: src/geo/GModelIO_PLY.cpp:81
+msgid "Reading binary PLY file as big-endian"
+msgstr ""
+
+#: src/geo/GRegion.cpp:858
+msgid "Bad scaling in GRegion::setOutwardOrientationMeshConstraint"
+msgstr ""
+
+#: src/geo/CGNSZone.cpp:236
+msgid "Non-conformal connection not supported in CGNS reader"
+msgstr ""
+
+#: src/geo/CGNSZone.cpp:240
+msgid "Only vertex connections are supported in CGNS reader"
+msgstr ""
+
+#: src/geo/MEdge.cpp:85
+msgid "A list of edges has points that are adjacent to 3 edges"
+msgstr ""
+
+#: src/geo/MEdge.cpp:94
+msgid "Wrong topology for a list of edges"
+msgstr ""
+
+#: src/geo/MEdge.cpp:125
+msgid "Wrong topology in a wire"
+msgstr ""
+
+#: src/geo/GModelIO_VRML.cpp:109
+msgid "Prematured end of VRML file"
+msgstr ""
+
+#: src/geo/MQuadrangle.cpp:96
+msgid "Unknown node in quadrangle for angle computation"
+msgstr ""
+
+#: src/geo/GEdge.cpp:506
+msgid "Gauss-Legendre integration returned no points"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:872
+msgid "Could not create point"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:902
+msgid "Start and end points of line should be different"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:912
+msgid "Could not create line"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:930
+msgid "OpenCASCADE polyline currently not supported"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:977
+msgid "Could not build circle using two points and center"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:985
+msgid "Could not build circle through three points"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1007 src/geo/GModelIO_OCC.cpp:1171
+msgid "Could not create circle arc"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1079
+msgid "Invalid radii during creation of ellipse arc"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1091
+msgid "Major radius smaller than minor radius"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1098
+msgid "Could not build ellipse"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1113 src/geo/GModelIO_OCC.cpp:1235
+msgid "Could not create ellipse arc"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1136
+msgid "Circle radius should be positive"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1195 src/geo/GModelIO_OCC.cpp:1746
+msgid "Major radius rx should be larger than minor radius ry"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1199
+msgid "Ellipse radii should be positive"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1292
+msgid "Number of control points should be at least 2"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1347
+msgid "Could not interpolate spline"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1353
+msgid "Could not create spline"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1363
+msgid "Could not create Bezier curve"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1402
+msgid "BSpline multiplicities should be >= 1"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1407
+msgid "BSpline interior knot multiplicities should be <= degree"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1412
+msgid "BSpline end knot multiplicities should be <= degree + 1"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1471
+msgid "Could not create BSpline curve (with end points)"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1479
+msgid "Could not create BSpline curve (without end points)"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1600 src/geo/GModelIO_OCC.cpp:2199
+msgid "Could not create wire"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1605
+msgid "Curve loop is not closed"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1634
+msgid "Rectangle with zero width or height"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1750
+msgid "Disk radius should be positive"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1836 src/geo/GModelIO_OCC.cpp:2209
+msgid "Could not create surface"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:1912
+msgid "Could not build surface filling"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2021
+msgid "BSpline filling requires between 2 and 4 boundary BSpline curves"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2067
+msgid "Bounding curve for Bezier filling should be a Bezier curve"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2089
+msgid "Bezier filling requires between 2 and 4 boundary Bezier curves"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2236
+msgid "Wrong number of control points along U for BSpline surface"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2241
+msgid "Wrong number of control points for BSpline surface"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2256
+msgid "Wrong number of weights for BSpline surface"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2299 src/geo/GModelIO_OCC.cpp:2328
+msgid "Number of BSpline knots and multiplicities should be equal"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2404
+msgid "Wrong number of control points along U for Bezier surface"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2409
+msgid "Wrong number of control points for Bezier surface"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2608
+msgid "Sphere radius should be positive"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2612
+msgid "Cannot build sphere with angle <= 0 or angle > 2*Pi"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2620
+msgid "Could not create sphere"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2651
+msgid "Degenerate box"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2660
+msgid "Could not create box"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2691
+msgid "Cannot build cylinder of zero height"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2695
+msgid "Cannot build cylinder with angle <= 0 or angle > 2*Pi"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2705
+msgid "Could not create cylinder"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2736
+msgid "Torus radii should be positive"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2753
+msgid "Could not create torus"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2785
+msgid "Cannot build cone of zero height"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2789
+msgid "Cone angle should be positive"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2799
+msgid "Could not create cone"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2843
+msgid "Could not create wedge"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2882
+msgid "ThruSections require at least 2 wires"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2927
+msgid "Making solid requires closed wires"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2935
+msgid "Could not create ThruSection"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:2987
+msgid "Could not build thick solid"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3011
+msgid "Extruded meshes by revolution only for angle < 2*Pi"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3242
+msgid "Could not extrude"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3256
+msgid "Could not revolve"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3295
+msgid "Unknown trihedron mode for pipe: using 'DiscreteTrihedron'"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3299
+msgid "Could not create pipe"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3305
+msgid "Structured meshes not yet available with OpenCASCADE pipe"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3355
+msgid "Wrong input dimension in extrusion"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3427
+msgid "Different number of curves and surfaces for chamfer"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3464 src/geo/GModelIO_OCC.cpp:3677
+msgid "Could not compute fillet"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3481 src/geo/GModelIO_OCC.cpp:3718
+msgid "Could not compute chamfer"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3588
+msgid "Defeaturing produced empty shape"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3599
+msgid "Defeaturing requires OpenCASCADE >= 7.5.0"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3630
+msgid "Could not create temporary wire from given edges. Are edges connected?"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3640
+msgid "Could not create temporary face from given edges. Are edges planar?"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:3748
+msgid "Could not compute offset curve"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:4007
+msgid "Boolean fragments skipped - too few arguments"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:4317 src/geo/GModelIO_OCC.cpp:4325
+msgid "Could not apply transformation"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:4353
+msgid "OpenCASCADE transform changed the number of shapes"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:5137
+msgid "Could not create STEP data"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:5151
+msgid "Could not create IGES data"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:5477
+msgid "Syncing OCC_Internals with GModel"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:5872
+msgid " - Fixing degenerated edges and faces"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:5896
+msgid " . Repaired face"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:5898
+msgid " . Some wires are fixed"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:5900
+msgid " . Orientation of wires fixed"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:5902
+msgid " . Missing seam added"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:5904
+msgid " . Small area wire removed"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:5906
+msgid " . Natural bounds added"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:5926
+msgid " - Fixing small edges"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:5947
+msgid " . Fixed small edge in wire"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:5982
+msgid "  - Removing degenerated edge"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6004
+msgid " - Fixing wire gaps"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6005
+msgid "  no gaps found"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6007
+msgid " . Some 2D gaps fixed"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6009
+msgid " . Some 3D gaps fixed"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6011
+msgid " . Failed to fix some 2D gaps"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6013
+msgid " . Failed to fix some 3D gaps"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6019
+msgid " - Fixing wire frames"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6021
+msgid " . No small edges found"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6023
+msgid " . Some small edges fixed"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6025
+msgid " . Failed to fix some small edges"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6032
+msgid " - Fixing spot and strip faces"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6041
+msgid " - Sewing faces"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6055
+msgid " . Could not sew"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6068
+msgid " - Making solids"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6077
+msgid " . Could not make solid (no shells)"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6097
+msgid " . Could not make solid"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6604
+msgid "Missing index or reference for vertex"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6636
+msgid "Missing index or reference for edge"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6662
+msgid "Missing index or reference for face"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6688
+msgid "Missing index or reference for solid"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6752
+msgid "Missing name or dimension for group"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6759
+msgid "Gmsh requires OpenCASCADE and TinyXML2 to import XAO files"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6787 src/geo/GModelIO_OCC.cpp:6798
+#: src/geo/GModelIO_OCC.cpp:6809 src/geo/GModelIO_OCC.cpp:6820
+msgid "No OpenCASCADE model found"
+msgstr ""
+
+#: src/geo/GModelIO_OCC.cpp:6835
+msgid "Gmsh requires OpenCASCADE to import TopoDS_Shape"
+msgstr ""
+
+#: src/geo/Homology.cpp:95
+msgid "Domain is empty"
+msgstr ""
+
+#: src/geo/Homology.cpp:96
+msgid "Subdomain is empty"
+msgstr ""
+
+#: src/geo/Homology.cpp:116
+msgid "Cell Complex is empty: check the domain and the mesh"
+msgstr ""
+
+#: src/geo/Homology.cpp:400 src/plugin/HomologyPostProcessing.cpp:255
+msgid "Incidence matrix: "
+msgstr ""
+
+#: src/geo/MTriangle.cpp:184
+msgid "Unknown node in triangle for angle computation"
+msgstr ""
+
+#: src/geo/GModelIO_CGNS.cpp:239
+msgid "Partitioned entities not detected"
+msgstr ""
+
+#: src/geo/GModelIO_CGNS.cpp:310 src/geo/GModelIO_CGNS.cpp:317
+msgid "This version of Gmsh was compiled without CGNS support"
+msgstr ""
+
+#: src/geo/gmshSurface.cpp:22
+msgid "Normal computation not implemented for this type of surface"
+msgstr ""
+
+#: src/geo/gmshSurface.cpp:28
+msgid "First derivative not implemented for this type of surface"
+msgstr ""
+
+#: src/geo/gmshSurface.cpp:34
+msgid "Metric eigenvalue not implemented for this type of surface"
+msgstr ""
+
+#: src/geo/gmshSurface.cpp:150
+msgid "Parameter bounds not available for parametric surface"
+msgstr ""
+
+#: src/geo/CGNSCommon.cpp:25
+msgid "Unable to close CGNS file"
+msgstr ""
+
+#: src/geo/Cell.cpp:108
+msgid "The input mesh has degenerate elements, ignored"
+msgstr ""
+
+#: src/geo/CGNSRead.cpp:122 src/geo/CGNSRead.cpp:151
+msgid "Length unit in CGNS file not defined, therefore not rescaling"
+msgstr ""
+
+#: src/geo/CGNSRead.cpp:130
+msgid "Length unit in CGNS file is cm, rescaling"
+msgstr ""
+
+#: src/geo/CGNSRead.cpp:134
+msgid "Length unit in CGNS file is mm, rescaling"
+msgstr ""
+
+#: src/geo/CGNSRead.cpp:138
+msgid "Length unit in CGNS file is feet, rescaling"
+msgstr ""
+
+#: src/geo/CGNSRead.cpp:142
+msgid "Length unit in CGNS file is inch, rescaling"
+msgstr ""
+
+#: src/geo/CGNSRead.cpp:146
+msgid "Length unit in CGNS file is meter, not rescaling"
+msgstr ""
+
+#: src/geo/boundaryLayersData.cpp:275
+msgid "Impossible boundary layer configuration"
+msgstr ""
+
+#: src/geo/boundaryLayersData.cpp:957
+msgid "vertice not found in bl"
+msgstr ""
+
+#: src/geo/ChainComplex.cpp:572
+msgid "Invalid chain smoothening add!"
+msgstr ""
+
+#: src/geo/scriptStringInterface.cpp:128
+msgid "GEO file creation not available without Gmsh parser"
+msgstr ""
+
+#: src/geo/GModelVertexArrays.cpp:456
+msgid "Mesh has changed: reinitializing vertex arrays"
+msgstr ""
+
+#: src/geo/GeoInterpolation.cpp:423
+msgid "Line with less than 2 control points"
+msgstr ""
+
+#: src/geo/GeoInterpolation.cpp:466
+msgid "Circle or ellipse with less than 2 control points"
+msgstr ""
+
+#: src/geo/GeoInterpolation.cpp:505
+msgid "Spline with less than 2 control points"
+msgstr ""
+
+#: src/geo/GeoInterpolation.cpp:562
+msgid "Cannot interpolate boundary layer curve"
+msgstr ""
+
+#: src/geo/GeoInterpolation.cpp:566
+msgid "Cannot interpolate discrete curve"
+msgstr ""
+
+#: src/geo/GeoInterpolation.cpp:714
+msgid "No curves on boundary of ruled surface"
+msgstr ""
+
+#: src/geo/GeoInterpolation.cpp:721
+msgid "Cannot interpolate ruled surface with discrete bounding curves"
+msgstr ""
+
+#: src/geo/GeoInterpolation.cpp:836
+msgid "Unknown curve in extruded surface"
+msgstr ""
+
+#: src/geo/GeoInterpolation.cpp:943
+msgid "Should not interpolate plane surface here"
+msgstr ""
+
+#: src/geo/GeoInterpolation.cpp:946
+msgid "Cannot interpolate boundary layer surface"
+msgstr ""
+
+#: src/geo/GeoInterpolation.cpp:949
+msgid "Cannot interpolate discrete surface"
+msgstr ""
+
+#: src/geo/GeoInterpolation.cpp:952
+msgid "Unknown surface type in interpolation"
+msgstr ""
+
+#: src/fltk/solverButton.cpp:23
+msgid "Cannot rename client while solver is running"
+msgstr ""
+
+#: src/fltk/solverButton.cpp:42
+msgid "Cannot change executable name while solver is running"
+msgstr ""
+
+#: src/fltk/solverButton.cpp:71
+msgid "Cannot remove client while solver is running"
+msgstr ""
+
+#: src/fltk/helpWindow.cpp:311
+msgid "About Gmsh"
+msgstr "关于 Gmsh"
+
+#: src/fltk/viewButton.cpp:271
+msgid "Background mesh requires mesh module"
+msgstr ""
+
+#: src/fltk/optionWindow.cpp:1963
+msgid "General color widget vector should be resized"
+msgstr ""
+
+#: src/fltk/optionWindow.cpp:2404
+msgid "Geometry color widget vector should be resized"
+msgstr ""
+
+#: src/fltk/optionWindow.cpp:2901
+msgid "Mesh color widget vector should be resized"
+msgstr ""
+
+#: src/fltk/optionWindow.cpp:3812
+msgid "View color widget vector should be resized"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:235
+msgid "Cannot start: remote Gmsh is already running"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:1003
+msgid "Entity de-selection not supported yet during multi-line creation"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:1055
+msgid "Entity de-selection not supported yet during curve creation"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:1109
+msgid "Entity de-selection not supported yet during circle creation"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:1167
+msgid "Entity de-selection not supported yet during ellipse creation"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:1615
+msgid "Inverting selection!"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:1772
+msgid "Unknown action on selected entities"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:1940 src/fltk/graphicWindow.cpp:2038
+#: src/fltk/graphicWindow.cpp:2809
+msgid "Entity de-selection not supported yet during boolean operation"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:1959
+msgid "At least one object must be selected"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:1964
+msgid "At least one tool must be selected"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:2055
+msgid "At least one volume must be selected"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:2060
+msgid "At least one curve must be selected"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:2327
+msgid "Unknown action on mesh part"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:2660
+msgid "Wrong number of points for mesh constraint"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:2666
+msgid "Wrong number of points for transfinite volume"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:2822
+msgid "At least one entity must be selected"
+msgstr ""
+
+#: src/fltk/graphicWindow.cpp:4309
+msgid "new gl window for stereo vision!"
+msgstr ""
+
+#: src/fltk/openglWindow.cpp:183
+msgid "openglWindow::draw()"
+msgstr ""
+
+#: src/fltk/fileDialogs.cpp:1807 src/fltk/fileDialogs.cpp:1928
+msgid "No views to save"
+msgstr ""
+
+#: src/fltk/fileDialogs.cpp:1811 src/fltk/fileDialogs.cpp:1932
+msgid "No or invalid current view: saving View[0]"
+msgstr ""
+
+#: src/fltk/fileDialogs.cpp:1820 src/fltk/fileDialogs.cpp:1942
+msgid "No visible view"
+msgstr ""
+
+#: src/fltk/onelabGroup.cpp:814
+msgid "Bad data for ServerActionSet"
+msgstr ""
+
+#: src/fltk/onelabGroup.cpp:1727
+msgid "No item for path"
+msgstr ""
+
+#: src/fltk/onelabGroup.cpp:1732
+msgid "Could not get path for item"
+msgstr ""
+
+#: src/fltk/classificationEditor.cpp:157
+msgid "Classification requires mesh module"
+msgstr ""
+
+#: src/fltk/FlGui.cpp:444
+msgid "Your system does not seem to support OpenGL - aborting"
+msgstr ""
+
+#: src/graphics/gl2pgf.cpp:53
+msgid "PGF export does not handle transparent colormaps"
+msgstr ""
+
+#: src/graphics/gl2pgf.cpp:250
+msgid "Please select a plane view (X, Y, Z)"
+msgstr ""
+
+#: src/graphics/gl2pgf.cpp:325
+msgid "Cannot infer orientation from Euler angles..."
+msgstr ""
+
+#: src/graphics/gl2pgf.cpp:433
+msgid "Cannot produce output if axes are not orthogonal."
+msgstr ""
+
+#: src/graphics/gl2pgf.cpp:601
+msgid "Unable to assemble colormap for PGF output"
+msgstr ""
+
+#: src/graphics/gl2pgf.cpp:605
+msgid "Unable to assemble post processing axis for PGF output"
+msgstr ""
+
+#: src/graphics/gl2pgf.cpp:609
+msgid "Unable to assemble colorbar for PGF output"
+msgstr ""
+
+#: src/graphics/gl2pgf.cpp:655 src/graphics/gl2pgf.cpp:691
+msgid "Running:"
+msgstr ""
+
+#: src/graphics/gl2pgf.cpp:660
+msgid "Automatic trim successful."
+msgstr ""
+
+#: src/graphics/gl2pgf.cpp:662 src/graphics/gl2pgf.cpp:672
+msgid "Cannot automatically trim output png."
+msgstr ""
+
+#: src/graphics/gl2pgf.cpp:696
+msgid "Automatic transparent white background successful."
+msgstr ""
+
+#: src/graphics/gl2pgf.cpp:698
+msgid "Cannot automatically add transparency to png."
+msgstr ""
+
+#: src/graphics/gl2pgf.cpp:708
+msgid "Cannot automatically add transparency to output png."
+msgstr ""
+
+#: src/graphics/ReadImg.cpp:40
+msgid "Unable to obtain one-channel image"
+msgstr ""
+
+#: src/graphics/gl2jpeg.cpp:14
+msgid "This version of Gmsh was compiled without JPEG support"
+msgstr ""
+
+#: src/graphics/gl2jpeg.cpp:36
+msgid "JPEG only implemented for GL_RGB and GL_UNSIGNED_BYTE"
+msgstr ""
+
+#: src/graphics/drawContext.cpp:107
+msgid "Could not create quadric"
+msgstr ""
+
+#: src/graphics/drawContext.cpp:113
+msgid "Could not generate display lists"
+msgstr ""
+
+#: src/graphics/drawContext.cpp:425
+msgid "Gmsh must be compiled with Poppler support to load PDFs"
+msgstr ""
+
+#: src/graphics/drawContext.cpp:457
+msgid "Gmsh must be compiled with FLTK support to load JPEGs or PNGs"
+msgstr ""
+
+#: src/graphics/drawContext.cpp:845
+msgid "unproject1 failed"
+msgstr ""
+
+#: src/graphics/drawContext.cpp:847
+msgid "unproject2 failed"
+msgstr ""
+
+#: src/graphics/drawContext.cpp:988
+msgid "Too many entities selected"
+msgstr ""
+
+#: src/graphics/drawContext.cpp:1052
+msgid "Problem in point selection processing"
+msgstr ""
+
+#: src/graphics/drawContext.cpp:1061
+msgid "Problem in line selection processing"
+msgstr ""
+
+#: src/graphics/drawContext.cpp:1074
+msgid "Problem in surface selection processing"
+msgstr ""
+
+#: src/graphics/drawContext.cpp:1087
+msgid "Problem in volume selection processing"
+msgstr ""
+
+#: src/graphics/gl2gif.cpp:259
+msgid "GIF: can't happen: too many colors"
+msgstr ""
+
+#: src/graphics/gl2gif.cpp:358
+msgid "GIF: out of memory"
+msgstr ""
+
+#: src/graphics/gl2gif.cpp:792
+msgid "GIF: Error writing output file"
+msgstr ""
+
+#: src/graphics/gl2gif.cpp:1132
+msgid "GIF only implemented for GL_RGB"
+msgstr ""
+
+#: src/graphics/gl2gif.cpp:1155
+msgid "GIF: too many colors in image"
+msgstr ""
+
+#: src/graphics/gl2gif.cpp:1161
+msgid "GIF: making histogram..."
+msgstr ""
+
+#: src/graphics/gl2gif.cpp:1165
+msgid "GIF: still too many colors!"
+msgstr ""
+
+#: src/graphics/gl2gif.cpp:1184
+msgid "GIF: mapping image to new colors..."
+msgstr ""
+
+#: src/graphics/gl2gif.cpp:1188
+msgid "GIF: Floyd-Steinberg dithering is selected..."
+msgstr ""
+
+#: src/graphics/gl2gif.cpp:1264
+msgid "GIF: Out of memory adding to hash table"
+msgstr ""
+
+#: src/graphics/gl2gif.cpp:1358
+msgid "GIF: sorting colormap"
+msgstr ""
+
+#: src/graphics/gl2yuv.cpp:38
+msgid "YUV only implemented for GL_RGB and GL_UNSIGNED_BYTE"
+msgstr ""
+
+#: src/graphics/drawPost.cpp:345
+msgid "drawing extra glyphs (this is slow...)"
+msgstr ""
+
+#: src/graphics/drawPost.cpp:633
+msgid "post-pro vertex arrays have changed"
+msgstr ""
+
+#: src/graphics/gl2png.cpp:13
+msgid "This version of Gmsh was compiled without PNG support"
+msgstr ""
+
+#: src/graphics/gl2png.cpp:28
+msgid "PNG only implemented for GL_RGB/GL_RGBA and GL_UNSIGNED_BYTE"
+msgstr ""
+
+#: src/graphics/gl2png.cpp:36
+msgid "Could not create PNG write struct"
+msgstr ""
+
+#: src/graphics/gl2png.cpp:44
+msgid "Could not create PNG info struct"
+msgstr ""
+
+#: src/graphics/gl2png.cpp:50
+msgid "Could not setjmp in PNG"
+msgstr ""
+
+#: src/graphics/drawGlyph.cpp:203
+msgid "Bad image format: use `@wxh' or `@wxh,wx,wy,wz,hx,hy,hz'"
+msgstr ""
+
+#: src/graphics/drawGlyph.cpp:220
+msgid "No texture for image - skipping image draw"
+msgstr ""
+
+#: src/graphics/drawMesh.cpp:735
+msgid "mesh vertex arrays have changed"
+msgstr ""
+
+#: src/graphics/gl2ppm.cpp:11
+msgid "PPM only implemented for GL_RGB and GL_UNSIGNED_BYTE"
+msgstr ""
+
+#: src/numeric/nodalBasis.cpp:312
+msgid "invalid p1 closure or invalid edges list"
+msgstr ""
+
+#: src/numeric/nodalBasis.cpp:688
+msgid "Prism face not found"
+msgstr ""
+
+#: src/numeric/CondNumBasis.cpp:441 src/numeric/CondNumBasis.cpp:537
+msgid "Inverse condition number not implemented in 1D"
+msgstr ""
+
+#: src/numeric/polynomialBasis.cpp:155
+msgid "Node out of range for polynomial basis"
+msgstr ""
+
+#: src/numeric/polynomialBasis.cpp:244
+msgid "Node out of range for polynomial basis gradient"
+msgstr ""
+
+#: src/numeric/bezierBasis.cpp:204
+msgid "This bezierBasis constructor is not for pyramids!"
+msgstr ""
+
+#: src/numeric/bezierBasis.cpp:260
+msgid "This bezierBasis constructor is for pyramids!"
+msgstr ""
+
+#: src/numeric/bezierBasis.cpp:446
+msgid "Bezier raiser not implemented for pyramidal space"
+msgstr ""
+
+#: src/numeric/bezierBasis.cpp:624 src/numeric/bezierBasis.cpp:664
+msgid "Call of Bezier expansion for Serendipity space."
+msgstr ""
+
+#: src/numeric/bezierBasis.cpp:734
+msgid "Not supposed to be here. destructor bezierCoeff"
+msgstr ""
+
+#: src/numeric/bezierBasis.cpp:841
+msgid "I own data, cannot do that"
+msgstr ""
+
+#: src/numeric/bezierBasis.cpp:941
+msgid "expected empty vector of bezierCoeff"
+msgstr ""
+
+#: src/numeric/bezierBasis.cpp:1484
+msgid "this block is being used!?"
+msgstr ""
+
+#: src/numeric/bezierBasis.cpp:1536
+msgid "I cannot free memory if some is still in use!"
+msgstr ""
+
+#: src/numeric/pyramidalBasis.cpp:112
+msgid "Node out of range for pyramidal basis"
+msgstr ""
+
+#: src/numeric/pyramidalBasis.cpp:178
+msgid "Node out of range for pyramidal basis gradient"
+msgstr ""
+
+#: src/numeric/fullMatrix.cpp:88 src/numeric/fullMatrix.cpp:98
+#: src/numeric/fullMatrix.cpp:111
+msgid "fullMatrix size does not match"
+msgstr ""
+
+#: src/numeric/fullMatrix.cpp:328
+msgid "FullMatrix: Bad dimension, I cannot write in proxy"
+msgstr ""
+
+#: src/numeric/fullMatrix.cpp:435
+msgid "SVD did not converge"
+msgstr ""
+
+#: src/numeric/Numeric.cpp:225
+msgid "Singular matrix 2x2"
+msgstr ""
+
+#: src/numeric/Numeric.cpp:248
+msgid "Singular matrix 3x3"
+msgstr ""
+
+#: src/numeric/JacobianBasis.cpp:843
+msgid "jacobianMatrixSpace not yet implemented for pyramids"
+msgstr ""
+
+#: src/numeric/FuncSpaceData.cpp:43
+msgid "Creation of pyramidal space data for a non-pyramid element !"
+msgstr ""
+
+#: src/numeric/FuncSpaceData.cpp:66
+msgid "Creation of pyramidal space data for a non-pyramid element!"
+msgstr ""
+
+#: src/numeric/FuncSpaceData.cpp:72
+msgid "getOrderForBezier needs third exponent for pyramidal space!"
+msgstr ""
+
+#: src/numeric/pointsGenerators.cpp:1169
+msgid "Ordered monomials for serendipity elements not implemented"
+msgstr ""
+
+#: src/numeric/ConjugateGradients.cpp:103
+msgid "Roundoff problem in gmshLineSearch."
+msgstr ""
+
+#: src/common/gmsh.cpp:121
+msgid "Gmsh has not been initialized"
+msgstr "Gmsh 尚未初始化"
+
+#: src/common/gmsh.cpp:125
+msgid "Gmsh has no current model"
+msgstr ""
+
+#: src/common/gmsh.cpp:137
+msgid "Gmsh has aleady been initialized"
+msgstr "Gmsh 已经初始化"
+
+#: src/common/gmsh.cpp:175
+msgid "Something went wrong when initializing Gmsh"
+msgstr ""
+
+#: src/common/gmsh.cpp:190
+msgid "Something went wrong when finalizing Gmsh"
+msgstr ""
+
+#: src/common/gmsh.cpp:217
+msgid "Could not clear project"
+msgstr ""
+
+#: src/common/gmsh.cpp:330
+msgid "Could not remove current model"
+msgstr ""
+
+#: src/common/gmsh.cpp:516
+msgid "Could not add physical group"
+msgstr ""
+
+#: src/common/gmsh.cpp:579
+msgid "Could not get boundary"
+msgstr ""
+
+#: src/common/gmsh.cpp:642 src/common/gmsh.cpp:655
+msgid "Empty bounding box"
+msgstr ""
+
+#: src/common/gmsh.cpp:858 src/common/gmsh.cpp:895 src/common/gmsh.cpp:935
+#: src/common/gmsh.cpp:975 src/common/gmsh.cpp:1002 src/common/gmsh.cpp:1033
+#: src/common/gmsh.cpp:1121
+msgid "Number of parametric coordinates should be even"
+msgstr ""
+
+#: src/common/gmsh.cpp:1058 src/common/gmsh.cpp:1132 src/common/gmsh.cpp:1202
+#: src/common/gmsh.cpp:5737
+msgid "Number of coordinates should be a multiple of 3"
+msgstr ""
+
+#: src/common/gmsh.cpp:1410
+msgid "Optimization of specified model entities is not interfaced yet"
+msgstr ""
+
+#: src/common/gmsh.cpp:1422
+msgid "Could not compute cross field"
+msgstr ""
+
+#: src/common/gmsh.cpp:1426
+msgid "computeCrossField requires the mesh module"
+msgstr ""
+
+#: src/common/gmsh.cpp:1451
+msgid "splitQuadrangles requires the mesh module"
+msgstr ""
+
+#: src/common/gmsh.cpp:1866
+msgid "Wrong number of coordinates"
+msgstr ""
+
+#: src/common/gmsh.cpp:1872
+msgid "Wrong number of parametric coordinates"
+msgstr ""
+
+#: src/common/gmsh.cpp:2208
+msgid "Wrong number of element tags"
+msgstr ""
+
+#: src/common/gmsh.cpp:2212
+msgid "Wrong number of node tags"
+msgstr ""
+
+#: src/common/gmsh.cpp:2291
+msgid "Size of basis incompatible with element type"
+msgstr ""
+
+#: src/common/gmsh.cpp:2316 src/common/gmsh.cpp:2387 src/common/gmsh.cpp:2553
+#: src/common/gmsh.cpp:4529 src/common/gmsh.cpp:4674 src/common/gmsh.cpp:4749
+msgid "Number of tasks should be > 0"
+msgstr ""
+
+#: src/common/gmsh.cpp:2539
+msgid "No evaluation points in getJacobians"
+msgstr ""
+
+#: src/common/gmsh.cpp:2809
+msgid "No evaluation points in getJacobian"
+msgstr ""
+
+#: src/common/gmsh.cpp:2859 src/common/gmsh.cpp:2989
+msgid "Asking for more orientation that there exist"
+msgstr ""
+
+#: src/common/gmsh.cpp:3008
+msgid "Duplicate wanted orientation found"
+msgstr ""
+
+#: src/common/gmsh.cpp:3406
+msgid "basisFunctionsOrientation should be preallocated if numTasks > 1"
+msgstr ""
+
+#: src/common/gmsh.cpp:3627 src/common/gmsh.cpp:3710 src/common/gmsh.cpp:3756
+msgid "Unknown face type (should be 3 or 4)"
+msgstr ""
+
+#: src/common/gmsh.cpp:3731
+msgid "Wrong number of edge nodes"
+msgstr ""
+
+#: src/common/gmsh.cpp:3760
+msgid "Wrong number of face nodes"
+msgstr ""
+
+#: src/common/gmsh.cpp:4470
+msgid "Number of bubble functions greater than number of keys"
+msgstr ""
+
+#: src/common/gmsh.cpp:4536
+msgid "Barycenters should be preallocated if numTasks > 1"
+msgstr ""
+
+#: src/common/gmsh.cpp:4614
+msgid "Wrong integration point format"
+msgstr ""
+
+#: src/common/gmsh.cpp:4680 src/common/gmsh.cpp:4755
+msgid "Nodes should be preallocated if numTasks > 1"
+msgstr ""
+
+#: src/common/gmsh.cpp:5015
+msgid "failed to automatically set transfinite faces"
+msgstr ""
+
+#: src/common/gmsh.cpp:5064
+msgid "setTransfiniteAutomatic requires the mesh module"
+msgstr ""
+
+#: src/common/gmsh.cpp:5317
+msgid "No elements to reorder"
+msgstr ""
+
+#: src/common/gmsh.cpp:5322
+msgid "Could not reorder elements"
+msgstr ""
+
+#: src/common/gmsh.cpp:5343
+msgid "Computing renumbering requires the mesh module"
+msgstr ""
+
+#: src/common/gmsh.cpp:5392
+msgid "Incompatible number of tags and master tags for periodic mesh"
+msgstr ""
+
+#: src/common/gmsh.cpp:5697
+msgid "Number of 2D coordinates should be even"
+msgstr ""
+
+#: src/common/gmsh.cpp:5726
+msgid "Triangulate requires the mesh module"
+msgstr ""
+
+#: src/common/gmsh.cpp:5763
+msgid "Tetrahedralize requires the mesh module"
+msgstr ""
+
+#: src/common/gmsh.cpp:5784 src/common/gmsh.cpp:5798 src/common/gmsh.cpp:5812
+#: src/common/gmsh.cpp:5829 src/common/gmsh.cpp:5865 src/common/gmsh.cpp:5884
+#: src/common/gmsh.cpp:5901 src/common/gmsh.cpp:5919 src/common/gmsh.cpp:5945
+#: src/common/gmsh.cpp:5970 src/common/gmsh.cpp:5980 src/common/gmsh.cpp:5990
+msgid "Fields require the mesh module"
+msgstr ""
+
+#: src/common/gmsh.cpp:6292
+msgid "Element layers are required for boundary layer extrusion"
+msgstr ""
+
+#: src/common/gmsh.cpp:6605
+msgid "Number of entries in tangents should be a multiple of 3"
+msgstr ""
+
+#: src/common/gmsh.cpp:7221
+msgid "Gmsh requires OpenCASCADE to import native shape"
+msgstr ""
+
+#: src/common/gmsh.cpp:7347 src/common/gmsh.cpp:7366 src/common/gmsh.cpp:7381
+#: src/common/gmsh.cpp:7394 src/common/gmsh.cpp:7459 src/common/gmsh.cpp:7569
+#: src/common/gmsh.cpp:7604 src/common/gmsh.cpp:7678 src/common/gmsh.cpp:7716
+#: src/common/gmsh.cpp:7756 src/common/gmsh.cpp:7834 src/common/gmsh.cpp:7897
+#: src/common/gmsh.cpp:7986 src/common/gmsh.cpp:8006 src/common/gmsh.cpp:8024
+#: src/common/gmsh.cpp:8101 src/common/gmsh.cpp:8117 src/common/gmsh.cpp:8140
+#: src/common/gmsh.cpp:8161 src/common/gmsh.cpp:8181 src/common/gmsh.cpp:8200
+#: src/common/gmsh.cpp:8220 src/common/gmsh.cpp:8241 src/common/gmsh.cpp:8269
+#: src/common/gmsh.cpp:8293
+msgid "Views require the post-processing module"
+msgstr ""
+
+#: src/common/gmsh.cpp:7450
+msgid "Could not add model data"
+msgstr ""
+
+#: src/common/gmsh.cpp:7471
+msgid "Incompatible number of tags and data"
+msgstr ""
+
+#: src/common/gmsh.cpp:7714
+msgid "Unknown data type for list import"
+msgstr ""
+
+#: src/common/gmsh.cpp:7766
+msgid "Number of string style attributes should be even"
+msgstr ""
+
+#: src/common/gmsh.cpp:8308 src/common/gmsh.cpp:8324
+msgid "Unknown plugin or plugin option"
+msgstr ""
+
+#: src/common/gmsh.cpp:8311 src/common/gmsh.cpp:8327 src/common/gmsh.cpp:8342
+msgid "Views require the post-processing and plugin modules"
+msgstr ""
+
+#: src/common/gmsh.cpp:8338
+msgid "Unknown plugin or plugin action"
+msgstr ""
+
+#: src/common/gmsh.cpp:8384 src/common/gmsh.cpp:8394 src/common/gmsh.cpp:8418
+#: src/common/gmsh.cpp:8428 src/common/gmsh.cpp:8438 src/common/gmsh.cpp:8449
+#: src/common/gmsh.cpp:8459 src/common/gmsh.cpp:8470
+msgid "Fltk not available"
+msgstr ""
+
+#: src/common/gmsh.cpp:8647 src/common/gmsh.cpp:8660 src/common/gmsh.cpp:8672
+#: src/common/gmsh.cpp:8683 src/common/gmsh.cpp:8695 src/common/gmsh.cpp:8718
+#: src/common/gmsh.cpp:8728
+msgid "Parser not available"
+msgstr ""
+
+#: src/common/gmsh.cpp:8744 src/common/gmsh.cpp:8760
+msgid "Unknown data format"
+msgstr ""
+
+#: src/common/gmsh.cpp:8746 src/common/gmsh.cpp:8783 src/common/gmsh.cpp:8795
+#: src/common/gmsh.cpp:8811 src/common/gmsh.cpp:8825 src/common/gmsh.cpp:8841
+#: src/common/gmsh.cpp:8855 src/common/gmsh.cpp:8865 src/common/gmsh.cpp:8876
+#: src/common/gmsh.cpp:8886
+msgid "ONELAB not available"
+msgstr ""
+
+#: src/common/gmsh.cpp:8931
+msgid "Logger already started - ignoring"
+msgstr ""
+
+#: src/common/gmsh.cpp:8957
+msgid "Logger not started - ignoring"
+msgstr ""
+
+#: src/common/GmshMessage.cpp:1129
+msgid "GetNumber requires a ONELAB client"
+msgstr ""
+
+#: src/common/GmshMessage.cpp:1151
+msgid "GetString requires a ONELAB client"
+msgstr ""
+
+#: src/common/gmshLocalNetworkClient.cpp:234
+#: src/common/gmshLocalNetworkClient.cpp:589
+#: contrib/onelab/OnelabClients.cpp:112 contrib/onelab/OnelabClients.cpp:363
+msgid "Abnormal server termination (no valid server)"
+msgstr ""
+
+#: src/common/gmshLocalNetworkClient.cpp:240
+#: contrib/onelab/OnelabClients.cpp:118
+msgid "Abnormal server termination (did not receive message header)"
+msgstr ""
+
+#: src/common/gmshLocalNetworkClient.cpp:246
+msgid "Abnormal server termination (did not receive message body)"
+msgstr ""
+
+#: src/common/gmshLocalNetworkClient.cpp:254
+msgid "Abnormal server termination (blank message: client not stopped?)"
+msgstr ""
+
+#: src/common/gmshLocalNetworkClient.cpp:652
+msgid "Client disconnected: starting new connection"
+msgstr ""
+
+#: src/common/MallocUtils.cpp:18 src/common/MallocUtils.cpp:28
+#: src/common/MallocUtils.cpp:36
+msgid "Out of memory (buy some more RAM!)"
+msgstr ""
+
+#: src/common/GmshRemote.cpp:298
+msgid "GmshRemote requires Post and ONELAB modules"
+msgstr ""
+
+#: src/common/CreateFile.cpp:507
+msgid "No OpenCASCADE CAD data found for BREP export"
+msgstr ""
+
+#: src/common/CreateFile.cpp:514
+msgid "No OpenCASCADE CAD data found for XAO export"
+msgstr ""
+
+#: src/common/CreateFile.cpp:523
+msgid "No suitable CAD data found for STEP export"
+msgstr ""
+
+#: src/common/CreateFile.cpp:530
+msgid "No suitable CAD data found for IGES export"
+msgstr ""
+
+#: src/common/CreateFile.cpp:542
+msgid "No Parasolid CAD data found for XMT export"
+msgstr ""
+
+#: src/common/CreateFile.cpp:851
+msgid "Unknown output file format"
+msgstr ""
+
+#: src/common/OS.cpp:261
+msgid "Wrong buffer index in setwbuf"
+msgstr ""
+
+#: src/common/OS.cpp:601
+msgid "SystemCall is not supported on iOS"
+msgstr ""
+
+#: src/common/OS.cpp:627 contrib/onelab/myOS.cpp:205
+msgid "Could not find /bin/sh: aborting system call"
+msgstr ""
+
+#: src/common/OS.cpp:726
+msgid "Gmsh must be compiled with Zipper support to extract zip files"
+msgstr ""
+
+#: src/common/Options.cpp:801
+msgid "Unable to open file 'opt_general.texi'"
+msgstr ""
+
+#: src/common/Options.cpp:814
+msgid "Unable to open file 'opt_print.texi'"
+msgstr ""
+
+#: src/common/Options.cpp:827
+msgid "Unable to open file 'opt_geometry.texi'"
+msgstr ""
+
+#: src/common/Options.cpp:840
+msgid "Unable to open file 'opt_mesh.texi'"
+msgstr ""
+
+#: src/common/Options.cpp:853
+msgid "Unable to open file 'opt_solver.texi'"
+msgstr ""
+
+#: src/common/Options.cpp:866
+msgid "Unable to open file 'opt_post.texi'"
+msgstr ""
+
+#: src/common/Options.cpp:882
+msgid "Unable to open file 'opt_view.texi'"
+msgstr ""
+
+#: src/common/Options.cpp:901
+msgid "Unable to open file 'plugins.texi'"
+msgstr ""
+
+#: src/common/Options.cpp:946
+msgid "Unable to open file 'fields.texi'"
+msgstr ""
+
+#: src/common/Options.cpp:994
+msgid "Unable to open file 'shortcuts.texi'"
+msgstr ""
+
+#: src/common/Options.cpp:1008
+msgid "Unable to open file 'mouse.texi'"
+msgstr ""
+
+#: src/common/Options.cpp:1021
+msgid "Unable to open file 'commandline.texi'"
+msgstr ""
+
+#: src/common/Options.cpp:5123 src/common/CommandLine.cpp:811
+msgid "Mesh element size factor must be > 0"
+msgstr ""
+
+#: src/common/OpenFile.cpp:178
+msgid "Gmsh parser is not compiled in this version"
+msgstr ""
+
+#: src/common/OpenFile.cpp:210
+msgid "Too many errors: aborting parser..."
+msgstr ""
+
+#: src/common/OpenFile.cpp:703
+msgid "Clearing all models and views..."
+msgstr ""
+
+#: src/common/OpenFile.cpp:705
+msgid "Done clearing all models and views"
+msgstr ""
+
+#: src/common/CommandLine.cpp:437 src/common/CommandLine.cpp:450
+#: src/common/CommandLine.cpp:509 src/common/CommandLine.cpp:520
+#: src/common/CommandLine.cpp:535 src/common/CommandLine.cpp:646
+#: src/common/CommandLine.cpp:663 src/common/CommandLine.cpp:672
+#: src/common/CommandLine.cpp:681 src/common/CommandLine.cpp:690
+#: src/common/CommandLine.cpp:760 src/common/CommandLine.cpp:793
+#: src/common/CommandLine.cpp:802 src/common/CommandLine.cpp:816
+#: src/common/CommandLine.cpp:825 src/common/CommandLine.cpp:839
+#: src/common/CommandLine.cpp:848 src/common/CommandLine.cpp:862
+#: src/common/CommandLine.cpp:877 src/common/CommandLine.cpp:886
+#: src/common/CommandLine.cpp:896 src/common/CommandLine.cpp:909
+#: src/common/CommandLine.cpp:918 src/common/CommandLine.cpp:927
+#: src/common/CommandLine.cpp:1081 src/common/CommandLine.cpp:1353
+#: src/common/CommandLine.cpp:1362 src/common/CommandLine.cpp:1403
+#: src/common/CommandLine.cpp:1412 src/common/CommandLine.cpp:1447
+#: src/common/CommandLine.cpp:1456
+msgid "Missing number"
+msgstr ""
+
+#: src/common/CommandLine.cpp:637
+msgid "Option '-optimize_threshold 0' leads to no optimization"
+msgstr ""
+
+#: src/common/CommandLine.cpp:699
+msgid "Missing anisotropy ratio"
+msgstr ""
+
+#: src/common/CommandLine.cpp:708
+msgid "Missing smooth ratio"
+msgstr ""
+
+#: src/common/CommandLine.cpp:717 src/common/CommandLine.cpp:1330
+#: src/common/CommandLine.cpp:1344
+msgid "Missing file name"
+msgstr ""
+
+#: src/common/CommandLine.cpp:728
+msgid "Missing number of layers per gap"
+msgstr ""
+
+#: src/common/CommandLine.cpp:738
+msgid "Missing number of elements density"
+msgstr ""
+
+#: src/common/CommandLine.cpp:746
+msgid "Gradation must be > 1 : set to 1.05"
+msgstr ""
+
+#: src/common/CommandLine.cpp:750
+msgid "Missing gradation"
+msgstr ""
+
+#: src/common/CommandLine.cpp:834
+msgid "Maximum length size must be > 0"
+msgstr ""
+
+#: src/common/CommandLine.cpp:872
+msgid "Integration accuracy must be > 0"
+msgstr ""
+
+#: src/common/CommandLine.cpp:937 src/common/CommandLine.cpp:947
+#: src/common/CommandLine.cpp:1465 src/common/CommandLine.cpp:1474
+msgid "Missing argument"
+msgstr ""
+
+#: src/common/CommandLine.cpp:1000
+msgid "Unknown mesh algorithm"
+msgstr ""
+
+#: src/common/CommandLine.cpp:1006
+msgid "Missing algorithm"
+msgstr ""
+
+#: src/common/CommandLine.cpp:1039
+msgid "Missing format"
+msgstr ""
+
+#: src/common/CommandLine.cpp:1123
+msgid "Missing client name and/or address of ONELAB server"
+msgstr ""
+
+#: src/common/CommandLine.cpp:1132 src/common/CommandLine.cpp:1237
+#: src/common/CommandLine.cpp:1246
+msgid "Missing string"
+msgstr ""
+
+#: src/common/CommandLine.cpp:1148 src/common/CommandLine.cpp:1157
+msgid "Missing interpreter name"
+msgstr ""
+
+#: src/common/CommandLine.cpp:1181 src/common/CommandLine.cpp:1371
+msgid "Missing filename"
+msgstr ""
+
+#: src/common/CommandLine.cpp:1270
+msgid "Missing name and/or value for string definition"
+msgstr ""
+
+#: src/common/CommandLine.cpp:1295
+msgid "Missing name and/or value for number definition"
+msgstr ""
+
+#: src/common/CommandLine.cpp:1321
+msgid "Missing name and/or value for definition of list of numbers"
+msgstr ""
+
+#: src/common/GmshGlobal.cpp:312 src/common/GmshGlobal.cpp:469
+msgid "Invalid background mesh (no view)"
+msgstr ""
+
+#: src/common/GmshGlobal.cpp:487
+msgid "GmshFLTK unavailable: please recompile with FLTK support"
+msgstr ""
+
+#: src/common/VertexArray.cpp:287
+msgid "Should swap bytes in vertex array--not implemented yet"
+msgstr ""
+
+#: src/common/onelabUtils.cpp:473
+msgid "Solver executable name not provided"
+msgstr ""
+
+#: src/common/onelabUtils.cpp:838
+msgid "Resetting database"
+msgstr ""
+
+#: src/common/ListUtils.cpp:114
+msgid "Wrong list index (read)"
+msgstr ""
+
+#: src/common/ListUtils.cpp:123
+msgid "Wrong list index (write)"
+msgstr ""
+
+#: src/common/ListUtils.cpp:133
+msgid "Wrong list index (put)"
+msgstr ""
+
+#: src/common/ListUtils.cpp:155 src/common/ListUtils.cpp:165
+msgid "Wrong list index (pointer)"
+msgstr ""
+
+#: src/common/OctreeInternals.cpp:46 src/common/OctreeInternals.cpp:52
+#: src/common/OctreeInternals.cpp:248
+msgid "Could not allocate octree buckets"
+msgstr ""
+
+#: src/common/OctreeInternals.cpp:173
+msgid "Null bucket in octree"
+msgstr ""
+
+#: src/common/OctreeInternals.cpp:406
+msgid "Could not find point in octree (in search all elements)"
+msgstr ""
+
+#: src/plugin/Distance.cpp:141
+msgid "Plugin(Distance) needs a mesh"
+msgstr ""
+
+#: src/plugin/Gradient.cpp:43
+msgid "Gradient plugin cannot be run on multi-mesh views"
+msgstr ""
+
+#: src/plugin/Levelset.cpp:572 src/plugin/Warp.cpp:66
+msgid "Incompatible views"
+msgstr ""
+
+#: src/plugin/SpanningTree.cpp:118
+msgid "No elements found in the given physcials: abording!"
+msgstr ""
+
+#: src/plugin/Triangulate.cpp:76
+msgid "Triangulate plugin cannot be applied to multi-mesh views"
+msgstr ""
+
+#: src/plugin/Triangulate.cpp:100
+msgid "Need at least 3 points to triangulate"
+msgstr ""
+
+#: src/plugin/Triangulate.cpp:192
+msgid "Plugin(Triangulate) requires mesh module"
+msgstr ""
+
+#: src/plugin/MakeSimplex.cpp:165
+msgid "Invalid decomposition"
+msgstr ""
+
+#: src/plugin/BoundaryAngles.cpp:120
+msgid "Non connected boundary!"
+msgstr ""
+
+#: src/plugin/NewView.cpp:71
+msgid "Bad number of components for Plugin(NewView)"
+msgstr ""
+
+#: src/plugin/NewView.cpp:75
+msgid "Unknown data type for Plugin(NewView)"
+msgstr ""
+
+#: src/plugin/Summation.cpp:80
+msgid "Summation plugin cannot be applied to multi-mesh views"
+msgstr ""
+
+#: src/plugin/Summation.cpp:96
+msgid "Summation plugin: views based on different grid."
+msgstr ""
+
+#: src/plugin/MeshVolume.cpp:49
+msgid "Plugin(MeshVolume) needs a mesh"
+msgstr ""
+
+#: src/plugin/MeshVolume.cpp:61
+msgid "The specified domain is empty"
+msgstr ""
+
+#: src/plugin/HomologyPostProcessing.cpp:134
+msgid "Matrix is not unimodular"
+msgstr ""
+
+#: src/plugin/HomologyPostProcessing.cpp:235
+msgid "No operated chains given"
+msgstr ""
+
+#: src/plugin/HomologyPostProcessing.cpp:257
+msgid "Transformation matrix: "
+msgstr ""
+
+#: src/plugin/Integrate.cpp:139
+msgid "Can only integrate scalar views over time"
+msgstr ""
+
+#: src/plugin/GaussPoints.cpp:59
+msgid "No entities"
+msgstr ""
+
+#: src/plugin/SimplePartition.cpp:87
+msgid "Plugin(SimplePartition) requires a mesh"
+msgstr ""
+
+#: src/plugin/SimplePartition.cpp:92
+msgid "Number of slices should be strictly positive"
+msgstr ""
+
+#: src/plugin/SimplePartition.cpp:174
+msgid "Gmsh must be compiled with Mesh support to partition meshes"
+msgstr ""
+
+#: src/plugin/Eigenvectors.cpp:55
+msgid "Eigenvectors plugin cannot be run on multi-mesh views"
+msgstr ""
+
+#: src/plugin/Eigenvectors.cpp:110
+msgid "Could not compute eigenvalues/vectors"
+msgstr ""
+
+#: src/plugin/ModulusPhase.cpp:52
+msgid "ModulusPhase plugin cannot be run on multi-mesh views"
+msgstr ""
+
+#: src/plugin/ModulusPhase.cpp:58 src/plugin/HarmonicToTime.cpp:71
+msgid "Wrong real or imaginary part index"
+msgstr ""
+
+#: src/plugin/PluginManager.cpp:322
+msgid "No dynamic plugin loading on this platform"
+msgstr ""
+
+#: src/plugin/MeshSubEntities.cpp:62
+msgid "Bad dimensions"
+msgstr ""
+
+#: src/plugin/Scal2Vec.cpp:71
+msgid "Scal2Vec plugin could not find any view."
+msgstr ""
+
+#: src/plugin/FieldFromAmplitudePhase.cpp:81
+msgid "Invalid number of time steps for AView, it must be complex!"
+msgstr ""
+
+#: src/plugin/FieldFromAmplitudePhase.cpp:94
+msgid "FieldFromAmplitudePhase plugin cannot be run on multi-mesh views"
+msgstr ""
+
+#: src/plugin/ExtractEdges.cpp:67
+msgid "No triangles in mesh to extract edges from"
+msgstr ""
+
+#: src/plugin/ExtractEdges.cpp:102
+msgid "Plugin(ExtractEdges) requires the mesh module"
+msgstr ""
+
+#: src/plugin/Plugin.cpp:68
+msgid "Unable to determine index of remote view"
+msgstr ""
+
+#: src/plugin/Plugin.cpp:115
+msgid "This plugin can only be run on list-based views (`.pos' files)"
+msgstr ""
+
+#: src/plugin/MathEval.cpp:108 src/plugin/MathEval.cpp:123
+msgid "MathEval plugin cannot be applied to multi-mesh views"
+msgstr ""
+
+#: src/plugin/MathEval.cpp:129 src/plugin/ModifyComponents.cpp:123
+msgid "Number of time steps don't match: using step 0"
+msgstr ""
+
+#: src/plugin/MathEval.cpp:169 src/plugin/ModifyComponents.cpp:155
+msgid "Other view based on different grid: interpolating..."
+msgstr ""
+
+#: src/plugin/Curl.cpp:43
+msgid "Curl plugin cannot be run on multi-mesh views"
+msgstr ""
+
+#: src/plugin/Crack.cpp:102
+msgid "Crack dimension should be 1 or 2"
+msgstr ""
+
+#: src/plugin/VoroMetal.cpp:228
+msgid "Could not open file 'table.txt'"
+msgstr ""
+
+#: src/plugin/VoroMetal.cpp:250 src/plugin/VoroMetal.cpp:555
+msgid "Could not open file 'MicrostructurePolycrystal3D.pos'"
+msgstr ""
+
+#: src/plugin/VoroMetal.cpp:257 src/plugin/VoroMetal.cpp:775
+msgid "Could not open file 'MicrostructurePolycrystal3D.geo'"
+msgstr ""
+
+#: src/plugin/VoroMetal.cpp:262
+msgid "Could not open file 'SET.map'"
+msgstr ""
+
+#: src/plugin/VoroMetal.cpp:562
+msgid "Could not open file 'PERIODIC.map'"
+msgstr ""
+
+#: src/plugin/VoroMetal.cpp:782
+msgid "Could not open file 'MicrostructurePolycrystal3D2.pos'"
+msgstr ""
+
+#: src/plugin/VoroMetal.cpp:1380
+msgid "Plugin(VoroMetal) requires mesh module and voro++"
+msgstr ""
+
+#: src/plugin/Scal2Tens.cpp:90
+msgid "Scal2Tens plugin could not find any view."
+msgstr ""
+
+#: src/plugin/Divergence.cpp:47
+msgid "Divergence plugin cannot be run on multi-mesh views"
+msgstr ""
+
+#: src/plugin/HarmonicToTime.cpp:65
+msgid "HarmonicToTime plugin cannot be applied to multi-mesh views"
+msgstr ""
+
+#: src/plugin/HarmonicToTime.cpp:76
+msgid "nSteps should be > 0"
+msgstr ""
+
+#: src/plugin/Lambda2.cpp:175
+msgid "Lambda2 not ready for this type of element"
+msgstr ""
+
+#: src/plugin/NearToFarField.cpp:312
+msgid "Incompatible views for E field and H field"
+msgstr ""
+
+#: src/plugin/NearToFarField.cpp:317
+msgid "Invalid number of steps for E or H fields (must be complex)"
+msgstr ""
+
+#: src/plugin/NearToFarField.cpp:332
+msgid "E and H fields must be given on the same grid"
+msgstr ""
+
+#: src/plugin/NearToFarField.cpp:386
+msgid "No valid elements found to compute far field"
+msgstr ""
+
+#: src/plugin/NearToFarField.cpp:455
+msgid "Cannot normalize far field (max = 0)"
+msgstr ""
+
+#: src/plugin/NearToFarField.cpp:477
+msgid "zero far field range"
+msgstr ""
+
+#: src/plugin/CurvedBndDist.cpp:173
+msgid "Plugin requires OPTHOM module"
+msgstr ""
+
+#: src/plugin/MeshSizeFieldView.cpp:60
+msgid "Plugin(MeshSizeFieldView) requires the mesh module"
+msgstr ""
+
+#: src/plugin/AnalyseMeshQuality.cpp:398 src/plugin/AnalyseMeshQuality.cpp:447
+#: src/plugin/AnalyseMeshQuality.cpp:467
+msgid "No stat to print"
+msgstr ""
+
+#: src/plugin/Eigenvalues.cpp:47
+msgid "Eigenvalues plugin cannot be run on multi-mesh views"
+msgstr ""
+
+#: src/plugin/NearestNeighbor.cpp:91
+msgid "Nearest neighbor computation requires ANN"
+msgstr ""
+
+#: src/plugin/Tetrahedralize.cpp:66
+msgid "Tetrahedralize plugin cannot be applied to multi-mesh views"
+msgstr ""
+
+#: src/plugin/Tetrahedralize.cpp:90
+msgid "Need at least 4 points to tetrahedralize"
+msgstr ""
+
+#: src/plugin/Tetrahedralize.cpp:139
+msgid "Skipping unknown type of data"
+msgstr ""
+
+#: src/plugin/Tetrahedralize.cpp:166
+msgid "Plugin(Tetrahedralize) requires mesh module"
+msgstr ""
+
+#: src/plugin/Skin.cpp:264
+msgid "Skin plugin cannot be applied to multi-mesh views"
+msgstr ""
+
+#: contrib/kbipack/mpz.cpp:28
+msgid "Integer overflow detected! Compile with GMP library to fix this."
+msgstr ""
+
+#: contrib/QuadTri/QuadTriExtruded3D.cpp:75
+msgid "In createForbidden(), number of vertices not equal 4."
+msgstr ""
+
+#: contrib/QuadTri/QuadTriExtruded3D.cpp:94
+msgid "forbiddenExists() was passed a vector argument that was not of size 4."
+msgstr ""
+
+#: contrib/QuadTri/QuadTriExtruded3D.cpp:2155
+msgid "In bruteForceEdgeQuadToTriHexa(), number of vertices not equal 8."
+msgstr ""
+
+#: contrib/QuadTri/QuadTriExtruded3D.cpp:2360
+msgid "Error in ExtrudeDiags(): could not find vertex indices."
+msgstr ""
+
+#: contrib/QuadTri/QuadTriExtruded3D.cpp:4321
+msgid "MeshWithInternalVertex() failed to find body-centered vertex."
+msgstr ""
+
+#: contrib/QuadTri/QuadTriExtruded3D.cpp:4413
+msgid "In QuadToTriPriPyrTet(), bad number of degenerate corners."
+msgstr ""
+
+#: contrib/QuadTri/QuadTriExtruded3D.cpp:5451
+msgid "In QuadToTriHexPri(), bad number of degenerate corners."
+msgstr ""
+
+#: contrib/QuadTri/QuadTriUtils.cpp:144
+msgid "In IsInToroidalQuadToTri(), could not find a face..."
+msgstr ""
+
+#: contrib/QuadTri/QuadTriUtils.cpp:467
+msgid "In QtFindVertsCentroid(), number of vertices is not 3, 4, 6, or 8."
+msgstr ""
+
+#: contrib/QuadTri/QuadTriUtils.cpp:563
+msgid "FindDiagonalEdgeIndices(), size of verts array not equal 4."
+msgstr ""
+
+#: contrib/QuadTri/QuadTriUtils.cpp:822
+msgid "findRootSourceFaceForFace() failed to find root source."
+msgstr ""
+
+#: contrib/onelab/OnelabClients.cpp:126
+msgid "Abnormal server termination (did not receive message body)r"
+msgstr ""
+
+#: contrib/onelab/OnelabClients.cpp:537 contrib/onelab/OnelabClients.cpp:1072
+#: contrib/onelab/OnelabClients.cpp:1142 contrib/onelab/OnelabClients.cpp:1223
+msgid "Command line ok"
+msgstr ""
+
+#: contrib/onelab/OnelabClients.cpp:746
+msgid "===== CONSTRUCTING"
+msgstr ""
+
+#: contrib/onelab/OnelabClients.cpp:758
+msgid "===== ANALYZING"
+msgstr ""
+
+#: contrib/onelab/OnelabClients.cpp:769
+msgid "===== COMPUTING"
+msgstr ""
+
+#: contrib/onelab/OnelabClients.cpp:1094 contrib/onelab/OnelabClients.cpp:1118
+#: contrib/onelab/OnelabClients.cpp:1164 contrib/onelab/OnelabClients.cpp:1183
+#: contrib/onelab/OnelabClients.cpp:1204 contrib/onelab/OnelabClients.cpp:1252
+#: contrib/onelab/OnelabClients.cpp:1283
+msgid "ok"
+msgstr ""
+
+#: contrib/onelab/OnelabClients.cpp:1513
+msgid "Error reading array\n"
+msgstr ""
+
+#: contrib/onelab/OnelabParser.cpp:498
+msgid "Invalid logical expression"
+msgstr ""
+
+#: contrib/onelab/OnelabMessage.cpp:434
+msgid "Not connected to Gmsh"
+msgstr ""
+
+#: contrib/onelab/metamodel.cpp:58
+msgid "Start metamodel"
+msgstr ""
+
+#: contrib/onelab/metamodel.cpp:102 contrib/onelab/metamodel.cpp:110
+msgid "=====  O  N  E  L  A  B  ====="
+msgstr ""
+
+#: contrib/MeshOptimizer/MeshOptimizer.cpp:293
+msgid "Computing patch connectivity..."
+msgstr ""
+
+#: contrib/MeshOptimizer/MeshOptimizer.cpp:311
+msgid "Identifying groups of primary patches..."
+msgstr ""
+
+#: contrib/MeshOptimizer/MeshOptimizer.cpp:800
+msgid "Optimization succeeded"
+msgstr ""
+
+#: contrib/MeshOptimizer/MeshOptimizer.cpp:825
+msgid "Optimization failed (some measures below critical value)"
+msgstr ""
+
+#: contrib/MeshOptimizer/CADDistances.cpp:348
+msgid "Gmsh should be compiled using ANN to compute Hausdorff distance"
+msgstr ""
+
+#: contrib/MeshOptimizer/CADDistances.cpp:592
+#: contrib/MeshOptimizer/CADDistances.cpp:647
+msgid "Wrong CAD distance type in distanceToGeometry"
+msgstr ""
+
+#: contrib/MeshOptimizer/MeshOpt.cpp:121
+msgid "Reached target values, setting null gradient"
+msgstr ""
+
+#: contrib/MeshOptimizer/MeshOpt.cpp:226
+msgid "Mesh optimizer requires ALGLIB"
+msgstr ""
+
+#: contrib/MeshOptimizer/MeshOpt.cpp:362
+msgid "Stagnation detected, stopping optimization"
+msgstr ""
+
+#: contrib/MeshOptimizer/Patch.cpp:162
+msgid "Unknown nodes in boundary element at patch initialization"
+msgstr ""
+
+#: contrib/MeshOptimizer/MeshOptCommon.cpp:200
+#: contrib/MeshOptimizer/MeshOptCommon.cpp:204
+#: contrib/MeshOptimizer/MeshOptCommon.cpp:208
+#: contrib/MeshOptimizer/MeshOptCommon.cpp:212
+#: contrib/MeshOptimizer/MeshOptCommon.cpp:216
+#: contrib/MeshOptimizer/MeshOptCommon.cpp:220
+#: contrib/MeshOptimizer/MeshOptCommon.cpp:224
+#: contrib/MeshOptimizer/MeshOptCommon.cpp:228
+#: contrib/MeshOptimizer/MeshOptCommon.cpp:232
+#: contrib/MeshOptimizer/MeshOptCommon.cpp:236
+#: contrib/MeshOptimizer/MeshOptCommon.cpp:240
+#: contrib/MeshOptimizer/MeshOptCommon.cpp:245
+#: contrib/MeshOptimizer/MeshOptCommon.cpp:249
+msgid "Gmsh should be configured with ncurses to use enhanced interface"
+msgstr ""
+
+#: contrib/MeshOptimizer/ObjContribFunc.cpp:71
+msgid "Could not find value to define a scale for default barrier margin"
+msgstr ""
+
+#: contrib/WinslowUntangler/winslowUntangler.cpp:487
+msgid "Winslow untangler 2D: incoherent sizes in triangles / triIdealShapes"
+msgstr ""
+
+#: contrib/WinslowUntangler/winslowUntangler.cpp:601
+msgid "Winslow untangler 3D: incoherent sizes in tets / tetIdealShapes"
+msgstr ""
+
+#: contrib/WinslowUntangler/winslowUntangler.cpp:974
+#: contrib/WinslowUntangler/winslowUntangler.cpp:995
+msgid "Winslow untangler requires modules Eigen, Alglib and QuadMeshingTools"
+msgstr ""
+
+#: contrib/WinslowUntangler/meshSurfaceUntangling.cpp:748
+msgid "Module QuadMeshingTools required for untangleGFaceMeshConstrained"
+msgstr ""
+
+#: contrib/WinslowUntangler/meshVolumeUntangling.cpp:184
+msgid "decomposition not supported"
+msgstr ""
+
+#: contrib/WinslowUntangler/meshVolumeUntangling.cpp:258
+msgid "prism not supported yet, abort"
+msgstr ""
+
+#: contrib/WinslowUntangler/meshVolumeUntangling.cpp:262
+msgid "case not supported, abort"
+msgstr ""
+
+#: contrib/WinslowUntangler/meshVolumeUntangling.cpp:315
+msgid "Failed to build tets from elements"
+msgstr ""
+
+#: contrib/WinslowUntangler/meshVolumeUntangling.cpp:371
+msgid "Module QuadMeshingTools required for untangleGRegionMeshConstrained"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:163
+msgid "buildBoundary(): vertex not found in sorted vertices, weird"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:231
+msgid "buildBoundaries(): vertex not found in sorted vertices, weird"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:321
+msgid "patchFromElements: quad vertex is null"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:347
+msgid "patchFromElements: given MElement* is nullptr"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:895
+msgid "parametrization not found for element"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:979
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:1001
+msgid "copyExisting not supported here (but simple to fix)"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:1019
+msgid "fillSurfaceProjector: given SurfaceProjector* is null !"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:1030
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:1178
+msgid "fillSurfaceProjector: case not supported, no triangles"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:1035
+msgid "failed to initialize the surface projector"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:1328
+msgid "compute quad mesh statistics ..."
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:1609
+msgid "errorAndAbortIfNegativeElement ... (! SLOW !)"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:1652
+msgid "errorAndAbortIfInvalidVertexInElements ... (! SLOW !)"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshUtils.cpp:1746
+msgid "errorAndAbortIfInvalidVertexInModel ... (! SLOW !)"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCurveQuantization.cpp:104
+msgid "parent not defined for node, should not happen"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCurveQuantization.cpp:283
+msgid "curve quantization: incoherent imposed transfinite constraints"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCurveQuantization.cpp:347
+msgid "initial curve quantization: no triangles available"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCurveQuantization.cpp:447
+msgid "failed to solve quantization with greedy approach"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCurveQuantization.cpp:471
+msgid "set quadqs transfinite constraints ..."
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:503
+msgid "buildCondensedStructure: failed to build boundary for stencil"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:529
+msgid "buildCondensedStructure: failed to found v0"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:555
+msgid "buildCondensedStructure: vertex not found in old2new"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:578
+msgid "buildCondensedStructure: failed to build condensed representation"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:717
+msgid "getPlanarParametrization | failed to reparam v2"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:802
+msgid "failed to solve linear system to solve uv"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:807
+msgid "solveLaplaceLinearSystem requires the EIGEN module"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:1091
+msgid "optimize geometry global: failed to build edge graph"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:1117
+msgid "optimize geometry global: bdr vertex not found in old2new"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:1135
+msgid "optimize geometry global: failed to solve linear system"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:1202
+msgid "optimize geometry kernel: failed to build adjacency datastructures"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:1249
+msgid "optimize geometry kernel: CAD normal length is 0 !"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:1314
+msgid "cannot project with surface projector"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:1342
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:1392
+msgid "kernel smoothing: projection failed"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:1421
+msgid "kernel loop with projection: no surface projector"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:1439
+msgid "kernelLoopWithProjection: failed to build condensed representation"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:1820
+msgid "patch projection: no parametrization and no surface projector"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:1922
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:1963
+msgid "SPECIAL SMOOTHING FOR DEBUGGING"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:2146
+msgid "GeometryOptimizer initialize: failed to build condensed representation"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:2315
+msgid "geometry optimize: no free vertices, nothing to optimize"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:2319
+msgid "geometry optimize: no locked vertices, cannot optimize"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:2355
+msgid "geometry optimize: invalid mean plane"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:2396
+msgid "- Untangle: failed to get planar parametrization from CAD"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:2423
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:2445
+msgid "smoothWithWinslowUntangler requires WinslowUntangler"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:2443
+msgid "---- failed to untangle"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:2479
+msgid "sp proj failed"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:2495
+msgid "CAD proj failed"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtMeshGeometryOptimization.cpp:2565
+msgid "Optimize geometry of quad mesh ..."
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtSizeMap.cpp:107
+msgid "compute minimal size on curves (using background mesh) ..."
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:72
+msgid "patternNumberOfCorners: pattern not supported"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:530
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:556
+msgid "load, edge not found !"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:919
+msgid "MVertex* not found ?"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:943
+msgid "MVertex* vector not found for vertex pair (edge in pattern)"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:1191
+msgid "cavity farmer: no slot found !"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:1236
+msgid "cavity farmer update: vertex of embedded line not found, weird"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:1267
+msgid "vertexValence: incoherent state"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:1315
+msgid "cavity farmer: quad already in cavity, should not happen"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:1323
+msgid "cavity farmer: quad edge already cavity bdr, should not happen"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:1371
+msgid "cavity farmer: incoherent vertex state in addQuads"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:1628
+msgid "cavity farmer: grow one side, failed to build cavity boundary"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:1783
+msgid "cavity farmer: quad not found in farmer mesh"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:2012
+msgid "quadMeshIsMinimal: farmer not initialized"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:2237
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:3351
+msgid "remesh cavity: diff execute() failed, should not happen"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:2266
+msgid "---->"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:2807
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:2847
+msgid "Quad patterns are not loaded, please call initQuadPatterns() before"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:2881
+msgid "remesh patch with patterns: given pattern not matching given sides"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:2894
+msgid "failed to add quads according to pattern, weird"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:2907
+msgid "remesh quad with patterns: bdr quad edge not found, weird"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:2941
+msgid "failed to optimize geometry with global UV smoothing"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:2949
+msgid "failed to project geometry"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:3026
+msgid "<< start cavity remeshing iteration"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:3082
+msgid ">> end of cavity remeshing iteration"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:3091
+msgid "quad mesh remeshing has reached timeout, break"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtQuadCavityRemeshing.cpp:3240
+msgid "corner and edge vertices not matching"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtDiskQuadrangulationRemeshing.cpp:75
+msgid "loading disk quadrangulations ..."
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtDiskQuadrangulationRemeshing.cpp:382
+msgid "getDiskQuadrangulationRemeshing: bdr quad edge not found, weird"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtDiskQuadrangulationRemeshing.cpp:549
+msgid "disk quandrangulation remeshing: failed to remesh small cavity"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:104
+msgid "Eigen call: initialize sparse matrix, vectors and solver"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:111
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:145
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:158
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:170
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:182
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:202
+msgid "Linear solver Eigen required"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:166
+msgid "Eigen call: analyse sparse matrix sparsity pattern"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:178
+msgid "Eigen call: factorize sparse matrix"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:190
+msgid "Eigen call: solve linear system"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:366
+msgid "should not happen"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:474
+msgid "no new edges to expand dirichlet boundary conditions"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:503
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:683
+msgid "failed to prepare system"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:563
+msgid "failed to compute mesh adjacencies"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:576
+msgid "no internal edges"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:614
+msgid "failed to expand dirichlet boundary conditions"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:623
+msgid "- compute stiffness matrix coefficients (Crouzeix-Raviart) ..."
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:744
+msgid "linear solver analysis failed"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:769
+msgid "failed to update linear system"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:787
+msgid "failed to solve linear system"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:829
+msgid "           |   system solved"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:973
+msgid "failed to order fan vertex pairs"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:1172
+msgid "conformal scaling: incoherent number of elements in inputs"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:1177
+msgid "- with EIGEN solver"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:1180
+msgid "- with PETSc solver"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:1183
+msgid "- with MUMPS solver"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:1186
+msgid "- with dense solver (slow, should not be used)"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:1370
+msgid "Computing cross field scaling requires the SOLVER module"
+msgstr ""
+
+#: contrib/QuadMeshingTools/qmtCrossField.cpp:1588
+msgid "detect cross field singularities: wrong inputs"
+msgstr ""
+
+#: contrib/domhex/BackgroundMesh3D.cpp:65
+#: contrib/domhex/BackgroundMesh3D.cpp:110
+#: contrib/domhex/BackgroundMesh3D.cpp:221
+#: contrib/domhex/BackgroundMesh3D.cpp:629
+#: contrib/domhex/BackgroundMesh3D.cpp:791
+#: contrib/domhex/BackgroundMesh3D.cpp:824
+#: contrib/domhex/BackgroundMesh3D.cpp:834
+msgid "Entity is not a region in background mesh"
+msgstr ""
+
+#: contrib/domhex/BackgroundMesh3D.cpp:78
+#: contrib/domhex/BackgroundMesh3D.cpp:641
+msgid "Background mesh is not a 2D frame field"
+msgstr ""
+
+#: contrib/domhex/meshGFaceQuadrilateralize.cpp:91
+msgid "Something wrong in updateStatus"
+msgstr ""
+
+#: contrib/domhex/meshGFaceQuadrilateralize.cpp:169
+msgid "Could not compute fron normal"
+msgstr ""
+
+#: contrib/domhex/meshGFaceQuadrilateralize.cpp:517
+msgid "Unknown case in emptyFront"
+msgstr ""
+
+#: contrib/domhex/meshGFaceQuadrilateralize.cpp:543
+msgid "Cannot Quadrilaterize a face that has not been triangulated"
+msgstr ""
+
+#: contrib/domhex/yamakawa.cpp:630
+msgid " ................HEXAHEDRA.... RECOMBINATOR................\n"
+msgstr ""
+
+#: contrib/domhex/yamakawa.cpp:694
+msgid "Hex-merging pattern nb. 1..."
+msgstr ""
+
+#: contrib/domhex/yamakawa.cpp:757
+msgid "Hex-merging pattern nb. 2..."
+msgstr ""
+
+#: contrib/domhex/yamakawa.cpp:806
+msgid "Hex-merging pattern nb. 3..."
+msgstr ""
+
+#: contrib/domhex/yamakawa.cpp:3094
+msgid "I didn't expect that. Aaaah, don't know what I should do"
+msgstr ""
+
+#: contrib/domhex/yamakawa.cpp:3223
+msgid "This shouldn't happen ..."
+msgstr ""
+
+#: contrib/domhex/yamakawa.cpp:3638
+msgid "A"
+msgstr ""
+
+#: contrib/domhex/yamakawa.cpp:3653
+msgid "B"
+msgstr ""
+
+#: contrib/domhex/yamakawa.cpp:3668
+msgid "C"
+msgstr ""
+
+#: contrib/domhex/yamakawa.cpp:3929 contrib/domhex/yamakawa.cpp:4159
+msgid "Topological error"
+msgstr ""
+
+#: contrib/domhex/yamakawa.cpp:4227
+msgid "Wrong tetrahedron"
+msgstr ""
+
+#: contrib/domhex/yamakawa.cpp:6249
+msgid "Building Connectivity..."
+msgstr ""
+
+#: contrib/domhex/BackgroundMesh2D.cpp:63
+#: contrib/domhex/BackgroundMesh2D.cpp:146
+#: contrib/domhex/BackgroundMesh2D.cpp:179
+#: contrib/domhex/BackgroundMesh2D.cpp:195
+#: contrib/domhex/BackgroundMesh2D.cpp:229
+#: contrib/domhex/BackgroundMesh2D.cpp:283
+#: contrib/domhex/BackgroundMesh2D.cpp:349
+#: contrib/domhex/BackgroundMesh2D.cpp:399
+#: contrib/domhex/BackgroundMesh2D.cpp:479
+#: contrib/domhex/BackgroundMesh2D.cpp:571
+#: contrib/domhex/BackgroundMesh2D.cpp:666
+#: contrib/domhex/BackgroundMesh2D.cpp:710
+msgid "Entity is not a face in background mesh"
+msgstr ""
+
+#: contrib/domhex/surfaceFiller.cpp:444 contrib/domhex/surfaceFiller.cpp:451
+msgid "Packing of Parallelograms require a scaled cross field"
+msgstr ""
+
+#: contrib/domhex/surfaceFiller.cpp:445 contrib/domhex/surfaceFiller.cpp:452
+msgid ""
+"Do first gmsh yourmeshname.msh -crossfield to create "
+"yourmeshname_scaled_crossfield.pos"
+msgstr ""
+
+#: contrib/domhex/surfaceFiller.cpp:446 contrib/domhex/surfaceFiller.cpp:453
+msgid "Then do yourmeshname.geo -bgm yourmeshname_scaled_crossfield.pos"
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/BoundaryLayerCurver2D.cpp:274
+msgid "normal to the CAD or 2Dmesh is nul. BL curving will fail."
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/BoundaryLayerCurver2D.cpp:1184
+msgid "Did not find common edge"
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/BoundaryLayerCurver2D.cpp:1451
+msgid "normal must be non-zero for boundary layer curving"
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/HighOrderMeshPeriodicity.cpp:50
+msgid "Correcting high order optimization for periodic connections"
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/HighOrderMeshPeriodicity.cpp:53
+msgid "Finished correcting high order optimization for periodic connections"
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/HighOrderMeshPeriodicity.cpp:293
+msgid "Wrong size of affine transformation matrix"
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/HighOrderMeshElasticAnalogy.cpp:88
+msgid "Pyramids not yet handled in high-order elastic analogy"
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/HighOrderMeshElasticAnalogy.cpp:207
+msgid "Cannot smooth that face"
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/HighOrderMeshElasticAnalogy.cpp:614
+msgid "Generating elastic system..."
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/HighOrderMeshElasticAnalogy.cpp:844
+msgid "Elastic analogy high-order optimzer requires the solver module"
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/BoundaryLayerCurver3D.cpp:562
+msgid "Did not find common face"
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/BoundaryLayerCurver3D.cpp:625
+msgid "Couldn't find common edge on bottom elements"
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/BoundaryLayerCurver3D.cpp:659
+msgid "Error in computeInterface"
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/BoundaryLayerCurver3D.cpp:679
+msgid "Error in computeInterface: not an element"
+msgstr ""
+
+#: contrib/HighOrderMeshOptimizer/HighOrderMeshOptimizer.cpp:319
+msgid "Applying high-order mesh optimizer to mesh with linear elements"
+msgstr ""

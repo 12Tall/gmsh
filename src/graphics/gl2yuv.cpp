@@ -35,7 +35,7 @@
 void create_yuv(FILE *outfile, PixelBuffer *buffer)
 {
   if(buffer->getFormat() != GL_RGB || buffer->getType() != GL_UNSIGNED_BYTE) {
-    Msg::Error("YUV only implemented for GL_RGB and GL_UNSIGNED_BYTE");
+    Msg::Error(_("YUV only implemented for GL_RGB and GL_UNSIGNED_BYTE"));
     return;
   }
 

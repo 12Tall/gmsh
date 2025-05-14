@@ -102,8 +102,7 @@ private:
     try {
       BRepBndLib::Add(shape, box, Standard_False);
       if(box.IsVoid()) {
-        Msg::Debug(
-          "Searching for (null or degenerate) shape with void bounding box");
+        Msg::Debug(_("Searching for (null or degenerate) shape with void bounding box"));
         return;
       }
     } catch(Standard_Failure &err) {
@@ -132,7 +131,7 @@ private:
         if(requireColor && tmp[i]->getColor().empty()) continue;
         if(shape.IsSame(tmp[i]->getShape())) { // exact match: same shape
           attr.push_back(tmp[i]);
-          Msg::Debug("OCCRTree exact match");
+          Msg::Debug(_("OCCRTree exact match"));
           return;
         }
       }
@@ -204,8 +203,7 @@ public:
     try {
       BRepBndLib::Add(v->getShape(), box, Standard_False);
       if(box.IsVoid()) {
-        Msg::Debug(
-          "Inserting (null or degenerate) shape with void bounding box");
+        Msg::Debug(_("Inserting (null or degenerate) shape with void bounding box"));
         // BRepTools::Dump(v->getShape(), std::cout);
         return;
       }
@@ -229,8 +227,7 @@ public:
     try {
       BRepBndLib::Add(v->getShape(), box, Standard_False);
       if(box.IsVoid()) {
-        Msg::Debug(
-          "Removing (null or degenerate) shape with void bounding box");
+        Msg::Debug(_("Removing (null or degenerate) shape with void bounding box"));
         // BRepTools::Dump(v->getShape(), std::cout);
         return;
       }

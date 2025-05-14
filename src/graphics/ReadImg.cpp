@@ -37,7 +37,7 @@ static PViewDataList *Img2Data(Fl_RGB_Image &img_init, int quads = 1,
   int dim = img->d();
 
   if(dim != 1 && dim != 2) {
-    Msg::Error("Unable to obtain one-channel image");
+    Msg::Error(_("Unable to obtain one-channel image"));
     return nullptr;
   }
 

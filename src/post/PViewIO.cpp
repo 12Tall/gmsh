@@ -37,7 +37,7 @@ bool PView::readPOS(const std::string &fileName, int fileIndex)
 
     if(!strncmp(&str[1], "PostFormat", 10)) {
       if(!fscanf(fp, "%lf %d %d\n", &version, &format, &size)) {
-        Msg::Error("Read error");
+        Msg::Error(_("Read error"));
         fclose(fp);
         return false;
       }
@@ -59,7 +59,7 @@ bool PView::readPOS(const std::string &fileName, int fileIndex)
       if(fileIndex < 0 || fileIndex == index) {
         PViewDataList *d = new PViewDataList();
         if(!d->readPOS(fp, version, format ? true : false)) {
-          Msg::Error("Could not read data in list format");
+          Msg::Error(_("Could not read data in list format"));
           delete d;
           fclose(fp);
           return false;
@@ -265,7 +265,7 @@ bool PView::readMED(const std::string &fileName, int fileIndex)
       bool create = d ? false : true;
       if(create) d = new PViewDataGModel();
       if(!d->readMED(fileName, index)) {
-        Msg::Error("Could not read data in MED file");
+        Msg::Error(_("Could not read data in MED file"));
         if(create) delete d;
         return false;
       }

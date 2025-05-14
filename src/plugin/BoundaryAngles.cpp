@@ -117,7 +117,7 @@ PView *GMSH_BoundaryAnglesPlugin::execute(PView *v)
     }
     std::vector<std::vector<MVertex *> > nodes;
     if(SortEdgeConsecutive(edges, nodes)) {
-      if(nodes.size() != 1) { Msg::Warning("Non connected boundary!"); }
+      if(nodes.size() != 1) { Msg::Warning(_("Non connected boundary!")); }
       else {
         // Preserve orientation of the mesh
         // Algo: Take first edge ; find "it" in the sorted vertices and check

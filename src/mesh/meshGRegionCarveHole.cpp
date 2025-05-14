@@ -19,7 +19,7 @@
 void carveHole(GRegion *gr, int num, double distance,
                std::vector<int> &surfaces)
 {
-  Msg::Error("Gmsh must be compiled with ANN support to carve holes in meshes");
+  Msg::Error(_("Gmsh must be compiled with ANN support to carve holes in meshes"));
 }
 
 #else

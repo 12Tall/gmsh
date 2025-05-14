@@ -165,7 +165,7 @@ static void writeX3dFaces(FILE *fp, std::vector<GFace *> &faces,
               std::to_string(g).c_str(), std::to_string(b).c_str());
     }
     else {
-      Msg::Error("Error in x3d coloring");
+      Msg::Error(_("Error in x3d coloring"));
     }
   }
 
@@ -197,7 +197,7 @@ static void writeX3dFaces(FILE *fp, std::vector<GFace *> &faces,
           }
         }
         else {
-          Msg::Warning("X3D not implemented yet without STL");
+          Msg::Warning(_("X3D not implemented yet without STL"));
         }
       }
       fprintf(fp, "\"></Coordinate>\n");
@@ -211,7 +211,7 @@ static void writeX3dFaces(FILE *fp, std::vector<GFace *> &faces,
           }
         }
         else {
-          Msg::Warning("X3D not implemented yet without STL");
+          Msg::Warning(_("X3D not implemented yet without STL"));
         }
       }
       fprintf(fp, "\"></Normal>\n");
@@ -244,7 +244,7 @@ static void writeX3dFaces(FILE *fp, std::vector<GFace *> &faces,
           }
         }
         else {
-          Msg::Warning("X3D not implemented yet without STL");
+          Msg::Warning(_("X3D not implemented yet without STL"));
         }
       }
       fprintf(fp, "\"></Coordinate>\n");
@@ -258,7 +258,7 @@ static void writeX3dFaces(FILE *fp, std::vector<GFace *> &faces,
           }
         }
         else {
-          Msg::Warning("X3D not implemented yet without STL");
+          Msg::Warning(_("X3D not implemented yet without STL"));
         }
       }
       fprintf(fp, "\"></Normal>\n");
@@ -307,7 +307,7 @@ static void writeX3dEdges(FILE *fp, std::vector<GEdge *> &edges,
       fprintf(fp, "    </Shape>\n");
     }
     else {
-      Msg::Warning("X3D not implemented yet without STL");
+      Msg::Warning(_("X3D not implemented yet without STL"));
     }
   }
 }
@@ -484,7 +484,7 @@ int GModel::writeX3D(const std::string &name, bool saveAll,
 
   std::vector<GFace *> faces;
   if(x3dvolumes == 1) {
-    Msg::Info("separating volumes into separate files");
+    Msg::Info(_("separating volumes into separate files"));
     std::vector<GEntity *> volumes;
     getEntities(volumes, 3);
 
@@ -518,7 +518,7 @@ int GModel::writeX3D(const std::string &name, bool saveAll,
     }
   }
 
-  Msg::Info("writing single file");
+  Msg::Info(_("writing single file"));
   x3dfiles.push_back(name);
   fp = Fopen(name.c_str(), "w");
   if(!fp) {

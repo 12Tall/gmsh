@@ -896,7 +896,7 @@ static MTri3 *search4Triangle(MTri3 *t, double pt[2], bidimMeshData &data,
       if(intersection_segments_2(p1, p2, q1, q2)) break;
     }
     if(i >= 3) {
-      Msg::Error("Impossible case in triangle search");
+      Msg::Error(_("Impossible case in triangle search"));
       break;
     }
     t = t->getNeigh(i);
@@ -930,7 +930,7 @@ insertAPoint(GFace *gf, std::set<MTri3 *, compareTri3Ptr>::iterator it,
   if(worst) {
     it = AllTris.find(worst);
     if(worst != *it) {
-      Msg::Error("Could not insert point");
+      Msg::Error(_("Could not insert point"));
       return false;
     }
   }
@@ -1038,12 +1038,12 @@ void bowyerWatson(GFace *gf, int MAXPNT,
   bidimMeshData DATA(equivalence, parametricCoordinates);
 
   if(!buildMeshGenerationDataStructures(gf, AllTris, DATA)) {
-    Msg::Error("Invalid meshing data structure");
+    Msg::Error(_("Invalid meshing data structure"));
     return;
   }
 
   if(AllTris.empty()) {
-    Msg::Error("No triangles in initial mesh");
+    Msg::Error(_("No triangles in initial mesh"));
     return;
   }
 
@@ -1300,7 +1300,7 @@ void bowyerWatsonFrontal(GFace *gf, std::map<MVertex *, MVertex *> *equivalence,
   getDegeneratedVertices(gf, degenerated);
 
   if(!buildMeshGenerationDataStructures(gf, AllTris, DATA)) {
-    Msg::Error("Invalid meshing data structure");
+    Msg::Error(_("Invalid meshing data structure"));
     return;
   }
 
@@ -1356,7 +1356,7 @@ void bowyerWatsonFrontal(GFace *gf, std::map<MVertex *, MVertex *> *equivalence,
                        &ActiveTris, worst, nullptr, testStarShapeness);
       }
       else {
-        Msg::Debug("no point found");
+        Msg::Debug(_("no point found"));
       }
     }
   }
@@ -1464,7 +1464,7 @@ void buildBackgroundMesh(GFace *gf, bool crossFieldClosestPoint,
 #if defined(HAVE_DOMHEX)
   if(!old_algo_hexa()) return;
 #endif
-  Msg::Debug("build background mesh (Bowyer Watson, fixed size) ...");
+  Msg::Debug(_("build background mesh (Bowyer Watson, fixed size) ..."));
 
   quadsToTriangles(gf, 100000);
 
@@ -1516,7 +1516,7 @@ void bowyerWatsonFrontalLayers(
   }
 
   if(!buildMeshGenerationDataStructures(gf, AllTris, DATA)) {
-    Msg::Error("Invalid meshing data structure");
+    Msg::Error(_("Invalid meshing data structure"));
     return;
   }
 
@@ -1645,22 +1645,22 @@ void bowyerWatsonParallelograms(
 
 #if defined(HAVE_DOMHEX)
   if(old_algo_hexa()) {
-    Msg::Debug("bowyerWatsonParallelograms: call packingOfParallelograms()");
+    Msg::Debug(_("bowyerWatsonParallelograms: call packingOfParallelograms()"));
     packingOfParallelograms(gf, packed, metrics);
   }
   else {
-    Msg::Debug("bowyerWatsonParallelograms: call Filler2D::pointInsertion2D()");
+    Msg::Debug(_("bowyerWatsonParallelograms: call Filler2D::pointInsertion2D()"));
     Filler2D f;
     f.pointInsertion2D(gf, packed, metrics);
   }
 #else
-  Msg::Error("Packing of parallelograms algorithm requires DOMHEX");
+  Msg::Error(_("Packing of parallelograms algorithm requires DOMHEX"));
 #endif
 
   Msg::Info("%zu Nodes created --> now staring insertion", packed.size());
 
   if(!buildMeshGenerationDataStructures(gf, AllTris, DATA)) {
-    Msg::Error("Invalid meshing data structure");
+    Msg::Error(_("Invalid meshing data structure"));
     return;
   }
 
@@ -1721,7 +1721,7 @@ void bowyerWatsonParallelogramsConstrained(
   std::map<MVertex *, MVertex *> *equivalence,
   std::map<MVertex *, SPoint2> *parametricCoordinates)
 {
-  Msg::Error("bowyerWatsonParallelogramsConstrained deprecated");
+  Msg::Error(_("bowyerWatsonParallelogramsConstrained deprecated"));
   return;
 
   std::set<MTri3 *, compareTri3Ptr> AllTris;
@@ -1733,11 +1733,11 @@ void bowyerWatsonParallelogramsConstrained(
   // packingOfParallelogramsConstrained no longer exists
   // packingOfParallelogramsConstrained(gf, constr_vertices, packed, metrics);
 #else
-  Msg::Error("Packing of parallelograms algorithm requires DOMHEX");
+  Msg::Error(_("Packing of parallelograms algorithm requires DOMHEX"));
 #endif
 
   if(!buildMeshGenerationDataStructures(gf, AllTris, DATA)) {
-    Msg::Error("Invalid meshing data structure");
+    Msg::Error(_("Invalid meshing data structure"));
     return;
   }
 
@@ -1859,7 +1859,7 @@ void delaunayMeshIn2D(std::vector<MVertex *> &v,
     int NITER = 0;
     MTri3 *found = getTriToBreak(pv, t, NITER);
     if(!found) {
-      Msg::Error("Cannot insert a point in 2D Delaunay");
+      Msg::Error(_("Cannot insert a point in 2D Delaunay"));
       continue;
     }
     shell.clear();
@@ -1979,7 +1979,7 @@ static bool recoverEdgeBySwaps(std::vector<MTri3 *> &t, MVertex *mv1,
           if(intersection_segments(p1, p2, pv1, pv2, xcc)) {
             // if
             // (std::binary_search(edges.begin(),edges.end(),MEdge(v1,v2),MEdgeLessThan)){
-            //  Msg::Error("1D mesh self intersects");
+            //  Msg::Error(_("1D mesh self intersects"));
             //	    }
             if(!intersection_segments(po, p3, pv1, pv2, xcc) ||
                (v3 == mv1 || o == mv1 || v3 == mv2 || o == mv2)) {

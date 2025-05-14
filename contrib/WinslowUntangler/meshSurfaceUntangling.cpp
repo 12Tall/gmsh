@@ -745,8 +745,7 @@ bool untangleGFaceMeshConstrained(GFace *gf, int iterMax, double timeMax)
 #else
 bool untangleGFaceMeshConstrained(GFace *gf, int iterMax, double timeMax)
 {
-  Msg::Error(
-    "Module QuadMeshingTools required for untangleGFaceMeshConstrained");
+  Msg::Error(_("Module QuadMeshingTools required for untangleGFaceMeshConstrained"));
   return false;
 }
 #endif

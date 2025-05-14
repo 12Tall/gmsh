@@ -58,7 +58,7 @@ void outputScalarField(std::vector<BDS_Face *> &t, const char *iii, int param,
   if(gf && 0) {
     FILE *view_c = Fopen("param_mesh_as_it_is_in_3D.pos", "w");
     if(!view_c) {
-      Msg::Error("Could not open file 'param_mesh_as_it_is_in_3D.pos'");
+      Msg::Error(_("Could not open file 'param_mesh_as_it_is_in_3D.pos'"));
       return;
     }
     fprintf(view_c, "View \"paramC\"{\n");
@@ -204,7 +204,7 @@ static double surface_triangle_param(BDS_Point *p1, BDS_Point *p2,
   // SEEMS TO BE THE CASE WITH OCC
 
   if(!p1 || !p2 || !p3) {
-    Msg::Error("Invalid point in parametric triangle surface computation");
+    Msg::Error(_("Invalid point in parametric triangle surface computation"));
     return 0;
   }
 
@@ -876,7 +876,7 @@ bool BDS_SwapEdgeTestQuality::operator()(BDS_Point *_p1, BDS_Point *_p2,
     p2 = _op2;
   }
   else {
-    Msg::Warning("Unable to detect the new edge in BDS_SwapEdgeTestQuality\n");
+    Msg::Warning(_("Unable to detect the new edge in BDS_SwapEdgeTestQuality\n"));
   }
 
   if(p1 && p2) {
@@ -1114,7 +1114,7 @@ bool BDS_Mesh::collapse_edge_parametric(BDS_Edge *e, BDS_Point *p, bool force)
     BDS_Point *oface[2];
     e->oppositeof(oface);
     if(!oface[0] || !oface[1]) {
-      Msg::Error("No opposite face in edge collapse");
+      Msg::Error(_("No opposite face in edge collapse"));
       return false;
     }
     for(size_t i = 0; i < oface[0]->edges.size(); i++) {
@@ -1162,7 +1162,7 @@ bool BDS_Mesh::collapse_edge_parametric(BDS_Edge *e, BDS_Point *p, bool force)
           pt[1][nt] = (pts[1] == p) ? o : pts[1];
           pt[2][nt] = (pts[2] == p) ? o : pts[2];
           if(!pt[0][nt] || !pt[1][nt] || !pt[2][nt]) {
-            Msg::Error("Invalid point in edge collapse");
+            Msg::Error(_("Invalid point in edge collapse"));
             return false;
           }
           double snew =
@@ -1200,7 +1200,7 @@ bool BDS_Mesh::collapse_edge_parametric(BDS_Edge *e, BDS_Point *p, bool force)
       ept[0][kk] = ((*eit)->p1 == p) ? (o ? o->iD : -1) : (*eit)->p1->iD;
       ept[1][kk] = ((*eit)->p2 == p) ? (o ? o->iD : -1) : (*eit)->p2->iD;
       if(ept[0][kk] < 0 || ept[1][kk] < 0) {
-        Msg::Error("Something wrong in edge collapse");
+        Msg::Error(_("Something wrong in edge collapse"));
         return false;
       }
       egs[kk++] = (*eit)->g;

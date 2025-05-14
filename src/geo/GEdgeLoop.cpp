@@ -56,7 +56,7 @@ GEdgeSigned nextOne(GEdgeSigned *thisOne, std::list<GEdge *> &wire)
       GVertex *v2 = ge->getEndVertex();
       if(v1 == gv) return GEdgeSigned(1, ge);
       if(v2 == gv) return GEdgeSigned(-1, ge);
-      Msg::Error("Something wrong in curve loop 1");
+      Msg::Error(_("Something wrong in curve loop 1"));
       thisOne->print();
     }
     ++it;
@@ -73,7 +73,7 @@ GEdgeSigned nextOne(GEdgeSigned *thisOne, std::list<GEdge *> &wire)
       GVertex *v2 = ge->getEndVertex();
       if(v1 == gv) return GEdgeSigned(1, ge);
       if(v2 == gv) return GEdgeSigned(-1, ge);
-      Msg::Error("Something wrong in curve loop 2");
+      Msg::Error(_("Something wrong in curve loop 2"));
       thisOne->print();
     }
     ++it;
@@ -125,7 +125,7 @@ static void loopTheLoop(std::list<GEdge *> &wire, std::list<GEdgeSigned> &loop,
     else
       ges = nextOne(prevOne, wire);
     if(!ges.getEdge()) { // oops
-      Msg::Debug("Could not find next curve in loop, aborting");
+      Msg::Debug(_("Could not find next curve in loop, aborting"));
       break;
     }
     prevOne = &ges;
@@ -157,8 +157,7 @@ void GEdgeLoop::recompute(const std::vector<GEdge *> &cwire)
     wire.push_front(degenerated[0]);
   }
   else if(degenerated.size() > 2) {
-    Msg::Warning(
-      "More than two degenerated edges in one model face of an OCC model");
+    Msg::Warning(_("More than two degenerated edges in one model face of an OCC model"));
   }
 #else
   std::list<GEdge *> wire(cwire.begin(), cwire.end());

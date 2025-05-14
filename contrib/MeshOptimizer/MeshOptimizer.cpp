@@ -290,7 +290,7 @@ namespace {
     }
 
     // Compute patch connectivity
-    Msg::Info("Computing patch connectivity...");
+    Msg::Info(_("Computing patch connectivity..."));
     std::map<MElement *, std::set<int> > tags;
     std::vector<std::set<int> > patchConnect(primPatches.size());
     for(int iB = 0; iB < primPatches.size(); ++iB) {
@@ -308,7 +308,7 @@ namespace {
     }
 
     // Identify groups of connected patches
-    Msg::Info("Identifying groups of primary patches...");
+    Msg::Info(_("Identifying groups of primary patches..."));
     std::list<std::set<int> > groups;
     std::vector<bool> todoPB(primPatches.size(), true);
     for(int iB = 0; iB < primPatches.size(); ++iB)
@@ -797,7 +797,7 @@ void MeshOptimizer(std::vector<GEntity *> &entities, MeshOptParameters &par)
         mvbold(false);
       }
       else
-        Msg::Info("Optimization succeeded");
+        Msg::Info(_("Optimization succeeded"));
     }
     else if(par.success == 0) {
       if(par.nCurses) {
@@ -822,7 +822,7 @@ void MeshOptimizer(std::vector<GEntity *> &entities, MeshOptParameters &par)
         mvbold(false);
       }
       else
-        Msg::Error("Optimization failed (some measures below critical value)");
+        Msg::Error(_("Optimization failed (some measures below critical value)"));
     }
     par.CPU = Cpu() - startTime;
     Msg::StatusBar(true, "Done optimizing mesh (%g s)", par.CPU);

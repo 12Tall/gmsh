@@ -100,7 +100,7 @@ static void gmshLineSearch(void (*func)(std::vector<double> &x, double &Obj,
         else {
           const double disc = b * b - 3.0 * a * slope;
           if(disc < 0.0)
-            Msg::Error("Roundoff problem in gmshLineSearch.");
+            Msg::Error(_("Roundoff problem in gmshLineSearch."));
           else
             tmplam = (-b + sqrt(disc)) / (3.0 * a);
         }

@@ -63,7 +63,7 @@ PView *GMSH_WarpPlugin::execute(PView *v)
   // sanity checks
   if(data1->getNumEntities() != data2->getNumEntities() ||
      data1->getNumElements() != data2->getNumElements()) {
-    Msg::Error("Incompatible views");
+    Msg::Error(_("Incompatible views"));
     return v;
   }
   if(TimeStep < 0 || TimeStep > data2->getNumTimeSteps() - 1) {

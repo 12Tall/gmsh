@@ -627,7 +627,7 @@ void Recombinator::execute()
 
 void Recombinator::execute(GRegion *gr)
 {
-  Msg::Info(" ................HEXAHEDRA.... RECOMBINATOR................\n");
+  Msg::Info(_(" ................HEXAHEDRA.... RECOMBINATOR................\n"));
 
   initialize_structures(gr);
 
@@ -691,7 +691,7 @@ void remove_values_from_set(std::set<T> &input_set,
 // first
 void Recombinator::pattern1()
 {
-  Msg::Info("Hex-merging pattern nb. 1...");
+  Msg::Info(_("Hex-merging pattern nb. 1..."));
   for(unsigned int i = 0; i < current_region->getNumMeshElements(); i++) {
     MElement *tet = current_region->getMeshElement(i);
 
@@ -754,7 +754,7 @@ void Recombinator::pattern1()
 
 void Recombinator::pattern2()
 {
-  Msg::Info("Hex-merging pattern nb. 2...");
+  Msg::Info(_("Hex-merging pattern nb. 2..."));
 
   for(unsigned int i = 0; i < current_region->getNumMeshElements(); i++) {
     MElement *tet = current_region->getMeshElement(i);
@@ -803,7 +803,7 @@ void Recombinator::pattern2()
 
 void Recombinator::pattern3()
 {
-  Msg::Info("Hex-merging pattern nb. 3...");
+  Msg::Info(_("Hex-merging pattern nb. 3..."));
 
   for(unsigned int i = 0; i < current_region->getNumMeshElements(); i++) {
     MElement *tet = current_region->getMeshElement(i);
@@ -3091,7 +3091,7 @@ void PostOp::executeNew(GRegion *gr)
       }
 
       if(potential.size() > 1) {
-        Msg::Error("I didn't expect that. Aaaah, don't know what I should do");
+        Msg::Error(_("I didn't expect that. Aaaah, don't know what I should do"));
       }
       else if(potential.size() == 1) {
         MElement *t = *potential.begin();
@@ -3220,7 +3220,7 @@ MFace PostOp::find_quadFace(MVertex *v1, MVertex *v2, MVertex *v3)
     intersection(buf, it3->second, final);
   }
 
-  if(final.size() > 1) Msg::Error("This shouldn't happen ...");
+  if(final.size() > 1) Msg::Error(_("This shouldn't happen ..."));
 
   element_set_itr it;
   for(it = final.begin(); it != final.end(); ++it) {
@@ -3635,7 +3635,7 @@ void PostOp::split_pyramids(GRegion *gr)
       double qC = tempC1->minIsotropyMeasure() + tempC2->minIsotropyMeasure() +
                   tempC3->minIsotropyMeasure() + tempC4->minIsotropyMeasure();
       if(qA > qB && qA > qC) {
-        Msg::Info("A");
+        Msg::Info(_("A"));
         gr->addTetrahedron(tempA1);
         gr->addTetrahedron(tempA2);
         gr->addTetrahedron(tempA3);
@@ -3650,7 +3650,7 @@ void PostOp::split_pyramids(GRegion *gr)
         delete tempC4;
       }
       else if(qB > qC) {
-        Msg::Info("B");
+        Msg::Info(_("B"));
         gr->addTetrahedron(tempB1);
         gr->addTetrahedron(tempB2);
         gr->addTetrahedron(tempB3);
@@ -3665,7 +3665,7 @@ void PostOp::split_pyramids(GRegion *gr)
         delete tempC4;
       }
       else {
-        Msg::Info("C");
+        Msg::Info(_("C"));
         gr->addTetrahedron(tempC1);
         gr->addTetrahedron(tempC2);
         gr->addTetrahedron(tempC3);
@@ -3926,7 +3926,7 @@ void PostOp::pyramids1(MVertex *a, MVertex *b, MVertex *c, MVertex *d,
       getVertex = find(a, b, c, d, *it);
       MVertex *vertex1 = find(a, b, c, d, *bin.begin());
       if(!getVertex || !vertex1) {
-        Msg::Error("Topological error");
+        Msg::Error(_("Topological error"));
         return;
       }
       if(getVertex == vertex1) {
@@ -4156,7 +4156,7 @@ void PostOp::pyramids2(MVertex *a, MVertex *b, MVertex *c, MVertex *d,
       otherV[i++] = findInTriFace(diagA, diagB, nDiagA, nDiagB, *it);
     }
     if(!otherV[0] || !otherV[1]) {
-      Msg::Error("Topological error");
+      Msg::Error(_("Topological error"));
       return;
     }
 
@@ -4224,7 +4224,7 @@ void PostOp::pyramids2(MVertex *a, MVertex *b, MVertex *c, MVertex *d,
           erase_vertex_to_tetrahedra(*it);
         }
         else {
-          Msg::Error("Wrong tetrahedron");
+          Msg::Error(_("Wrong tetrahedron"));
         }
       }
 
@@ -6246,7 +6246,7 @@ void Recombinator_Graph::execute_blossom(GRegion *gr,
   tet_to_hex.clear();
   created_potential_hex.clear();
 
-  Msg::Info("Building Connectivity...");
+  Msg::Info(_("Building Connectivity..."));
 
   double a = Cpu();
 

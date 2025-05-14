@@ -20,7 +20,7 @@ template <class scalar> class linearSystemEigen : public linearSystem<scalar> {
 public:
   linearSystemEigen()
   {
-    Msg::Info("linearSystemEigen not implemented for this element type");
+    Msg::Info(_("linearSystemEigen not implemented for this element type"));
   }
 
   virtual bool isAllocated() const { return false; }

@@ -237,12 +237,12 @@ public:
   }
   virtual double integrateCirculation(double val[])
   {
-    Msg::Error("integrateCirculation not available for this element");
+    Msg::Error(_("integrateCirculation not available for this element"));
     return 0.;
   }
   virtual double integrateFlux(double val[])
   {
-    Msg::Error("integrateFlux not available for this element");
+    Msg::Error(_("integrateFlux not available for this element"));
     return 0.;
   }
   virtual void xyz2uvw(double xyz[3], double uvw[3])
@@ -284,7 +284,7 @@ public:
       uvw[2] = wn;
       iter++;
     }
-    // if(error > tol) Msg::Warning("Newton did not converge in xyz2uvw") ;
+    // if(error > tol) Msg::Warning(_("Newton did not converge in xyz2uvw")) ;
   }
   virtual int isInside(double u, double v, double w) = 0;
   double maxEdgeLength()
@@ -1421,7 +1421,7 @@ public:
         return new pyramid(x, y, z, copy ? numNodes : 0);
       else
         return new tetrahedron(x, y, z, copy ? numNodes : 0);
-    default: Msg::Error("Unknown type of element in factory"); return nullptr;
+    default: Msg::Error(_("Unknown type of element in factory")); return nullptr;
     }
   }
 };

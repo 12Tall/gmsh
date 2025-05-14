@@ -108,7 +108,7 @@ public:
       }
     }
     if(edges.empty() && faces.empty()) {
-      Msg::Info("All embedded edges and faces are present in the final mesh");
+      Msg::Info(_("All embedded edges and faces are present in the final mesh"));
     }
     if(edges.size()) {
       char name[256];
@@ -422,7 +422,7 @@ static void Mesh1D(GModel *m)
 
   while(1) {
     if(CTX::instance()->abortOnError && Msg::GetErrorCount()) {
-      Msg::Warning("Aborted 1D meshing");
+      Msg::Warning(_("Aborted 1D meshing"));
       break;
     }
 
@@ -579,7 +579,7 @@ static void Mesh2D(GModel *m)
 
     while(1) {
       if(CTX::instance()->abortOnError && Msg::GetErrorCount()) {
-        Msg::Warning("Aborted 2D meshing");
+        Msg::Warning(_("Aborted 2D meshing"));
         break;
       }
 
@@ -751,7 +751,7 @@ static void TestConformity(GModel *gm)
     }
   }
   if(!count)
-    Msg::Info("Mesh Conformity: OK");
+    Msg::Info(_("Mesh Conformity: OK"));
   else
     Msg::Error("Mesh is not conforming (%d hanging faces)!", count);
 }
@@ -805,7 +805,7 @@ static void Mesh3D(GModel *m)
 
   for(std::size_t i = 0; i < connected.size(); i++) {
     if(CTX::instance()->abortOnError && Msg::GetErrorCount()) {
-      Msg::Warning("Aborted 3D meshing");
+      Msg::Warning(_("Aborted 3D meshing"));
       break;
     }
 
@@ -961,14 +961,14 @@ void OptimizeMesh(GModel *m, const std::string &how, bool force, int niter)
     p.optCAD = CTX::instance()->mesh.hoDistCAD;
     HighOrderMeshOptimizer(m, p);
 #else
-    Msg::Error("High-order mesh optimization requires the OPTHOM module");
+    Msg::Error(_("High-order mesh optimization requires the OPTHOM module"));
 #endif
   }
   else if(how == "HighOrderElastic") {
 #if defined(HAVE_OPTHOM)
     HighOrderMeshElasticAnalogy(m, false);
 #else
-    Msg::Error("High-order mesh optimization requires the OPTHOM module");
+    Msg::Error(_("High-order mesh optimization requires the OPTHOM module"));
 #endif
   }
   else if(how == "HighOrderFastCurving") {
@@ -984,7 +984,7 @@ void OptimizeMesh(GModel *m, const std::string &how, bool force, int niter)
     p.maxAngleInner = CTX::instance()->mesh.hoMaxInnerAngle;
     HighOrderMeshFastCurving(m, p, false);
 #else
-    Msg::Error("High-order mesh optimization requires the OPTHOM module");
+    Msg::Error(_("High-order mesh optimization requires the OPTHOM module"));
 #endif
   }
   else if(how == "Laplace2D") {
@@ -1401,7 +1401,7 @@ void GenerateMesh(GModel *m, int ask)
 {
   // ProfilerStart("gmsh.prof");
   if(CTX::instance()->lock) {
-    Msg::Info("I'm busy! Ask me that later...");
+    Msg::Info(_("I'm busy! Ask me that later..."));
     return;
   }
   CTX::instance()->lock = 1;

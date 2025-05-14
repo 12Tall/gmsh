@@ -559,7 +559,7 @@ namespace BoundaryLayerCurver {
       MElement *currentElement = c1.second[i];
       MFace topFace;
       if(!computeCommonFace(currentElement, c1.second[i + 1], topFace)) {
-        Msg::Error("Did not find common face");
+        Msg::Error(_("Did not find common face"));
       }
 
       // Eeach edge that is not in bottom face nor in top face links a bottom
@@ -622,7 +622,7 @@ namespace BoundaryLayerCurver {
     MElement *bottomElement2 = c2.first;
     MEdge commonEdge;
     if(!computeCommonEdge(bottomElement1, bottomElement2, commonEdge)) {
-      Msg::Error("Couldn't find common edge on bottom elements");
+      Msg::Error(_("Couldn't find common edge on bottom elements"));
       return;
     }
     bottomEdge = bottomElement1->getHighOrderEdge(commonEdge);
@@ -656,7 +656,7 @@ namespace BoundaryLayerCurver {
         if(bottomEdge.getVertex(1) == allPrimaryVertices[i]) n1 = i;
       }
       if(n0 == -1 || n1 == -1) {
-        Msg::Error("Error in computeInterface");
+        Msg::Error(_("Error in computeInterface"));
         return;
       }
       interfacePrimaryVertices.resize(2 * (stackElements.size()));
@@ -676,7 +676,7 @@ namespace BoundaryLayerCurver {
       MVertex *v2 = interfacePrimaryVertices[2 * i + 3];
       MVertex *v3 = interfacePrimaryVertices[2 * i + 2];
       if(v2 == v1 && v3 == v0) {
-        Msg::Error("Error in computeInterface: not an element");
+        Msg::Error(_("Error in computeInterface: not an element"));
       }
       if(v2 == v1) {
         v2 = v3;
@@ -691,7 +691,7 @@ namespace BoundaryLayerCurver {
       //        if (   v0 != interface.back().getVertex(0)
       //               || v1 != interface.back().getVertex(1)
       //               || v2 != interface.back().getVertex(2))
-      //          Msg::Error("did not get the faceN I wanted!");
+      //          Msg::Error(_("did not get the faceN I wanted!"));
       //        std::cout << "vertices: " << v0->getNum() << " " << v1->getNum()
       //        << " " << v2->getNum() << std::endl; std::cout << "vertices: "
       //        << interface.back().getVertex(0)->getNum() << " " <<
@@ -703,7 +703,7 @@ namespace BoundaryLayerCurver {
       //               || v1 != interface.back().getVertex(1)
       //               || v2 != interface.back().getVertex(2)
       //               || v3 != interface.back().getVertex(3))
-      //          Msg::Error("did not get the faceN I wanted!");
+      //          Msg::Error(_("did not get the faceN I wanted!"));
       //        std::cout << "vertices: " << v0->getNum() << " " << v1->getNum()
       //        << " " << v2->getNum() << " " << v3->getNum() << std::endl;
       //        std::cout << "vertices: " <<
@@ -1046,7 +1046,7 @@ namespace BoundaryLayerCurver {
       computeInterface(column1, column2, interface, bottomEdge, topEdge);
       curveInterface(interface, column1.first, column2.first, bottomEdge,
                      topEdge, 0, boundary, true);
-      //        Msg::Error("RETURN"); return;
+      //        Msg::Error(_("RETURN")); return;
       //      }
     }
   }

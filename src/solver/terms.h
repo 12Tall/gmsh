@@ -245,16 +245,16 @@ public:
   virtual void get(MElement *ele, int npts, IntPt *GP,
                    fullMatrix<double> &m) const
   {
-    Msg::Error("LaplaceTerm<S1, S2> w/ S1 != S2 not implemented");
+    Msg::Error(_("LaplaceTerm<S1, S2> w/ S1 != S2 not implemented"));
   }
   virtual void get(MElement *ele, int npts, IntPt *GP,
                    std::vector<fullMatrix<double> > &vm) const
   {
-    Msg::Error("LaplaceTerm<S1, S2> w/ S1 != S2 not implemented");
+    Msg::Error(_("LaplaceTerm<S1, S2> w/ S1 != S2 not implemented"));
   }
   virtual void get(MVertex *ver, fullMatrix<double> &m)
   {
-    Msg::Error("LaplaceTerm<S1, S2> w/ S1 != S2 not implemented");
+    Msg::Error(_("LaplaceTerm<S1, S2> w/ S1 != S2 not implemented"));
   }
   virtual BilinearTermBase *clone() const
   {

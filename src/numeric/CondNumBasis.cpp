@@ -438,7 +438,7 @@ inline void CondNumBasis::getInvCondNumGeneral(
   }
 
   case 1: {
-    Msg::Warning("Inverse condition number not implemented in 1D");
+    Msg::Warning(_("Inverse condition number not implemented in 1D"));
     condNum.setAll(0.);
     break;
   }
@@ -534,7 +534,7 @@ inline void CondNumBasis::getInvCondNumAndGradientsGeneral(
   }
 
   case 1: {
-    Msg::Warning("Inverse condition number not implemented in 1D");
+    Msg::Warning(_("Inverse condition number not implemented in 1D"));
     IDI.setAll(0.);
     break;
   }

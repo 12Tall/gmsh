@@ -453,7 +453,7 @@ bool GModel::fillVertexArrays()
 {
   if(!getVisibility() || !CTX::instance()->mesh.changed) return false;
 
-  Msg::Debug("Mesh has changed: reinitializing vertex arrays");
+  Msg::Debug(_("Mesh has changed: reinitializing vertex arrays"));
 
   int status = getMeshStatus();
 

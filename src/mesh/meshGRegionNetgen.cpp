@@ -152,7 +152,7 @@ static void TransferVolumeMesh(GRegion *gr, Ng_Mesh *ngmesh,
     if(v[0] && v[1] && v[2] && v[3])
       gr->tetrahedra.push_back(new MTetrahedron(v[0], v[1], v[2], v[3]));
     else
-      Msg::Error("Tetrahedron with unknown node - should never be here!");
+      Msg::Error(_("Tetrahedron with unknown node - should never be here!"));
   }
 }
 
@@ -219,7 +219,7 @@ static void meshNormalsPointOutOfTheRegion(GRegion *gr)
   SBoundingBox3d bbox = gr->bounds();
   double scaling = norm(SVector3(bbox.max(), bbox.min()));
   if(!scaling) {
-    Msg::Warning("Bad scaling in meshNormalsPointOutOfTheRegion");
+    Msg::Warning(_("Bad scaling in meshNormalsPointOutOfTheRegion"));
     scaling = 1.;
   }
 
@@ -313,14 +313,13 @@ static void meshNormalsPointOutOfTheRegion(GRegion *gr)
 void meshGRegionNetgen(GRegion *gr)
 {
 #if !defined(HAVE_NETGEN)
-  Msg::Error("Frontal algorithm requires Netgen");
+  Msg::Error(_("Frontal algorithm requires Netgen"));
 #else
   // sanity check for frontal algo
   std::vector<GFace *> faces = gr->faces();
   for(auto it = faces.begin(); it != faces.end(); it++) {
     if((*it)->quadrangles.size()) {
-      Msg::Error(
-        "Cannot use frontal 3D algorithm with quadrangles on boundary");
+      Msg::Error(_("Cannot use frontal 3D algorithm with quadrangles on boundary"));
       return;
     }
   }
@@ -351,12 +350,12 @@ void optimizeMeshGRegionNetgen::operator()(GRegion *gr, bool always)
   if(ep && ep->mesh.ExtrudeMesh && ep->geo.Mode == EXTRUDED_ENTITY) return;
 
   if(gr->prisms.size() || gr->hexahedra.size() || gr->pyramids.size()) {
-    Msg::Info("Skipping Netgen optimizer for hybrid mesh");
+    Msg::Info(_("Skipping Netgen optimizer for hybrid mesh"));
     return;
   }
 
 #if !defined(HAVE_NETGEN)
-  Msg::Error("Netgen optimizer is not compiled in this version of Gmsh");
+  Msg::Error(_("Netgen optimizer is not compiled in this version of Gmsh"));
 #else
   Msg::Info("Optimizing volume %d", gr->tag());
   // import mesh into netgen, including volume tets

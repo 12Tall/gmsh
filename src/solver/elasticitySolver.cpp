@@ -175,7 +175,7 @@ void elasticitySolver::readInputFile(const std::string &fn)
     if(what[0] == '#') {
       char buffer[1024];
       if(fgets(buffer, sizeof(buffer), f) == nullptr)
-        Msg::Error("Cannot read line.");
+        Msg::Error(_("Cannot read line."));
     }
     else if(!strcmp(what, "ElasticDomain")) {
       elasticField field;

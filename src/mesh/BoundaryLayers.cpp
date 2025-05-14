@@ -43,7 +43,7 @@ static void addExtrudeNormals(std::vector<T *> &elements, int invert,
                               bool skipScaleCalc)
 {
   if(index < 0 || index > 1) {
-    Msg::Error("Boundary layer index should be 0 or 1");
+    Msg::Error(_("Boundary layer index should be 0 or 1"));
     return;
   }
 

@@ -345,8 +345,7 @@ namespace {
 
     return (d1 > d2) ? d1 : d2;
 #else
-    Msg::Error(
-      "Gmsh should be compiled using ANN to compute Hausdorff distance");
+    Msg::Error(_("Gmsh should be compiled using ANN to compute Hausdorff distance"));
     return 0.;
 #endif
   }
@@ -590,7 +589,7 @@ double distanceToGeometry(GModel *gm, int distType, double tol, int meshDiscr,
                                                     meshDiscr, geomDiscr);
           break;
         default:
-          Msg::Error("Wrong CAD distance type in distanceToGeometry");
+          Msg::Error(_("Wrong CAD distance type in distanceToGeometry"));
           break;
         }
         maxDist = std::max(dist, maxDist);
@@ -645,7 +644,7 @@ double distanceToGeometry(GModel *gm, int dim, int tag, int distType,
                                                   meshDiscr, geomDiscr);
         break;
       default:
-        Msg::Error("Wrong CAD distance type in distanceToGeometry");
+        Msg::Error(_("Wrong CAD distance type in distanceToGeometry"));
         return -1.;
         break;
       }

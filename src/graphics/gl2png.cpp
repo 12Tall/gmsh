@@ -10,7 +10,7 @@
 
 void create_png(FILE *file, PixelBuffer *buffer, int quality)
 {
-  Msg::Error("This version of Gmsh was compiled without PNG support");
+  Msg::Error(_("This version of Gmsh was compiled without PNG support"));
 }
 
 #else
@@ -25,7 +25,7 @@ void create_png(FILE *file, PixelBuffer *buffer, int quality)
 {
   if((buffer->getFormat() != GL_RGB && buffer->getFormat() != GL_RGBA) ||
      buffer->getType() != GL_UNSIGNED_BYTE) {
-    Msg::Error("PNG only implemented for GL_RGB/GL_RGBA and GL_UNSIGNED_BYTE");
+    Msg::Error(_("PNG only implemented for GL_RGB/GL_RGBA and GL_UNSIGNED_BYTE"));
     return;
   }
 
@@ -33,7 +33,7 @@ void create_png(FILE *file, PixelBuffer *buffer, int quality)
     png_create_write_struct(PNG_LIBPNG_VER_STRING, nullptr, nullptr, nullptr);
 
   if(png_ptr == nullptr) {
-    Msg::Error("Could not create PNG write struct");
+    Msg::Error(_("Could not create PNG write struct"));
     return;
   }
 
@@ -41,13 +41,13 @@ void create_png(FILE *file, PixelBuffer *buffer, int quality)
 
   if(info_ptr == nullptr) {
     png_destroy_write_struct(&png_ptr, nullptr);
-    Msg::Error("Could not create PNG info struct");
+    Msg::Error(_("Could not create PNG info struct"));
     return;
   }
 
   if(setjmp(png_jmpbuf(png_ptr))) {
     png_destroy_write_struct(&png_ptr, &info_ptr);
-    Msg::Error("Could not setjmp in PNG");
+    Msg::Error(_("Could not setjmp in PNG"));
     return;
   }
 

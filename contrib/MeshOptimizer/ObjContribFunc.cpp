@@ -68,8 +68,7 @@ void ObjContribFuncBarrier::setTarget(double target, double opt,
     else if(target != 0.)
       _defaultMargin = MARGINCOEFF * fabs(target);
     else
-      Msg::Warning(
-        "Could not find value to define a scale for default barrier margin");
+      Msg::Warning(_("Could not find value to define a scale for default barrier margin"));
   }
 }
 

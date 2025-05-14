@@ -101,7 +101,7 @@ namespace QMT {
       Q.pop();
       int parentNode = parent[node];
       if(parentNode == UNASSIGNED) {
-        Msg::Error("parent not defined for node, should not happen");
+        Msg::Error(_("parent not defined for node, should not happen"));
         return false;
       }
 
@@ -280,8 +280,7 @@ namespace QMT {
           increment = nLinesImposedFromTransfinite[0];
         }
         else if(nLinesImposedFromTransfinite.size() > 1) {
-          Msg::Error(
-            "curve quantization: incoherent imposed transfinite constraints");
+          Msg::Error(_("curve quantization: incoherent imposed transfinite constraints"));
           continue;
         }
         else {
@@ -345,7 +344,7 @@ int initialCurveQuantization(
     GFaceInfo info;
     bool okf = fillGFaceInfo(gf, info);
     if(!okf) {
-      Msg::Debug("initial curve quantization: no triangles available");
+      Msg::Debug(_("initial curve quantization: no triangles available"));
       return -1;
     }
 
@@ -445,7 +444,7 @@ int initialCurveQuantization(
   bool okq =
     QMT::solveQuantizationWithGreedyApproach(oppositeSides, x_ideal, n);
   if(!okq) {
-    Msg::Error("failed to solve quantization with greedy approach");
+    Msg::Error(_("failed to solve quantization with greedy approach"));
     return -1;
   }
 
@@ -469,7 +468,7 @@ int initialCurveQuantization(
 
 int setQuadqsTransfiniteConstraints(GModel *gm, double maxDiffNbLines)
 {
-  Msg::Debug("set quadqs transfinite constraints ...");
+  Msg::Debug(_("set quadqs transfinite constraints ..."));
 
   std::unordered_map<GFace *, vector<GVertex *> > faceCorners;
 

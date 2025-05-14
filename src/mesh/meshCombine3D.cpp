@@ -206,7 +206,7 @@ int meshCombine3D(GRegion *gr)
     gf->triangles = temp;
   }
 
-  Msg::Info("Hybrid mesh statistics");
+  Msg::Info(_("Hybrid mesh statistics"));
   Msg::Info(
     "Volume Hex %12.5E --- Volume Tet %12.5E --- Percentage Vol Hex %12.5E",
     volHex, volTet, 100 * volHex / (volHex + volTet));
@@ -219,8 +219,7 @@ int meshCombine3D(GRegion *gr)
 
 int meshCombine3D(GRegion *gr)
 {
-  Msg::Warning(
-    "Gmsh must be compiled with HXT to enable hybrid mesh generation");
+  Msg::Warning(_("Gmsh must be compiled with HXT to enable hybrid mesh generation"));
   return -1;
 }
 
@@ -270,7 +269,7 @@ bool MakeHybridHexTetMeshConformalThroughTriHedron(GModel *gm)
           itf->second->trihedra.push_back(th);
         }
         else {
-          Msg::Warning("MakeMeshConformal: wrong mesh topology");
+          Msg::Warning(_("MakeMeshConformal: wrong mesh topology"));
           //          return false;
         }
       }

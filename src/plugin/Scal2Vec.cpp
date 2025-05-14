@@ -68,7 +68,7 @@ PView *GMSH_Scal2VecPlugin::execute(PView *v)
     }
   }
   if(!vRef) {
-    Msg::Error("Scal2Vec plugin could not find any view.");
+    Msg::Error(_("Scal2Vec plugin could not find any view."));
     return v;
   }
   PViewData *dataRef = vRef->getData();

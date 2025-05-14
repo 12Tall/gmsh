@@ -56,8 +56,7 @@ int GModel::writeMATLAB(const std::string &name, bool binary, bool saveAll,
 
   if(binary) {
     // TODO
-    Msg::Warning(
-      "Binary format not available for Matlab, saving into ASCII format");
+    Msg::Warning(_("Binary format not available for Matlab, saving into ASCII format"));
     binary = false;
   }
 

@@ -30,7 +30,7 @@ void GVertex::resetMeshAttributes() { meshSize = MAX_LC; }
 
 void GVertex::setPosition(GPoint &p)
 {
-  Msg::Error("Cannot set position of this kind of point");
+  Msg::Error(_("Cannot set position of this kind of point"));
 }
 
 void GVertex::addEdge(GEdge *e)

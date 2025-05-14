@@ -62,18 +62,18 @@ PView *GMSH_HarmonicToTimePlugin::execute(PView *v)
   PViewData *data1 = v1->getData(true);
 
   if(data1->hasMultipleMeshes()) {
-    Msg::Error("HarmonicToTime plugin cannot be applied to multi-mesh views");
+    Msg::Error(_("HarmonicToTime plugin cannot be applied to multi-mesh views"));
     return v1;
   }
 
   if(rIndex < 0 || rIndex >= data1->getNumTimeSteps() || iIndex < 0 ||
      iIndex >= data1->getNumTimeSteps()) {
-    Msg::Error("Wrong real or imaginary part index");
+    Msg::Error(_("Wrong real or imaginary part index"));
     return v1;
   }
 
   if(nSteps <= 0) {
-    Msg::Error("nSteps should be > 0");
+    Msg::Error(_("nSteps should be > 0"));
     return v1;
   }
 

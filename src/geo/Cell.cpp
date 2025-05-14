@@ -105,7 +105,7 @@ bool Cell::_sortVertexIndices()
     noinsert = (!si.insert(std::make_pair(_v[i], i)).second || noinsert);
 
   if(noinsert == true) {
-    Msg::Warning("The input mesh has degenerate elements, ignored");
+    Msg::Warning(_("The input mesh has degenerate elements, ignored"));
     return false;
   }
 

@@ -105,7 +105,7 @@ PView *GMSH_MathEvalPlugin::execute(PView *view)
   PViewData *data1 = getPossiblyAdaptiveData(v1);
 
   if(data1->hasMultipleMeshes()) {
-    Msg::Error("MathEval plugin cannot be applied to multi-mesh views");
+    Msg::Error(_("MathEval plugin cannot be applied to multi-mesh views"));
     return view;
   }
 
@@ -120,13 +120,13 @@ PView *GMSH_MathEvalPlugin::execute(PView *view)
 
   PViewData *otherData = getPossiblyAdaptiveData(otherView);
   if(otherData->hasMultipleMeshes()) {
-    Msg::Error("MathEval plugin cannot be applied to multi-mesh views");
+    Msg::Error(_("MathEval plugin cannot be applied to multi-mesh views"));
     return view;
   }
 
   if(otherTimeStep < 0 &&
      otherData->getNumTimeSteps() != data1->getNumTimeSteps()) {
-    Msg::Error("Number of time steps don't match: using step 0");
+    Msg::Error(_("Number of time steps don't match: using step 0"));
     otherTimeStep = 0;
   }
   else if(otherTimeStep > otherData->getNumTimeSteps() - 1) {
@@ -166,7 +166,7 @@ PView *GMSH_MathEvalPlugin::execute(PView *view)
   if(forceInterpolation ||
      (data1->getNumEntities() != otherData->getNumEntities()) ||
      (data1->getNumElements() != otherData->getNumElements())) {
-    Msg::Info("Other view based on different grid: interpolating...");
+    Msg::Info(_("Other view based on different grid: interpolating..."));
     octree = new OctreePost(otherView);
   }
 

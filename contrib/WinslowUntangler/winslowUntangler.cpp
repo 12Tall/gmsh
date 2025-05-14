@@ -484,8 +484,7 @@ namespace WinslowUntangler {
   {
     if(triIdealShapes.size() != 0 &&
        triIdealShapes.size() != (size_t)tris.size()) {
-      Msg::Error(
-        "Winslow untangler 2D: incoherent sizes in triangles / triIdealShapes");
+      Msg::Error(_("Winslow untangler 2D: incoherent sizes in triangles / triIdealShapes"));
       return false;
     }
     data.dim = 2;
@@ -599,8 +598,7 @@ namespace WinslowUntangler {
   {
     if(tetIdealShapes.size() != 0 &&
        tetIdealShapes.size() != (size_t)tets.size()) {
-      Msg::Error(
-        "Winslow untangler 3D: incoherent sizes in tets / tetIdealShapes");
+      Msg::Error(_("Winslow untangler 3D: incoherent sizes in tets / tetIdealShapes"));
       return false;
     }
     data.dim = 3;
@@ -973,8 +971,7 @@ bool untangle_triangles_2D(
     tetIdealShapes, lambda, iterMaxInner, iterMaxOuter, iterFailMax, timeMax,
     sizeField,updateIdealTriangularShapes);
 #else
-  Msg::Error(
-    "Winslow untangler requires modules Eigen, Alglib and QuadMeshingTools");
+  Msg::Error(_("Winslow untangler requires modules Eigen, Alglib and QuadMeshingTools"));
   return false;
 #endif
 }
@@ -995,8 +992,7 @@ bool untangle_tetrahedra(
     3, points2D, points, locked, tris, triIdealShapes, tets, tetIdealShapes,
     lambda, iterMaxInner, iterMaxOuter, iterFailMax, timeMax, nullptr, nullptr);
 #else
-  Msg::Error(
-    "Winslow untangler requires modules Eigen, Alglib and QuadMeshingTools");
+  Msg::Error(_("Winslow untangler requires modules Eigen, Alglib and QuadMeshingTools"));
   return false;
 #endif
 }

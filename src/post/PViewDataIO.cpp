@@ -21,7 +21,7 @@ bool PViewData::writeSTL(const std::string &fileName)
   }
 
   if(!getNumTriangles() && !getNumQuadrangles()) {
-    Msg::Error("No surface elements to save");
+    Msg::Error(_("No surface elements to save"));
     fclose(fp);
     return false;
   }
@@ -107,19 +107,17 @@ bool PViewData::writePOS(const std::string &fileName, bool binary, bool parsed,
                          bool append)
 {
   if(_adaptive) {
-    Msg::Warning(
-      "Writing adapted dataset (will only export current time step)");
+    Msg::Warning(_("Writing adapted dataset (will only export current time step)"));
     return _adaptive->getData()->writePOS(fileName, binary, parsed, append);
   }
   if(hasMultipleMeshes()) {
-    Msg::Error("Cannot export multi-mesh datasets in .pos format");
+    Msg::Error(_("Cannot export multi-mesh datasets in .pos format"));
     return false;
   }
   if(haveInterpolationMatrices())
-    Msg::Warning(
-      "Discarding interpolation matrices when saving in .pos format");
+    Msg::Warning(_("Discarding interpolation matrices when saving in .pos format"));
   if(binary || !parsed)
-    Msg::Warning("Only parsed .pos files can be exported for this view type");
+    Msg::Warning(_("Only parsed .pos files can be exported for this view type"));
 
   FILE *fp = Fopen(fileName.c_str(), append ? "a" : "w");
   if(!fp) {
@@ -204,13 +202,13 @@ bool PViewData::writeMSH(const std::string &fileName, double version,
                          int partitionNum, bool saveInterpolationMatrices,
                          bool forceNodeData, bool forceElementData)
 {
-  Msg::Error("MSH export not implemented for this view type");
+  Msg::Error(_("MSH export not implemented for this view type"));
   return false;
 }
 
 bool PViewData::writeMED(const std::string &fileName)
 {
-  Msg::Error("MED export only available for mesh-based post-processing views");
+  Msg::Error(_("MED export only available for mesh-based post-processing views"));
   return false;
 }
 
@@ -238,7 +236,7 @@ bool PViewData::toVector(std::vector<std::vector<double> > &vec)
 bool PViewData::fromVector(const std::vector<std::vector<double> > &vec)
 {
   if(empty() || !getNumTimeSteps()) {
-    Msg::Warning("Cannot import vector in an empty view; skipping");
+    Msg::Warning(_("Cannot import vector in an empty view; skipping"));
     return false;
   }
 
@@ -276,12 +274,12 @@ bool PViewData::fromVector(const std::vector<std::vector<double> > &vec)
 
 void PViewData::importLists(int N[24], std::vector<double> *V[24])
 {
-  Msg::Error("importLists not available for this view data type");
+  Msg::Error(_("importLists not available for this view data type"));
 }
 
 void PViewData::getListPointers(int N[24], std::vector<double> *V[24])
 {
-  Msg::Error("getListPointers not available for this view data type");
+  Msg::Error(_("getListPointers not available for this view data type"));
 }
 
 void PViewData::sendToServer(const std::string &name)
@@ -291,15 +289,15 @@ void PViewData::sendToServer(const std::string &name)
   bool ok = toVector(vec);
 
   // Success ?
-  if(!ok) Msg::Error("sendToServer: cannot vectorize PView");
+  if(!ok) Msg::Error(_("sendToServer: cannot vectorize PView"));
 
   // Only one step ?
   if(vec.size() != 1)
-    Msg::Error("sendToServer: cannot send a PView with more than one step");
+    Msg::Error(_("sendToServer: cannot send a PView with more than one step"));
 
   // Only one data ?
   if(vec[0].size() != 1)
-    Msg::Error("sendToServer: cannot send a PView with more than one data");
+    Msg::Error(_("sendToServer: cannot send a PView with more than one data"));
 
   // Send data
   Msg::SetOnelabNumber(name, vec[0][0]);

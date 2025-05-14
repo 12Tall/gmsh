@@ -152,7 +152,7 @@ void polynomialBasis::f(const fullMatrix<double> &coord,
 void polynomialBasis::f(double u, double v, double w, int i, double *sf) const
 {
   if(i < 0 || i >= coefficients.size1()) {
-    Msg::Error("Node out of range for polynomial basis");
+    Msg::Error(_("Node out of range for polynomial basis"));
     return;
   }
 
@@ -241,7 +241,7 @@ void polynomialBasis::df(double u, double v, double w, int i,
                          double grad[3]) const
 {
   if(i < 0 || i >= coefficients.size1()) {
-    Msg::Error("Node out of range for polynomial basis gradient");
+    Msg::Error(_("Node out of range for polynomial basis gradient"));
     return;
   }
 

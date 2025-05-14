@@ -503,7 +503,7 @@ double GEdge::length(const double &u0, const double &u1, const int nbQuadPoints)
   double *t = nullptr, *w = nullptr;
   gmshGaussLegendre1D(nbQuadPoints, &t, &w);
   if(!t) {
-    Msg::Error("Gauss-Legendre integration returned no points");
+    Msg::Error(_("Gauss-Legendre integration returned no points"));
     return 0;
   }
   double L = 0.0;

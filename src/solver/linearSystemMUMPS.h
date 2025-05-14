@@ -20,7 +20,7 @@ template <class scalar> class linearSystemMUMPS : public linearSystem<scalar> {
 public:
   linearSystemMUMPS()
   {
-    Msg::Info("linearSystemMUMPS not implemented for this element type");
+    Msg::Info(_("linearSystemMUMPS not implemented for this element type"));
   }
 
   virtual bool isAllocated() const { return false; }

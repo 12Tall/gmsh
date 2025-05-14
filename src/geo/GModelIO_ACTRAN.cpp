@@ -44,7 +44,7 @@ int GModel::readACTRAN(const std::string &name)
   }
 
   if(strncmp(buffer, "BEGIN ACTRAN", 12)) {
-    Msg::Error("Did not find ACTRAN header");
+    Msg::Error(_("Did not find ACTRAN header"));
     fclose(fp);
     return 0;
   }

@@ -62,7 +62,7 @@ void backgroundMesh3D::computeSizeField()
   // fills dirichlet BC
   GRegion *region = dynamic_cast<GRegion *>(gf);
   if(!region) {
-    Msg::Error("Entity is not a region in background mesh");
+    Msg::Error(_("Entity is not a region in background mesh"));
     return;
   }
   std::vector<GFace *> faces = region->faces();
@@ -75,7 +75,7 @@ void backgroundMesh3D::computeSizeField()
     frameFieldBackgroundMesh2D *bgm2d =
       dynamic_cast<frameFieldBackgroundMesh2D *>(BGMManager::get(face));
     if(!bgm2d) {
-      Msg::Error("Background mesh is not a 2D frame field");
+      Msg::Error(_("Background mesh is not a 2D frame field"));
       return;
     }
     for(unsigned int i = 0; i < face->getNumMeshElements();
@@ -107,7 +107,7 @@ void backgroundMesh3D::propagateValues(DoubleStorageType &dirichlet,
   // same as Size_field::solve()
   GRegion *gr = dynamic_cast<GRegion *>(gf);
   if(!gr) {
-    Msg::Error("Entity is not a region in background mesh");
+    Msg::Error(_("Entity is not a region in background mesh"));
     return;
   }
 
@@ -218,10 +218,10 @@ MElementOctree *backgroundMesh3D::getOctree()
   if(!octree) {
     GRegion *gr = dynamic_cast<GRegion *>(gf);
     if(!gr) {
-      Msg::Error("Entity is not a region in background mesh");
+      Msg::Error(_("Entity is not a region in background mesh"));
       return 0;
     }
-    Msg::Debug("Rebuilding BackgroundMesh element octree");
+    Msg::Debug(_("Rebuilding BackgroundMesh element octree"));
     std::vector<MElement *> copy(gr->tetrahedra.begin(), gr->tetrahedra.end());
     octree = new MElementOctree(copy);
   }
@@ -626,7 +626,7 @@ void frameFieldBackgroundMesh3D::initiate_crossfield()
   // first, for boundaries :
   GRegion *gr = dynamic_cast<GRegion *>(gf);
   if(!gr) {
-    Msg::Error("Entity is not a region in background mesh");
+    Msg::Error(_("Entity is not a region in background mesh"));
     return;
   }
   std::vector<GFace *> faces = gr->faces();
@@ -638,7 +638,7 @@ void frameFieldBackgroundMesh3D::initiate_crossfield()
     frameFieldBackgroundMesh2D *bgm2d =
       dynamic_cast<frameFieldBackgroundMesh2D *>(BGMManager::get(face));
     if(!bgm2d) {
-      Msg::Error("Background mesh is not a 2D frame field");
+      Msg::Error(_("Background mesh is not a 2D frame field"));
       return;
     }
     // initializing the vertices on the faces
@@ -788,7 +788,7 @@ void frameFieldBackgroundMesh3D::build_vertex_to_element_table()
 {
   GRegion *gr = dynamic_cast<GRegion *>(gf);
   if(!gr) {
-    Msg::Error("Entity is not a region in background mesh");
+    Msg::Error(_("Entity is not a region in background mesh"));
     return;
   }
   MElement *e;
@@ -821,7 +821,7 @@ const MElement *backgroundMesh3D::getElement(unsigned int i) const
 {
   GRegion *gr = dynamic_cast<GRegion *>(gf);
   if(!gr) {
-    Msg::Error("Entity is not a region in background mesh");
+    Msg::Error(_("Entity is not a region in background mesh"));
     return 0;
   }
   return gr->getMeshElement(i);
@@ -831,7 +831,7 @@ unsigned int backgroundMesh3D::getNumMeshElements() const
 {
   GRegion *gr = dynamic_cast<GRegion *>(gf);
   if(!gr) {
-    Msg::Error("Entity is not a region in background mesh");
+    Msg::Error(_("Entity is not a region in background mesh"));
     return 0;
   }
   return gr->getNumMeshElements();

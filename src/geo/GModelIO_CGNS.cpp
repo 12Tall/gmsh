@@ -236,7 +236,7 @@ int GModel::writeCGNS(const std::string &name, bool saveAll,
   if(numPart > 0) {
     getPartitionInterfaceEntities(allEntities, saveAll, entitiesInterf);
     if(entitiesInterf.size() == 0) {
-      Msg::Warning("Partitioned entities not detected");
+      Msg::Warning(_("Partitioned entities not detected"));
     }
   }
 
@@ -307,14 +307,14 @@ int GModel::readCGNS(const std::string &name,
                      std::vector<std::vector<MVertex *> > &vertPerZone,
                      std::vector<std::vector<MElement *> > &eltPerZone)
 {
-  Msg::Error("This version of Gmsh was compiled without CGNS support");
+  Msg::Error(_("This version of Gmsh was compiled without CGNS support"));
   return 0;
 }
 
 int GModel::writeCGNS(const std::string &name, bool saveAll,
                       double scalingFactor, bool structured)
 {
-  Msg::Error("This version of Gmsh was compiled without CGNS support");
+  Msg::Error(_("This version of Gmsh was compiled without CGNS support"));
   return 0;
 }
 

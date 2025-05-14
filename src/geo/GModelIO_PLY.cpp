@@ -75,10 +75,10 @@ int GModel::readPLY(const std::string &name)
         sscanf(buffer, "%s %s %d", str, str2, &nbv);
       }
       if(!strcmp(str, "format") && strcmp(str2, "ascii")) {
-        Msg::Warning("Reading binary PLY files is experimental");
+        Msg::Warning(_("Reading binary PLY files is experimental"));
         binary = true;
         if(!strcmp(str2, "binary_big_endian")) {
-          Msg::Debug("Reading binary PLY file as big-endian");
+          Msg::Debug(_("Reading binary PLY file as big-endian"));
           swap = true;
         }
       }

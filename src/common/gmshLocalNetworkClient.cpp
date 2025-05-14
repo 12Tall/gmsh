@@ -231,19 +231,19 @@ bool gmshLocalNetworkClient::receiveMessage(gmshLocalNetworkClient *master)
   double timer = TimeOfDay();
 
   if(!getGmshServer()) {
-    Msg::Error("Abnormal server termination (no valid server)");
+    Msg::Error(_("Abnormal server termination (no valid server)"));
     return false;
   }
 
   int type, length, swap;
   if(!getGmshServer()->ReceiveHeader(&type, &length, &swap)) {
-    Msg::Error("Abnormal server termination (did not receive message header)");
+    Msg::Error(_("Abnormal server termination (did not receive message header)"));
     return false;
   }
 
   std::string message(length, ' '), blank = message;
   if(!getGmshServer()->ReceiveMessage(length, &message[0])) {
-    Msg::Error("Abnormal server termination (did not receive message body)");
+    Msg::Error(_("Abnormal server termination (did not receive message body)"));
     return false;
   }
 
@@ -251,8 +251,7 @@ bool gmshLocalNetworkClient::receiveMessage(gmshLocalNetworkClient *master)
      !(type == GmshSocket::GMSH_PROGRESS || type == GmshSocket::GMSH_INFO ||
        type == GmshSocket::GMSH_WARNING || type == GmshSocket::GMSH_ERROR)) {
     // we should still allow blank msg strings to be sent
-    Msg::Error(
-      "Abnormal server termination (blank message: client not stopped?)");
+    Msg::Error(_("Abnormal server termination (blank message: client not stopped?)"));
     return false;
   }
 
@@ -587,7 +586,7 @@ new_connection:
       }
       GmshServer *s = c->getGmshServer();
       if(!s) {
-        Msg::Error("Abnormal server termination (no valid server)");
+        Msg::Error(_("Abnormal server termination (no valid server)"));
         stop = true;
         break;
       }
@@ -650,7 +649,7 @@ new_connection:
   Msg::StatusBar(true, "Done running '%s'", _name.c_str());
 
   if(getExecutable().empty()) {
-    Msg::Info("Client disconnected: starting new connection");
+    Msg::Info(_("Client disconnected: starting new connection"));
     goto new_connection;
   }
 

@@ -57,7 +57,7 @@ PView *GMSH_MeshSizeFieldViewPlugin::execute(PView *view)
     Msg::Error("Unknown mesh size field %d", field);
   return v1;
 #else
-  Msg::Error("Plugin(MeshSizeFieldView) requires the mesh module");
+  Msg::Error(_("Plugin(MeshSizeFieldView) requires the mesh module"));
   return view;
 #endif
 }

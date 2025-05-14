@@ -74,7 +74,7 @@ public:
   }
   bool solve(int = 0, std::string = "", std::string = "", double = 0, int = 0)
   {
-    Msg::Error("Eigen solver requires SLEPc");
+    Msg::Error(_("Eigen solver requires SLEPc"));
     return false;
   }
   int getNumEigenValues() { return 0; }

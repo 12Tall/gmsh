@@ -38,7 +38,7 @@ int GModel::readGEOM(const std::string &name)
   }
 
   if(!numNodes || !numElements) {
-    Msg::Warning("No nodes or elements found");
+    Msg::Warning(_("No nodes or elements found"));
     fclose(fp);
     return 0;
   }
@@ -66,7 +66,7 @@ int GModel::readGEOM(const std::string &name)
       if(!getMeshVertices(3, n, vertexVector, vertices)) break;
       elements[0][1].push_back(new MTriangle(vertices));
     } break;
-    default: Msg::Error("Unknown element type in .geom reader"); break;
+    default: Msg::Error(_("Unknown element type in .geom reader")); break;
     }
   }
 

@@ -698,7 +698,7 @@ static void elementSplitMesh(
     elements[0][reg].push_back(copy);
     assignPhysicals(GM, gePhysicals, reg, 0, physicals, newPhysTags[0], lsTag);
   } break;
-  default: Msg::Error("This type of element cannot be split."); return;
+  default: Msg::Error(_("This type of element cannot be split.")); return;
   }
 
   // create level set interface (pt in 1D, line in 2D or face in 3D)
@@ -1694,7 +1694,7 @@ GModel *buildCutMesh(GModel *gm, gLevelset *ls,
 
   return cutGM;
 #else
-  Msg::Error("Gmsh need to be compiled with levelset support to cut mesh");
+  Msg::Error(_("Gmsh need to be compiled with levelset support to cut mesh"));
   return 0;
 #endif
 }

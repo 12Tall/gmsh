@@ -176,7 +176,7 @@ void onelab_cb(Fl_Widget *w, void *data)
   }
 
   if(FlGui::instance()->onelab->isBusy()) {
-    Msg::Info("I'm busy! Ask me that later...");
+    Msg::Info(_("I'm busy! Ask me that later..."));
     return;
   }
 
@@ -811,7 +811,7 @@ static bool serverActionList(const std::string &path, const std::string &action,
   std::vector<std::string> what = onelab::parameter::split(data, ',');
 
   if(action == "Set" && (what.size() < 2 || what.size() % 2)) {
-    Msg::Warning("Bad data for ServerActionSet");
+    Msg::Warning(_("Bad data for ServerActionSet"));
     return false;
   }
 
@@ -1724,12 +1724,12 @@ bool onelabGroup::isBusy()
 std::string onelabGroup::getPath(Fl_Tree_Item *item)
 {
   if(!item) {
-    Msg::Error("No item for path");
+    Msg::Error(_("No item for path"));
     return "";
   }
   char path[1024];
   if(_tree->item_pathname(path, sizeof(path), item)) {
-    Msg::Error("Could not get path for item");
+    Msg::Error(_("Could not get path for item"));
     return "";
   }
   return std::string(path);

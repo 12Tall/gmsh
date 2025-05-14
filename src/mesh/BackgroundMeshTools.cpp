@@ -125,7 +125,7 @@ SMetric3 LC_MVertex_CURV_ANISO(GEntity *ge, double U, double V)
   case 2:
     return metric_based_on_surface_curvature((const GFace *)ge, U, V, iso_surf);
   }
-  Msg::Error("Curvature control impossible to compute for a volume");
+  Msg::Error(_("Curvature control impossible to compute for a volume"));
   return SMetric3();
 }
 
@@ -255,7 +255,7 @@ double BGM_MeshSizeWithoutScaling(GEntity *ge, double U, double V, double X,
 double BGM_MeshSize(GEntity *ge, double U, double V, double X, double Y,
                     double Z)
 {
-  if(!ge) Msg::Warning("No entity in background mesh size evaluation");
+  if(!ge) Msg::Warning(_("No entity in background mesh size evaluation"));
 
   // default size to size of model
   double lc = CTX::instance()->lc;

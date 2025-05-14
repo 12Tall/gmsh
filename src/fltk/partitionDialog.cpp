@@ -452,7 +452,7 @@ void partition_dialog()
 
 void partition_dialog()
 {
-  Msg::Error("Gmsh must be compiled with METIS support to partition meshes");
+  Msg::Error(_("Gmsh must be compiled with METIS support to partition meshes"));
 }
 
 #endif

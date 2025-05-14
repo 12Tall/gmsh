@@ -470,7 +470,7 @@ namespace onelabUtils {
         exe = opt_solver_executable(num, GMSH_GET, "");
         host = opt_solver_remote_login(num, GMSH_GET, "");
         if(exe.empty()) {
-          Msg::Error("Solver executable name not provided");
+          Msg::Error(_("Solver executable name not provided"));
           return;
         }
       }
@@ -835,7 +835,7 @@ namespace onelabUtils {
 
   void resetDb(bool runGmshClient)
   {
-    Msg::Info("Resetting database");
+    Msg::Info(_("Resetting database"));
 
     // clear everything except persistent parameters
     std::vector<onelab::number> allNumbers, persistentNumbers;

@@ -406,7 +406,7 @@ static void Subdivide(GRegion *gr, bool splitIntoHexas,
   std::vector<MPyramid *> pyramids2;
   for(std::size_t i = 0; i < gr->pyramids.size(); i++) {
     if(splitIntoHexas) {
-      Msg::Error("Full hexahedron subdivision is not implemented for pyramids");
+      Msg::Error(_("Full hexahedron subdivision is not implemented for pyramids"));
       return;
     }
     MPyramid *p = gr->pyramids[i];

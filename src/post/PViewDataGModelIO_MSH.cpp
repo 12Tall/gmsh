@@ -100,16 +100,15 @@ bool PViewDataGModel::writeMSH(const std::string &fileName, double version,
   if(_steps.empty()) return true;
 
   if(hasMultipleMeshes()) {
-    Msg::Info("Exporting multi-mesh view in separate files");
+    Msg::Info(_("Exporting multi-mesh view in separate files"));
   }
 
   if(forceNodeData && _type != NodeData) {
-    Msg::Warning("Cannot force NodeData for this dataset: saving native data");
+    Msg::Warning(_("Cannot force NodeData for this dataset: saving native data"));
   }
 
   if(forceElementData && _type != ElementData) {
-    Msg::Warning(
-      "Cannot force ElementData for this dataset: saving native data");
+    Msg::Warning(_("Cannot force ElementData for this dataset: saving native data"));
   }
 
   FILE *fp = nullptr;

@@ -197,69 +197,56 @@ void mvfillRow(int row, char fillWith)
 
 void catchPause()
 {
-  Msg::Error(
-    "Gmsh should be configured with ncurses to use enhanced interface");
+  Msg::Error(_("Gmsh should be configured with ncurses to use enhanced interface"));
 }
 void mvinit()
 {
-  Msg::Error(
-    "Gmsh should be configured with ncurses to use enhanced interface");
+  Msg::Error(_("Gmsh should be configured with ncurses to use enhanced interface"));
 }
 void mvterminate()
 {
-  Msg::Error(
-    "Gmsh should be configured with ncurses to use enhanced interface");
+  Msg::Error(_("Gmsh should be configured with ncurses to use enhanced interface"));
 }
 void mvgetScreenSize(int &nbRow, int &nbCol)
 {
-  Msg::Error(
-    "Gmsh should be configured with ncurses to use enhanced interface");
+  Msg::Error(_("Gmsh should be configured with ncurses to use enhanced interface"));
 }
 void mvbold(bool on)
 {
-  Msg::Error(
-    "Gmsh should be configured with ncurses to use enhanced interface");
+  Msg::Error(_("Gmsh should be configured with ncurses to use enhanced interface"));
 }
 void mvcolor(int colorScheme, bool on)
 {
-  Msg::Error(
-    "Gmsh should be configured with ncurses to use enhanced interface");
+  Msg::Error(_("Gmsh should be configured with ncurses to use enhanced interface"));
 }
 void mvpause()
 {
-  Msg::Error(
-    "Gmsh should be configured with ncurses to use enhanced interface");
+  Msg::Error(_("Gmsh should be configured with ncurses to use enhanced interface"));
 }
 void mvprintCenter(int row, const char *fmt, ...)
 {
-  Msg::Error(
-    "Gmsh should be configured with ncurses to use enhanced interface");
+  Msg::Error(_("Gmsh should be configured with ncurses to use enhanced interface"));
 }
 void mvprintLeft(int row, const char *fmt, ...)
 {
-  Msg::Error(
-    "Gmsh should be configured with ncurses to use enhanced interface");
+  Msg::Error(_("Gmsh should be configured with ncurses to use enhanced interface"));
 }
 void mvprintRight(int row, const char *fmt, ...)
 {
-  Msg::Error(
-    "Gmsh should be configured with ncurses to use enhanced interface");
+  Msg::Error(_("Gmsh should be configured with ncurses to use enhanced interface"));
 }
 void mvprintXY(int row, int col, const char *fmt, ...)
 {
-  Msg::Error(
-    "Gmsh should be configured with ncurses to use enhanced interface");
+  Msg::Error(_("Gmsh should be configured with ncurses to use enhanced interface"));
 }
 void mvprintList(int row, int maxSize, std::list<char *> listStr,
                  int colorScheme)
 {
-  Msg::Error(
-    "Gmsh should be configured with ncurses to use enhanced interface");
+  Msg::Error(_("Gmsh should be configured with ncurses to use enhanced interface"));
 }
 void mvfillRow(int row, char fillWith)
 {
-  Msg::Error(
-    "Gmsh should be configured with ncurses to use enhanced interface");
+  Msg::Error(_("Gmsh should be configured with ncurses to use enhanced interface"));
 }
 
 #endif

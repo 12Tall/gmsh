@@ -64,7 +64,7 @@ PView *GMSH_ExtractEdgesPlugin::execute(PView *v)
                     (*it)->triangles.end());
 
   if(elements.empty()) {
-    Msg::Error("No triangles in mesh to extract edges from");
+    Msg::Error(_("No triangles in mesh to extract edges from"));
     return nullptr;
   }
 
@@ -99,7 +99,7 @@ PView *GMSH_ExtractEdgesPlugin::execute(PView *v)
 
 PView *GMSH_ExtractEdgesPlugin::execute(PView *v)
 {
-  Msg::Error("Plugin(ExtractEdges) requires the mesh module");
+  Msg::Error(_("Plugin(ExtractEdges) requires the mesh module"));
   return v;
 }
 

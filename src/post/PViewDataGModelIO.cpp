@@ -270,7 +270,7 @@ void PViewDataGModel::sendToServer(const std::string &name)
   if(_steps.empty()) return;
 
   if(_type != NodeData) {
-    Msg::Error("sendToServer currently only implemented for nodal datasets");
+    Msg::Error(_("sendToServer currently only implemented for nodal datasets"));
     return;
   }
 
@@ -286,7 +286,7 @@ void PViewDataGModel::sendToServer(const std::string &name)
     }
     else {
       if(ne != numEnt || nc != numComp) {
-        Msg::Error("Can not send heterogeneous view to server");
+        Msg::Error(_("Can not send heterogeneous view to server"));
         return;
       }
     }

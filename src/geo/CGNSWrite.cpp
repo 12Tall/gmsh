@@ -619,7 +619,7 @@ int writeHOPointInfo(const std::set<int> &eleMshTypes, int cgIndexFile,
 
   return 1;
 #else
-  Msg::Error("Gmsh is not compiled with CGNS CPEX0045 capability");
+  Msg::Error(_("Gmsh is not compiled with CGNS CPEX0045 capability"));
   return 0;
 #endif
 }

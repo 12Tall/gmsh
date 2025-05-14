@@ -21,12 +21,12 @@ int GModel::readOFF(const std::string &name)
 
   int numVertices, numFaces, numEdges;
   if(fscanf(fp, "OFF %d %d %d", &numVertices, &numFaces, &numEdges) != 3) {
-    Msg::Error("Invalid OFF header");
+    Msg::Error(_("Invalid OFF header"));
     return 0;
   }
 
   if(!numVertices || !numFaces) {
-    Msg::Info("Empty OFF mesh");
+    Msg::Info(_("Empty OFF mesh"));
     return 1;
   }
 
@@ -37,7 +37,7 @@ int GModel::readOFF(const std::string &name)
   for(int i = 0; i < numVertices; i++) {
     double x, y, z;
     if(fscanf(fp, "%lf %lf %lf", &x, &y, &z) != 3) {
-      Msg::Error("Could not read vertex");
+      Msg::Error(_("Could not read vertex"));
       return 0;
     }
     vertices[i] = new MVertex(x, y, z, gf);
@@ -46,12 +46,12 @@ int GModel::readOFF(const std::string &name)
   for(int i = 0; i < numFaces; i++) {
     int n;
     if(fscanf(fp, "%d", &n) != 1) {
-      Msg::Error("Could not read face");
+      Msg::Error(_("Could not read face"));
     }
     int v[4] = {-1, -1, -1, -1};
     if(n == 3) {
       if(fscanf(fp, "%d %d %d", &v[0], &v[1], &v[2]) != 3) {
-        Msg::Error("Could not read face");
+        Msg::Error(_("Could not read face"));
         return 0;
       }
       gf->triangles.push_back(new MTriangle(vertices[v[0]], vertices[v[1]],
@@ -59,7 +59,7 @@ int GModel::readOFF(const std::string &name)
     }
     else if(n == 4) {
       if(fscanf(fp, "%d %d %d %d", &v[0], &v[1], &v[2], &v[3]) != 4) {
-        Msg::Error("Could not read face");
+        Msg::Error(_("Could not read face"));
         return 0;
       }
       gf->quadrangles.push_back(new MQuadrangle(vertices[v[0]], vertices[v[1]],
@@ -68,7 +68,7 @@ int GModel::readOFF(const std::string &name)
     else{
       char buffer[4096];
       if(!fgets(buffer, sizeof(buffer), fp))
-        Msg::Error("Could not read line");
+        Msg::Error(_("Could not read line"));
       Msg::Warning("Ignoring %d-node face", n);
       continue;
     }

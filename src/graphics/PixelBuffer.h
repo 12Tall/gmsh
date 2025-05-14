@@ -46,7 +46,7 @@ public:
       _numComp = 4;
     }
     else {
-      Msg::Error("Unknown pixel format: assuming RGB");
+      Msg::Error(_("Unknown pixel format: assuming RGB"));
       _format = GL_RGB;
       _numComp = 3;
     }
@@ -58,7 +58,7 @@ public:
       _dataSize = sizeof(float);
     }
     else {
-      Msg::Error("Unknown pixel storage type: assuming unsigned byte");
+      Msg::Error(_("Unknown pixel storage type: assuming unsigned byte"));
       _type = GL_UNSIGNED_BYTE;
       _dataSize = sizeof(unsigned char);
     }
@@ -77,12 +77,12 @@ public:
   void copyPixels(int x, int y, PixelBuffer *buffer)
   {
     if(x + buffer->getWidth() > _width || y + buffer->getHeight() > _height) {
-      Msg::Error("Destination pixel buffer too small for holding copy");
+      Msg::Error(_("Destination pixel buffer too small for holding copy"));
       return;
     }
     if(buffer->getNumComp() != _numComp || buffer->getDataSize() != _dataSize ||
        buffer->getFormat() != _format || buffer->getType() != _type) {
-      Msg::Error("Pixel buffer type mismatch: impossible to copy");
+      Msg::Error(_("Pixel buffer type mismatch: impossible to copy"));
       return;
     }
     for(int i = 0; i < buffer->getWidth(); i++)
@@ -106,25 +106,23 @@ public:
     else {
 #if defined(HAVE_OSMESA)
       if(_format != GL_RGB && _type != GL_UNSIGNED_BYTE) {
-        Msg::Error(
-          "Offscreen rendering only implemented for GL_RGB/GL_UNSIGNED_BYTE");
+        Msg::Error(_("Offscreen rendering only implemented for GL_RGB/GL_UNSIGNED_BYTE"));
         return;
       }
       OSMesaContext ctx = OSMesaCreateContextExt(OSMESA_RGB, 16, 0, 0, nullptr);
       if(!ctx) {
-        Msg::Error("OSMesaCreateContext failed");
+        Msg::Error(_("OSMesaCreateContext failed"));
         return;
       }
       if(!OSMesaMakeCurrent(ctx, (void *)_pixels, GL_UNSIGNED_BYTE, _width,
                             _height)) {
-        Msg::Error("OSMesaMakeCurrent failed");
+        Msg::Error(_("OSMesaMakeCurrent failed"));
       }
       drawContext::global()->drawCurrentOpenglWindow(false);
       glFinish();
       OSMesaDestroyContext(ctx);
 #else
-      Msg::Warning(
-        "Gmsh must be compiled with OSMesa to support offscreen rendering");
+      Msg::Warning(_("Gmsh must be compiled with OSMesa to support offscreen rendering"));
 #endif
     }
   }

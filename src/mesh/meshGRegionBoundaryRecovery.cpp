@@ -226,7 +226,7 @@ namespace tetgenBR {
                      tets); // will add 8 MVertices at the end of _vertices
     if(Msg::GetErrorCount()) return 0;
 
-    Msg::Debug("Points have been tetrahedralized");
+    Msg::Debug(_("Points have been tetrahedralized"));
 
     {
       point pointloop;
@@ -261,7 +261,7 @@ namespace tetgenBR {
       z = zmax - zmin;
       longest = sqrt(x * x + y * y + z * z);
       if(longest == 0.0) {
-        Msg::Warning("The point set is trivial");
+        Msg::Warning(_("The point set is trivial"));
         return 1;
       }
 
@@ -292,7 +292,7 @@ namespace tetgenBR {
       int t1ver;
       int idx, k;
 
-      Msg::Info("Reconstructing mesh...");
+      Msg::Info(_("Reconstructing mesh..."));
 
       // Allocate an array that maps each vertex to its adjacent tets.
       ver2tetarray = new tetrahedron[_vertices.size() + in->firstnumber];
@@ -494,7 +494,7 @@ namespace tetgenBR {
       std::vector<GEdge *> const &e_list = _gr->embeddedEdges();
 
       {
-        Msg::Info(" - Creating surface mesh");
+        Msg::Info(_(" - Creating surface mesh"));
         face newsh;
         face newseg;
         point p[4];
@@ -552,7 +552,7 @@ namespace tetgenBR {
         // Connecting triangles, removing redundant segments.
         unifysegments();
 
-        Msg::Info(" - Identifying boundary edges");
+        Msg::Info(_(" - Identifying boundary edges"));
 
         face *shperverlist;
         int *idx2shlist;
@@ -655,7 +655,7 @@ namespace tetgenBR {
       // Boundary recovery.
 
       clock_t t;
-      Msg::Info(" - Recovering boundary");
+      Msg::Info(_(" - Recovering boundary"));
       recoverboundary(t);
 
       carveholes();
@@ -675,7 +675,7 @@ namespace tetgenBR {
 
       long tetnumber, facenumber;
 
-      Msg::Debug("Statistics:\n");
+      Msg::Debug(_("Statistics:\n"));
       Msg::Debug("  Input points: %ld", _vertices.size());
       if(b->plc) {
         Msg::Debug("  Input facets: %ld", f_list.size());
@@ -732,7 +732,7 @@ namespace tetgenBR {
       {
         // Write mesh into to GRegion.
 
-        Msg::Debug("Writing to GRegion...");
+        Msg::Debug(_("Writing to GRegion..."));
 
         point p[4];
 
@@ -939,7 +939,7 @@ namespace tetgenBR {
               gf->deleteVertexArrays();
 
               if(gf->quadrangles.size()) {
-                Msg::Warning("Steiner points not handled for quad surface mesh");
+                Msg::Warning(_("Steiner points not handled for quad surface mesh"));
               }
 
               // Create the new triangles.
@@ -1229,7 +1229,7 @@ namespace tetgenBR {
       delete m;
     } catch(int err) {
       if(err == 1) {
-        Msg::Error("Out of memory in boundary mesh recovery");
+        Msg::Error(_("Out of memory in boundary mesh recovery"));
         ret = false;
       }
       else if(err == 3) {

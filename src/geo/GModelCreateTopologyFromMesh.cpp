@@ -663,14 +663,14 @@ void createTopologyFromMesh3D(GModel *gm, int &num)
 void GModel::createTopologyFromMesh()
 {
   if(topoExists(this)) {
-    Msg::Info("Topology exists: no need to create one from mesh");
+    Msg::Info(_("Topology exists: no need to create one from mesh"));
     return;
   }
 
   const int dim = getDim();
   double t1 = Cpu(), w1 = TimeOfDay();
 
-  Msg::Info("Creating topology from mesh...");
+  Msg::Info(_("Creating topology from mesh..."));
   int numF = 0, numE = 0, numV = 0;
   if(dim >= 3)
     createTopologyFromMesh3D(this, numF);

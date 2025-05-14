@@ -319,7 +319,7 @@ void PluginManager::registerDefaultPlugins()
 void PluginManager::addPlugin(const std::string &fileName)
 {
 #if !defined(HAVE_DLOPEN) || !defined(HAVE_FLTK)
-  Msg::Warning("No dynamic plugin loading on this platform");
+  Msg::Warning(_("No dynamic plugin loading on this platform"));
 #else
   Msg::Info("Opening Plugin '%s'", fileName.c_str());
   void *hlib = dlopen(fileName.c_str(), RTLD_NOW);

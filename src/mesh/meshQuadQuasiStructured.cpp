@@ -100,9 +100,9 @@ int buildBackgroundField(
   const std::vector<std::array<double, 5> > &global_singularity_list,
   const std::string &viewName = "guiding_field")
 {
-  Msg::Info("Build background field (view 'guiding_field') ...");
+  Msg::Info(_("Build background field (view 'guiding_field') ..."));
   if(global_triangles.size() != global_triangle_directions.size()) {
-    Msg::Error("build background field: incoherent sizes in input");
+    Msg::Error(_("build background field: incoherent sizes in input"));
     return -1;
   }
 
@@ -190,7 +190,7 @@ int buildBackgroundField(
 
   return 0;
 #else
-  Msg::Error("Post-processing module required to create background field view");
+  Msg::Error(_("Post-processing module required to create background field view"));
   return -1;
 #endif
 }
@@ -326,7 +326,7 @@ int fillSizemapFromScalarBackgroundField(
     if(field && field->numComponents() != 1) { field = nullptr; }
   }
   if(field == nullptr) {
-    Msg::Error("Scalar background field not found");
+    Msg::Error(_("Scalar background field not found"));
     return -1;
   }
   for(MTriangle *t : triangles)
@@ -364,7 +364,7 @@ std::string nameOfSizeMapMethod(int method)
 bool generateMeshWithSpecialParameters(GModel *gm,
                                        double scalingOnTriangulation)
 {
-  Msg::Debug("build background triangulation ...");
+  Msg::Debug(_("build background triangulation ..."));
 
   /* Unlock if called from GenerateMesh() */
   bool shouldLock = false;
@@ -468,7 +468,7 @@ int BuildBackgroundMeshAndGuidingField(GModel *gm, bool overwriteGModelMesh,
 
   const int qqsSizemapMethod = CTX::instance()->mesh.quadqsSizemapMethod;
   if(qqsSizemapMethod == 5) {
-    Msg::Warning("Quadqs method: no background mesh");
+    Msg::Warning(_("Quadqs method: no background mesh"));
     return 0;
   }
 
@@ -481,7 +481,7 @@ int BuildBackgroundMeshAndGuidingField(GModel *gm, bool overwriteGModelMesh,
 
   const bool SHOW_INTERMEDIATE_VIEWS = (Msg::GetVerbosity() >= 99);
 
-  Msg::Info("Build background mesh and guiding field ...");
+  Msg::Info(_("Build background mesh and guiding field ..."));
   bool externalSizemap = false;
   {
     FieldManager *fields = gm->getFields();
@@ -489,19 +489,17 @@ int BuildBackgroundMeshAndGuidingField(GModel *gm, bool overwriteGModelMesh,
       Field *field = fields->get(fields->getBackgroundField());
       if(field && field->numComponents() == 3) {
         if(!overwriteField) {
-          Msg::Info(
-            "vector background field exists, using it as a guiding field");
+          Msg::Info(_("vector background field exists, using it as a guiding field"));
           return 0;
         }
         else {
-          Msg::Info(
-            "disabled current vector background field, building a new one");
+          Msg::Info(_("disabled current vector background field, building a new one"));
           fields->setBackgroundFieldId(0);
         }
       }
       else if(field && field->numComponents() == 1) {
         if(qqsSizemapMethod == SizeMapDefault) {
-          Msg::Info("scalar background field exists, using it as size map");
+          Msg::Info(_("scalar background field exists, using it as size map"));
           externalSizemap = true;
         }
         else {
@@ -514,7 +512,7 @@ int BuildBackgroundMeshAndGuidingField(GModel *gm, bool overwriteGModelMesh,
   }
 
   if(overwriteGModelMesh) {
-    Msg::Debug("delete current GModel mesh");
+    Msg::Debug(_("delete current GModel mesh"));
     gm->deleteMesh();
   }
 
@@ -540,12 +538,12 @@ int BuildBackgroundMeshAndGuidingField(GModel *gm, bool overwriteGModelMesh,
   bool overwrite = true;
   int status = bmesh.importGModelMeshes(gm, overwrite);
   if(status != 0) {
-    Msg::Error("failed to import model mesh in background mesh");
+    Msg::Error(_("failed to import model mesh in background mesh"));
     return -1;
   }
 
   if(deleteGModelMeshAfter) {
-    Msg::Debug("delete GModel mesh");
+    Msg::Debug(_("delete GModel mesh"));
     gm->deleteMesh();
   }
 
@@ -790,7 +788,7 @@ int BuildBackgroundMeshAndGuidingField(GModel *gm, bool overwriteGModelMesh,
       int scad = computeMinimalSizeOnCurves(bmesh, clampMinWithTriEdges,
                                             cadMinimalSizeOnCurves);
       if(scad != 0) {
-        Msg::Warning("failed to compute minimal size on CAD curves");
+        Msg::Warning(_("failed to compute minimal size on CAD curves"));
       }
     }
   }
@@ -816,7 +814,7 @@ int BuildBackgroundMeshAndGuidingField(GModel *gm, bool overwriteGModelMesh,
     Msg::Info("Sizemap smoothing (progression ratio: %.2f)", gradientMax);
     int sop = sizeMapOneWaySmoothing(global_triangles, sizeMap, gradientMax);
     if(sop != 0) {
-      Msg::Warning("failed to compute one-way size map smoothing");
+      Msg::Warning(_("failed to compute one-way size map smoothing"));
     }
   }
 
@@ -864,7 +862,7 @@ int BuildBackgroundMeshAndGuidingField(GModel *gm, bool overwriteGModelMesh,
     buildBackgroundField(gm, global_triangles, global_triangle_directions,
                          sizeMap, global_singularity_list, "guiding_field");
   if(sbf != 0) {
-    Msg::Warning("failed to build background guiding field");
+    Msg::Warning(_("failed to build background guiding field"));
     return -1;
   }
 
@@ -913,7 +911,7 @@ bool getSingularitiesFromBackgroundField(
   }
   PViewDataList *d = dynamic_cast<PViewDataList *>(view->getData());
   if(d == nullptr) {
-    Msg::Error("view type is wrong");
+    Msg::Error(_("view type is wrong"));
     return false;
   }
 
@@ -1050,8 +1048,7 @@ bool getBoundaryIdealAndAllowedValences(
     }
     auto it = adj.find(bv);
     if(it == adj.end()) {
-      Msg::Error(
-        "getBoundaryIdealAndAllowedValences: bdr vertex not found in adj");
+      Msg::Error(_("getBoundaryIdealAndAllowedValences: bdr vertex not found in adj"));
       return false;
     }
     std::vector<MElement *> exterior = difference(it->second, patch.elements);
@@ -1061,8 +1058,8 @@ bool getBoundaryIdealAndAllowedValences(
     if(idealIn <= 0) {
       idealIn = 1;
       // DBG(bv->getNum(), idealIn, idealTot, valExterior);
-      // Msg::Error("getBoundaryIdealAndAllowedValences: ideal valence inside is
-      // <= 0, weird"); return false;
+      // Msg::Error(_("getBoundaryIdealAndAllowedValences: ideal valence inside is
+      // <= 0, weird")); return false;
     }
     bndIdealValence[i] = idealIn;
     if(exterior.size() == 0) { /* boundary vertex "inside" the cavity, probably
@@ -1456,7 +1453,7 @@ int improveCornerValences(
           stats.nCornerValFixed += 1;
         }
         else {
-          Msg::Error("failed to apply diff, abort");
+          Msg::Error(_("failed to apply diff, abort"));
           abort();
         }
         Msg::Debug("-- corner %li fixed", num);
@@ -1599,7 +1596,7 @@ int improveCurveValences(
         }
       }
       else {
-        Msg::Error("failed to apply diff, abort");
+        Msg::Error(_("failed to apply diff, abort"));
         abort();
       }
       Msg::Debug("-- curve vertex %li fixed", num);
@@ -1803,7 +1800,7 @@ int improveInteriorValences(
         }
       }
       else {
-        Msg::Error("failed to apply diff, abort");
+        Msg::Error(_("failed to apply diff, abort"));
         abort();
       }
       Msg::Debug("-- interior vertex %li fixed", num);
@@ -2032,13 +2029,13 @@ int improveInteriorValencesV2(
         for(size_t k = 0; k < patches.size(); ++k) { Q.push(patches[k]); }
       }
       else {
-        Msg::Error("failed to apply diff, abort");
+        Msg::Error(_("failed to apply diff, abort"));
         abort();
       }
-      Msg::Debug("-- interior patch fixed");
+      Msg::Debug(_("-- interior patch fixed"));
     }
     else {
-      Msg::Debug("-- failed to fix interior patch");
+      Msg::Debug(_("-- failed to fix interior patch"));
       // GeoLog::add(quads, "!I_v"+std::to_string(v->getNum()));
     }
   }
@@ -2065,8 +2062,7 @@ int improveInteriorValencesV2(
 
 int RefineMeshWithBackgroundMeshProjectionSimple(GModel *gm)
 {
-  Msg::Info(
-    "Refine mesh (midpoint subdivision, with background projection) ...");
+  Msg::Info(_("Refine mesh (midpoint subdivision, with background projection) ..."));
 
   bool linear = true;
   RefineMesh(gm, linear, true, false);
@@ -2186,7 +2182,7 @@ int RefineMeshWithBackgroundMeshProjectionSimple(GModel *gm)
         }
         oki = sp->initialize(gf, triangles);
         if(!oki) {
-          Msg::Warning("failed to initialize surface projector");
+          Msg::Warning(_("failed to initialize surface projector"));
           delete sp;
           sp = nullptr;
         }
@@ -2282,7 +2278,7 @@ int RefineMeshWithBackgroundMeshProjection(GModel *gm)
   const bool USE_CAD_PROJECTION = false;
   if(USE_CAD_PROJECTION) {
     // Problem: it is slow and buggy on periodic CAD
-    Msg::Info("Refine mesh (midpoint subdivision, with CAD projection) ...");
+    Msg::Info(_("Refine mesh (midpoint subdivision, with CAD projection) ..."));
     bool linear = false;
     RefineMesh(gm, linear, true, false);
 
@@ -2307,8 +2303,7 @@ int RefineMeshWithBackgroundMeshProjection(GModel *gm)
   }
   if(DBG_EXPORT) { gm->writeMSH("qqs_init.msh", 4.1); }
 
-  Msg::Info(
-    "Refine mesh (midpoint subdivision, with background projection) ...");
+  Msg::Info(_("Refine mesh (midpoint subdivision, with background projection) ..."));
 
   bool linear = true;
   RefineMesh(gm, linear, true, false);
@@ -2481,7 +2476,7 @@ int RefineMeshWithBackgroundMeshProjection(GModel *gm)
         sp = new SurfaceProjector();
         bool oki = sp->initialize(gf, triangles);
         if(!oki) {
-          Msg::Warning("failed to initialize surface projector");
+          Msg::Warning(_("failed to initialize surface projector"));
           delete sp;
           sp = nullptr;
         }
@@ -2672,7 +2667,7 @@ int optimizeQuadMeshWithDiskQuadrangulationRemeshing(GFace *gf)
   if(ENABLE_CORNER) {
     int sc = improveCornerValences(gf, qValIdeal, adj, opt, stats);
     if(sc != 0) {
-      Msg::Warning("optimize quad topology: failed to improve corner valences");
+      Msg::Warning(_("optimize quad topology: failed to improve corner valences"));
     }
     if(PARANO_QUALITY) {
       errorAndAbortIfNegativeElement(
@@ -2684,7 +2679,7 @@ int optimizeQuadMeshWithDiskQuadrangulationRemeshing(GFace *gf)
   if(ENABLE_CURVE) {
     int scu = improveCurveValences(gf, qValIdeal, adj, opt, stats);
     if(scu != 0) {
-      Msg::Warning("optimize quad topology: failed to improve curve valences");
+      Msg::Warning(_("optimize quad topology: failed to improve curve valences"));
     }
     if(PARANO_QUALITY) {
       errorAndAbortIfNegativeElement(
@@ -2695,7 +2690,7 @@ int optimizeQuadMeshWithDiskQuadrangulationRemeshing(GFace *gf)
 
   int sci = improveInteriorValencesV2(gf, qValIdeal, adj, opt, stats);
   if(sci != 0) {
-    Msg::Warning("optimize quad topology: failed to improve interior valences");
+    Msg::Warning(_("optimize quad topology: failed to improve interior valences"));
   }
   if(PARANO_QUALITY) {
     errorAndAbortIfNegativeElement(
@@ -2741,7 +2736,7 @@ int insertExtrudedBoundaryLayer(
     MVertex *v = loop[i];
     auto it = adj.find(v);
     if(it == adj.end()) {
-      Msg::Error("insert extruded layer: vertex not found in adj");
+      Msg::Error(_("insert extruded layer: vertex not found in adj"));
       return -1;
     }
 
@@ -2913,7 +2908,7 @@ int optimizeFaceQuadMeshBoundaries(GFace *gf, bool ignoreAcuteCorners = false)
 
 int ensureEvenNumberOfEdgesOnCurvesAfterInitialSurfaceMesh(GModel *gm)
 {
-  Msg::Info("Generating empty surface meshes ...");
+  Msg::Info(_("Generating empty surface meshes ..."));
 
   int algo2d = CTX::instance()->mesh.algo2d;
   CTX::instance()->mesh.algo2d = ALGO_2D_INITIAL_ONLY;
@@ -2952,7 +2947,7 @@ int ensureEvenNumberOfEdgesOnCurvesAfterInitialSurfaceMesh(GModel *gm)
   /* Remove the meshes */
   std::vector<GEdge *> edges;
 
-  Msg::Info("Deleting empty surface meshes ...");
+  Msg::Info(_("Deleting empty surface meshes ..."));
   for(size_t f = 0; f < faces.size(); ++f) {
     GFace *gf = faces[f];
     if(CTX::instance()->mesh.meshOnlyVisible && !gf->getVisibility()) continue;
@@ -2967,7 +2962,7 @@ int ensureEvenNumberOfEdgesOnCurvesAfterInitialSurfaceMesh(GModel *gm)
 
     append(edges, gf->edges()); /* face edges saved to verify nb of edges */
   }
-  Msg::Info("done.");
+  Msg::Info(_("done."));
 
   /* Verify the curves */
   sort_unique(edges);
@@ -3104,8 +3099,7 @@ int optimizeTopologyWithDiskQuadrangulationRemeshing(GModel *gm)
     return 0;
   }
 
-  Msg::Info(
-    "Optimize topology of quad meshes with disk quadrangulation remeshing ...");
+  Msg::Info(_("Optimize topology of quad meshes with disk quadrangulation remeshing ..."));
 
   initDiskQuadrangulations();
 
@@ -3135,7 +3129,7 @@ int optimizeTopologyWithDiskQuadrangulationRemeshing(GModel *gm)
   printStatistics(stats, "Quad mesh after disk quadrangulation remeshing:");
 
   if(stats["Mesh_SICN_min"] < 0.) {
-    Msg::Warning("negative quality on some quads");
+    Msg::Warning(_("negative quality on some quads"));
   }
 
   if(PARANO_VALIDITY) {
@@ -3169,11 +3163,11 @@ int optimizeTopologyWithCavityRemeshing(GModel *gm)
   initQuadPatterns();
 
   if(!backgroudMeshExists(BMESH_NAME)) {
-    Msg::Info("no background mesh, creating one with the current quad mesh");
+    Msg::Info(_("no background mesh, creating one with the current quad mesh"));
     GlobalBackgroundMesh &bmesh = getBackgroundMesh(BMESH_NAME);
     int status = bmesh.importGModelMeshes(gm, true);
     if(status != 0) {
-      Msg::Error("failed to import model mesh in background mesh");
+      Msg::Error(_("failed to import model mesh in background mesh"));
       return -1;
     }
   }
@@ -3471,7 +3465,7 @@ QuadqsContextUpdater::QuadqsContextUpdater()
       &gf->meshAttributes.meshSizeFromBoundary));
   }
 #else
-  Msg::Error("Module QUADMESHINGTOOLS required to use QuadqsContextUpdater");
+  Msg::Error(_("Module QUADMESHINGTOOLS required to use QuadqsContextUpdater"));
 #endif
 
   setQuadqsOptions();
@@ -3481,7 +3475,7 @@ QuadqsContextUpdater::~QuadqsContextUpdater() { restoreInitialOption(); }
 
 void QuadqsContextUpdater::setQuadqsOptions()
 {
-  Msg::Debug("set special quadqs options in the global context");
+  Msg::Debug(_("set special quadqs options in the global context"));
 
   // CTX::instance()->mesh.algo2d = ALGO_2D_QUAD_QUASI_STRUCT;
   CTX::instance()->mesh.recombineAll = 1;
@@ -3502,7 +3496,7 @@ void QuadqsContextUpdater::setQuadqsOptions()
 void QuadqsContextUpdater::restoreInitialOption()
 {
 #if defined(HAVE_QUADMESHINGTOOLS)
-  Msg::Debug("restore options in the global context");
+  Msg::Debug(_("restore options in the global context"));
   for(size_t i = 0; i < backups_char.size(); ++i) { delete backups_char[i]; }
   for(size_t i = 0; i < backups_bool.size(); ++i) { delete backups_bool[i]; }
   for(size_t i = 0; i < backups_int.size(); ++i) { delete backups_int[i]; }
@@ -3510,13 +3504,13 @@ void QuadqsContextUpdater::restoreInitialOption()
     delete backups_double[i];
   }
 #else
-  Msg::Error("Module QUADMESHINGTOOLS required to use QuadqsContextUpdater");
+  Msg::Error(_("Module QUADMESHINGTOOLS required to use QuadqsContextUpdater"));
 #endif
 }
 
 int quadqsCleanup(GModel *gm)
 {
-  Msg::Info("Cleaning quadqs background mesh and field");
+  Msg::Info(_("Cleaning quadqs background mesh and field"));
   global_bmeshes.clear(); /* background meshes used in quadqs */
   if(gm->getFields()->getBackgroundField() > 0) { /* background field */
     gm->getFields()->reset();

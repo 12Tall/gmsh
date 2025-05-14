@@ -61,7 +61,7 @@ std::vector<std::string> medGetFieldNames(const std::string &fileName)
   for(int index = 0; index < numFields; index++) {
     med_int numComp = MEDnChamp(fid, index + 1);
     if(numComp <= 0) {
-      Msg::Error("Could not get number of components for MED field");
+      Msg::Error(_("Could not get number of components for MED field"));
       return fieldNames;
     }
 
@@ -79,7 +79,7 @@ std::vector<std::string> medGetFieldNames(const std::string &fileName)
     if(MEDchampInfo(fid, index + 1, name, &type, &compName[0], &compUnit[0],
                     numComp) < 0) {
 #endif
-      Msg::Error("Could not get MED field info");
+      Msg::Error(_("Could not get MED field info"));
       return fieldNames;
     }
     fieldNames.push_back(name);
@@ -105,7 +105,7 @@ bool PViewDataGModel::readMED(const std::string &fileName, int fileIndex)
 
   med_int numComp = MEDnChamp(fid, fileIndex + 1);
   if(numComp <= 0) {
-    Msg::Error("Could not get number of components for MED field");
+    Msg::Error(_("Could not get number of components for MED field"));
     return false;
   }
 
@@ -123,7 +123,7 @@ bool PViewDataGModel::readMED(const std::string &fileName, int fileIndex)
   if(MEDchampInfo(fid, fileIndex + 1, name, &type, &compName[0], &compUnit[0],
                   numComp) < 0) {
 #endif
-    Msg::Error("Could not get MED field info");
+    Msg::Error(_("Could not get MED field info"));
     return false;
   }
 
@@ -183,7 +183,7 @@ bool PViewDataGModel::readMED(const std::string &fileName, int fileIndex)
   }
 
   if(numSteps < 1 || pairs.empty()) {
-    Msg::Error("Nothing to import from MED file");
+    Msg::Error(_("Nothing to import from MED file"));
     return false;
   }
 
@@ -211,7 +211,7 @@ bool PViewDataGModel::readMED(const std::string &fileName, int fileIndex)
                            &numit, dtunit, &dt, meshName, &local,
                            &numMeshes) < 0) {
 #endif
-        Msg::Error("Could not read step info");
+        Msg::Error(_("Could not read step info"));
         return false;
       }
       // create step data
@@ -270,7 +270,7 @@ bool PViewDataGModel::readMED(const std::string &fileName, int fileIndex)
                       MED_FULL_INTERLACE, MED_ALL, locName, profileName,
                       MED_COMPACT, ent, ele, numdt, numit) < 0) {
 #endif
-        Msg::Error("Could not read field values");
+        Msg::Error(_("Could not read field values"));
         return false;
       }
 
@@ -301,7 +301,7 @@ bool PViewDataGModel::readMED(const std::string &fileName, int fileIndex)
           if(MEDgaussLire(fid, &refcoo[0], &gscoo[0], &wg[0],
                           MED_FULL_INTERLACE, locName) < 0) {
 #endif
-            Msg::Error("Could not read Gauss points");
+            Msg::Error(_("Could not read Gauss points"));
             return false;
           }
           // FIXME: we should check that refcoo corresponds to our
@@ -319,20 +319,20 @@ bool PViewDataGModel::readMED(const std::string &fileName, int fileIndex)
       if(std::string(profileName) != MED_NOPFL) {
         med_int n = MEDnValProfil(fid, profileName);
         if(n > 0) {
-          Msg::Debug("MED has full profile");
+          Msg::Debug(_("MED has full profile"));
           profile.resize(n);
 #if(MED_MAJOR_NUM >= 3)
           if(MEDprofileRd(fid, profileName, &profile[0]) < 0) {
 #else
           if(MEDprofilLire(fid, &profile[0], profileName) < 0) {
 #endif
-            Msg::Error("Could not read profile");
+            Msg::Error(_("Could not read profile"));
             return false;
           }
         }
       }
       if(profile.empty()) {
-        Msg::Debug("MED profile is empty -- using continuous sequence");
+        Msg::Debug(_("MED profile is empty -- using continuous sequence"));
         profile.resize(numVal / mult);
         for(std::size_t i = 0; i < profile.size(); i++) profile[i] = i + 1;
       }
@@ -394,7 +394,7 @@ bool PViewDataGModel::readMED(const std::string &fileName, int fileIndex)
         if(tags.empty()) { num = startIndex + profile[i]; }
         else {
           if(profile[i] == 0 || profile[i] > (int)tags.size()) {
-            Msg::Error("Wrong index in profile");
+            Msg::Error(_("Wrong index in profile"));
             return false;
           }
           num = tags[profile[i] - 1];
@@ -425,12 +425,12 @@ bool PViewDataGModel::writeMED(const std::string &fileName)
   if(_steps.empty()) return true;
 
   if(hasMultipleMeshes()) {
-    Msg::Error("Export not done for multi-mesh views");
+    Msg::Error(_("Export not done for multi-mesh views"));
     return false;
   }
 
   if(_type != NodeData) {
-    Msg::Error("Can only export node-based datasets for now");
+    Msg::Error(_("Can only export node-based datasets for now"));
     return false;
   }
 
@@ -477,7 +477,7 @@ bool PViewDataGModel::writeMED(const std::string &fileName)
   }
 
   if(profile.empty()) {
-    Msg::Error("Nothing to save");
+    Msg::Error(_("Nothing to save"));
     return false;
   }
 
@@ -486,7 +486,7 @@ bool PViewDataGModel::writeMED(const std::string &fileName)
 #else
   if(MEDprofilEcr(fid, &profile[0], (med_int)profile.size(), profileName) < 0) {
 #endif
-    Msg::Error("Could not create MED profile");
+    Msg::Error(_("Could not create MED profile"));
     return false;
   }
 
@@ -499,7 +499,7 @@ bool PViewDataGModel::writeMED(const std::string &fileName)
   if(MEDchampCr(fid, (char *)fieldName.c_str(), MED_FLOAT64, (char *)"unknown",
                 (char *)"unknown", (med_int)numComp) < 0) {
 #endif
-    Msg::Error("Could not create MED field");
+    Msg::Error(_("Could not create MED field"));
     return false;
   }
 
@@ -514,7 +514,7 @@ bool PViewDataGModel::writeMED(const std::string &fileName)
                                 MED_NOEUD, MED_NONE, (med_connectivite)0);
 #endif
   if(numNodes <= 0) {
-    Msg::Error("Could not get valid number of nodes in mesh");
+    Msg::Error(_("Could not get valid number of nodes in mesh"));
     return false;
   }
   for(std::size_t step = 0; step < _steps.size(); step++) {
@@ -522,7 +522,7 @@ bool PViewDataGModel::writeMED(const std::string &fileName)
     for(std::size_t i = 0; i < _steps[step]->getNumData(); i++)
       if(_steps[step]->getData(i)) n++;
     if(n != profile.size() || numComp != _steps[step]->getNumComponents()) {
-      Msg::Error("Skipping incompatible step");
+      Msg::Error(_("Skipping incompatible step"));
       continue;
     }
     double time = _steps[step]->getTime();
@@ -543,7 +543,7 @@ bool PViewDataGModel::writeMED(const std::string &fileName)
                    MED_NOEUD, MED_NONE, (med_int)step, (char *)"unknown", time,
                    MED_NONOR) < 0) {
 #endif
-      Msg::Error("Could not write MED field");
+      Msg::Error(_("Could not write MED field"));
       return false;
     }
   }

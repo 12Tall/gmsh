@@ -106,7 +106,7 @@ static int readElementsVRML(FILE *fp, std::vector<MVertex *> &vertexVector,
     }
   }
   if(idx.size()) {
-    Msg::Error("Prematured end of VRML file");
+    Msg::Error(_("Prematured end of VRML file"));
     return 0;
   }
   Msg::Info("%d elements", elements[0][region].size() +

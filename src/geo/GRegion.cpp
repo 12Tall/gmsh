@@ -855,7 +855,7 @@ bool GRegion::setOutwardOrientationMeshConstraint()
   SBoundingBox3d bbox = bounds();
   double scaling = norm(SVector3(bbox.max(), bbox.min()));
   if(!scaling) {
-    Msg::Warning("Bad scaling in GRegion::setOutwardOrientationMeshConstraint");
+    Msg::Warning(_("Bad scaling in GRegion::setOutwardOrientationMeshConstraint"));
     scaling = 1.;
   }
   double rrr[6];

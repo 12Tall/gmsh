@@ -182,7 +182,7 @@ void computeLevelset(GModel *gm, cartesianBox<double> &box)
     }
     else {
       // we should use the STL here
-      Msg::Info("Levelset computation on CAD surface not implemented");
+      Msg::Info(_("Levelset computation on CAD surface not implemented"));
     }
   }
 
@@ -566,7 +566,7 @@ gLevelsetPoints::gLevelsetPoints(const gLevelsetPoints &lv)
 double gLevelsetPoints::operator()(double x, double y, double z) const
 {
   if(mapP.empty())
-    Msg::Info("Levelset Points : call computeLS() before calling operator()\n");
+    Msg::Info(_("Levelset Points : call computeLS() before calling operator()\n"));
 
   SPoint3 sp(x, y, z);
   auto it = mapP.find(sp);

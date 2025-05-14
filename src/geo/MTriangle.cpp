@@ -181,7 +181,7 @@ double MTriangle::getAngleAtVertex(MVertex *v)
     return angle3Vertices(_v[0], _v[1], _v[2]);
   else if(v == _v[2])
     return angle3Vertices(_v[1], _v[2], _v[0]);
-  Msg::Warning("Unknown node in triangle for angle computation");
+  Msg::Warning(_("Unknown node in triangle for angle computation"));
   return 0.;
 }
 

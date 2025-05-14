@@ -969,7 +969,7 @@ double GFace::curvatures(const SPoint2 &param, SVector3 &dirMax,
 
 double GFace::getMetricEigenvalue(const SPoint2 &)
 {
-  Msg::Error("Metric eigenvalue is not implemented for this type of surface");
+  Msg::Error(_("Metric eigenvalue is not implemented for this type of surface"));
   return 0.;
 }
 
@@ -1030,13 +1030,13 @@ void GFace::getMetricEigenVectors(const SPoint2 &param, double eigVal[2],
       eigVec[1] = vr(0, 1);
       eigVec[3] = vr(1, 1);
       if(fabs(di(0)) > 1.e-12 || fabs(di(1)) > 1.e-12) {
-        Msg::Warning("Imaginary eigenvalues in metric");
+        Msg::Warning(_("Imaginary eigenvalues in metric"));
       }
       return;
     }
   }
 
-  Msg::Warning("Could not compute metric eigenvectors");
+  Msg::Warning(_("Could not compute metric eigenvectors"));
   for(int i = 0; i < 2; i++) eigVal[i] = 0.;
   for(int i = 0; i < 4; i++) eigVec[i] = 0.;
 }
@@ -1140,7 +1140,7 @@ void GFace::XYZtoUV(double X, double Y, double Z, double &U, double &V,
   if(!onSurface) return;
 
   if(relax < 1.e-3)
-    Msg::Warning("Inverse surface mapping could not converge");
+    Msg::Warning(_("Inverse surface mapping could not converge"));
   else {
     Msg::Info("Point %g %g %g: Relaxation factor = %g", X, Y, Z, 0.75 * relax);
     XYZtoUV(X, Y, Z, U, V, 0.75 * relax, onSurface, convTestXYZ);
@@ -1267,13 +1267,13 @@ GPoint GFace::closestPoint(const SPoint3 &queryPoint,
     GPoint pntF = point(x[0], x[1]);
     return pntF;
   } catch(...) {
-    Msg::Warning("Closest point failed, computing from parametric coordinate");
+    Msg::Warning(_("Closest point failed, computing from parametric coordinate"));
     SPoint2 p = parFromPoint(queryPoint, false);
     return point(p);
   }
 
 #else
-  Msg::Error("Closest point not implemented for this type of surface");
+  Msg::Error(_("Closest point not implemented for this type of surface"));
   SPoint2 p = parFromPoint(queryPoint, false);
   return point(p);
 #endif
@@ -1872,7 +1872,7 @@ static int meshCompoundComputeCrossFieldWithHeatEquation(GFace *gf)
   CTX::instance()->mesh.algo2d = TEMP;
 
   if(sbf != 0) {
-    Msg::Warning("failed to build background guiding field");
+    Msg::Warning(_("failed to build background guiding field"));
     return -1;
   }
 
@@ -2119,7 +2119,7 @@ void GFace::relocateMeshVertices()
 
 void GFace::setMeshMaster(GFace *master, const std::vector<double> &tfo)
 {
-  Msg::Info("Setting mesh master using transformation");
+  Msg::Info(_("Setting mesh master using transformation"));
 
   // points and curves
   std::set<GVertex *> l_vertices;
@@ -2369,7 +2369,7 @@ struct myLine {
   myLine(myPlane &p1, myPlane &p2)
   {
     t = crossprod(p1.n, p2.n);
-    if(t.norm() == 0.0) { Msg::Error("parallel planes do not intersect"); }
+    if(t.norm() == 0.0) { Msg::Error(_("parallel planes do not intersect")); }
     else
       t.normalize();
     // find a point, assume z = 0
@@ -2384,7 +2384,7 @@ struct myLine {
         double ay[2][2] = {{p1.n.x(), p1.n.z()}, {p2.n.x(), p2.n.z()}};
         double by[2] = {-p1.a, -p2.a};
         if(!sys2x2(ay, by, x)) {
-          Msg::Error("parallel planes do not intersect");
+          Msg::Error(_("parallel planes do not intersect"));
         }
         else {
           p = SPoint3(x[0], 0., x[1]);

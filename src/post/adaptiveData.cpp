@@ -1212,7 +1212,7 @@ bool adaptiveElements<T>::adapt(double tol, int numComp,
   int numVertices = T::allVertices.size();
 
   if(!numVertices) {
-    Msg::Warning("No adapted vertices to interpolate");
+    Msg::Warning(_("No adapted vertices to interpolate"));
     return false;
   }
 
@@ -1244,7 +1244,7 @@ bool adaptiveElements<T>::adapt(double tol, int numComp,
     break;
   }
   default: {
-    Msg::Error("Can only adapt scalar, vector or tensor data");
+    Msg::Error(_("Can only adapt scalar, vector or tensor data"));
     return false;
   }
   }
@@ -1794,7 +1794,7 @@ void VTKData::writeVTKElmData()
 
   } // vtu format
   else
-    Msg::Error("Unknown format");
+    Msg::Error(_("Unknown format"));
 }
 
 void VTKData::initVTKFile()
@@ -2245,7 +2245,7 @@ void adaptiveElements<T>::adaptForVTK(double tol, int numComp,
   int numVertices = T::allVertices.size();
 
   if(!numVertices) {
-    Msg::Error("No adapted vertices to interpolate");
+    Msg::Error(_("No adapted vertices to interpolate"));
     return;
   }
 
@@ -2276,7 +2276,7 @@ void adaptiveElements<T>::adaptForVTK(double tol, int numComp,
     break;
   }
   default: {
-    Msg::Error("Can only adapt scalar, vector or tensor data");
+    Msg::Error(_("Can only adapt scalar, vector or tensor data"));
     return;
   }
   }
@@ -2421,7 +2421,7 @@ void adaptiveElements<T>::buildMapping(nodMap<T> &myNodMap, double tol,
     } // for
 
     if(myNodMap.mapping.size() == 0) {
-      Msg::Error("Node mapping in buildMapping has zero size");
+      Msg::Error(_("Node mapping in buildMapping has zero size"));
     }
 
     // Count number of unique nodes from the mapping

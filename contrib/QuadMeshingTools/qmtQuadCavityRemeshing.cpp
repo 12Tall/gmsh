@@ -69,7 +69,7 @@ size_t patternNumberOfCorners(size_t pId)
   case PATTERN_2CORNERS: return 2;
   case PATTERN_1CORNER: return 1;
   case PATTERN_DISK: return 0;
-  default: Msg::Error("patternNumberOfCorners: pattern not supported");
+  default: Msg::Error(_("patternNumberOfCorners: pattern not supported"));
   };
   return 0;
 }
@@ -527,7 +527,7 @@ namespace QMT {
                   }
                 }
               if(e == NO_ID) {
-                Msg::Error("load, edge not found !");
+                Msg::Error(_("load, edge not found !"));
                 return false;
               }
               cur_side->push_back(e);
@@ -553,7 +553,7 @@ namespace QMT {
                     }
                   }
                 if(e == NO_ID) {
-                  Msg::Error("load, edge not found !");
+                  Msg::Error(_("load, edge not found !"));
                   return false;
                 }
                 cur_side->push_back(e);
@@ -916,7 +916,7 @@ namespace QMT {
         MVertex *mv1 = v2mv[v1];
         MVertex *mv2 = v2mv[v2];
         if(mv1 == NULL || mv2 == NULL) {
-          Msg::Error("MVertex* not found ?");
+          Msg::Error(_("MVertex* not found ?"));
           return false;
         }
         int n_e = quantization[P.eChordId[e]];
@@ -940,8 +940,7 @@ namespace QMT {
         id2 vpair = sorted(v0, v1);
         auto it = vpair2vertices.find(vpair);
         if(it == vpair2vertices.end()) {
-          Msg::Error(
-            "MVertex* vector not found for vertex pair (edge in pattern)");
+          Msg::Error(_("MVertex* vector not found for vertex pair (edge in pattern)"));
           return false;
         }
         quadCurves[le] = it->second;
@@ -1189,7 +1188,7 @@ namespace QMT {
             }
           }
           if(!foundSlot) {
-            Msg::Error("cavity farmer: no slot found !");
+            Msg::Error(_("cavity farmer: no slot found !"));
             return false;
           }
         }
@@ -1234,8 +1233,7 @@ namespace QMT {
           auto it1 = vertexLocal.find(v1);
           auto it2 = vertexLocal.find(v2);
           if(it1 == vertexLocal.end() || it2 == vertexLocal.end()) {
-            Msg::Debug(
-              "cavity farmer update: vertex of embedded line not found, weird");
+            Msg::Debug(_("cavity farmer update: vertex of embedded line not found, weird"));
             continue;
           }
           id2 vpair = sorted(it1->second, it2->second);
@@ -1266,7 +1264,7 @@ namespace QMT {
       valIn = 0;
       valOut = 0;
       if(v >= v2q_first.size()) {
-        Msg::Error("vertexValence: incoherent state");
+        Msg::Error(_("vertexValence: incoherent state"));
         return false;
       }
       const uint32_t begin = v2q_first[v];
@@ -1314,8 +1312,7 @@ namespace QMT {
           cav.elements.insert(f);
         }
         else {
-          Msg::Error(
-            "cavity farmer: quad already in cavity, should not happen");
+          Msg::Error(_("cavity farmer: quad already in cavity, should not happen"));
           return false;
         }
         for(size_t le = 0; le < 4; ++le) {
@@ -1323,8 +1320,7 @@ namespace QMT {
           touched.push_back(quads[f][le]);
           uint32_t opp = adjacent[4 * f + le];
           if(cav.quadEdgeIsBdr[4 * f + le]) {
-            Msg::Error(
-              "cavity farmer: quad edge already cavity bdr, should not happen");
+            Msg::Error(_("cavity farmer: quad edge already cavity bdr, should not happen"));
             return false;
           }
           else if(opp != NO_U32 && cav.quadEdgeIsBdr[opp]) {
@@ -1372,7 +1368,7 @@ namespace QMT {
           }
         }
         else {
-          Msg::Error("cavity farmer: incoherent vertex state in addQuads");
+          Msg::Error(_("cavity farmer: incoherent vertex state in addQuads"));
           return false;
         }
       }
@@ -1629,8 +1625,7 @@ namespace QMT {
       bool oks = getCavitySides(Ncorners, sides);
       if(!oks) {
         if(DBG_VERBOSE) {
-          Msg::Debug(
-            "cavity farmer: grow one side, failed to build cavity boundary");
+          Msg::Debug(_("cavity farmer: grow one side, failed to build cavity boundary"));
         }
         return false;
       }
@@ -1785,7 +1780,7 @@ namespace QMT {
       for(MQuadrangle *q : quadsInit) {
         auto it = quadLocal.find(q);
         if(it == quadLocal.end()) {
-          Msg::Error("cavity farmer: quad not found in farmer mesh");
+          Msg::Error(_("cavity farmer: quad not found in farmer mesh"));
           return false;
         }
         lquads.push_back(it->second);
@@ -2014,7 +2009,7 @@ namespace QMT {
                     const std::vector<std::pair<SPoint3, int> > &singularities)
   {
     if(farmer.vertices.size() == 0) {
-      Msg::Error("quadMeshIsMinimal: farmer not initialized");
+      Msg::Error(_("quadMeshIsMinimal: farmer not initialized"));
       return false;
     }
     size_t nIrregInt = 0;
@@ -2239,7 +2234,7 @@ namespace QMT {
       /* Modify the GFace mesh ! (and empty the diff content) */
       bool oke = diff.execute(verifyTopology);
       if(!oke) {
-        Msg::Error("remesh cavity: diff execute() failed, should not happen");
+        Msg::Error(_("remesh cavity: diff execute() failed, should not happen"));
         return false;
       }
 
@@ -2268,7 +2263,7 @@ namespace QMT {
           patchOptimizeGeometryWithKernel(patchBdr, opt, stats);
         }
       }
-      Msg::Debug("---->");
+      Msg::Debug(_("---->"));
       return true;
     }
     else {
@@ -2809,8 +2804,7 @@ bool patchIsRemeshableWithQuadPattern(
 {
   irregularityMeasure = DBL_MAX;
   if(patterns.size() == 0) {
-    Msg::Error(
-      "Quad patterns are not loaded, please call initQuadPatterns() before");
+    Msg::Error(_("Quad patterns are not loaded, please call initQuadPatterns() before"));
     return false;
   }
 
@@ -2850,8 +2844,7 @@ int remeshPatchWithQuadPattern(
   SurfaceProjector *sp, GFaceMeshDiff &diff)
 {
   if(patterns.size() == 0) {
-    Msg::Error(
-      "Quad patterns are not loaded, please call initQuadPatterns() before");
+    Msg::Error(_("Quad patterns are not loaded, please call initQuadPatterns() before"));
     return false;
   }
 
@@ -2885,8 +2878,7 @@ int remeshPatchWithQuadPattern(
   vector<int> slt;
   double match = checkPatternMatching(P, ssr, slt);
   if(match <= 0.) {
-    Msg::Error(
-      "remesh patch with patterns: given pattern not matching given sides");
+    Msg::Error(_("remesh patch with patterns: given pattern not matching given sides"));
     return -1;
   }
 
@@ -2899,7 +2891,7 @@ int remeshPatchWithQuadPattern(
   bool oka = addQuadsAccordingToPattern(
     P, slt, gf, sidesr, diff.after.intVertices, diff.after.elements, oldCenter);
   if(!oka) {
-    Msg::Error("failed to add quads according to pattern, weird");
+    Msg::Error(_("failed to add quads according to pattern, weird"));
     clearStuff(diff.after.intVertices, diff.after.elements);
     return -1;
   }
@@ -2912,7 +2904,7 @@ int remeshPatchWithQuadPattern(
   bool oko =
     orientElementsAccordingToBoundarySegment(a, b, diff.after.elements);
   if(!oko) {
-    Msg::Error("remesh quad with patterns: bdr quad edge not found, weird");
+    Msg::Error(_("remesh quad with patterns: bdr quad edge not found, weird"));
     return false;
   }
 
@@ -2946,7 +2938,7 @@ int remeshPatchWithQuadPattern(
         patchPassesQualityConstraints(diff.after.elements, qualityConstraints);
     }
     else {
-      Msg::Debug("failed to optimize geometry with global UV smoothing");
+      Msg::Debug(_("failed to optimize geometry with global UV smoothing"));
     }
   }
 
@@ -2954,7 +2946,7 @@ int remeshPatchWithQuadPattern(
     /* Project */
     bool okp = patchProjectOnSurface(diff.after, sp);
     if(!okp) {
-      Msg::Debug("failed to project geometry");
+      Msg::Debug(_("failed to project geometry"));
       return -1;
     }
 
@@ -2997,7 +2989,7 @@ int improveQuadMeshTopologyWithCavityRemeshing(
 
   QuadqsContext qqs;
 
-  // Msg::Warning("- timeout set to 100s (debugging)");
+  // Msg::Warning(_("- timeout set to 100s (debugging)"));
   // qqs.timeoutQuadqsPerGFace = 100;
   // qqs.timeoutQuadqsPerGFaceCavity = 100;
 
@@ -3031,7 +3023,7 @@ int improveQuadMeshTopologyWithCavityRemeshing(
     running = false;
     size_t ncrb = ctx.nQuadCavityRemesh + ctx.nSingCavityRemesh;
 
-    Msg::Debug("<< start cavity remeshing iteration");
+    Msg::Debug(_("<< start cavity remeshing iteration"));
 
     /* 1st pass: check regular quad patch remeshing only */
     patternsToCheck = {PATTERN_QUAD_REGULAR};
@@ -3087,7 +3079,7 @@ int improveQuadMeshTopologyWithCavityRemeshing(
 
     /* Restart a full iteration if some cavities have been remeshed */
     if(ncra > ncrb) running = true;
-    Msg::Debug(">> end of cavity remeshing iteration");
+    Msg::Debug(_(">> end of cavity remeshing iteration"));
 
     if(ctx.finished) {
       Msg::Debug("quad mesh remeshing is finised (minimal number of irregular "
@@ -3096,7 +3088,7 @@ int improveQuadMeshTopologyWithCavityRemeshing(
     }
 
     if(ctx.elapsedCpuTime() > ctx.timeoutQuadqsPerGFaceCavity) {
-      Msg::Debug("quad mesh remeshing has reached timeout, break");
+      Msg::Debug(_("quad mesh remeshing has reached timeout, break"));
       break;
     }
   }
@@ -3245,7 +3237,7 @@ int meshFaceWithGlobalPattern(GFace *gf, bool invertNormalsForQuality,
           std::reverse(ge_vert.begin(), ge_vert.end());
         }
         else {
-          Msg::Error("corner and edge vertices not matching");
+          Msg::Error(_("corner and edge vertices not matching"));
           return -1;
         }
       }
@@ -3356,7 +3348,7 @@ int meshFaceWithGlobalPattern(GFace *gf, bool invertNormalsForQuality,
       bool oke = diff.execute(verifyTopology);
       if(oke) { good = true; }
       else {
-        Msg::Error("remesh cavity: diff execute() failed, should not happen");
+        Msg::Error(_("remesh cavity: diff execute() failed, should not happen"));
       }
     }
     else {

@@ -175,7 +175,7 @@ static std::vector<FILE *> openedFiles;
 int ParseFile(const std::string &fileName, bool close, bool errorIfMissing)
 {
 #if !defined(HAVE_PARSER)
-  Msg::Error("Gmsh parser is not compiled in this version");
+  Msg::Error(_("Gmsh parser is not compiled in this version"));
   return 0;
 #else
 
@@ -207,7 +207,7 @@ int ParseFile(const std::string &fileName, bool close, bool errorIfMissing)
     gmsh_yyparse();
     if(gmsh_yyerrorstate > 20) {
       if(gmsh_yyerrorstate != 999) // 999 is a voluntary exit
-        Msg::Error("Too many errors: aborting parser...");
+        Msg::Error(_("Too many errors: aborting parser..."));
       gmsh_yyflush();
       break;
     }
@@ -700,9 +700,9 @@ void DeleteAllModelsAndViews()
 
 void ClearProject()
 {
-  Msg::Info("Clearing all models and views...");
+  Msg::Info(_("Clearing all models and views..."));
   DeleteAllModelsAndViews();
-  Msg::Info("Done clearing all models and views");
+  Msg::Info(_("Done clearing all models and views"));
 
   new GModel();
   std::string base = (getenv("PWD") ? "" : CTX::instance()->homeDir);
@@ -722,7 +722,7 @@ void ClearProject()
 void OpenProject(const std::string &fileName, bool errorIfMissing)
 {
   if(CTX::instance()->lock) {
-    Msg::Info("I'm busy! Ask me that later...");
+    Msg::Info(_("I'm busy! Ask me that later..."));
     return;
   }
   CTX::instance()->lock = 1;

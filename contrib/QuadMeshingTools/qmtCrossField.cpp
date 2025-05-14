@@ -101,14 +101,14 @@ namespace QMT {
     CrossFieldLinearSystem(size_t N_) : N(N_)
     {
 #if defined(HAVE_EIGEN)
-      Msg::Debug("Eigen call: initialize sparse matrix, vectors and solver");
+      Msg::Debug(_("Eigen call: initialize sparse matrix, vectors and solver"));
       x.resize(N);
       x.fill(0.);
       b.resize(N);
       b.fill(0.);
       A.resize(N, N);
 #else
-      Msg::Error("Linear solver Eigen required");
+      Msg::Error(_("Linear solver Eigen required"));
 #endif
     }
 
@@ -118,7 +118,7 @@ namespace QMT {
                             bool firstTime = false)
     {
 #if defined(HAVE_EIGEN)
-      // Msg::Debug("Eigen call: add coefficients");
+      // Msg::Debug(_("Eigen call: add coefficients"));
       std::vector<Eigen::Triplet<double, size_t> > triplets;
       triplets.reserve(values.size());
       if(firstTime) {
@@ -142,7 +142,7 @@ namespace QMT {
       }
       return true;
 #else
-      Msg::Error("Linear solver Eigen required");
+      Msg::Error(_("Linear solver Eigen required"));
       return false;
 #endif
     }
@@ -150,12 +150,12 @@ namespace QMT {
     bool set_rhs_values(const std::vector<double> &rhs)
     {
 #if defined(HAVE_EIGEN)
-      // Msg::Debug("Eigen call: add rhs values");
+      // Msg::Debug(_("Eigen call: add rhs values"));
       for(size_t i = 0; i < rhs.size(); ++i)
         if(rhs[i] != 0.) { b[i] = rhs[i]; }
       return true;
 #else
-      Msg::Error("Linear solver Eigen required");
+      Msg::Error(_("Linear solver Eigen required"));
       return false;
 #endif
     }
@@ -163,11 +163,11 @@ namespace QMT {
     bool preprocess_sparsity_pattern()
     {
 #if defined(HAVE_EIGEN)
-      Msg::Debug("Eigen call: analyse sparse matrix sparsity pattern");
+      Msg::Debug(_("Eigen call: analyse sparse matrix sparsity pattern"));
       solver.analyzePattern(A);
       return true;
 #else
-      Msg::Error("Linear solver Eigen required");
+      Msg::Error(_("Linear solver Eigen required"));
       return false;
 #endif
     }
@@ -175,11 +175,11 @@ namespace QMT {
     bool factorize()
     {
 #if defined(HAVE_EIGEN)
-      Msg::Debug("Eigen call: factorize sparse matrix");
+      Msg::Debug(_("Eigen call: factorize sparse matrix"));
       solver.factorize(A);
       return true;
 #else
-      Msg::Error("Linear solver Eigen required");
+      Msg::Error(_("Linear solver Eigen required"));
       return false;
 #endif
     }
@@ -187,7 +187,7 @@ namespace QMT {
     bool solve(std::vector<double> &slt)
     {
 #if defined(HAVE_EIGEN)
-      Msg::Debug("Eigen call: solve linear system");
+      Msg::Debug(_("Eigen call: solve linear system"));
       x = solver.solve(b);
       if(solver.info() != Eigen::ComputationInfo::Success) {
         Msg::Warning(
@@ -199,7 +199,7 @@ namespace QMT {
       for(size_t i = 0; i < N; ++i) slt[i] = x[i];
       return true;
 #else
-      Msg::Error("Linear solver Eigen required");
+      Msg::Error(_("Linear solver Eigen required"));
       return false;
 #endif
     }
@@ -363,7 +363,7 @@ namespace QMT {
           agl = angleVectorsAlreadyNormalized(-1. * edg, -1. * e_x);
         }
         else {
-          Msg::Error("should not happen");
+          Msg::Error(_("should not happen"));
           return false;
         }
         CR_weight[2 * s + k] = -2. / tan(agl);
@@ -471,7 +471,7 @@ namespace QMT {
     }
     if(new_edges.size() == 0) {
       if(verbosity >= 2)
-        Msg::Warning("no new edges to expand dirichlet boundary conditions");
+        Msg::Warning(_("no new edges to expand dirichlet boundary conditions"));
       return false;
     }
 
@@ -500,7 +500,7 @@ namespace QMT {
     vector<vector<double> > A_coef(2 * uIEdges.size());
     bool okp = prepare_system(K_diag, K_coefs, A_col, A_coef);
     if(!okp) {
-      Msg::Error("failed to prepare system");
+      Msg::Error(_("failed to prepare system"));
       return false;
     }
 
@@ -560,7 +560,7 @@ namespace QMT {
                                             nm_triangle_neighbors, uIEdges,
                                             old2IEdge, uIEdgeToOld);
     if(!oka) {
-      Msg::Error("failed to compute mesh adjacencies");
+      Msg::Error(_("failed to compute mesh adjacencies"));
       return false;
     }
 
@@ -573,7 +573,7 @@ namespace QMT {
                 diag);
 
     if(uIEdges.size() == 0) {
-      Msg::Error("no internal edges");
+      Msg::Error(_("no internal edges"));
       return false;
     }
 
@@ -611,7 +611,7 @@ namespace QMT {
         N, points, triangles, uIEdges, old2IEdge, uIEdgeToOld,
         nbBoundaryExtensionLayer, dirichletEdge, dirichletValue, verbosity);
       if(!oke) {
-        Msg::Warning("failed to expand dirichlet boundary conditions");
+        Msg::Warning(_("failed to expand dirichlet boundary conditions"));
       }
       for(size_t e = 0; e < uIEdges.size(); ++e) {
         x[2 * e + 0] = dirichletValue[e][0];
@@ -620,8 +620,7 @@ namespace QMT {
     }
 
     if(verbosity >= 2)
-      Msg::Info(
-        "- compute stiffness matrix coefficients (Crouzeix-Raviart) ...");
+      Msg::Info(_("- compute stiffness matrix coefficients (Crouzeix-Raviart) ..."));
 
     vector<IV> K_diag;
     vector<IJV> K_coefs;
@@ -681,7 +680,7 @@ namespace QMT {
     {
       bool okp = prepare_system(K_diag, K_coefs, K_columns, K_values);
       if(!okp) {
-        Msg::Error("failed to prepare system");
+        Msg::Error(_("failed to prepare system"));
         return false;
       }
     }
@@ -742,7 +741,7 @@ namespace QMT {
       for(size_t i = 0; i < Acol.size(); ++i) Acol[i].clear();
       bool okp = solver.preprocess_sparsity_pattern();
       if(!okp) {
-        Msg::Error("linear solver analysis failed");
+        Msg::Error(_("linear solver analysis failed"));
         return false;
       }
 
@@ -767,7 +766,7 @@ namespace QMT {
         }
         bool oku = solver.add_sparse_coefficients(Acol, Aval_add, false);
         if(!oku) {
-          Msg::Error("failed to update linear system");
+          Msg::Error(_("failed to update linear system"));
           return false;
         }
         solver.factorize();
@@ -785,7 +784,7 @@ namespace QMT {
 
           bool oks = solver.solve(x);
           if(!oks) {
-            Msg::Error("failed to solve linear system");
+            Msg::Error(_("failed to solve linear system"));
             return false;
           }
 
@@ -827,7 +826,7 @@ namespace QMT {
             if(linf < 1.e-3) break;
           }
           else {
-            if(verbosity >= 3) Msg::Info("           |   system solved");
+            if(verbosity >= 3) Msg::Info(_("           |   system solved"));
           }
         }
       }
@@ -971,7 +970,7 @@ namespace QMT {
         if(found) break;
       }
       if(!found) {
-        Msg::Error("failed to order fan vertex pairs");
+        Msg::Error(_("failed to order fan vertex pairs"));
         return -1;
       }
     }
@@ -1170,21 +1169,21 @@ int computeCrossFieldConformalScaling(
   Msg::Debug("compute cross field scaling (N=%i, %li triangles) ...", Ns,
              triangles.size());
   if(triangles.size() != triEdgeTheta.size()) {
-    Msg::Error("conformal scaling: incoherent number of elements in inputs");
+    Msg::Error(_("conformal scaling: incoherent number of elements in inputs"));
     return -1;
   }
 
 #if defined(HAVE_EIGEN)
-  Msg::Debug("- with EIGEN solver");
+  Msg::Debug(_("- with EIGEN solver"));
   linearSystemEigen<double> *_lsys = new linearSystemEigen<double>;
 #elif defined(HAVE_PETSC)
-  Msg::Debug("- with PETSc solver");
+  Msg::Debug(_("- with PETSc solver"));
   linearSystemPETSc<double> *_lsys = new linearSystemPETSc<double>;
 #elif defined(HAVE_MUMPS)
-  Msg::Debug("- with MUMPS solver");
+  Msg::Debug(_("- with MUMPS solver"));
   linearSystemMUMPS<double> *_lsys = new linearSystemMUMPS<double>;
 #else
-  Msg::Debug("- with dense solver (slow, should not be used)");
+  Msg::Debug(_("- with dense solver (slow, should not be used)"));
   linearSystemFull<double> *_lsys = new linearSystemFull<double>;
 #endif
   dofManager<double> *myAssembler = new dofManager<double>(_lsys);
@@ -1368,7 +1367,7 @@ int computeCrossFieldConformalScaling(
   }
 
 #else
-  Msg::Error("Computing cross field scaling requires the SOLVER module");
+  Msg::Error(_("Computing cross field scaling requires the SOLVER module"));
   return -1;
 #endif
 
@@ -1586,7 +1585,7 @@ int detectCrossFieldSingularities(
 {
   singularities.clear();
   if(triangles.size() != triEdgeTheta.size()) {
-    Msg::Error("detect cross field singularities: wrong inputs");
+    Msg::Error(_("detect cross field singularities: wrong inputs"));
     return -1;
   }
 

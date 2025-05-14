@@ -281,7 +281,7 @@ static bool getEdgeVerticesOnGeo(GEdge *ge, MVertex *v0, MVertex *v1,
     }
   }
   else
-    Msg::Error("Cannot reparametrize a mesh node in high order meshing");
+    Msg::Error(_("Cannot reparametrize a mesh node in high order meshing"));
 
   if(!reparamOK) return false;
 
@@ -654,7 +654,7 @@ static void reorientQuadPoints(std::vector<MVertex *> &vtcs, int orientation,
             tmp[index++] = vtcs[i];
         }
         else
-          Msg::Error("Something wrong in reorientQuadPoints");
+          Msg::Error(_("Something wrong in reorientQuadPoints"));
       }
       for(int i = 0; i < index; i++) vtcs[start + i] = tmp[i];
       start += index;
@@ -880,8 +880,7 @@ static void getFaceVertices(GRegion *gr, MElement *ele,
           reorientQuadPoints(vtcs, orientation, swap, nPts - 1);
       }
       else
-        Msg::Error(
-          "Error in face lookup for retrieval of high order face nodes");
+        Msg::Error(_("Error in face lookup for retrieval of high order face nodes"));
       vFace.assign(vtcs.begin(), vtcs.end());
     }
     else { // Vertices do not exist, create them by interpolation

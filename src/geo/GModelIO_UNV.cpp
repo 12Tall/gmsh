@@ -58,7 +58,7 @@ int GModel::readUNV(const std::string &name, bool readGroupsOfElements)
       int record = 0;
       sscanf(buffer, "%d", &record);
       if(record == 2411) { // nodes
-        Msg::Info("Reading nodes");
+        Msg::Info(_("Reading nodes"));
         while(gmshgets(buffer, sizeof(buffer), fp)) {
           if(!strncmp(buffer, "    -1", 6)) break;
           int num, dum;
@@ -72,7 +72,7 @@ int GModel::readUNV(const std::string &name, bool readGroupsOfElements)
         }
       }
       else if(record == 2412) { // elements
-        Msg::Info("Reading elements");
+        Msg::Info(_("Reading elements"));
         std::map<int, int> warn;
         while(gmshgets(buffer, sizeof(buffer), fp)) {
           if(strlen(buffer) < 3)
@@ -93,7 +93,7 @@ int GModel::readUNV(const std::string &name, bool readGroupsOfElements)
           if(physical < 0) physical = 0;
           if(!type) {
             if(warn[type]++ == 1)
-              Msg::Warning("No element type: guessing from number of nodes");
+              Msg::Warning(_("No element type: guessing from number of nodes"));
             switch(numNodes) {
             case 2: type = 11; break; // line
             case 3: type = 41; break; // tri
@@ -270,7 +270,7 @@ int GModel::readUNV(const std::string &name, bool readGroupsOfElements)
                     "groups of elements)");
         }
         else {
-          Msg::Info("Reading groups");
+          Msg::Info(_("Reading groups"));
           while(gmshgets(buffer, sizeof(buffer), fp)) {
             if(strlen(buffer) < 3)
               continue; // possible line ending after last fgets

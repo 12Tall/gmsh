@@ -118,7 +118,7 @@ void MeshOpt::evalObjGrad(const std::vector<double> &x, double &obj,
   patch.updateMesh(&x[0]);
   _objFunc->compute(obj, gradObj);
   if(_objFunc->targetReached()) {
-    if(_verbose > 2) Msg::Info("Reached target values, setting null gradient");
+    if(_verbose > 2) Msg::Info(_("Reached target values, setting null gradient"));
     obj = 0.;
     for(std::size_t i = 0; i < gradObj.size(); i++) gradObj[i] = 0.;
   }
@@ -223,7 +223,7 @@ void MeshOpt::runOptim(std::vector<double> &x,
   terminationtype = rep.terminationtype;
 #else
   // TODO: provide our own implementation!
-  Msg::Error("Mesh optimizer requires ALGLIB");
+  Msg::Error(_("Mesh optimizer requires ALGLIB"));
 #endif
 
   if(_nCurses) {
@@ -359,7 +359,7 @@ int MeshOpt::optimize(const MeshOptParameters &par)
       targetReached = _objFunc->targetReached();
       if(_objFunc->stagnated()) {
         if(_verbose > 2)
-          Msg::Info("Stagnation detected, stopping optimization");
+          Msg::Info(_("Stagnation detected, stopping optimization"));
         break;
       }
     }

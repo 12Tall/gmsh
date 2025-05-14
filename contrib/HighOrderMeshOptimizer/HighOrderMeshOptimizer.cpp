@@ -316,8 +316,7 @@ void HighOrderMeshOptimizer(std::vector<GEntity *> &entities,
     }
   }
   if(order1)
-    Msg::Warning(
-      "Applying high-order mesh optimizer to mesh with linear elements");
+    Msg::Warning(_("Applying high-order mesh optimizer to mesh with linear elements"));
 
   MeshOptParameters par;
   par.dim = p.dim;

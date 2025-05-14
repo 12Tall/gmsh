@@ -840,7 +840,7 @@ int JacobianBasis::jacobianOrder(int parentType, int order)
 FuncSpaceData JacobianBasis::jacobianMatrixSpace(int type, int order)
 {
   if(type == TYPE_PYR) {
-    Msg::Error("jacobianMatrixSpace not yet implemented for pyramids");
+    Msg::Error(_("jacobianMatrixSpace not yet implemented for pyramids"));
     return FuncSpaceData(type, false, 1, 0, false);
   }
   int jacOrder = -1;

@@ -79,7 +79,7 @@ backgroundMesh::backgroundMesh(GFace *_gf, bool cfd)
 #endif
 {
   if(cfd) {
-    Msg::Debug("Building cross field using closest distance");
+    Msg::Debug(_("Building cross field using closest distance"));
     propagateCrossFieldByDistance(_gf);
     return;
   }
@@ -278,7 +278,7 @@ crossField2d::crossField2d(MVertex *v, GEdge *ge)
   double p;
   bool success = reparamMeshVertexOnEdge(v, ge, p);
   if(!success) {
-    Msg::Warning("cannot reparametrize a point in crossField");
+    Msg::Warning(_("cannot reparametrize a point in crossField"));
     _angle = 0;
     return;
   }
@@ -548,7 +548,7 @@ void backgroundMesh::updateSizes(GFace *_gf)
         // Note: this Warning is disabled because it's too verbose in logs
         //       is this behavior normal ? Was doing undefined behavior before
         //       (detected by valgrind)
-        // Msg::Warning("in backgroundMesh::updateSizes(), vertex not found in maps");
+        // Msg::Warning(_("in backgroundMesh::updateSizes(), vertex not found in maps"));
         continue;
       }
       if(s0->second < s1->second)
@@ -568,7 +568,7 @@ bool backgroundMesh::inDomain(double u, double v, double w) const
 double backgroundMesh::operator()(double u, double v, double w) const
 {
   if(!_octree) {
-    Msg::Error("No octree in background mesh");
+    Msg::Error(_("No octree in background mesh"));
     return 0.;
   }
   double uv[3] = {u, v, w};
@@ -721,7 +721,7 @@ MElement *backgroundMesh::getMeshElementByCoord(double u, double v, double w,
                                                 bool strict)
 {
   if(!_octree) {
-    Msg::Debug("Rebuilding BackgroundMesh element octree");
+    Msg::Debug(_("Rebuilding BackgroundMesh element octree"));
     _octree = new MElementOctree(_triangles);
   }
   return _octree->find(u, v, w, 2, strict);
@@ -750,7 +750,7 @@ GlobalBackgroundMesh &getBackgroundMesh(const std::string &name)
 
 GlobalBackgroundMesh::~GlobalBackgroundMesh()
 {
-  Msg::Debug("GlobalBackgroundMesh destructor call");
+  Msg::Debug(_("GlobalBackgroundMesh destructor call"));
   for(MVertex *v : mesh_vertices)
     if(v) {
       delete v;
@@ -764,11 +764,11 @@ GlobalBackgroundMesh::~GlobalBackgroundMesh()
 int GlobalBackgroundMesh::importGModelMeshes(GModel *_gm,
                                              bool overwriteExisting)
 {
-  Msg::Debug("GlobalBackgroundMesh: import GModel mesh ...");
+  Msg::Debug(_("GlobalBackgroundMesh: import GModel mesh ..."));
   gm = _gm;
 
   if(overwriteExisting && mesh_vertices.size() > 0) { /* Clear mesh */
-    Msg::Debug("- delete existing mesh (for overwrite)");
+    Msg::Debug(_("- delete existing mesh (for overwrite)"));
     for(MVertex *v : mesh_vertices)
       if(v) {
         delete v;
@@ -777,7 +777,7 @@ int GlobalBackgroundMesh::importGModelMeshes(GModel *_gm,
     mesh_vertices.clear();
     edgeBackgroundMeshes.clear();
     faceBackgroundMeshes.clear();
-    Msg::Debug("- import mesh from GModel");
+    Msg::Debug(_("- import mesh from GModel"));
   }
 
   std::unordered_map<MVertex *, MVertex *> old2new;
@@ -824,7 +824,7 @@ int GlobalBackgroundMesh::importGModelMeshes(GModel *_gm,
       MVertex *v0 = old2new[elt->getVertex(0)];
       MVertex *v1 = old2new[elt->getVertex(1)];
       if(v0 == NULL || v1 == NULL) {
-        Msg::Error("GlobalBackgroundMesh: failed to import mesh (1)");
+        Msg::Error(_("GlobalBackgroundMesh: failed to import mesh (1)"));
         // Note: some vertex are stored outside the GModel ?
         return -1;
       }
@@ -862,7 +862,7 @@ int GlobalBackgroundMesh::importGModelMeshes(GModel *_gm,
       MVertex *v1 = old2new[elt->getVertex(1)];
       MVertex *v2 = old2new[elt->getVertex(2)];
       if(v0 == NULL || v1 == NULL || v2 == NULL) {
-        Msg::Error("GlobalBackgroundMesh: failed to import mesh (2)");
+        Msg::Error(_("GlobalBackgroundMesh: failed to import mesh (2)"));
         // Note: some vertex are stored outside the GModel ?
         return -1;
       }
@@ -879,7 +879,7 @@ int GlobalBackgroundMesh::importGModelMeshes(GModel *_gm,
         MVertex *v2 = old2new[elt->getVertex(2)];
         MVertex *v3 = old2new[elt->getVertex(3)];
         if(v0 == NULL || v1 == NULL || v2 == NULL || v3 == NULL) {
-          Msg::Error("GlobalBackgroundMesh: failed to import mesh (3)");
+          Msg::Error(_("GlobalBackgroundMesh: failed to import mesh (3)"));
           // Note: some vertex are stored outside the GModel ?
           return -1;
         }

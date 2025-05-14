@@ -290,7 +290,7 @@ void OctreePost::_create(PViewData *data)
     if(l->haveInterpolationMatrices() && !l->isAdapted()) {
       Msg::Error("Cannot create octree for non-adapted high-order list-based "
                  "view: you need");
-      Msg::Error("to select 'Adapt visualization grid' first");
+      Msg::Error(_("to select 'Adapt visualization grid' first"));
       return;
     }
 

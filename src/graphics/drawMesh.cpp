@@ -732,7 +732,7 @@ void drawContext::drawMesh()
   for(std::size_t i = 0; i < GModel::list.size(); i++) {
     GModel *m = GModel::list[i];
     bool changed = m->fillVertexArrays();
-    if(changed) Msg::Debug("mesh vertex arrays have changed");
+    if(changed) Msg::Debug(_("mesh vertex arrays have changed"));
 #if defined(HAVE_FLTK) && defined(__APPLE__)
     // FIXME: resetting texture pile fixes bug with recent macOS versions
     if(changed) gl_texture_pile_height(gl_texture_pile_height());

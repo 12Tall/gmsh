@@ -63,7 +63,7 @@ PView *GMSH_TetrahedralizePlugin::execute(PView *v)
   PViewData *data1 = v1->getData();
 
   if(data1->hasMultipleMeshes()) {
-    Msg::Error("Tetrahedralize plugin cannot be applied to multi-mesh views");
+    Msg::Error(_("Tetrahedralize plugin cannot be applied to multi-mesh views"));
     return v1;
   }
 
@@ -87,7 +87,7 @@ PView *GMSH_TetrahedralizePlugin::execute(PView *v)
   }
 
   if(points.size() < 4) {
-    Msg::Error("Need at least 4 points to tetrahedralize");
+    Msg::Error(_("Need at least 4 points to tetrahedralize"));
     for(std::size_t i = 0; i < points.size(); i++) delete points[i];
     return v1;
   }
@@ -136,7 +136,7 @@ PView *GMSH_TetrahedralizePlugin::execute(PView *v)
       vec = &data2->SS;
     }
     else {
-      Msg::Warning("Skipping unknown type of data");
+      Msg::Warning(_("Skipping unknown type of data"));
       continue;
     }
     for(int nod = 0; nod < 4; nod++) vec->push_back(p[nod]->x());
@@ -163,7 +163,7 @@ PView *GMSH_TetrahedralizePlugin::execute(PView *v)
 
 PView *GMSH_TetrahedralizePlugin::execute(PView *v)
 {
-  Msg::Error("Plugin(Tetrahedralize) requires mesh module");
+  Msg::Error(_("Plugin(Tetrahedralize) requires mesh module"));
   return v;
 }
 

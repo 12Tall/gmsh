@@ -261,7 +261,7 @@ PView *GMSH_SkinPlugin::execute(PView *v)
   PViewData *data1 = getPossiblyAdaptiveData(v1);
 
   if(data1->hasMultipleMeshes()) {
-    Msg::Error("Skin plugin cannot be applied to multi-mesh views");
+    Msg::Error(_("Skin plugin cannot be applied to multi-mesh views"));
     return v;
   }
 

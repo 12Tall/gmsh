@@ -78,7 +78,7 @@ PView *GMSH_FieldFromAmplitudePhasePlugin::execute(PView *v)
   if(!va) return v;
   PViewData *aData = va->getData();
   if(aData->getNumTimeSteps() != 2) {
-    Msg::Error("Invalid number of time steps for AView, it must be complex!");
+    Msg::Error(_("Invalid number of time steps for AView, it must be complex!"));
     return v;
   }
 
@@ -91,8 +91,7 @@ PView *GMSH_FieldFromAmplitudePhasePlugin::execute(PView *v)
   PViewData *phiData = vphi->getData();
 
   if(aData->hasMultipleMeshes() || phiData->hasMultipleMeshes()) {
-    Msg::Error(
-      "FieldFromAmplitudePhase plugin cannot be run on multi-mesh views");
+    Msg::Error(_("FieldFromAmplitudePhase plugin cannot be run on multi-mesh views"));
     return v;
   }
 

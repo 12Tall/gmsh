@@ -129,7 +129,7 @@ static bool inSphereTest_s(Vert *va, Vert *vb, Vert *vc, Vert *vd, Vert *ve)
       double oriB = -robustPredicates::orient3d(
         (double *)pt[0], (double *)pt[2], (double *)pt[3], (double *)pt[4]);
       if(oriB == 0.0) {
-        Msg::Error("Symbolic perturbation failed in icCircle Predicate");
+        Msg::Error(_("Symbolic perturbation failed in icCircle Predicate"));
       }
       // Flip the sign if there are odd number of swaps.
       if((swaps % 2) != 0) oriB = -oriB;
@@ -841,7 +841,7 @@ static Tet *walk(Tet *t, Vert *v, int maxx, double &totSearch, int thread)
       investigatedTets.insert(t);
     }
     else if(tets.empty()) {
-      Msg::Error("Jump-and-walk failed (no neighbor)");
+      Msg::Error(_("Jump-and-walk failed (no neighbor)"));
       return nullptr;
     }
     else {
@@ -849,7 +849,7 @@ static Tet *walk(Tet *t, Vert *v, int maxx, double &totSearch, int thread)
       tets.pop();
     }
   }
-  Msg::Error("Jump-and-walk failed (no neighbor)");
+  Msg::Error(_("Jump-and-walk failed (no neighbor)"));
   return nullptr;
 }
 
@@ -1096,7 +1096,7 @@ void delaunayTrgl(const std::size_t numThreads, const std::size_t NPTS_AT_ONCE,
               else if(neigh->getFace(3) == bndK[i].f)
                 neigh->T[3] = t;
               else {
-                Msg::Error("Datastructure broken in triangulation");
+                Msg::Error(_("Datastructure broken in triangulation"));
                 break;
               }
             }
@@ -1293,7 +1293,7 @@ void delaunayTriangulation(const int numThreads, const int nptsatonce,
           T.push_back(tr);
         }
         else if(!removeBox) {
-          Msg::Error("Error in triangulation");
+          Msg::Error(_("Error in triangulation"));
         }
       }
     }

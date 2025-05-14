@@ -272,7 +272,7 @@ static void treat3Connections(GFace *gf, MVertex *_myVert, MEdge &e1, MEdge &e2,
     N3 = temp;
   }
   else {
-    Msg::Error("Impossible boundary layer configuration");
+    Msg::Error(_("Impossible boundary layer configuration"));
   }
   if(dot(N1[0], N2[0]) > dot(N1[0], N3[0])) {
     x1 = N1[0] * 1.01 + N2[0];
@@ -954,7 +954,7 @@ bool buildAdditionalPoints2D(GFace *gf)
           }
           if(count) { step /= count; }
           else {
-            Msg::Warning("vertice not found in bl");
+            Msg::Warning(_("vertice not found in bl"));
           }
 
           SPoint2 p1(x0 + L * n1.x(), par.y() + L * n1.y());

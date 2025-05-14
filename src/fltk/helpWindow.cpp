@@ -22,6 +22,8 @@
 #include "Options.h"
 #include "Context.h"
 #include "drawContext.h"
+#include <iostream>
+#include "I18n.h"
 
 #if defined(HAVE_PARSER)
 #include "Parser.h"
@@ -308,7 +310,8 @@ helpWindow::helpWindow()
 
     about = new paletteWindow(width, height,
                               CTX::instance()->nonModalWindows ? true : false,
-                              "About Gmsh");
+                              _("About Gmsh"));
+    about->label(_("About Gmsh"));
     about->box(GMSH_WINDOW_BOX);
 
     Fl_Help_View *o = new Fl_Help_View(0, 0, width, height);

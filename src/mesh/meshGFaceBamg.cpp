@@ -179,7 +179,7 @@ void meshGFaceBamg(GFace *gf)
       Msg::Info("BAMG succeeded %d vertices %d triangles", refinedBamgMesh->nv,
                 refinedBamgMesh->nt);
     } catch(...) {
-      Msg::Error("BAMG failed");
+      Msg::Error(_("BAMG failed"));
       return;
     }
     delete[] mm11;
@@ -241,7 +241,7 @@ void meshGFaceBamg(GFace *gf)
 
 void meshGFaceBamg(GFace *gf)
 {
-  Msg::Error("This version of Gmsh is not compiled with BAMG support");
+  Msg::Error(_("This version of Gmsh is not compiled with BAMG support"));
 }
 
 #endif

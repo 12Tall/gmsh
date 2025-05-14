@@ -357,7 +357,7 @@ void meshGFaceQuadrangulateBipartiteLabelling(int faceTag)
 
 void meshGFaceQuadrangulateBipartiteLabelling(int faceTag)
 {
-  Msg::Error("This requires quad meshing tools");
+  Msg::Error(_("This requires quad meshing tools"));
 }
 
 #endif

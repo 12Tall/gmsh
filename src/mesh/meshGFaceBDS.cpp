@@ -703,8 +703,7 @@ void modifyInitialMeshToRemoveDegeneracies(
            degenerated_edges[K]->p2 == it->first) {
           if(std::abs(degenerated_edges[K]->p1->u -
                       degenerated_edges[K]->p2->u) < 1e-12) {
-            Msg::Debug(
-              "Degenerated edge on u = cst axis: treated as well now!");
+            Msg::Debug(_("Degenerated edge on u = cst axis: treated as well now!"));
             it->first->degenerated = 2;
           }
           else {
@@ -957,16 +956,16 @@ void refineMeshBDS(GFace *gf, BDS_Mesh &m, const int NIT,
 
   double t_total = t_spl + t_sw + t_col + t_sm;
   if(!t_total) t_total = 1.e-6;
-  Msg::Debug(" ---------------------------------------");
-  Msg::Debug(" CPU Report ");
-  Msg::Debug(" ---------------------------------------");
+  Msg::Debug(_(" ---------------------------------------"));
+  Msg::Debug(_(" CPU Report "));
+  Msg::Debug(_(" ---------------------------------------"));
   Msg::Debug(" CPU SWAP    %12.5E sec (%3.0f %%)", t_sw, 100 * t_sw / t_total);
   Msg::Debug(" CPU SPLIT   %12.5E sec (%3.0f %%) ", t_spl,
              100 * t_spl / t_total);
   Msg::Debug(" CPU COLLAPS %12.5E sec (%3.0f %%) ", t_col,
              100 * t_col / t_total);
   Msg::Debug(" CPU SMOOTH  %12.5E sec (%3.0f %%) ", t_sm, 100 * t_sm / t_total);
-  Msg::Debug(" ---------------------------------------");
+  Msg::Debug(_(" ---------------------------------------"));
   Msg::Debug(" CPU TOTAL   %12.5E sec ", t_total);
-  Msg::Debug(" ---------------------------------------");
+  Msg::Debug(_(" ---------------------------------------"));
 }

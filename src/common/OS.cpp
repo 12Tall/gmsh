@@ -258,7 +258,7 @@ static void setwbuf(int i, const char *f)
   // supported by Mac and Linux. Windows does not support UTF-8, but UTF-16
   // (through wchar_t), so we need to convert.
   if(i < 0 || i > 2) {
-    Msg::Error("Wrong buffer index in setwbuf");
+    Msg::Error(_("Wrong buffer index in setwbuf"));
     return;
   }
   size_t l = strlen(f);
@@ -598,7 +598,7 @@ int SystemCallExe(const std::string &exe, const std::string &argsOrCommand,
     }
   }
 #elif(BUILD_IOS)
-  Msg::Warning("SystemCall is not supported on iOS");
+  Msg::Warning(_("SystemCall is not supported on iOS"));
 #else
   std::string cmd(command);
   if(isPython || isOctave || isExe) {
@@ -624,7 +624,7 @@ int SystemCallExe(const std::string &exe, const std::string &argsOrCommand,
     }
   }
   if(!system(nullptr)) {
-    Msg::Error("Could not find /bin/sh: aborting system call");
+    Msg::Error(_("Could not find /bin/sh: aborting system call"));
     return 1;
   }
   if(!blocking) cmd += " &";
@@ -723,6 +723,6 @@ void UnzipFile(const std::string &fileName, const std::string &prependDir)
       Msg::Error("Could not create file `%s'", name.c_str());
   }
 #else
-  Msg::Error("Gmsh must be compiled with Zipper support to extract zip files");
+  Msg::Error(_("Gmsh must be compiled with Zipper support to extract zip files"));
 #endif
 }

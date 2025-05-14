@@ -126,7 +126,7 @@ public:
   linearSystemGmm(const std::string &method = "gmres", double tol = 1e-8,
                   int noisy = 0)
   {
-    Msg::Error("Gmm++ is not available in this version of Gmsh");
+    Msg::Error(_("Gmm++ is not available in this version of Gmsh"));
   }
   virtual bool isAllocated() const { return false; }
   virtual void allocate(int nbRows) {}

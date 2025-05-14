@@ -200,7 +200,7 @@ int meshRenumber_Vertices_RCMK(const std::vector<std::size_t> &elementTags,
   GModel *gm = GModel ::current();
   permutations.clear();
 
-  Msg::Info("RCMK renumbering...");
+  Msg::Info(_("RCMK renumbering..."));
 
   std::map<MVertex *, std::size_t> initial_numbering;
   std::map<std::size_t, MVertex *> inverse_numbering;
@@ -231,7 +231,7 @@ int meshRenumber_Vertices_Hilbert(
   GModel *gm = GModel ::current();
   permutations.clear();
 
-  Msg::Info("Hilbert renumbering...");
+  Msg::Info(_("Hilbert renumbering..."));
 
   std::set<MVertex *> allv;
   if(elementTags.empty()) {
@@ -260,7 +260,7 @@ int meshRenumber_Vertices_Hilbert(
     permutations[v[i]->getNum()] = i + 1;
   }
 
-  Msg::Info("Done Hilbert renumbering");
+  Msg::Info(_("Done Hilbert renumbering"));
 
   return 0;
 }
@@ -273,7 +273,7 @@ int meshRenumber_Vertices_Metis(
 
 #if defined(HAVE_METIS)
 
-  Msg::Info("METIS renumbering (nested dissection)...");
+  Msg::Info(_("METIS renumbering (nested dissection)..."));
 
   GModel *gm = GModel ::current();
   std::map<MVertex *, std::size_t> initial_numbering;
@@ -292,7 +292,7 @@ int meshRenumber_Vertices_Metis(
   if(result != METIS_OK) {
     delete[] perm;
     delete[] iperm;
-    Msg::Warning("Renumbering with METIS failed");
+    Msg::Warning(_("Renumbering with METIS failed"));
     return -1;
   }
 
@@ -302,11 +302,11 @@ int meshRenumber_Vertices_Metis(
   delete[] perm;
   delete[] iperm;
 
-  Msg::Info("Done METIS renumbering");
+  Msg::Info(_("Done METIS renumbering"));
 
 #else
 
-  Msg::Error("Gmsh must be compiled with METIS support for METIS renumbering");
+  Msg::Error(_("Gmsh must be compiled with METIS support for METIS renumbering"));
 
 #endif
 

@@ -1797,7 +1797,6 @@ if(ENABLE_BUILD_SHARED OR ENABLE_BUILD_DYNAMIC)
             "won't link. In MSVC change /MT to /MD in the shared project properties")
   endif()
 endif()
-
 # binary targets
 if(HAVE_FLTK)
   if(ENABLE_BUILD_DYNAMIC)
@@ -1820,6 +1819,7 @@ else()
   endif()
 endif()
 target_link_libraries(gmsh ${LINK_LIBRARIES})
+
 
 # OS specific linker options
 if(WIN32 AND NOT MSVC)

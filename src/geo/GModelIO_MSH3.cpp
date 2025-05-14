@@ -231,7 +231,7 @@ int GModel::_readMSH3(const std::string &name)
       }
       if(format) {
         binary = true;
-        Msg::Debug("Mesh is in binary format");
+        Msg::Debug(_("Mesh is in binary format"));
         int one;
         if(fread(&one, sizeof(int), 1, fp) != 1) {
           fclose(fp);
@@ -239,7 +239,7 @@ int GModel::_readMSH3(const std::string &name)
         }
         if(one != 1) {
           swap = true;
-          Msg::Debug("Swapping bytes from binary file");
+          Msg::Debug(_("Swapping bytes from binary file"));
         }
       }
     }
@@ -423,7 +423,7 @@ int GModel::_readMSH3(const std::string &name)
       if((int)_vertexMapCache.size() == numVertices &&
          ((minVertex == 1 && maxVertex == numVertices) ||
           (minVertex == 0 && maxVertex == numVertices - 1))) {
-        Msg::Debug("Vertex numbering is dense");
+        Msg::Debug(_("Vertex numbering is dense"));
         _vertexVectorCache.resize(_vertexMapCache.size() + 1);
         if(minVertex == 1)
           _vertexVectorCache[0] = nullptr;

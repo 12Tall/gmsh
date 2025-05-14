@@ -170,7 +170,7 @@ PView *GMSH_CurvedBndDistPlugin::execute(PView *v)
   data->finalize();
   return pv;
 #else
-  Msg::Error("Plugin requires OPTHOM module");
+  Msg::Error(_("Plugin requires OPTHOM module"));
   return v;
 #endif
 }

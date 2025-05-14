@@ -41,7 +41,7 @@ closestPointFinder::closestPointFinder(GEntity *ge, double e) : _tolerance(e)
       oversample(pts, _tolerance);
     }
     else {
-      Msg::Error("Unknown curve in closestPointFinder");
+      Msg::Error(_("Unknown curve in closestPointFinder"));
     }
   }
   index = new ANNidx[1];
@@ -54,7 +54,7 @@ closestPointFinder::closestPointFinder(GEntity *ge, double e) : _tolerance(e)
   }
   kdtree = new ANNkd_tree(zeronodes, pts.size(), 3);
 #else
-  Msg::Error("Gmsh should be compiled with ANN to support closestPointFinder");
+  Msg::Error(_("Gmsh should be compiled with ANN to support closestPointFinder"));
 #endif
 }
 

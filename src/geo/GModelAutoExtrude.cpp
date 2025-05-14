@@ -257,7 +257,7 @@ void getCandidateExtrudeInfo(GRegion *gr, std::vector<extrudeInfo> &info,
       }
 
       if(perp.size() + e1.size() + e2.size() != gr->edges().size()) {
-        Msg::Debug(" - extra curves not connected to source/target surfaces");
+        Msg::Debug(_(" - extra curves not connected to source/target surfaces"));
         continue;
       }
 
@@ -332,7 +332,7 @@ bool GModel::addAutomaticExtrusionConstraints(const std::vector<int> &numElement
     for(auto t : regionTags) {
       GRegion *r = getRegionByTag(t);
       if(r) regs.push_back(r);
-      else Msg::Error("Unknown volume %d for automatic extrusion constraints");
+      else Msg::Error(_("Unknown volume %d for automatic extrusion constraints"));
     }
   }
 
@@ -342,7 +342,7 @@ bool GModel::addAutomaticExtrusionConstraints(const std::vector<int> &numElement
   for(auto r : regs) getCandidateExtrudeInfo(r, candidates, dirCount);
 
   if(candidates.empty()) {
-    Msg::Info("No candidates found for automatic extrusion constraints");
+    Msg::Info(_("No candidates found for automatic extrusion constraints"));
     return false;
   }
 

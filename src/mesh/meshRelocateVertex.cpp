@@ -530,7 +530,7 @@ int _untanglePyramids(GRegion *region, bool topological, bool geometrical)
     MFace mf = region->pyramids[i]->getFace(0);
     auto mf2 = _fcs.find(mf);
     if(mf2 == _fcs.end()) {
-      Msg::Warning("Error in Pyramid Untangling");
+      Msg::Warning(_("Error in Pyramid Untangling"));
       return -1;
     }
     if(topological) {
@@ -587,7 +587,7 @@ void RelocateVerticesOfPyramids(GRegion *region, int niter, double tol)
 {
 #if defined(HAVE_WINSLOWUNTANGLER)
   if(CTX::instance()->mesh.optimizePyramids == 1) {
-    Msg::Info("Using new pyramid optimization");
+    Msg::Info(_("Using new pyramid optimization"));
     _untanglePyramids(region, true, true);
     return;
   }
@@ -595,7 +595,7 @@ void RelocateVerticesOfPyramids(GRegion *region, int niter, double tol)
 
   if(!niter) return;
 
-  Msg::Info("Using old pyramid optimization");
+  Msg::Info(_("Using old pyramid optimization"));
 
   std::vector<MVertex *> _v_pyr;
   for(size_t i = 0; i < region->pyramids.size(); i++) {

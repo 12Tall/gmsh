@@ -79,7 +79,7 @@ void meshMetric::addMetric(int technique, simpleFunction<double> *fct,
 void meshMetric::updateMetrics()
 {
   if(!setOfMetrics.size()) {
-    Msg::Error("Can't intersect metrics, no metric registered");
+    Msg::Error(_("Can't intersect metrics, no metric registered"));
     return;
   }
 
@@ -793,7 +793,7 @@ double meshMetric::operator()(double x, double y, double z, GEntity *ge)
 {
   if(needMetricUpdate) updateMetrics();
   if(!setOfMetrics.size()) {
-    Msg::Error("No metric defined");
+    Msg::Error(_("No metric defined"));
     return 0.;
   }
   SPoint3 xyz(x, y, z), uvw;
@@ -830,7 +830,7 @@ void meshMetric::operator()(double x, double y, double z, SMetric3 &metr,
 {
   if(needMetricUpdate) { updateMetrics(); }
   if(!setOfMetrics.size()) {
-    Msg::Error("No metric defined");
+    Msg::Error(_("No metric defined"));
     return;
   }
   metr = SMetric3(1.e-22);

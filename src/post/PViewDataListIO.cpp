@@ -22,13 +22,13 @@ static void dVecRead(std::vector<double> &v, int n, FILE *fp, bool binary,
   if(n <= 0) return;
   v.resize(n);
   if(binary) {
-    if(!fread(&v[0], sizeof(double), n, fp)) Msg::Error("Read error");
+    if(!fread(&v[0], sizeof(double), n, fp)) Msg::Error(_("Read error"));
     if(swap) SwapBytes((char *)&v[0], sizeof(double), n);
   }
   else {
     for(int i = 0; i < n; i++) {
       if(fscanf(fp, "%lf", &v[i]) != 1) {
-        Msg::Error("Read error");
+        Msg::Error(_("Read error"));
         break;
       }
     }
@@ -41,14 +41,14 @@ static void cVecRead(std::vector<char> &v, int n, FILE *fp, bool binary,
   if(n <= 0) return;
   v.resize(n);
   if(binary) {
-    if(!fread(&v[0], sizeof(char), n, fp)) Msg::Error("Read error");
+    if(!fread(&v[0], sizeof(char), n, fp)) Msg::Error(_("Read error"));
     if(swap) SwapBytes((char *)&v[0], sizeof(char), n);
   }
   else {
     if(oldStyle) {
       for(int i = 0; i < n; i++) {
         if(fscanf(fp, "%c", &v[i]) != 1) {
-          Msg::Error("Read error");
+          Msg::Error(_("Read error"));
           break;
         }
         if(v[i] == '^') v[i] = '\0';
@@ -58,7 +58,7 @@ static void cVecRead(std::vector<char> &v, int n, FILE *fp, bool binary,
       for(int i = 0; i < n; i++) {
         char c = (char)fgetc(fp);
         if(c == EOF) {
-          Msg::Error("Read error");
+          Msg::Error(_("Read error"));
           break;
         }
         else {
@@ -102,22 +102,22 @@ bool PViewDataList::readPOS(FILE *fp, double version, bool binary)
   std::vector<double> SY2, VY2, TY2;
 
   if(version <= 1.0) {
-    Msg::Debug("Detected post-processing view format <= 1.0");
+    Msg::Debug(_("Detected post-processing view format <= 1.0"));
     if(fscanf(fp, "%s %d %d %d %d %d %d %d %d %d %d %d %d %d\n", name,
               &NbTimeStep, &NbSP, &NbVP, &NbTP, &NbSL, &NbVL, &NbTL, &NbST,
               &NbVT, &NbTT, &NbSS, &NbVS, &NbTS) != 14) {
-      Msg::Error("Read error");
+      Msg::Error(_("Read error"));
       return false;
     }
     NbT2 = t2l = NbT3 = t3l = 0;
   }
   else if(version == 1.1) {
-    Msg::Debug("Detected post-processing view format 1.1");
+    Msg::Debug(_("Detected post-processing view format 1.1"));
     if(fscanf(fp, "%s %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d\n",
               name, &NbTimeStep, &NbSP, &NbVP, &NbTP, &NbSL, &NbVL, &NbTL,
               &NbST, &NbVT, &NbTT, &NbSS, &NbVS, &NbTS, &NbT2, &t2l, &NbT3,
               &t3l) != 18) {
-      Msg::Error("Read error");
+      Msg::Error(_("Read error"));
       return false;
     }
   }
@@ -130,12 +130,12 @@ bool PViewDataList::readPOS(FILE *fp, double version, bool binary)
               &NbST, &NbVT, &NbTT, &NbSQ, &NbVQ, &NbTQ, &NbSS, &NbVS, &NbTS,
               &NbSH, &NbVH, &NbTH, &NbSI, &NbVI, &NbTI, &NbSY, &NbVY, &NbTY,
               &NbT2, &t2l, &NbT3, &t3l) != 30) {
-      Msg::Error("Read error");
+      Msg::Error(_("Read error"));
       return false;
     }
   }
   else if(version == 1.4) {
-    Msg::Debug("Detected post-processing view format 1.4");
+    Msg::Debug(_("Detected post-processing view format 1.4"));
     if(fscanf(fp,
               "%s %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d "
               "%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d "
@@ -147,7 +147,7 @@ bool PViewDataList::readPOS(FILE *fp, double version, bool binary)
               &NbTQ2, &NbSS2, &NbVS2, &NbTS2, &NbSH2, &NbVH2, &NbTH2, &NbSI2,
               &NbVI2, &NbTI2, &NbSY2, &NbVY2, &NbTY2, &NbT2, &t2l, &NbT3,
               &t3l) != 51) {
-      Msg::Error("Read error");
+      Msg::Error(_("Read error"));
       return false;
     }
   }
@@ -163,11 +163,11 @@ bool PViewDataList::readPOS(FILE *fp, double version, bool binary)
   if(binary) {
     int testone;
     if(!fread(&testone, sizeof(int), 1, fp)) {
-      Msg::Error("Read error");
+      Msg::Error(_("Read error"));
       return false;
     }
     if(testone != 1) {
-      Msg::Info("Swapping bytes from binary file");
+      Msg::Info(_("Swapping bytes from binary file"));
       swap = 1;
     }
   }
@@ -404,8 +404,7 @@ bool PViewDataList::writePOS(const std::string &fileName, bool binary,
                              bool parsed, bool append)
 {
   if(_adaptive) {
-    Msg::Warning(
-      "Writing adapted dataset (will only export current time step)");
+    Msg::Warning(_("Writing adapted dataset (will only export current time step)"));
     return _adaptive->getData()->writePOS(fileName, binary, parsed, append);
   }
 
@@ -451,7 +450,7 @@ bool PViewDataList::writePOS(const std::string &fileName, bool binary,
     if(binary) {
       int one = 1;
       if(!fwrite(&one, sizeof(int), 1, fp)) {
-        Msg::Error("Write error");
+        Msg::Error(_("Write error"));
         fclose(fp);
         return false;
       }
@@ -635,8 +634,7 @@ bool PViewDataList::writeMSH(const std::string &fileName, double version,
                              bool forceNodeData, bool forceElementData)
 {
   if(_adaptive) {
-    Msg::Warning(
-      "Writing adapted dataset (will only export current time step)");
+    Msg::Warning(_("Writing adapted dataset (will only export current time step)"));
     return _adaptive->getData()->writeMSH(fileName, version, binary);
   }
 
@@ -813,7 +811,7 @@ void PViewDataList::importList(int index, int n, const std::vector<double> &v,
                                bool fin)
 {
   if(index < 0 || index >= 24) {
-    Msg::Error("Wrong list index to import");
+    Msg::Error(_("Wrong list index to import"));
     return;
   }
   std::vector<double> *list = nullptr;

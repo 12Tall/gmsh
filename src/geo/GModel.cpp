@@ -136,7 +136,7 @@ void GModel::setFileName(const std::string &fileName)
 GModel *GModel::current(int index)
 {
   if(list.empty()) {
-    Msg::Debug("No current model available: creating one");
+    Msg::Debug(_("No current model available: creating one"));
     new GModel();
   }
   if(index >= 0) _current = index;
@@ -659,7 +659,7 @@ void GModel::snapVertices()
         t = parb.high();
       }
       else {
-        Msg::Error("Weird point: impossible to snap");
+        Msg::Error(_("Weird point: impossible to snap"));
         break;
       }
       GPoint gp = (*it)->point(t);
@@ -1171,7 +1171,7 @@ int GModel::mesh(int dimension)
   CTX::instance()->mesh.changed = ENT_ALL;
   return true;
 #else
-  Msg::Error("Mesh module not compiled");
+  Msg::Error(_("Mesh module not compiled"));
   return false;
 #endif
 }
@@ -1254,7 +1254,7 @@ checkConformity(std::multimap<MFace, MElement *, MFaceLessThan> &faceToElement,
 
 void GModel::setAllVolumesPositiveTopology()
 {
-  Msg::Info("Orienting volumes according to topology");
+  Msg::Info(_("Orienting volumes according to topology"));
   std::map<MElement *, std::vector<std::pair<MElement *, bool> > >
     elToNeighbors;
   std::multimap<MFace, MElement *, MFaceLessThan> faceToElement;
@@ -1279,8 +1279,7 @@ void GModel::setAllVolumesPositiveTopology()
   std::vector<std::pair<MElement *, bool> > queue;
   std::set<MElement *> queued;
   if((*regions.begin())->tetrahedra.size() == 0) {
-    Msg::Error(
-      "setAllVolumePositiveTopology needs at least one tetrahedron to start");
+    Msg::Error(_("setAllVolumePositiveTopology needs at least one tetrahedron to start"));
     return;
   }
   el = (*regions.begin())->tetrahedra[0];
@@ -1317,7 +1316,7 @@ int GModel::adaptMesh()
   CTX::instance()->mesh.changed = ENT_ALL;
   return 1;
 #else
-  Msg::Error("Mesh module not compiled");
+  Msg::Error(_("Mesh module not compiled"));
   return 0;
 #endif
 }
@@ -1487,7 +1486,7 @@ int GModel::adaptMesh(std::vector<int> technique,
 
   return 0;
 #else
-  Msg::Error("Mesh module not compiled");
+  Msg::Error(_("Mesh module not compiled"));
   return -1;
 #endif
 }
@@ -1507,7 +1506,7 @@ int GModel::refineMesh(int linear, bool splitIntoQuads, bool splitIntoHexas,
   CTX::instance()->mesh.changed = ENT_ALL;
   return 1;
 #else
-  Msg::Error("Mesh module not compiled");
+  Msg::Error(_("Mesh module not compiled"));
   return 0;
 #endif
 }
@@ -1523,7 +1522,7 @@ int GModel::recombineMesh()
   CTX::instance()->mesh.changed = ENT_ALL;
   return 1;
 #else
-  Msg::Error("Mesh module not compiled");
+  Msg::Error(_("Mesh module not compiled"));
   return 0;
 #endif
 }
@@ -1540,7 +1539,7 @@ int GModel::optimizeMesh(const std::string &how, const bool force, int niter)
   CTX::instance()->mesh.changed = ENT_ALL;
   return 1;
 #else
-  Msg::Error("Mesh module not compiled");
+  Msg::Error(_("Mesh module not compiled"));
   return 0;
 #endif
 }
@@ -1560,7 +1559,7 @@ int GModel::setOrderN(int order, int linear, int incomplete, int onlyVisible)
   CTX::instance()->mesh.changed = ENT_ALL;
   return true;
 #else
-  Msg::Error("Mesh module not compiled");
+  Msg::Error(_("Mesh module not compiled"));
   return false;
 #endif
 }
@@ -1771,7 +1770,7 @@ void GModel::renumberMeshVertices(const std::map<std::size_t, std::size_t> &mapp
 
   std::size_t n = CTX::instance()->mesh.firstNodeTag - 1;
   if(saveOnlyPhysicals || pruneOrphans) {
-    Msg::Debug("Renumbering for potentially partial mesh save");
+    Msg::Debug(_("Renumbering for potentially partial mesh save"));
     // if we potentially only save a subset of elements, make sure to first
     // renumber the nodes that belong to those elements (so that we end up
     // with a dense node numbering in the output file)
@@ -1977,7 +1976,7 @@ MElement *GModel::getMeshElementByCoord(SPoint3 &p, SPoint3 &param, int dim,
 #pragma omp barrier
 #pragma omp single
     {
-      Msg::Debug("Rebuilding mesh element octree");
+      Msg::Debug(_("Rebuilding mesh element octree"));
       _elementOctree = new MElementOctree(this);
     }
   }
@@ -2000,7 +1999,7 @@ std::vector<MElement *> GModel::getMeshElementsByCoord(SPoint3 &p, int dim,
 #pragma omp barrier
 #pragma omp single
     {
-      Msg::Debug("Rebuilding mesh element octree");
+      Msg::Debug(_("Rebuilding mesh element octree"));
       _elementOctree = new MElementOctree(this);
     }
   }
@@ -2015,12 +2014,11 @@ void GModel::rebuildMeshVertexCache(bool onlyIfNecessary)
     _vertexMapCache.clear();
     bool dense = false;
     if(_maxVertexNum == getNumMeshVertices()) {
-      Msg::Debug("We have a dense node numbering in the cache");
+      Msg::Debug(_("We have a dense node numbering in the cache"));
       dense = true;
     }
     else if(_maxVertexNum < 10 * getNumMeshVertices()) {
-      Msg::Debug(
-        "We have a fairly dense node numbering - still using cache vector");
+      Msg::Debug(_("We have a fairly dense node numbering - still using cache vector"));
       dense = true;
     }
     std::vector<GEntity *> entities;
@@ -2046,17 +2044,16 @@ void GModel::rebuildMeshElementCache(bool onlyIfNecessary)
 {
   if(!onlyIfNecessary ||
      (_elementVectorCache.empty() && _elementMapCache.empty())) {
-    Msg::Debug("Rebuilding mesh element cache");
+    Msg::Debug(_("Rebuilding mesh element cache"));
     _elementVectorCache.clear();
     _elementMapCache.clear();
     bool dense = false;
     if(_maxElementNum == getNumMeshElements()) {
-      Msg::Debug("We have a dense element numbering in the cache");
+      Msg::Debug(_("We have a dense element numbering in the cache"));
       dense = true;
     }
     else if(_maxElementNum < 10 * getNumMeshElements()) {
-      Msg::Debug(
-        "We have a fairly dense element numbering - still using cache vector");
+      Msg::Debug(_("We have a fairly dense element numbering - still using cache vector"));
       dense = true;
     }
     std::vector<GEntity *> entities;
@@ -2087,7 +2084,7 @@ MVertex *GModel::getMeshVertexByTag(std::size_t n)
 #pragma omp barrier
 #pragma omp single
     {
-      Msg::Debug("Rebuilding mesh node cache");
+      Msg::Debug(_("Rebuilding mesh node cache"));
       rebuildMeshVertexCache();
     }
   }
@@ -2101,7 +2098,7 @@ MVertex *GModel::getMeshVertexByTag(std::size_t n)
 void GModel::addMVertexToVertexCache(MVertex* v)
 {
   if(_vertexVectorCache.empty() && _vertexMapCache.empty()) {
-    Msg::Debug("Rebuilding mesh node cache");
+    Msg::Debug(_("Rebuilding mesh node cache"));
     rebuildMeshVertexCache();
   }
   if (_vertexVectorCache.size() > 0) {
@@ -2141,7 +2138,7 @@ MElement *GModel::getMeshElementByTag(std::size_t n, int &entityTag)
 #pragma omp barrier
 #pragma omp single
     {
-      Msg::Debug("Rebuilding mesh element cache");
+      Msg::Debug(_("Rebuilding mesh element cache"));
       rebuildMeshElementCache();
     }
   }
@@ -2349,7 +2346,7 @@ int GModel::partitionMesh(
   }
   return 1;
 #else
-  Msg::Error("Mesh or Metis module not compiled");
+  Msg::Error(_("Mesh or Metis module not compiled"));
   return 1;
 #endif
 }
@@ -2359,7 +2356,7 @@ int GModel::unpartitionMesh()
 #if defined(HAVE_MESH)
   return UnpartitionMesh(this);
 #else
-  Msg::Error("Mesh module not compiled");
+  Msg::Error(_("Mesh module not compiled"));
   return 1;
 #endif
 }
@@ -2370,7 +2367,7 @@ int GModel::convertOldPartitioningToNewOne()
   int ier = ConvertOldPartitioningToNewOne(this);
   return ier;
 #else
-  Msg::Error("Mesh or Metis module not compiled");
+  Msg::Error(_("Mesh or Metis module not compiled"));
   return 1;
 #endif
 }
@@ -2739,7 +2736,7 @@ void GModel::checkMeshCoherence(double tolerance)
 
   // check for duplicate mesh nodes
   {
-    Msg::Info("Checking for duplicate nodes...");
+    Msg::Info(_("Checking for duplicate nodes..."));
     std::vector<MVertex *> vertices;
     for(std::size_t i = 0; i < entities.size(); i++)
       vertices.insert(vertices.end(), entities[i]->mesh_vertices.begin(),
@@ -2766,7 +2763,7 @@ void GModel::checkMeshCoherence(double tolerance)
 
   // check for duplicate elements and inverted or zero-volume elements
   {
-    Msg::Info("Checking for duplicate elements...");
+    Msg::Info(_("Checking for duplicate elements..."));
     std::vector<MVertex *> vertices;
     for(std::size_t i = 0; i < entities.size(); i++) {
       for(std::size_t j = 0; j < entities[i]->getNumMeshElements(); j++) {
@@ -2790,7 +2787,7 @@ void GModel::checkMeshCoherence(double tolerance)
 
   // check for isolated nodes (not belonging to any elements
   {
-    Msg::Info("Checking for isolated nodes...");
+    Msg::Info(_("Checking for isolated nodes..."));
     std::vector<GEntity *> entities2;
     getEntities(entities2, getMeshDim());
     std::set<MVertex *, MVertexPtrLessThan> allv;
@@ -2857,7 +2854,7 @@ int GModel::removeDuplicateMeshVertices(double tolerance,
   Msg::Info("Found %d duplicate nodes ", num);
 
   if(!num) {
-    Msg::Info("No duplicate nodes found");
+    Msg::Info(_("No duplicate nodes found"));
     return 0;
   }
 
@@ -2959,7 +2956,7 @@ void GModel::alignPeriodicBoundaries()
   // 1) It's quite horrible
   // 2) It's only called when reading MSH2 files
 
-  Msg::Debug("Aligning periodic boundaries");
+  Msg::Debug(_("Aligning periodic boundaries"));
 
   // realigning edges
 
@@ -3111,7 +3108,7 @@ void GModel::alignPeriodicBoundaries()
 
           if((tgtTri && !dynamic_cast<MTriangle *>(srcElmt)) ||
              (tgtQua && !dynamic_cast<MQuadrangle *>(srcElmt))) {
-            Msg::Error("Invalid source/target elements");
+            Msg::Error(_("Invalid source/target elements"));
             return;
           }
 
@@ -3134,7 +3131,7 @@ void GModel::alignPeriodicBoundaries()
       }
     }
   }
-  Msg::Debug("Done aligning periodic boundaries");
+  Msg::Debug(_("Done aligning periodic boundaries"));
 }
 
 static void connectMElementsByMFace(
@@ -3228,7 +3225,7 @@ static int connectedSurfaces(std::vector<MElement *> &elements,
 
 void GModel::makeDiscreteRegionsSimplyConnected()
 {
-  Msg::Info("Making discrete regions simply connected...");
+  Msg::Info(_("Making discrete regions simply connected..."));
 
   std::vector<discreteRegion *> discRegions;
   for(auto it = firstRegion(); it != lastRegion(); it++)
@@ -3282,12 +3279,12 @@ void GModel::makeDiscreteRegionsSimplyConnected()
     }
   }
 
-  Msg::Info("Done making discrete regions simply connected");
+  Msg::Info(_("Done making discrete regions simply connected"));
 }
 
 void GModel::makeDiscreteFacesSimplyConnected()
 {
-  Msg::Info("Making discrete faces simply connected...");
+  Msg::Info(_("Making discrete faces simply connected..."));
 
   std::vector<discreteFace *> discFaces;
   for(auto it = firstFace(); it != lastFace(); it++)
@@ -3337,14 +3334,14 @@ void GModel::makeDiscreteFacesSimplyConnected()
     }
   }
 
-  Msg::Info("Done making discrete faces simply connected");
+  Msg::Info(_("Done making discrete faces simply connected"));
 }
 
 static void
 makeSimplyConnected(std::map<int, std::vector<MElement *> > elements[11])
 {
   // only for tetras and triangles
-  Msg::Info("Make simply connected regions and surfaces");
+  Msg::Info(_("Make simply connected regions and surfaces"));
   std::vector<int> regs;
   for(auto it = elements[4].begin(); it != elements[4].end(); it++)
     regs.push_back(it->first);
@@ -3408,7 +3405,7 @@ makeSimplyConnected(std::map<int, std::vector<MElement *> > elements[11])
             if(r2 != ri) break;
           }
           if(r2 == ri)
-            Msg::Warning("Element not found for simply connected regions");
+            Msg::Warning(_("Element not found for simply connected regions"));
         }
 
         for(std::size_t k = 0; k < conRegions[j].size(); k++) {
@@ -3486,7 +3483,7 @@ makeSimplyConnected(std::map<int, std::vector<MElement *> > elements[11])
             if(f2 != fi) break;
           }
           if(f2 == fi)
-            Msg::Warning("Element not found for simply connected surfaces");
+            Msg::Warning(_("Element not found for simply connected surfaces"));
         }
         for(std::size_t k = 0; k < conSurfaces[j].size(); k++) {
           MElement *el = conSurfaces[j][k];
@@ -3513,9 +3510,9 @@ GModel *GModel::buildCutGModel(gLevelset *ls, bool cutElem, bool saveTri)
   std::map<std::size_t, MVertex *> vertexMap;
 
   if(cutElem)
-    Msg::Info("Cutting mesh...");
+    Msg::Info(_("Cutting mesh..."));
   else
-    Msg::Info("Splitting mesh...");
+    Msg::Info(_("Splitting mesh..."));
   double t1 = Cpu(), w1 = TimeOfDay();
 
   GModel *cutGM =
@@ -3677,7 +3674,7 @@ void GModel::computeHomology(std::vector<std::pair<int, int> > &newPhysicals)
         Msg::Error("Unknown type of homology computation: %s", type.c_str());
       }
       else if(dim.empty()) {
-        Msg::Error("Invalid homology computation dimensions given");
+        Msg::Error(_("Invalid homology computation dimensions given"));
       }
       else if(type == "Betti") {
         homology->findBettiNumbers();
@@ -3711,7 +3708,7 @@ void GModel::computeHomology(std::vector<std::pair<int, int> > &newPhysicals)
                  w2 - w1, t2 - t1);
 
 #else
-  Msg::Error("Homology computation requires KBIPACK");
+  Msg::Error(_("Homology computation requires KBIPACK"));
 #endif
 }
 
@@ -3723,7 +3720,7 @@ void GModel::computeSizeField()
   fields->newField(myId, std::string("AutomaticMeshSizeField"));
   fields->get(myId)->update();
 #else
-  Msg::Error("Size field computation requires both HXT and P4EST");
+  Msg::Error(_("Size field computation requires both HXT and P4EST"));
 #endif
 }
 

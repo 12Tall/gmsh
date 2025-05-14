@@ -111,7 +111,7 @@ int List_Nbr(List_T *liste)
 void List_Read(List_T *liste, int index, void *data)
 {
   if(!liste || (index < 0) || (index >= liste->n)) {
-    Msg::Error("Wrong list index (read)");
+    Msg::Error(_("Wrong list index (read)"));
     index = 0;
   }
   memcpy(data, &liste->array[(size_t)index * liste->size], liste->size);
@@ -120,7 +120,7 @@ void List_Read(List_T *liste, int index, void *data)
 void List_Write(List_T *liste, int index, void *data)
 {
   if(!liste || (index < 0) || (index >= liste->n))
-    Msg::Error("Wrong list index (write)");
+    Msg::Error(_("Wrong list index (write)"));
   else {
     liste->isorder = 0;
     memcpy(&liste->array[(size_t)index * liste->size], data, liste->size);
@@ -130,7 +130,7 @@ void List_Write(List_T *liste, int index, void *data)
 void List_Put(List_T *liste, int index, void *data)
 {
   if(!liste || index < 0)
-    Msg::Error("Wrong list index (put)");
+    Msg::Error(_("Wrong list index (put)"));
   else {
     if(index >= liste->n) {
       liste->n = index + 1;
@@ -152,7 +152,7 @@ void List_Pop(List_T *liste)
 void *List_Pointer(List_T *liste, int index)
 {
   if(!liste || (index < 0) || (index >= liste->n)) {
-    Msg::Error("Wrong list index (pointer)");
+    Msg::Error(_("Wrong list index (pointer)"));
     index = 0;
   }
   liste->isorder = 0;
@@ -162,7 +162,7 @@ void *List_Pointer(List_T *liste, int index)
 void *List_Pointer_NoChange(List_T *liste, int index)
 {
   if(!liste || (index < 0) || (index >= liste->n)) {
-    Msg::Error("Wrong list index (pointer)");
+    Msg::Error(_("Wrong list index (pointer)"));
     index = 0;
   }
   return (&liste->array[(size_t)index * liste->size]);

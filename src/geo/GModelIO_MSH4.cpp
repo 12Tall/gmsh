@@ -691,16 +691,15 @@ readMSH4Nodes(GModel *const model, FILE *fp, bool binary, bool &dense,
   // if the vertex numbering is (fairly) dense, we fill the vector cache,
   // otherwise we fill the map cache
   if(minNodeNum == 1 && maxNodeNum == totalNumNodes) {
-    Msg::Debug("Vertex numbering is dense");
+    Msg::Debug(_("Vertex numbering is dense"));
     dense = true;
   }
   else if(maxNodeNum < 10 * totalNumNodes) {
-    Msg::Debug(
-      "Vertex numbering is fairly dense - still caching with a vector");
+    Msg::Debug(_("Vertex numbering is fairly dense - still caching with a vector"));
     dense = true;
   }
   else {
-    Msg::Debug("Vertex numbering is not dense");
+    Msg::Debug(_("Vertex numbering is not dense"));
     dense = false;
   }
 
@@ -925,16 +924,15 @@ readMSH4Elements(GModel *const model, FILE *fp, bool binary, bool &dense,
   // if the vertex numbering is dense, we fill the vector cache, otherwise we
   // fill the map cache
   if(minElementNum == 1 && maxElementNum == totalNumElements) {
-    Msg::Debug("Element numbering is dense");
+    Msg::Debug(_("Element numbering is dense"));
     dense = true;
   }
   else if(maxElementNum < 10 * totalNumElements) {
-    Msg::Debug(
-      "Element numbering is fairly dense - still caching with a vector");
+    Msg::Debug(_("Element numbering is fairly dense - still caching with a vector"));
     dense = true;
   }
   else {
-    Msg::Debug("Element numbering is not dense");
+    Msg::Debug(_("Element numbering is not dense"));
     dense = false;
   }
 
@@ -1280,7 +1278,7 @@ int GModel::_readMSH4(const std::string &name)
       }
       if(format) {
         binary = true;
-        Msg::Debug("Mesh is in binary format");
+        Msg::Debug(_("Mesh is in binary format"));
         int one;
         if(fread(&one, sizeof(int), 1, fp) != 1) {
           fclose(fp);
@@ -1288,7 +1286,7 @@ int GModel::_readMSH4(const std::string &name)
         }
         if(one != 1) {
           swap = true;
-          Msg::Debug("Swapping bytes from binary file");
+          Msg::Debug(_("Swapping bytes from binary file"));
         }
       }
 
@@ -1299,7 +1297,7 @@ int GModel::_readMSH4(const std::string &name)
         return false;
       }
       if(binary && version < 4.1) {
-        Msg::Error("Can only read MSH 4.0 format in ASCII mode");
+        Msg::Error(_("Can only read MSH 4.0 format in ASCII mode"));
         return false;
       }
     }
@@ -1334,14 +1332,14 @@ int GModel::_readMSH4(const std::string &name)
     }
     else if(!strncmp(&str[1], "Entities", 8)) {
       if(!readMSH4Entities(this, fp, false, binary, swap, version)) {
-        Msg::Error("Could not read entities");
+        Msg::Error(_("Could not read entities"));
         fclose(fp);
         return 0;
       }
     }
     else if(!strncmp(&str[1], "PartitionedEntities", 19)) {
       if(!readMSH4Entities(this, fp, true, binary, swap, version)) {
-        Msg::Error("Could not read partitioned entities");
+        Msg::Error(_("Could not read partitioned entities"));
         fclose(fp);
         return 0;
       }
@@ -1356,7 +1354,7 @@ int GModel::_readMSH4(const std::string &name)
         this, fp, binary, dense, totalNumNodes, maxNodeNum, swap, version);
       Msg::StopProgressMeter();
       if(!vertexCache) {
-        Msg::Error("Could not read nodes");
+        Msg::Error(_("Could not read nodes"));
         fclose(fp);
         return false;
       }
@@ -1391,7 +1389,7 @@ int GModel::_readMSH4(const std::string &name)
                          maxElementNum, swap, version);
       Msg::StopProgressMeter();
       if(!elementCache) {
-        Msg::Error("Could not read elements");
+        Msg::Error(_("Could not read elements"));
         fclose(fp);
         return 0;
       }
@@ -1420,21 +1418,21 @@ int GModel::_readMSH4(const std::string &name)
     }
     else if(!strncmp(&str[1], "Periodic", 8)) {
       if(!readMSH4PeriodicNodes(this, fp, binary, swap, version)) {
-        Msg::Error("Could not read periodic section");
+        Msg::Error(_("Could not read periodic section"));
         fclose(fp);
         return 0;
       }
     }
     else if(!strncmp(&str[1], "GhostElements", 13)) {
       if(!readMSH4GhostElements(this, fp, binary, swap)) {
-        Msg::Error("Could not read ghost elements");
+        Msg::Error(_("Could not read ghost elements"));
         fclose(fp);
         return 0;
       }
     }
     else if(!strncmp(&str[1], "Parametrizations", 16)) {
       if(!readMSH4Parametrizations(this, fp, binary)) {
-        Msg::Error("Could not read parametrizations");
+        Msg::Error(_("Could not read parametrizations"));
         fclose(fp);
         return 0;
       }
@@ -2849,7 +2847,7 @@ int GModel::_writeMSH4(const std::string &name, double version, bool binary,
   }
 
   if(version < 4.1 && binary) {
-    Msg::Error("Can only write MSH 4.0 format in ASCII mode");
+    Msg::Error(_("Can only write MSH 4.0 format in ASCII mode"));
     return 0;
   }
 
@@ -2903,7 +2901,7 @@ int GModel::_writeMSH4(const std::string &name, double version, bool binary,
     if(!partEnt) {
       // this can happen when e.g. loading an old MSH2 files with partition tags
       // stored in elements
-      Msg::Warning("No partition entities found, saving mesh as unpartitioned");
+      Msg::Warning(_("No partition entities found, saving mesh as unpartitioned"));
       partitioned = false;
     }
   }

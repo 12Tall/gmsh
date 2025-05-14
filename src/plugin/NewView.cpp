@@ -64,15 +64,15 @@ PView *GMSH_NewViewPlugin::execute(PView *v)
   std::string type = NewViewOptions_String[0].def;
 
   if(GModel::current()->getMeshStatus() < 0) {
-    Msg::Error("No mesh available to create the view: please mesh your model!");
+    Msg::Error(_("No mesh available to create the view: please mesh your model!"));
     return v;
   }
   if(numComp < 1) {
-    Msg::Error("Bad number of components for Plugin(NewView)");
+    Msg::Error(_("Bad number of components for Plugin(NewView)"));
     return v;
   }
   if(!(type == "NodeData" || type == "ElementData")) {
-    Msg::Error("Unknown data type for Plugin(NewView)");
+    Msg::Error(_("Unknown data type for Plugin(NewView)"));
     return v;
   }
 

@@ -8,7 +8,7 @@
 void create_ppm(FILE *outfile, PixelBuffer *buffer)
 {
   if(buffer->getFormat() != GL_RGB || buffer->getType() != GL_UNSIGNED_BYTE) {
-    Msg::Error("PPM only implemented for GL_RGB and GL_UNSIGNED_BYTE");
+    Msg::Error(_("PPM only implemented for GL_RGB and GL_UNSIGNED_BYTE"));
     return;
   }
 

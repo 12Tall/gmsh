@@ -32,7 +32,7 @@ void   skipline(void);
       if(c == '\n') yylineno++;                                         \
     }                                                                   \
     if(c == EOF && ferror(yyin))                                        \
-      Msg::Error("Input in flex scanner failed");			\
+      Msg::Error(_("Input in flex scanner failed"));			\
     result = n;                                                         \
   }
 
@@ -377,7 +377,7 @@ void skipcomments(void)
       // Test on YY_END_OF_BUFFER_CHAR (0), not on feof(yyin) because whole line
       // in buffer
       if(c == '\0') {
-	Msg::Error("End of file in commented region");
+	Msg::Error(_("End of file in commented region"));
         return;
       }
     }
@@ -399,11 +399,11 @@ void parsestring(char endchar)
     // Test on YY_END_OF_BUFFER_CHAR (0), not on feof(yyin) because whole line
     // in buffer
     if(c == '\0') {
-      Msg::Error("End of file in string");
+      Msg::Error(_("End of file in string"));
       break;
     }
     else if(i >= (int)sizeof(tmp) - 1) {
-      Msg::Error("String too long");
+      Msg::Error(_("String too long"));
       break;
     }
     else{
@@ -444,7 +444,7 @@ void skip(const char *skip, const char *until)
 
   l_max = std::max(l_skip, l_until);
   if(l_max >= (int)sizeof(chars)) {
-    Msg::Error("Search pattern too long in skip");
+    Msg::Error(_("Search pattern too long in skip"));
     return;
   }
 
@@ -453,7 +453,7 @@ void skip(const char *skip, const char *until)
       chars[0] = yyinput();
       // TOFIX: do another test
       if(feof(yyin)) {
-	Msg::Error("Unexpected end of file");
+	Msg::Error(_("Unexpected end of file"));
 	return;
       }
       if(chars[0] == '/') {
@@ -531,7 +531,7 @@ void skipTest(const char *skip, const char *until,
   l_max = std::max(l_skip, l_until);
   l_max = std::max(l_max, l_until2);
   if(l_max >= (int)sizeof(chars)) {
-    Msg::Error("Search pattern too long in skipTest");
+    Msg::Error(_("Search pattern too long in skipTest"));
     return;
   }
 
@@ -539,7 +539,7 @@ void skipTest(const char *skip, const char *until,
     while(1) {
       chars[0] = yyinput();
       if(feof(yyin)) {
-	Msg::Error("Unexpected end of file");
+	Msg::Error(_("Unexpected end of file"));
 	return;
       }
       if(chars[0] == '/') {

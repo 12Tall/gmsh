@@ -40,7 +40,7 @@ static int ComparePosition(const void *a, const void *b)
   Vertex *w = *(Vertex **)b;
 
   if(!q || !w) {
-    Msg::Error("Cannot compare position of null points");
+    Msg::Error(_("Cannot compare position of null points"));
     return 99;
   }
 
@@ -411,11 +411,9 @@ bool EndCurve(Curve *c)
     if(!CTX::instance()->expertMode && c->Num > 0 && A3 - A1 > 1.01 * M_PI) {
       Msg::Error("Circle or ellipse arc %d greater than Pi (angle=%g)", c->Num,
                  A3 - A1);
-      Msg::Error(
-        "(If you understand what this implies, you can disable this error");
-      Msg::Error(
-        "message by selecting `Enable expert mode' in the option dialog.");
-      Msg::Error("Otherwise, please subdivide the arc in smaller pieces.)");
+      Msg::Error(_("(If you understand what this implies, you can disable this error"));
+      Msg::Error(_("message by selecting `Enable expert mode' in the option dialog."));
+      Msg::Error(_("Otherwise, please subdivide the arc in smaller pieces.)"));
       ok = false;
     }
   }
@@ -876,8 +874,7 @@ static void CopySurface(Surface *s, Surface *ss)
     ss->MeshAlgorithm = s->MeshAlgorithm;
     ss->MeshSizeFromBoundary = s->MeshSizeFromBoundary;
     if(List_Nbr(s->TrsfPoints))
-      Msg::Warning(
-        "Only automatic transfinite surface specifications can be copied");
+      Msg::Warning(_("Only automatic transfinite surface specifications can be copied"));
   }
   ss->Generatrices =
     List_Create(List_Nbr(s->Generatrices) + 1, 1, sizeof(Curve *));
@@ -930,8 +927,7 @@ static void CopyVolume(Volume *v, Volume *vv)
     vv->QuadTri = v->QuadTri;
     vv->Recombine3D = v->Recombine3D;
     if(List_Nbr(v->TrsfPoints))
-      Msg::Warning(
-        "Only automatic transfinite volume specifications can be copied");
+      Msg::Warning(_("Only automatic transfinite volume specifications can be copied"));
   }
   List_Copy(v->Surfaces, vv->Surfaces);
   List_Copy(v->SurfacesOrientations, vv->SurfacesOrientations);
@@ -1411,7 +1407,7 @@ static void ApplyTransformationToPoint(double matrix[4][4], Vertex *v)
 static void ApplyTransformationToCurve(double matrix[4][4], Curve *c)
 {
   if(!c->beg || !c->end) {
-    Msg::Error("Cannot transform curve with no begin/end points");
+    Msg::Error(_("Cannot transform curve with no begin/end points"));
     return;
   }
 
@@ -1756,7 +1752,7 @@ static void MaxNumSurface(void *a, void *b)
 
 static void ReplaceDuplicatePointsNew(double tol = -1.)
 {
-  Msg::Info("New Coherence...");
+  Msg::Info(_("New Coherence..."));
   if(tol < 0) tol = CTX::instance()->geom.tolerance * CTX::instance()->lc;
 
   // create rtree
@@ -2731,7 +2727,7 @@ int ExtrudePoint(int type, int ip, double T0, double T1, double T2, double A0,
     }
     c->end = chapeau;
     break;
-  default: Msg::Error("Unknown extrusion type"); return pv->Num;
+  default: Msg::Error(_("Unknown extrusion type")); return pv->Num;
   }
 
   EndCurve(c);
@@ -2781,7 +2777,7 @@ int ExtrudeCurve(int type, int ic, double T0, double T1, double T2, double A0,
 
   if(pc) {
     if(!pc->beg || !pc->end) {
-      Msg::Error("Cannot extrude curve with no begin or end point");
+      Msg::Error(_("Cannot extrude curve with no begin or end point"));
       return 0;
     }
     if(pc->beg == pc->end && type != BOUNDARY_LAYER) {
@@ -2798,7 +2794,7 @@ int ExtrudeCurve(int type, int ic, double T0, double T1, double T2, double A0,
     }
 
     if(!ge->getBeginVertex() || !ge->getEndVertex()) {
-      Msg::Error("Cannot extrude curve with no begin or end point");
+      Msg::Error(_("Cannot extrude curve with no begin or end point"));
       return 0;
     }
   }
@@ -2896,7 +2892,7 @@ int ExtrudeCurve(int type, int ic, double T0, double T1, double T2, double A0,
     ApplyTransformationToCurve(matrix, chapeau);
     break;
   default:
-    Msg::Error("Unknown extrusion type");
+    Msg::Error(_("Unknown extrusion type"));
     return ic;
   }
 
@@ -3190,7 +3186,7 @@ int ExtrudeSurface(int type, int is, double T0, double T1, double T2, double A0,
     List_Reset(ListOfTransformedPoints);
     ApplyTransformationToSurface(matrix, chapeau);
     break;
-  default: Msg::Error("Unknown extrusion type"); break;
+  default: Msg::Error(_("Unknown extrusion type")); break;
   }
 
   // this is done only for backward compatibility with the old

@@ -223,7 +223,7 @@ public:
     for(size_t i = 0; i < _neighbors.size(); i++) {
       auto it = C.find(_neighbors[i]);
       if(it == C.end())
-        Msg::Error("impossible situation");
+        Msg::Error(_("impossible situation"));
       else
         _cneighbors.push_back(&(it->second));
     }
@@ -949,7 +949,7 @@ void assembleExtraConnexions(dofManager<double> &myAssembler,
   int groups[2][2] = {{14, 1}, {13, 2}};
 
   if(G.size() < 2) {
-    Msg::Debug("Less than 2 groupOfCross2d in assembleExtraConnexions");
+    Msg::Debug(_("Less than 2 groupOfCross2d in assembleExtraConnexions"));
     return;
   }
 
@@ -2434,7 +2434,7 @@ static void createJumpyPairs(
           else if(v1 == nullptr)
             v1 = vv;
           else
-            Msg::Error("error in JumpyPairs 1");
+            Msg::Error(_("error in JumpyPairs 1"));
         }
         if(t2->getVertex(0) == vv || t2->getVertex(1) == vv ||
            t2->getVertex(2) == vv) {
@@ -2443,7 +2443,7 @@ static void createJumpyPairs(
           else if(v1 == nullptr)
             v1 = vv;
           else
-            Msg::Error("error in JumpyPairs 1");
+            Msg::Error(_("error in JumpyPairs 1"));
         }
         for(auto it = old2new.lower_bound(vv); it != old2new.upper_bound(vv);
             ++it) {
@@ -2455,7 +2455,7 @@ static void createJumpyPairs(
             else if(v1 == nullptr)
               v1 = vvv;
             else
-              Msg::Error("error in JumpyPairs 1");
+              Msg::Error(_("error in JumpyPairs 1"));
           }
           if(t2->getVertex(0) == vvv || t2->getVertex(1) == vvv ||
              t2->getVertex(2) == vvv) {
@@ -2464,10 +2464,10 @@ static void createJumpyPairs(
             else if(v1 == nullptr)
               v1 = vvv;
             else
-              Msg::Error("error in JumpyPairs 2");
+              Msg::Error(_("error in JumpyPairs 2"));
           }
         }
-        if(!v1 || !v0) Msg::Error("error in JumpyPairs 3");
+        if(!v1 || !v0) Msg::Error(_("error in JumpyPairs 3"));
         if(computeLeftRight(g, &v0, &v1)) {
           if(boundaries.find(vv) != boundaries.end()) {
             g.left.insert(g.left.begin(), v0);
@@ -3250,7 +3250,7 @@ public:
     if(a.norm() < 1.e-10 && b < 0) return v1;
 
     if(!v2) {
-      //      Msg::Error("Error In CutMesh");
+      //      Msg::Error(_("Error In CutMesh"));
       return nullptr;
     }
 
@@ -3651,9 +3651,9 @@ public:
       MAXX = std::max(MAXD2 - MIND2, MAXX);
     }
     if(MAXX < 1.e-09)
-      Msg::Info("Success in computing potentials (all jumps are OK)");
+      Msg::Info(_("Success in computing potentials (all jumps are OK)"));
     else
-      Msg::Warning("Quad Layout Failure");
+      Msg::Warning(_("Quad Layout Failure"));
     return 0;
   }
 };
@@ -3721,7 +3721,7 @@ static int computeCrossFieldAndH(GModel *gm, std::vector<GFace *> &f,
     qLayout.computeCutGraph(duplicateEdges);
   }
   else {
-    Msg::Info("Computing a cross field");
+    Msg::Info(_("Computing a cross field"));
     qLayout.computeCrossFieldAndH();
     qLayout.computeCutGraph(duplicateEdges);
     qLayout.computeThetaUsingHCrouzeixRaviart(dataTHETA);
@@ -3821,11 +3821,11 @@ static int computeCrossFieldAndH(GModel *gm, std::vector<GFace *> &f,
     V->writePOS(posout, false, true, true);
   }
   //  return 0;
-  Msg::Info("Cutting the mesh");
+  Msg::Info(_("Cutting the mesh"));
 
   qLayout.cutMesh(cuts);
 
-  Msg::Info("Classifying the model");
+  Msg::Info(_("Classifying the model"));
   discreteEdge *de = new discreteEdge(
     GModel::current(), GModel::current()->getMaxElementaryNumber(1) + 1,
     nullptr, nullptr);
@@ -3883,7 +3883,7 @@ int computeCrossFieldAndH(GModel *gm, std::vector<int> &tags)
 #if defined(HAVE_SOLVER) && defined(HAVE_POST)
   return computeCrossFieldAndH(gm, f, tags);
 #else
-  Msg::Error("Cross field computation requires solver and post-pro module");
+  Msg::Error(_("Cross field computation requires solver and post-pro module"));
   return -1;
 #endif
 }
@@ -3896,7 +3896,7 @@ int computeQuadLayout(GModel *gm, std::vector<int> &tags)
 #if defined(HAVE_SOLVER) && defined(HAVE_POST)
   return computeCrossFieldAndH(gm, f, tags, true);
 #else
-  Msg::Error("Cross field computation requires solver and post-pro module");
+  Msg::Error(_("Cross field computation requires solver and post-pro module"));
   return -1;
 #endif
 }
@@ -3910,7 +3910,7 @@ int computeCrossField(GModel *gm, std::vector<int> &tags)
   return computeCrossFieldAndH(gm, f, tags, true);
   // return computeQuadLayout(gm, f);
 #else
-  Msg::Error("Cross field computation requires solver and post-pro module");
+  Msg::Error(_("Cross field computation requires solver and post-pro module"));
   return -1;
 #endif
 }

@@ -798,7 +798,7 @@ void PrintOptionsDoc()
   {
     FILE *file = Fopen("opt_general.texi", "w");
     if(!file) {
-      Msg::Error("Unable to open file 'opt_general.texi'");
+      Msg::Error(_("Unable to open file 'opt_general.texi'"));
       return;
     }
     fprintf(file, "%s@ftable @code\n", warn);
@@ -811,7 +811,7 @@ void PrintOptionsDoc()
   {
     FILE *file = Fopen("opt_print.texi", "w");
     if(!file) {
-      Msg::Error("Unable to open file 'opt_print.texi'");
+      Msg::Error(_("Unable to open file 'opt_print.texi'"));
       return;
     }
     fprintf(file, "%s@ftable @code\n", warn);
@@ -824,7 +824,7 @@ void PrintOptionsDoc()
   {
     FILE *file = Fopen("opt_geometry.texi", "w");
     if(!file) {
-      Msg::Error("Unable to open file 'opt_geometry.texi'");
+      Msg::Error(_("Unable to open file 'opt_geometry.texi'"));
       return;
     }
     fprintf(file, "%s@ftable @code\n", warn);
@@ -837,7 +837,7 @@ void PrintOptionsDoc()
   {
     FILE *file = Fopen("opt_mesh.texi", "w");
     if(!file) {
-      Msg::Error("Unable to open file 'opt_mesh.texi'");
+      Msg::Error(_("Unable to open file 'opt_mesh.texi'"));
       return;
     }
     fprintf(file, "%s@ftable @code\n", warn);
@@ -850,7 +850,7 @@ void PrintOptionsDoc()
   {
     FILE *file = Fopen("opt_solver.texi", "w");
     if(!file) {
-      Msg::Error("Unable to open file 'opt_solver.texi'");
+      Msg::Error(_("Unable to open file 'opt_solver.texi'"));
       return;
     }
     fprintf(file, "%s@ftable @code\n", warn);
@@ -863,7 +863,7 @@ void PrintOptionsDoc()
   {
     FILE *file = Fopen("opt_post.texi", "w");
     if(!file) {
-      Msg::Error("Unable to open file 'opt_post.texi'");
+      Msg::Error(_("Unable to open file 'opt_post.texi'"));
       return;
     }
     fprintf(file, "%s@ftable @code\n", warn);
@@ -879,7 +879,7 @@ void PrintOptionsDoc()
 #if defined(HAVE_POST)
     FILE *file = Fopen("opt_view.texi", "w");
     if(!file) {
-      Msg::Error("Unable to open file 'opt_view.texi'");
+      Msg::Error(_("Unable to open file 'opt_view.texi'"));
       return;
     }
     fprintf(file, "%s@ftable @code\n", warn);
@@ -898,7 +898,7 @@ void PrintOptionsDoc()
 #if defined(HAVE_PLUGINS)
     FILE *file = Fopen("plugins.texi", "w");
     if(!file) {
-      Msg::Error("Unable to open file 'plugins.texi'");
+      Msg::Error(_("Unable to open file 'plugins.texi'"));
       return;
     }
     fprintf(file, "%s@ftable @code\n", warn);
@@ -943,7 +943,7 @@ void PrintOptionsDoc()
   {
     FILE *file = Fopen("fields.texi", "w");
     if(!file) {
-      Msg::Error("Unable to open file 'fields.texi'");
+      Msg::Error(_("Unable to open file 'fields.texi'"));
       return;
     }
     fprintf(file, "%s@ftable @code\n", warn);
@@ -991,7 +991,7 @@ void PrintOptionsDoc()
   {
     FILE *file = Fopen("shortcuts.texi", "w");
     if(!file) {
-      Msg::Error("Unable to open file 'shortcuts.texi'");
+      Msg::Error(_("Unable to open file 'shortcuts.texi'"));
       return;
     }
     std::vector<std::pair<std::string, std::string> > s =
@@ -1005,7 +1005,7 @@ void PrintOptionsDoc()
   {
     FILE *file = Fopen("mouse.texi", "w");
     if(!file) {
-      Msg::Error("Unable to open file 'mouse.texi'");
+      Msg::Error(_("Unable to open file 'mouse.texi'"));
       return;
     }
     std::vector<std::pair<std::string, std::string> > s = GetMouseUsage();
@@ -1018,7 +1018,7 @@ void PrintOptionsDoc()
   {
     FILE *file = Fopen("commandline.texi", "w");
     if(!file) {
-      Msg::Error("Unable to open file 'commandline.texi'");
+      Msg::Error(_("Unable to open file 'commandline.texi'"));
       return;
     }
     std::vector<std::pair<std::string, std::string> > s = GetUsage();
@@ -5120,7 +5120,7 @@ double opt_mesh_lc_factor(OPT_ARGS_NUM)
         Msg::SetOnelabChanged(2);
       CTX::instance()->mesh.lcFactor = val;
       if(CTX::instance()->mesh.lcFactor <= 0.0){
-        Msg::Error("Mesh element size factor must be > 0");
+        Msg::Error(_("Mesh element size factor must be > 0"));
         CTX::instance()->mesh.lcFactor = 1.;
       }
     }

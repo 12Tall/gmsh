@@ -19,19 +19,19 @@ SPoint2 gmshSurface::parFromPoint(double x, double y, double z)
 
 SVector3 gmshSurface::normal(const SPoint2 &param) const
 {
-  Msg::Error("Normal computation not implemented for this type of surface");
+  Msg::Error(_("Normal computation not implemented for this type of surface"));
   return SVector3();
 }
 
 std::pair<SVector3, SVector3> gmshSurface::firstDer(const SPoint2 &param)
 {
-  Msg::Error("First derivative not implemented for this type of surface");
+  Msg::Error(_("First derivative not implemented for this type of surface"));
   return std::pair<SVector3, SVector3>();
 }
 
 double gmshSurface::getMetricEigenvalue(const SPoint2 &)
 {
-  Msg::Error("Metric eigenvalue not implemented for this type of surface");
+  Msg::Error(_("Metric eigenvalue not implemented for this type of surface"));
   return 0;
 }
 
@@ -147,6 +147,6 @@ SPoint3 gmshParametricSurface::point(double par1, double par2) const
 
 Range<double> gmshParametricSurface::parBounds(int i) const
 {
-  Msg::Error("Parameter bounds not available for parametric surface");
+  Msg::Error(_("Parameter bounds not available for parametric surface"));
   return Range<double>(0., 0.);
 }

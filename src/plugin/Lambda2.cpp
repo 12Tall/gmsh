@@ -172,7 +172,7 @@ static void eigen(std::vector<double> &inList, int inNb,
           GradPhi_ksi[3][2] = 1;
         }
         else {
-          Msg::Error("Lambda2 not ready for this type of element");
+          Msg::Error(_("Lambda2 not ready for this type of element"));
           return;
         }
         for(int k = 0; k < nbNod; k++) {

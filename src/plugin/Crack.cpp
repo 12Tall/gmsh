@@ -99,7 +99,7 @@ PView *GMSH_CrackPlugin::execute(PView *view)
   int swapOrientation = (int)CrackOptions_Number[8].def;
 
   if(dim != 1 && dim != 2) {
-    Msg::Error("Crack dimension should be 1 or 2");
+    Msg::Error(_("Crack dimension should be 1 or 2"));
     return view;
   }
 

@@ -65,7 +65,7 @@ PView *GMSH_PostPlugin::executeRemote(PView *view)
     }
   }
   if(remoteIndex < 0) {
-    Msg::Error("Unable to determine index of remote view");
+    Msg::Error(_("Unable to determine index of remote view"));
     return view;
   }
 
@@ -112,7 +112,6 @@ PViewDataList *GMSH_PostPlugin::getDataList(PView *view, bool showError)
   if(data)
     return data;
   else if(showError)
-    Msg::Error(
-      "This plugin can only be run on list-based views (`.pos' files)");
+    Msg::Error(_("This plugin can only be run on list-based views (`.pos' files)"));
   return nullptr;
 }

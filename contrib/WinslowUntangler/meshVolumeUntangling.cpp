@@ -181,7 +181,7 @@ bool buildTetrahedraFromElements(
     dcp = HexDcp::TO_24TETS;
   }
   else {
-    Msg::Error("decomposition not supported");
+    Msg::Error(_("decomposition not supported"));
     return false;
   }
 
@@ -255,11 +255,11 @@ bool buildTetrahedraFromElements(
       }
     }
     else if(vert.size() == 6) {
-      Msg::Error("prism not supported yet, abort");
+      Msg::Error(_("prism not supported yet, abort"));
       return false;
     }
     else {
-      Msg::Error("case not supported, abort");
+      Msg::Error(_("case not supported, abort"));
       return false;
     }
   }
@@ -312,7 +312,7 @@ bool buildVerticesAndTetrahedra(
   bool okb = buildTetrahedraFromElements(elements, elementTargetShapes, tets,
                                          tetIdealShapes, dcpHex);
   if(!okb) {
-    Msg::Error("Failed to build tets from elements");
+    Msg::Error(_("Failed to build tets from elements"));
     return false;
   }
 
@@ -368,8 +368,7 @@ bool untangleGRegionMeshConstrained(GRegion *gr, int iterMax, double timeMax)
 #else
 bool untangleGRegionMeshConstrained(GRegion *gr, int iterMax, double timeMax)
 {
-  Msg::Error(
-    "Module QuadMeshingTools required for untangleGRegionMeshConstrained");
+  Msg::Error(_("Module QuadMeshingTools required for untangleGRegionMeshConstrained"));
   return false;
 }
 #endif

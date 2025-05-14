@@ -420,7 +420,7 @@ Vertex InterpolateCurve(Curve *c, double u, int const derivee)
     int N = List_Nbr(c->Control_Points);
 
     if(N < 2) {
-      Msg::Error("Line with less than 2 control points");
+      Msg::Error(_("Line with less than 2 control points"));
       V.Pos.X = V.Pos.Y = V.Pos.Z = 0;
     }
     else {
@@ -463,7 +463,7 @@ Vertex InterpolateCurve(Curve *c, double u, int const derivee)
   case MSH_SEGM_ELLI_INV: {
     int N = List_Nbr(c->Control_Points);
     if(N < 2) {
-      Msg::Error("Circle or ellipse with less than 2 control points");
+      Msg::Error(_("Circle or ellipse with less than 2 control points"));
       V.Pos.X = V.Pos.Y = V.Pos.Z = 0;
     }
     else {
@@ -502,7 +502,7 @@ Vertex InterpolateCurve(Curve *c, double u, int const derivee)
   case MSH_SEGM_SPLN: {
     int N = List_Nbr(c->Control_Points);
     if(N < 2) {
-      Msg::Error("Spline with less than 2 control points");
+      Msg::Error(_("Spline with less than 2 control points"));
       V.Pos.X = V.Pos.Y = V.Pos.Z = 0;
     }
     else {
@@ -559,11 +559,11 @@ Vertex InterpolateCurve(Curve *c, double u, int const derivee)
   }
 
   case MSH_SEGM_BND_LAYER:
-    Msg::Debug("Cannot interpolate boundary layer curve");
+    Msg::Debug(_("Cannot interpolate boundary layer curve"));
     break;
 
   case MSH_SEGM_DISCRETE:
-    Msg::Debug("Cannot interpolate discrete curve");
+    Msg::Debug(_("Cannot interpolate discrete curve"));
     break;
 
   default: Msg::Error("Unknown curve type %d in interpolation", c->Typ); break;
@@ -711,15 +711,14 @@ static Vertex InterpolateRuledSurface(Surface *s, double u, double v)
   Curve *C[4] = {nullptr, nullptr, nullptr, nullptr};
 
   if(!List_Nbr(s->Generatrices)) {
-    Msg::Error("No curves on boundary of ruled surface");
+    Msg::Error(_("No curves on boundary of ruled surface"));
     return Vertex(0., 0., 0.);
   }
 
   for(int i = 0; i < std::min(List_Nbr(s->Generatrices), 4); i++) {
     List_Read(s->Generatrices, i, &C[i]);
     if(C[i]->Typ == MSH_SEGM_BND_LAYER || C[i]->Typ == MSH_SEGM_DISCRETE) {
-      Msg::Error(
-        "Cannot interpolate ruled surface with discrete bounding curves");
+      Msg::Error(_("Cannot interpolate ruled surface with discrete bounding curves"));
       return Vertex(0., 0., 0.);
     }
     if(!C[i]->beg || !C[i]->end) {
@@ -834,7 +833,7 @@ static Vertex InterpolateExtrudedSurface(Surface *s, double u, double v)
   Vertex T;
 
   if(num < 0) {
-    Msg::Error("Unknown curve in extruded surface");
+    Msg::Error(_("Unknown curve in extruded surface"));
     return T;
   }
 
@@ -941,16 +940,16 @@ Vertex InterpolateSurface(Surface *s, double u, double v, int derivee, int u_v)
   case MSH_SURF_REGL:
   case MSH_SURF_TRIC: return InterpolateRuledSurface(s, u, v);
   case MSH_SURF_PLAN:
-    Msg::Error("Should not interpolate plane surface here");
+    Msg::Error(_("Should not interpolate plane surface here"));
     return Vertex(0., 0., 0.);
   case MSH_SURF_BND_LAYER:
-    Msg::Debug("Cannot interpolate boundary layer surface");
+    Msg::Debug(_("Cannot interpolate boundary layer surface"));
     return Vertex(0., 0., 0.);
   case MSH_SURF_DISCRETE:
-    Msg::Debug("Cannot interpolate discrete surface");
+    Msg::Debug(_("Cannot interpolate discrete surface"));
     return Vertex(0., 0., 0.);
   default:
-    Msg::Error("Unknown surface type in interpolation");
+    Msg::Error(_("Unknown surface type in interpolation"));
     return Vertex(0., 0., 0.);
   }
 }

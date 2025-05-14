@@ -120,7 +120,7 @@ PView *GMSH_ModifyComponentsPlugin::execute(PView *view)
 
   if(otherTimeStep < 0 &&
      data2->getNumTimeSteps() != data1->getNumTimeSteps()) {
-    Msg::Error("Number of time steps don't match: using step 0");
+    Msg::Error(_("Number of time steps don't match: using step 0"));
     otherTimeStep = 0;
   }
   else if(otherTimeStep > data2->getNumTimeSteps() - 1) {
@@ -152,7 +152,7 @@ PView *GMSH_ModifyComponentsPlugin::execute(PView *view)
   if(forceInterpolation ||
      (data1->getNumEntities() != data2->getNumEntities()) ||
      (data1->getNumElements() != data2->getNumElements())) {
-    Msg::Info("Other view based on different grid: interpolating...");
+    Msg::Info(_("Other view based on different grid: interpolating..."));
     octree = new OctreePost(v2);
   }
 

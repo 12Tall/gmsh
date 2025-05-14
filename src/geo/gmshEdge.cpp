@@ -239,7 +239,7 @@ SPoint2 gmshEdge::reparamOnFace(const GFace *face, double epar, int dir) const
       return InterpolateCubicSpline(v, t, _c->mat, t1, t2, _c->geometry);
     }
     default:
-      Msg::Error("Unknown curve type in reparamOnFace");
+      Msg::Error(_("Unknown curve type in reparamOnFace"));
       return SPoint2();
     }
   }

@@ -44,7 +44,7 @@ PView *GMSH_DivergencePlugin::execute(PView *v)
 
   PViewData *data1 = getPossiblyAdaptiveData(v1);
   if(data1->hasMultipleMeshes()) {
-    Msg::Error("Divergence plugin cannot be run on multi-mesh views");
+    Msg::Error(_("Divergence plugin cannot be run on multi-mesh views"));
     return v;
   }
 

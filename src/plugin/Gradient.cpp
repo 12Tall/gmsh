@@ -40,7 +40,7 @@ PView *GMSH_GradientPlugin::execute(PView *v)
 
   PViewData *data1 = getPossiblyAdaptiveData(v1);
   if(data1->hasMultipleMeshes()) {
-    Msg::Error("Gradient plugin cannot be run on multi-mesh views");
+    Msg::Error(_("Gradient plugin cannot be run on multi-mesh views"));
     return v;
   }
 

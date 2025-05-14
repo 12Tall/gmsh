@@ -141,7 +141,7 @@ int IsInToroidalQuadToTri(GFace *face)
           return 0;
       }
       else {
-        Msg::Error("In IsInToroidalQuadToTri(), could not find a face...");
+        Msg::Error(_("In IsInToroidalQuadToTri(), could not find a face..."));
         return 0;
       }
     }
@@ -464,8 +464,7 @@ std::vector<double> QtFindVertsCentroid(std::vector<MVertex *> v)
   const int v_size = v.size();
 
   if(v_size != 6 && v_size != 8 && v_size != 3 && v_size != 4) {
-    Msg::Error(
-      "In QtFindVertsCentroid(), number of vertices is not 3, 4, 6, or 8.");
+    Msg::Error(_("In QtFindVertsCentroid(), number of vertices is not 3, 4, 6, or 8."));
     return v_return;
   }
 
@@ -561,7 +560,7 @@ std::pair<int, int> FindDiagonalEdgeIndices(std::vector<MVertex *> verts,
                                             unsigned int index_guess)
 {
   if(verts.size() != 4) {
-    Msg::Error("FindDiagonalEdgeIndices(), size of verts array not equal 4.");
+    Msg::Error(_("FindDiagonalEdgeIndices(), size of verts array not equal 4."));
     return std::pair<int, int>(0, 0);
   }
   if(!lateral) {
@@ -820,7 +819,7 @@ GFace *findRootSourceFaceForFace(GFace *face)
       return source_face;
   }
 
-  Msg::Error("findRootSourceFaceForFace() failed to find root source.");
+  Msg::Error(_("findRootSourceFaceForFace() failed to find root source."));
   return (GFace *)(NULL);
 }
 

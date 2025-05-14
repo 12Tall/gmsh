@@ -309,12 +309,12 @@ PView *GMSH_NearToFarFieldPlugin::execute(PView *v)
   if(eData->getNumEntities() != hData->getNumEntities() ||
      eData->getNumElements() != hData->getNumElements() ||
      eData->getNumTimeSteps() != hData->getNumTimeSteps()) {
-    Msg::Error("Incompatible views for E field and H field");
+    Msg::Error(_("Incompatible views for E field and H field"));
     return v;
   }
 
   if(eData->getNumTimeSteps() != 2 || hData->getNumTimeSteps() != 2) {
-    Msg::Error("Invalid number of steps for E or H fields (must be complex)");
+    Msg::Error(_("Invalid number of steps for E or H fields (must be complex)"));
     return v;
   }
 
@@ -329,7 +329,7 @@ PView *GMSH_NearToFarFieldPlugin::execute(PView *v)
   if(x0 != hData->getBoundingBox().center().x() ||
      y0 != hData->getBoundingBox().center().y() ||
      z0 != hData->getBoundingBox().center().z()) {
-    Msg::Error("E and H fields must be given on the same grid");
+    Msg::Error(_("E and H fields must be given on the same grid"));
     return v;
   }
 
@@ -383,7 +383,7 @@ PView *GMSH_NearToFarFieldPlugin::execute(PView *v)
   }
 
   if(allElems.empty()) {
-    Msg::Error("No valid elements found to compute far field");
+    Msg::Error(_("No valid elements found to compute far field"));
     return v;
   }
 
@@ -452,7 +452,7 @@ PView *GMSH_NearToFarFieldPlugin::execute(PView *v)
 
   if(_normalize) {
     if(!ffmax)
-      Msg::Warning("Cannot normalize far field (max = 0)");
+      Msg::Warning(_("Cannot normalize far field (max = 0)"));
     else
       for(int i = 0; i <= _nbPhi; i++)
         for(int j = 0; j <= _nbThe; j++) farField[i][j] /= ffmax;
@@ -474,7 +474,7 @@ PView *GMSH_NearToFarFieldPlugin::execute(PView *v)
     for(int j = 0; j <= _nbThe; j++) {
       double df = (ffmax - ffmin);
       if(!df) {
-        Msg::Warning("zero far field range");
+        Msg::Warning(_("zero far field range"));
         df = 1.;
       }
       double f = (farField[i][j] - ffmin) / df; // in [0,1]

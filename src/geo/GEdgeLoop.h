@@ -17,7 +17,7 @@ public:
   GEdgeSigned(int sign, GEdge *ge) : _sign(sign), _ge(ge)
   {
     if(_sign != 1 && _sign != -1)
-      Msg::Error("Edge sign should be 1 or -1");
+      Msg::Error(_("Edge sign should be 1 or -1"));
   }
   GVertex *getBeginVertex() const
   {

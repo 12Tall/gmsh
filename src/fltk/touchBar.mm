@@ -354,7 +354,7 @@ static NSString *touchBarItemViewSlider = @"com.something.item_viewSlider";
   }
   FlGui::check(); // to see meshing messages in the fltk gui
 #else
-  Msg::Warning("Mesh module not available");
+  Msg::Warning(_("Mesh module not available"));
 #endif
 }
 

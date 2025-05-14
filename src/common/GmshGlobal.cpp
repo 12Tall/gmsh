@@ -25,6 +25,7 @@ typedef unsigned long intptr_t;
 #include "Context.h"
 #include "robustPredicates.h"
 #include "BasisFactory.h"
+#include "I18n.h"
 
 #if defined(HAVE_PARSER)
 #include "Parser.h"
@@ -309,7 +310,7 @@ int GmshBatch()
         GModel::current()->getFields()->setBackgroundMesh(PView::list.size() -
                                                           1);
       else
-        Msg::Error("Invalid background mesh (no view)");
+        Msg::Error(_("Invalid background mesh (no view)"));
     }
   }
 #endif
@@ -466,7 +467,7 @@ int GmshFLTK(int argc, char **argv)
         GModel::current()->getFields()->setBackgroundMesh(PView::list.size() -
                                                           1);
       else
-        Msg::Error("Invalid background mesh (no view)");
+        Msg::Error(_("Invalid background mesh (no view)"));
     }
   }
 #endif
@@ -484,7 +485,7 @@ int GmshFLTK(int argc, char **argv)
   return FlGui::instance()->run();
 
 #else
-  Msg::Error("GmshFLTK unavailable: please recompile with FLTK support");
+  Msg::Error(_("GmshFLTK unavailable: please recompile with FLTK support"));
   return 0;
 #endif
 }

@@ -201,7 +201,7 @@ bezierBasis::~bezierBasis()
 void bezierBasis::_construct()
 {
   if(_funcSpaceData.getType() == TYPE_PYR) {
-    Msg::Error("This bezierBasis constructor is not for pyramids!");
+    Msg::Error(_("This bezierBasis constructor is not for pyramids!"));
     return;
   }
 
@@ -257,7 +257,7 @@ void bezierBasis::_construct()
 void bezierBasis::_constructPyr()
 {
   if(_funcSpaceData.getType() != TYPE_PYR) {
-    Msg::Error("This bezierBasis constructor is for pyramids!");
+    Msg::Error(_("This bezierBasis constructor is for pyramids!"));
   }
 
   const bool pyr = _funcSpaceData.getPyramidalSpace();
@@ -443,7 +443,7 @@ void bezierBasisRaiser::_fillRaiserDataPyr()
     return;
   }
   if(fsdata.getPyramidalSpace()) {
-    Msg::Error("Bezier raiser not implemented for pyramidal space");
+    Msg::Error(_("Bezier raiser not implemented for pyramidal space"));
     return;
   }
 
@@ -621,7 +621,7 @@ bezierCoeff::bezierCoeff(const FuncSpaceData fsData,
   bool abort = false;
   if(fsData.getSerendipity()) {
     // Bezier interpolation cannot expand an incomplete function space
-    Msg::Error("Call of Bezier expansion for Serendipity space.");
+    Msg::Error(_("Call of Bezier expansion for Serendipity space."));
     abort = true;
   }
   if(!abort && orderedLagCoeff.size1() != _basis->getNumCoeff()) {
@@ -661,7 +661,7 @@ bezierCoeff::bezierCoeff(const FuncSpaceData fsData,
   bool abort = false;
   if(fsData.getSerendipity()) {
     // Bezier interpolation cannot expand an incomplete function space
-    Msg::Error("Call of Bezier expansion for Serendipity space.");
+    Msg::Error(_("Call of Bezier expansion for Serendipity space."));
     abort = true;
   }
   if(!abort && orderedLagCoeff.size() != _basis->getNumCoeff()) {
@@ -731,7 +731,7 @@ bezierCoeff::~bezierCoeff()
     else if(_numPool == 1 && _pool1)
       _pool1->releaseBlock(_data, this);
     else
-      Msg::Error("Not supposed to be here. destructor bezierCoeff");
+      Msg::Error(_("Not supposed to be here. destructor bezierCoeff"));
   }
 }
 
@@ -838,7 +838,7 @@ void bezierCoeff::releasePools()
 void bezierCoeff::updateDataPtr(long diff)
 {
   if(_ownData)
-    Msg::Error("I own data, cannot do that");
+    Msg::Error(_("I own data, cannot do that"));
   else
     _data += diff;
 }
@@ -938,7 +938,7 @@ void bezierCoeff::getCornerCoeffs(fullMatrix<double> &m) const
 void bezierCoeff::subdivide(std::vector<bezierCoeff *> &subCoeff) const
 {
   if(subCoeff.size()) {
-    Msg::Warning("expected empty vector of bezierCoeff");
+    Msg::Warning(_("expected empty vector of bezierCoeff"));
     subCoeff.clear();
   }
 
@@ -1481,7 +1481,7 @@ double *bezierCoeffMemoryPool::giveBlock(bezierCoeff *bez)
     if(_bezierCoeff.size() == idx)
       _bezierCoeff.push_back(bez);
     else if(_bezierCoeff[idx]) {
-      Msg::Error("this block is being used!?");
+      Msg::Error(_("this block is being used!?"));
       return nullptr;
     }
     else
@@ -1516,9 +1516,9 @@ void bezierCoeffMemoryPool::releaseBlock(double *block, bezierCoeff *bez)
   long diff = block - &_memory.front();
   std::size_t idx = diff / _sizeBlocks;
   //  if (_bezierCoeff[idx] == bez)
-  //    Msg::Info("It's a good guess!");
+  //    Msg::Info(_("It's a good guess!"));
   //  else
-  //    Msg::Info("Did not work :'( ");
+  //    Msg::Info(_("Did not work :'( "));
   _bezierCoeff[idx] = nullptr;
   if(idx == _endOfSearch - 1) {
     do {
@@ -1533,7 +1533,7 @@ void bezierCoeffMemoryPool::releaseBlock(double *block, bezierCoeff *bez)
 void bezierCoeffMemoryPool::freeMemory()
 {
   if(_numUsedBlocks) {
-    Msg::Error("I cannot free memory if some is still in use!");
+    Msg::Error(_("I cannot free memory if some is still in use!"));
     return;
   }
   // force deallocation:

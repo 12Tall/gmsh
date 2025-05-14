@@ -154,7 +154,7 @@ static void select_elements_cb(Fl_Widget *w, void *data)
   buildEdgeToElements(e->elements, adj);
   buildListOfEdgeAngle(adj, e->edges_detected, e->edges_lonly);
 #else
-  Msg::Error("Classification requires mesh module");
+  Msg::Error(_("Classification requires mesh module"));
 #endif
 
   ElementsSelectedMode(e);

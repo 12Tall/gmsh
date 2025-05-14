@@ -48,7 +48,7 @@ int splitQuadRecovery::buildPyramids(GModel *gm)
 {
   if(_quad.empty()) return 0;
 
-  Msg::Info("Generating pyramids for hybrid mesh...");
+  Msg::Info(_("Generating pyramids for hybrid mesh..."));
   int npyram = 0;
   for(auto it = gm->firstRegion(); it != gm->lastRegion(); it++) {
     GRegion *gr = *it;
@@ -92,7 +92,7 @@ void MeshDelaunayVolume(std::vector<GRegion *> &regions)
   if(regions.empty()) return;
 
   if(CTX::instance()->mesh.algo3d == ALGO_3D_HXT) {
-    if(meshGRegionHxt(regions) != 0) { Msg::Error("HXT 3D mesh failed"); }
+    if(meshGRegionHxt(regions) != 0) { Msg::Error(_("HXT 3D mesh failed")); }
     return;
   }
 
@@ -194,11 +194,11 @@ void MeshDelaunayVolume(std::vector<GRegion *> &regions)
                            true, &sqr);
 
     if(sqr.buildPyramids(gr->model())) {
-      Msg::Info("Optimizing pyramids for hybrid mesh...");
+      Msg::Info(_("Optimizing pyramids for hybrid mesh..."));
       gr->model()->setAllVolumesPositive();
       RelocateVerticesOfPyramids(regions, 3);
       // RelocateVertices(regions, 3);
-      Msg::Info("Done optimizing pyramids for hybrid mesh");
+      Msg::Info(_("Done optimizing pyramids for hybrid mesh"));
     }
 
     // test:

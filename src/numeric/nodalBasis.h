@@ -46,11 +46,11 @@ public:
                   double grad[3]) const = 0;
   virtual void ddf(double u, double v, double w, double grads[][3][3]) const
   {
-    Msg::Error("ddf not implemented for this basis");
+    Msg::Error(_("ddf not implemented for this basis"));
   }
   virtual void dddf(double u, double v, double w, double grads[][3][3][3]) const
   {
-    Msg::Error("dddf not implemented for this basis");
+    Msg::Error(_("dddf not implemented for this basis"));
   }
 
   // closures is the list of the nodes of each face, in the order of the

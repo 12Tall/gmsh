@@ -61,6 +61,7 @@
 #include "HierarchicalBasisHcurlTria.h"
 #include "HierarchicalBasisHcurlTetra.h"
 #include "HierarchicalBasisHcurlPri.h"
+#include "I18n.h"
 
 #if defined(HAVE_MESH)
 #include "Field.h"
@@ -117,11 +118,11 @@ static bool _checkInit()
 {
   if(!_initialized) {
     CTX::instance()->terminal = 1;
-    Msg::Error("Gmsh has not been initialized");
+    Msg::Error(_("Gmsh has not been initialized"));
     return false;
   }
   if(!GModel::current()) {
-    Msg::Error("Gmsh has no current model");
+    Msg::Error(_("Gmsh has no current model"));
     return false;
   }
   return true;
@@ -133,7 +134,7 @@ GMSH_API void gmsh::initialize(int argc, char **argv,
                                const bool readConfigFiles, const bool run)
 {
   if(_initialized) {
-    Msg::Warning("Gmsh has aleady been initialized");
+    Msg::Warning(_("Gmsh has aleady been initialized"));
     return;
   }
 
@@ -171,7 +172,7 @@ GMSH_API void gmsh::initialize(int argc, char **argv,
     }
     return;
   }
-  Msg::Error("Something went wrong when initializing Gmsh");
+  Msg::Error(_("Something went wrong when initializing Gmsh"));
 }
 
 GMSH_API int gmsh::isInitialized() { return _initialized; }
@@ -186,7 +187,7 @@ GMSH_API void gmsh::finalize()
     _initialized = 0;
     return;
   }
-  Msg::Error("Something went wrong when finalizing Gmsh");
+  Msg::Error(_("Something went wrong when finalizing Gmsh"));
 }
 
 GMSH_API void gmsh::open(const std::string &fileName)
@@ -213,7 +214,7 @@ GMSH_API void gmsh::write(const std::string &fileName)
 GMSH_API void gmsh::clear()
 {
   if(!_checkInit()) return;
-  if(!GmshClearProject()) Msg::Error("Could not clear project");
+  if(!GmshClearProject()) Msg::Error(_("Could not clear project"));
 }
 
 // gmsh::option
@@ -326,7 +327,7 @@ GMSH_API void gmsh::model::remove()
   if(m)
     delete m;
   else
-    Msg::Error("Could not remove current model");
+    Msg::Error(_("Could not remove current model"));
 }
 
 GMSH_API void gmsh::model::list(std::vector<std::string> &names)
@@ -512,7 +513,7 @@ GMSH_API int gmsh::model::addPhysicalGroup(const int dim,
   }
   if(!GModel::current()->getGEOInternals()->modifyPhysicalGroup(dim, outTag, 0,
                                                                 tags)) {
-    Msg::Error("Could not add physical group");
+    Msg::Error(_("Could not add physical group"));
     return -1;
   }
   GModel::current()->addPhysicalGroup(dim, outTag, tags);
@@ -575,7 +576,7 @@ GMSH_API void gmsh::model::getBoundary(const vectorpair &dimTags,
   outDimTags.clear();
   if(!GModel::current()->getBoundaryTags(dimTags, outDimTags, combined,
                                          oriented, recursive)) {
-    Msg::Error("Could not get boundary");
+    Msg::Error(_("Could not get boundary"));
   }
 }
 
@@ -638,7 +639,7 @@ GMSH_API void gmsh::model::getBoundingBox(const int dim, const int tag,
   if(dim < 0 && tag < 0) {
     box = GModel::current()->bounds();
     if(box.empty()) {
-      Msg::Error("Empty bounding box");
+      Msg::Error(_("Empty bounding box"));
       return;
     }
   }
@@ -651,7 +652,7 @@ GMSH_API void gmsh::model::getBoundingBox(const int dim, const int tag,
     box = ge->bounds();
   }
   if(box.empty()) {
-    Msg::Error("Empty bounding box");
+    Msg::Error(_("Empty bounding box"));
     return;
   }
   xmin = box.min().x();
@@ -854,7 +855,7 @@ GMSH_API void gmsh::model::getValue(const int dim, const int tag,
   }
   else if(dim == 2) {
     if(parametricCoord.size() % 2) {
-      Msg::Error("Number of parametric coordinates should be even");
+      Msg::Error(_("Number of parametric coordinates should be even"));
       return;
     }
     GFace *gf = static_cast<GFace *>(entity);
@@ -891,7 +892,7 @@ gmsh::model::getDerivative(const int dim, const int tag,
   }
   else if(dim == 2) {
     if(parametricCoord.size() % 2) {
-      Msg::Error("Number of parametric coordinates should be even");
+      Msg::Error(_("Number of parametric coordinates should be even"));
       return;
     }
     GFace *gf = static_cast<GFace *>(entity);
@@ -931,7 +932,7 @@ gmsh::model::getSecondDerivative(const int dim, const int tag,
   }
   else if(dim == 2) {
     if(parametricCoord.size() % 2) {
-      Msg::Error("Number of parametric coordinates should be even");
+      Msg::Error(_("Number of parametric coordinates should be even"));
       return;
     }
     GFace *gf = static_cast<GFace *>(entity);
@@ -971,7 +972,7 @@ gmsh::model::getCurvature(const int dim, const int tag,
   }
   else if(dim == 2) {
     if(parametricCoord.size() % 2) {
-      Msg::Error("Number of parametric coordinates should be even");
+      Msg::Error(_("Number of parametric coordinates should be even"));
       return;
     }
     GFace *gf = static_cast<GFace *>(entity);
@@ -998,7 +999,7 @@ GMSH_API void gmsh::model::getPrincipalCurvatures(
     return;
   }
   if(parametricCoord.size() % 2) {
-    Msg::Error("Number of parametric coordinates should be even");
+    Msg::Error(_("Number of parametric coordinates should be even"));
     return;
   }
   for(std::size_t i = 0; i < parametricCoord.size(); i += 2) {
@@ -1029,7 +1030,7 @@ GMSH_API void gmsh::model::getNormal(const int tag,
     return;
   }
   if(parametricCoord.size() % 2) {
-    Msg::Error("Number of parametric coordinates should be even");
+    Msg::Error(_("Number of parametric coordinates should be even"));
     return;
   }
   for(std::size_t i = 0; i < parametricCoord.size(); i += 2) {
@@ -1054,7 +1055,7 @@ gmsh::model::getParametrization(const int dim, const int tag,
     return;
   }
   if(coord.size() % 3) {
-    Msg::Error("Number of coordinates should be a multiple of 3");
+    Msg::Error(_("Number of coordinates should be a multiple of 3"));
     return;
   }
   if(dim == 1) {
@@ -1117,7 +1118,7 @@ GMSH_API int gmsh::model::isInside(const int dim, const int tag,
     else if(dim == 2) {
       GFace *gf = static_cast<GFace *>(entity);
       if(coord.size() % 2) {
-        Msg::Error("Number of parametric coordinates should be even");
+        Msg::Error(_("Number of parametric coordinates should be even"));
         return num;
       }
       for(std::size_t i = 0; i < coord.size(); i += 2) {
@@ -1128,7 +1129,7 @@ GMSH_API int gmsh::model::isInside(const int dim, const int tag,
   }
   else {
     if(coord.size() % 3) {
-      Msg::Error("Number of coordinates should be a multiple of 3");
+      Msg::Error(_("Number of coordinates should be a multiple of 3"));
       return 0;
     }
     for(std::size_t i = 0; i < coord.size(); i += 3) {
@@ -1198,7 +1199,7 @@ GMSH_API void gmsh::model::getClosestPoint(const int dim, const int tag,
     return;
   }
   if(coord.size() % 3) {
-    Msg::Error("Number of coordinates should be a multiple of 3");
+    Msg::Error(_("Number of coordinates should be a multiple of 3"));
     return;
   }
   if(dim == 1) {
@@ -1406,8 +1407,7 @@ GMSH_API void gmsh::model::mesh::optimize(const std::string &how,
 {
   if(!_checkInit()) return;
   if(dimTags.size()) {
-    Msg::Warning(
-      "Optimization of specified model entities is not interfaced yet");
+    Msg::Warning(_("Optimization of specified model entities is not interfaced yet"));
   }
   GModel::current()->optimizeMesh(how, force, niter);
   CTX::instance()->mesh.changed = ENT_ALL;
@@ -1419,11 +1419,11 @@ GMSH_API void gmsh::model::mesh::computeCrossField(std::vector<int> &tags)
   tags.clear();
 #if defined(HAVE_MESH)
   if(computeCrossField(GModel::current(), tags)) {
-    Msg::Error("Could not compute cross field");
+    Msg::Error(_("Could not compute cross field"));
     return;
   }
 #else
-  Msg::Error("computeCrossField requires the mesh module");
+  Msg::Error(_("computeCrossField requires the mesh module"));
 #endif
 }
 
@@ -1448,7 +1448,7 @@ GMSH_API void gmsh::model::mesh::splitQuadrangles(const double quality,
   }
   CTX::instance()->mesh.changed = ENT_ALL;
 #else
-  Msg::Error("splitQuadrangles requires the mesh module");
+  Msg::Error(_("splitQuadrangles requires the mesh module"));
 #endif
 }
 
@@ -1863,13 +1863,13 @@ GMSH_API void gmsh::model::mesh::addNodes(
     numNodes = coord.size() / 3;
   }
   if((int)coord.size() != 3 * numNodes) {
-    Msg::Error("Wrong number of coordinates");
+    Msg::Error(_("Wrong number of coordinates"));
     return;
   }
   bool param = false;
   if(parametricCoord.size()) {
     if((int)parametricCoord.size() != dim * numNodes) {
-      Msg::Error("Wrong number of parametric coordinates");
+      Msg::Error(_("Wrong number of parametric coordinates"));
       return;
     }
     param = true;
@@ -2205,11 +2205,11 @@ GMSH_API void gmsh::model::mesh::addElements(
     return;
   }
   if(elementTypes.size() != elementTags.size()) {
-    Msg::Error("Wrong number of element tags");
+    Msg::Error(_("Wrong number of element tags"));
     return;
   }
   if(elementTypes.size() != nodeTags.size()) {
-    Msg::Error("Wrong number of node tags");
+    Msg::Error(_("Wrong number of node tags"));
     return;
   }
 
@@ -2288,7 +2288,7 @@ GMSH_API void gmsh::model::mesh::getElementProperties(
   numPrimaryNodes =
     ElementType::getNumVertices(ElementType::getPrimaryType(elementType));
   if(numNodes != ElementType::getNumVertices(elementType)) {
-    Msg::Error("Size of basis incompatible with element type");
+    Msg::Error(_("Size of basis incompatible with element type"));
     return;
   }
   for(int i = 0; i < basis->points.size1(); i++)
@@ -2313,7 +2313,7 @@ GMSH_API void gmsh::model::mesh::getElementsByType(
     numElements += entities[i]->getNumMeshElementsByType(familyType);
   const int numNodes = ElementType::getNumVertices(elementType);
   if(!numTasks) {
-    Msg::Error("Number of tasks should be > 0");
+    Msg::Error(_("Number of tasks should be > 0"));
     return;
   }
   // check arrays
@@ -2384,7 +2384,7 @@ GMSH_API void gmsh::model::mesh::getElementQualities(
   if(!_checkInit()) return;
 
   if(!numTasks) {
-    Msg::Error("Number of tasks should be > 0");
+    Msg::Error(_("Number of tasks should be > 0"));
     return;
   }
 
@@ -2536,7 +2536,7 @@ GMSH_API void gmsh::model::mesh::getJacobians(
   if(!_checkInit()) return;
   int numPoints = localCoord.size() / 3;
   if(!numPoints) {
-    Msg::Warning("No evaluation points in getJacobians");
+    Msg::Warning(_("No evaluation points in getJacobians"));
     return;
   }
   int dim = ElementType::getDimension(elementType);
@@ -2550,7 +2550,7 @@ GMSH_API void gmsh::model::mesh::getJacobians(
     numElements += ge->getNumMeshElementsByType(familyType);
   }
   if(!numTasks) {
-    Msg::Error("Number of tasks should be > 0");
+    Msg::Error(_("Number of tasks should be > 0"));
     return;
   }
 
@@ -2806,7 +2806,7 @@ GMSH_API void gmsh::model::mesh::getJacobian(
   }
   int numPoints = localCoord.size() / 3;
   if(!numPoints) {
-    Msg::Warning("No evaluation points in getJacobian");
+    Msg::Warning(_("No evaluation points in getJacobian"));
     return;
   }
   std::vector<std::vector<SVector3>> gsf;
@@ -2856,7 +2856,7 @@ GMSH_API void gmsh::model::mesh::getBasisFunctions(
     // Check if there is no error in wantedOrientations
     if(wantedOrientations.size() != 0) {
       if(wantedOrientations.size() > 1) {
-        Msg::Error("Asking for more orientation that there exist");
+        Msg::Error(_("Asking for more orientation that there exist"));
         return;
       }
 
@@ -2986,7 +2986,7 @@ GMSH_API void gmsh::model::mesh::getBasisFunctions(
     // Check if there is no error in wantedOrientations
     if(wantedOrientations.size() != 0) {
       if(wantedOrientations.size() > maxOrientation) {
-        Msg::Error("Asking for more orientation that there exist");
+        Msg::Error(_("Asking for more orientation that there exist"));
         return;
       }
       for(unsigned int i = 0; i < wantedOrientations.size(); ++i) {
@@ -3005,7 +3005,7 @@ GMSH_API void gmsh::model::mesh::getBasisFunctions(
       int previousInt = sortedWantedOrientations[0];
       for(unsigned int i = 1; i < sortedWantedOrientations.size(); ++i) {
         if(previousInt == sortedWantedOrientations[i]) {
-          Msg::Error("Duplicate wanted orientation found");
+          Msg::Error(_("Duplicate wanted orientation found"));
           return;
         }
         previousInt = sortedWantedOrientations[i];
@@ -3403,8 +3403,7 @@ GMSH_API void gmsh::model::mesh::getBasisFunctionsOrientation(
   if(basisFunctionsOrientation.empty() ||
      numElements != basisFunctionsOrientation.size()) {
     if(numTasks > 1) {
-      Msg::Warning(
-        "basisFunctionsOrientation should be preallocated if numTasks > 1");
+      Msg::Warning(_("basisFunctionsOrientation should be preallocated if numTasks > 1"));
     }
     preallocateBasisFunctionsOrientation(elementType, basisFunctionsOrientation,
                                          tag);
@@ -3625,7 +3624,7 @@ GMSH_API void gmsh::model::mesh::getFaces(
   faceTags.clear();
   orientations.clear();
   if(faceType != 3 && faceType != 4) {
-    Msg::Error("Unknown face type (should be 3 or 4)");
+    Msg::Error(_("Unknown face type (should be 3 or 4)"));
     return;
   }
   std::size_t numFaces = nodeTags.size() / faceType;
@@ -3708,7 +3707,7 @@ gmsh::model::mesh::getAllFaces(const int faceType,
 {
   if(!_checkInit()) return;
   if(faceType != 3 && faceType != 4) {
-    Msg::Error("Unknown face type (should be 3 or 4)");
+    Msg::Error(_("Unknown face type (should be 3 or 4)"));
     return;
   }
   faceTags.clear();
@@ -3729,7 +3728,7 @@ gmsh::model::mesh::addEdges(const std::vector<std::size_t> &edgeTags,
 {
   if(!_checkInit()) return;
   if(edgeTags.size() * 2 != edgeNodes.size()) {
-    Msg::Error("Wrong number of edge nodes");
+    Msg::Error(_("Wrong number of edge nodes"));
     return;
   }
   GModel *m = GModel::current();
@@ -3754,11 +3753,11 @@ gmsh::model::mesh::addFaces(const int faceType,
 {
   if(!_checkInit()) return;
   if(faceType != 3 && faceType != 4) {
-    Msg::Error("Unknown face type (should be 3 or 4)");
+    Msg::Error(_("Unknown face type (should be 3 or 4)"));
     return;
   }
   if(faceTags.size() * faceType != faceNodes.size()) {
-    Msg::Error("Wrong number of face nodes");
+    Msg::Error(_("Wrong number of face nodes"));
     return;
   }
   GModel *m = GModel::current();
@@ -4468,7 +4467,7 @@ GMSH_API void gmsh::model::mesh::getKeysInformation(
     int dim = ElementType::getDimension(elementType);
 
     if(numberOfBubble > numberOfKeys) {
-      Msg::Error("Number of bubble functions greater than number of keys");
+      Msg::Error(_("Number of bubble functions greater than number of keys"));
       return;
     }
 
@@ -4527,14 +4526,14 @@ GMSH_API void gmsh::model::mesh::getBarycenters(
     numElements += ge->getNumMeshElementsByType(familyType);
   }
   if(!numTasks) {
-    Msg::Error("Number of tasks should be > 0");
+    Msg::Error(_("Number of tasks should be > 0"));
     return;
   }
   if(!numElements) return;
 
   if(3 * numElements != barycenters.size()) {
     if(numTasks > 1)
-      Msg::Warning("Barycenters should be preallocated if numTasks > 1");
+      Msg::Warning(_("Barycenters should be preallocated if numTasks > 1"));
     barycenters.resize(3 * numElements);
   }
 
@@ -4612,7 +4611,7 @@ GMSH_API void gmsh::model::mesh::getIntegrationPoints(
   gaussIntegration::get(familyType, intOrder, pts, wgs,
                         intName == "Gauss" ? false : true);
   if(pts.size1() != wgs.size() || pts.size2() != 3) {
-    Msg::Error("Wrong integration point format");
+    Msg::Error(_("Wrong integration point format"));
     return;
   }
   localCoord.resize(3 * pts.size1());
@@ -4672,13 +4671,13 @@ GMSH_API void gmsh::model::mesh::getElementEdgeNodes(
     numElements += n;
   }
   if(!numTasks) {
-    Msg::Error("Number of tasks should be > 0");
+    Msg::Error(_("Number of tasks should be > 0"));
     return;
   }
   if(!numElements || !numEdgesPerEle || !numNodesPerEdge) return;
   if(numEdgesPerEle * numNodesPerEdge * numElements != nodeTags.size()) {
     if(numTasks > 1)
-      Msg::Warning("Nodes should be preallocated if numTasks > 1");
+      Msg::Warning(_("Nodes should be preallocated if numTasks > 1"));
     nodeTags.resize(numEdgesPerEle * numNodesPerEdge * numElements);
   }
   const size_t begin = (task * numElements) / numTasks;
@@ -4747,13 +4746,13 @@ GMSH_API void gmsh::model::mesh::getElementFaceNodes(
   }
 
   if(!numTasks) {
-    Msg::Error("Number of tasks should be > 0");
+    Msg::Error(_("Number of tasks should be > 0"));
     return;
   }
   if(!numElements || !numFacesPerEle || !numNodesPerFace) return;
   if(numFacesPerEle * numNodesPerFace * numElements > nodeTags.size()) {
     if(numTasks > 1)
-      Msg::Warning("Nodes should be preallocated if numTasks > 1");
+      Msg::Warning(_("Nodes should be preallocated if numTasks > 1"));
     nodeTags.resize(numFacesPerEle * numNodesPerFace * numElements);
   }
   const size_t begin = (task * numElements) / numTasks;
@@ -5013,7 +5012,7 @@ GMSH_API void gmsh::model::mesh::setTransfiniteAutomatic(
   // assign the transfinite attributes
   bool okf = MeshSetTransfiniteFacesAutomatic(faces, cornerAngle, recombine);
   if(!okf) {
-    Msg::Error("failed to automatically set transfinite faces");
+    Msg::Error(_("failed to automatically set transfinite faces"));
     return;
   }
 
@@ -5062,7 +5061,7 @@ GMSH_API void gmsh::model::mesh::setTransfiniteAutomatic(
   if(nr > 0)
     Msg::Debug("transfinite automatic: transfinite set on %li volumes", nr);
 #else
-  Msg::Error("setTransfiniteAutomatic requires the mesh module");
+  Msg::Error(_("setTransfiniteAutomatic requires the mesh module"));
 #endif
 }
 
@@ -5315,12 +5314,12 @@ gmsh::model::mesh::reorderElements(const int elementType, const int tag,
   _getEntitiesForElementTypes(dim, tag, typeEnt);
   const std::vector<GEntity *> &entities(typeEnt[elementType]);
   if(entities.empty()) {
-    Msg::Error("No elements to reorder");
+    Msg::Error(_("No elements to reorder"));
     return;
   }
   for(std::size_t i = 0; i < entities.size(); i++) {
     if(!entities[i]->reorder(elementType, ordering)) {
-      Msg::Error("Could not reorder elements");
+      Msg::Error(_("Could not reorder elements"));
       return;
     }
   }
@@ -5341,7 +5340,7 @@ GMSH_API void gmsh::model::mesh::computeRenumbering(
   else
     Msg::Error("Unknown renumbering method %s", method.c_str());
 #else
-  Msg::Error("Computing renumbering requires the mesh module");
+  Msg::Error(_("Computing renumbering requires the mesh module"));
 #endif
   oldTags.reserve(remap.size());
   newTags.reserve(remap.size());
@@ -5390,7 +5389,7 @@ gmsh::model::mesh::setPeriodic(const int dim, const std::vector<int> &tags,
 {
   if(!_checkInit()) return;
   if(tags.size() != tagsMaster.size()) {
-    Msg::Error("Incompatible number of tags and master tags for periodic mesh");
+    Msg::Error(_("Incompatible number of tags and master tags for periodic mesh"));
     return;
   }
   if(affineTransform.size() != 16) {
@@ -5695,7 +5694,7 @@ GMSH_API void gmsh::model::mesh::triangulate(const std::vector<double> &coord,
   if(!_checkInit()) return;
   tri.clear();
   if(coord.size() % 2) {
-    Msg::Error("Number of 2D coordinates should be even");
+    Msg::Error(_("Number of 2D coordinates should be even"));
     return;
   }
 #if defined(HAVE_MESH)
@@ -5724,7 +5723,7 @@ GMSH_API void gmsh::model::mesh::triangulate(const std::vector<double> &coord,
   for(std::size_t i = 0; i < verts.size(); i++) delete verts[i];
   for(std::size_t i = 0; i < tris.size(); i++) delete tris[i];
 #else
-  Msg::Error("Triangulate requires the mesh module");
+  Msg::Error(_("Triangulate requires the mesh module"));
 #endif
 }
 
@@ -5735,7 +5734,7 @@ gmsh::model::mesh::tetrahedralize(const std::vector<double> &coord,
   if(!_checkInit()) return;
   tetra.clear();
   if(coord.size() % 3) {
-    Msg::Error("Number of coordinates should be a multiple of 3");
+    Msg::Error(_("Number of coordinates should be a multiple of 3"));
     return;
   }
 #if defined(HAVE_MESH)
@@ -5761,7 +5760,7 @@ gmsh::model::mesh::tetrahedralize(const std::vector<double> &coord,
   for(std::size_t i = 0; i < verts.size(); i++) delete verts[i];
   for(std::size_t i = 0; i < tets.size(); i++) delete tets[i];
 #else
-  Msg::Error("Tetrahedralize requires the mesh module");
+  Msg::Error(_("Tetrahedralize requires the mesh module"));
 #endif
 }
 
@@ -5782,7 +5781,7 @@ GMSH_API int gmsh::model::mesh::field::add(const std::string &fieldType,
   if(FlGui::available()) FlGui::instance()->updateFields();
 #endif
 #else
-  Msg::Error("Fields require the mesh module");
+  Msg::Error(_("Fields require the mesh module"));
 #endif
   return outTag;
 }
@@ -5796,7 +5795,7 @@ GMSH_API void gmsh::model::mesh::field::remove(const int tag)
   if(FlGui::available()) FlGui::instance()->updateFields();
 #endif
 #else
-  Msg::Error("Fields require the mesh module");
+  Msg::Error(_("Fields require the mesh module"));
 #endif
 }
 
@@ -5810,7 +5809,7 @@ GMSH_API void gmsh::model::mesh::field::list(std::vector<int> &tags)
     tags.push_back(it->first);
   }
 #else
-  Msg::Error("Fields require the mesh module");
+  Msg::Error(_("Fields require the mesh module"));
 #endif
 }
 
@@ -5827,7 +5826,7 @@ GMSH_API void gmsh::model::mesh::field::getType(const int tag,
   }
   fieldType = field->getName();
 #else
-  Msg::Error("Fields require the mesh module");
+  Msg::Error(_("Fields require the mesh module"));
 #endif
 }
 
@@ -5863,7 +5862,7 @@ GMSH_API void gmsh::model::mesh::field::setNumber(const int tag,
   }
   o->numericalValue(value);
 #else
-  Msg::Error("Fields require the mesh module");
+  Msg::Error(_("Fields require the mesh module"));
 #endif
 }
 
@@ -5882,7 +5881,7 @@ GMSH_API void gmsh::model::mesh::field::getNumber(const int tag,
   value = o->numericalValue();
 #else
   value = 0.;
-  Msg::Error("Fields require the mesh module");
+  Msg::Error(_("Fields require the mesh module"));
 #endif
 }
 
@@ -5899,7 +5898,7 @@ GMSH_API void gmsh::model::mesh::field::setString(const int tag,
   }
   o->string(value);
 #else
-  Msg::Error("Fields require the mesh module");
+  Msg::Error(_("Fields require the mesh module"));
 #endif
 }
 
@@ -5917,7 +5916,7 @@ GMSH_API void gmsh::model::mesh::field::getString(const int tag,
   value = o->string();
 #else
   value.clear();
-  Msg::Error("Fields require the mesh module");
+  Msg::Error(_("Fields require the mesh module"));
 #endif
 }
 
@@ -5943,7 +5942,7 @@ gmsh::model::mesh::field::setNumbers(const int tag, const std::string &option,
     o->listdouble(vl);
   }
 #else
-  Msg::Error("Fields require the mesh module");
+  Msg::Error(_("Fields require the mesh module"));
 #endif
 }
 
@@ -5968,7 +5967,7 @@ GMSH_API void gmsh::model::mesh::field::getNumbers(const int tag,
     for(auto d : vl) values.push_back(d);
   }
 #else
-  Msg::Error("Fields require the mesh module");
+  Msg::Error(_("Fields require the mesh module"));
 #endif
 }
 
@@ -5978,7 +5977,7 @@ GMSH_API void gmsh::model::mesh::field::setAsBackgroundMesh(const int tag)
 #if defined(HAVE_MESH)
   GModel::current()->getFields()->setBackgroundFieldId(tag);
 #else
-  Msg::Error("Fields require the mesh module");
+  Msg::Error(_("Fields require the mesh module"));
 #endif
 }
 
@@ -5988,7 +5987,7 @@ GMSH_API void gmsh::model::mesh::field::setAsBoundaryLayer(const int tag)
 #if defined(HAVE_MESH)
   GModel::current()->getFields()->addBoundaryLayerFieldId(tag);
 #else
-  Msg::Error("Fields require the mesh module");
+  Msg::Error(_("Fields require the mesh module"));
 #endif
 }
 
@@ -6290,7 +6289,7 @@ GMSH_API void gmsh::model::geo::extrudeBoundaryLayer(
   outDimTags.clear();
   ExtrudeParams *e = _getExtrudeParams(numElements, heights, recombine);
   if(!e) {
-    Msg::Error("Element layers are required for boundary layer extrusion");
+    Msg::Error(_("Element layers are required for boundary layer extrusion"));
     return;
   }
   e->mesh.BoundaryLayerIndex = second ? 1 : 0;
@@ -6603,7 +6602,7 @@ GMSH_API int gmsh::model::occ::addSpline(const std::vector<int> &pointTags,
   int outTag = tag;
   std::vector<SVector3> t;
   if(tangents.size() % 3) {
-    Msg::Error("Number of entries in tangents should be a multiple of 3");
+    Msg::Error(_("Number of entries in tangents should be a multiple of 3"));
   }
   else if(!tangents.empty()) {
     for(std::size_t i = 0; i < tangents.size(); i += 3) {
@@ -7219,7 +7218,7 @@ GMSH_API void gmsh::model::occ::importShapesNativePointer(
   GModel::current()->getOCCInternals()->importShapes(
     static_cast<const TopoDS_Shape *>(shape), highestDimOnly, outDimTags);
 #else
-  Msg::Error("Gmsh requires OpenCASCADE to import native shape");
+  Msg::Error(_("Gmsh requires OpenCASCADE to import native shape"));
 #endif
 }
 
@@ -7345,7 +7344,7 @@ GMSH_API int gmsh::view::add(const std::string &name, const int tag)
 #endif
   return view->getTag();
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
   return -1;
 #endif
 }
@@ -7364,7 +7363,7 @@ GMSH_API void gmsh::view::remove(const int tag)
   if(FlGui::available()) FlGui::instance()->updateViews(true, true);
 #endif
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -7379,7 +7378,7 @@ GMSH_API int gmsh::view::getIndex(const int tag)
   }
   return view->getIndex();
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
   return -1;
 #endif
 }
@@ -7392,7 +7391,7 @@ GMSH_API void gmsh::view::getTags(std::vector<int> &tags)
   for(std::size_t i = 0; i < PView::list.size(); i++)
     tags.push_back(PView::list[i]->getTag());
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -7448,7 +7447,7 @@ _addModelData(const int tag, const int step, const std::string &modelName,
     view->setData(d);
   }
   if(!d->addData(model, tags, data, step, time, partition, numComponents)) {
-    Msg::Error("Could not add model data");
+    Msg::Error(_("Could not add model data"));
     return;
   }
   if(view->getOptions()->adaptVisualizationGrid)
@@ -7457,7 +7456,7 @@ _addModelData(const int tag, const int step, const std::string &modelName,
                         view->getOptions()->targetError);
   view->setChanged(true);
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -7469,7 +7468,7 @@ GMSH_API void gmsh::view::addModelData(
 {
   if(!_checkInit()) return;
   if(tags.size() != data.size()) {
-    Msg::Error("Incompatible number of tags and data");
+    Msg::Error(_("Incompatible number of tags and data"));
     return;
   }
   _addModelData(tag, step, modelName, dataType, tags, data, time, numComponents,
@@ -7567,7 +7566,7 @@ GMSH_API void gmsh::view::getModelData(const int tag, const int step,
     }
   }
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -7602,7 +7601,7 @@ GMSH_API void gmsh::view::getHomogeneousModelData(
     }
   }
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -7676,7 +7675,7 @@ GMSH_API void gmshViewGetModelData(const int tag, const int step,
   }
   if(ierr) *ierr = 0;
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
   if(ierr) *ierr = -1;
 #endif
 }
@@ -7712,9 +7711,9 @@ GMSH_API void gmsh::view::addListData(const int tag,
       return;
     }
   }
-  Msg::Error("Unknown data type for list import");
+  Msg::Error(_("Unknown data type for list import"));
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -7754,7 +7753,7 @@ GMSH_API void gmsh::view::getListData(const int tag,
     }
   }
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -7764,7 +7763,7 @@ static double getStringStyle(const std::vector<std::string> &style)
   if(style.empty()) return 0.;
   int align = 0, font = 0, fontsize = CTX::instance()->glFontSize;
   if(style.size() % 2) {
-    Msg::Error("Number of string style attributes should be even");
+    Msg::Error(_("Number of string style attributes should be even"));
   }
   else {
     for(std::size_t i = 0; i < style.size(); i += 2) {
@@ -7832,7 +7831,7 @@ gmsh::view::addListDataString(const int tag, const std::vector<double> &coord,
   d->finalize();
   view->setChanged(true);
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -7895,7 +7894,7 @@ GMSH_API void gmsh::view::getListDataStrings(const int tag, const int dim,
     }
   }
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -7984,7 +7983,7 @@ GMSH_API void gmsh::view::setInterpolationMatrices(
   data->setInterpolationMatrices(itype, F, P, Fg, Pg);
   view->setChanged(true);
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -8004,7 +8003,7 @@ GMSH_API int gmsh::view::addAlias(const int refTag, const bool copyOptions,
 #endif
   return view->getTag();
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
   return -1;
 #endif
 }
@@ -8022,7 +8021,7 @@ GMSH_API void gmsh::view::combine(const std::string &what,
   if(FlGui::available()) FlGui::instance()->updateViews(true, true);
 #endif
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -8099,7 +8098,7 @@ GMSH_API void gmsh::view::probe(
   }
   for(int i = 0; i < numVal; i++) values.push_back(val[i]);
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -8115,7 +8114,7 @@ GMSH_API void gmsh::view::write(const int tag, const std::string &fileName,
   }
   view->write(fileName, 10, append);
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -8138,7 +8137,7 @@ GMSH_API void gmsh::view::setVisibilityPerWindow(const int tag, const int value,
     ctx->hide(view);
 #endif
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -8159,7 +8158,7 @@ GMSH_API void gmsh::view::option::setNumber(int tag, const std::string &name,
     Msg::Error("Unknown view with tag %d", tag);
   }
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -8179,7 +8178,7 @@ GMSH_API void gmsh::view::option::getNumber(int tag, const std::string &name,
     Msg::Error("Unknown view with tag %d", tag);
   }
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -8198,7 +8197,7 @@ GMSH_API void gmsh::view::option::setString(int tag, const std::string &name,
     Msg::Error("Unknown view with tag %d", tag);
   }
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -8218,7 +8217,7 @@ GMSH_API void gmsh::view::option::getString(int tag, const std::string &name,
     Msg::Error("Unknown view with tag %d", tag);
   }
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -8239,7 +8238,7 @@ GMSH_API void gmsh::view::option::setColor(int tag, const std::string &name,
     Msg::Error("Unknown view with tag %d", tag);
   }
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -8267,7 +8266,7 @@ GMSH_API void gmsh::view::option::getColor(int tag, const std::string &name,
     Msg::Error("Unknown view with tag %d", tag);
   }
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -8291,7 +8290,7 @@ GMSH_API void gmsh::view::option::copy(const int refTag, const int tag)
   if(FlGui::available()) FlGui::instance()->updateViews(true, true);
 #endif
 #else
-  Msg::Error("Views require the post-processing module");
+  Msg::Error(_("Views require the post-processing module"));
 #endif
 }
 
@@ -8306,10 +8305,10 @@ GMSH_API void gmsh::plugin::setNumber(const std::string &name,
   try {
     PluginManager::instance()->setPluginOption(name, option, value);
   } catch(...) {
-    Msg::Error("Unknown plugin or plugin option");
+    Msg::Error(_("Unknown plugin or plugin option"));
   }
 #else
-  Msg::Error("Views require the post-processing and plugin modules");
+  Msg::Error(_("Views require the post-processing and plugin modules"));
 #endif
 }
 
@@ -8322,10 +8321,10 @@ GMSH_API void gmsh::plugin::setString(const std::string &name,
   try {
     PluginManager::instance()->setPluginOption(name, option, value);
   } catch(...) {
-    Msg::Error("Unknown plugin or plugin option");
+    Msg::Error(_("Unknown plugin or plugin option"));
   }
 #else
-  Msg::Error("Views require the post-processing and plugin modules");
+  Msg::Error(_("Views require the post-processing and plugin modules"));
 #endif
 }
 
@@ -8336,11 +8335,11 @@ GMSH_API int gmsh::plugin::run(const std::string &name)
   try {
     return PluginManager::instance()->action(name, "Run", nullptr);
   } catch(...) {
-    Msg::Error("Unknown plugin or plugin action");
+    Msg::Error(_("Unknown plugin or plugin action"));
     return 0;
   }
 #else
-  Msg::Error("Views require the post-processing and plugin modules");
+  Msg::Error(_("Views require the post-processing and plugin modules"));
   return 0;
 #endif
 }
@@ -8382,7 +8381,7 @@ GMSH_API void gmsh::fltk::initialize()
   FlGui::setFinishedProcessingCommandLine();
   FlGui::check();
 #else
-  Msg::Error("Fltk not available");
+  Msg::Error(_("Fltk not available"));
 #endif
 }
 
@@ -8392,7 +8391,7 @@ GMSH_API void gmsh::fltk::finalize()
 #if defined(HAVE_FLTK)
   FlGui::destroy();
 #else
-  Msg::Error("Fltk not available");
+  Msg::Error(_("Fltk not available"));
 #endif
 }
 
@@ -8416,7 +8415,7 @@ GMSH_API void gmsh::fltk::wait(const double time)
   else
     FlGui::wait(true); // force
 #else
-  Msg::Error("Fltk not available");
+  Msg::Error(_("Fltk not available"));
 #endif
 }
 
@@ -8426,7 +8425,7 @@ GMSH_API void gmsh::fltk::lock()
 #if defined(HAVE_FLTK)
   FlGui::lock();
 #else
-  Msg::Error("Fltk not available");
+  Msg::Error(_("Fltk not available"));
 #endif
 }
 
@@ -8436,7 +8435,7 @@ GMSH_API void gmsh::fltk::unlock()
 #if defined(HAVE_FLTK)
   FlGui::unlock();
 #else
-  Msg::Error("Fltk not available");
+  Msg::Error(_("Fltk not available"));
 #endif
 }
 
@@ -8447,7 +8446,7 @@ GMSH_API void gmsh::fltk::update()
   _createFltk();
   FlGui::instance()->updateViews(true, true);
 #else
-  Msg::Error("Fltk not available");
+  Msg::Error(_("Fltk not available"));
 #endif
 }
 
@@ -8457,7 +8456,7 @@ GMSH_API void gmsh::fltk::awake(const std::string &action)
 #if defined(HAVE_FLTK)
   FlGui::awake(action);
 #else
-  Msg::Error("Fltk not available");
+  Msg::Error(_("Fltk not available"));
 #endif
 }
 
@@ -8468,7 +8467,7 @@ GMSH_API void gmsh::fltk::run()
   _createFltk();
   FlGui::instance()->run(); // this calls draw() once
 #else
-  Msg::Error("Fltk not available");
+  Msg::Error(_("Fltk not available"));
 #endif
 }
 
@@ -8645,7 +8644,7 @@ GMSH_API void gmsh::parser::getNames(std::vector<std::string> &names,
     }
   }
 #else
-  Msg::Error("Parser not available");
+  Msg::Error(_("Parser not available"));
 #endif
 }
 
@@ -8658,7 +8657,7 @@ GMSH_API void gmsh::parser::setNumber(const std::string &name,
   s.list = (value.size() != 1);
   s.value = value;
 #else
-  Msg::Error("Parser not available");
+  Msg::Error(_("Parser not available"));
 #endif
 }
 
@@ -8670,7 +8669,7 @@ GMSH_API void gmsh::parser::getNumber(const std::string &name,
   value = gmsh_yysymbols[name].value;
 #else
   value.clear();
-  Msg::Error("Parser not available");
+  Msg::Error(_("Parser not available"));
 #endif
 }
 
@@ -8681,7 +8680,7 @@ GMSH_API void gmsh::parser::setString(const std::string &name,
 #if defined(HAVE_PARSER)
   gmsh_yystringsymbols[name] = value;
 #else
-  Msg::Error("Parser not available");
+  Msg::Error(_("Parser not available"));
 #endif
 }
 
@@ -8693,7 +8692,7 @@ GMSH_API void gmsh::parser::getString(const std::string &name,
   value = gmsh_yystringsymbols[name];
 #else
   value.clear();
-  Msg::Error("Parser not available");
+  Msg::Error(_("Parser not available"));
 #endif
 }
 
@@ -8716,7 +8715,7 @@ GMSH_API void gmsh::parser::clear(const std::string &name)
     }
   }
 #else
-  Msg::Error("Parser not available");
+  Msg::Error(_("Parser not available"));
 #endif
 }
 
@@ -8726,7 +8725,7 @@ GMSH_API void gmsh::parser::parse(const std::string &fileName)
 #if defined(HAVE_PARSER)
   ParseFile(fileName, true, true);
 #else
-  Msg::Error("Parser not available");
+  Msg::Error(_("Parser not available"));
 #endif
 }
 
@@ -8742,9 +8741,9 @@ GMSH_API void gmsh::onelab::set(const std::string &data,
       Msg::Error("Could not parse json data '%s'", data.c_str());
   }
   else
-    Msg::Error("Unknown data format");
+    Msg::Error(_("Unknown data format"));
 #else
-  Msg::Error("ONELAB not available");
+  Msg::Error(_("ONELAB not available"));
 #endif
 }
 
@@ -8758,7 +8757,7 @@ GMSH_API void gmsh::onelab::get(std::string &data, const std::string &name,
     if(format == "json")
       ::onelab::server::instance()->toJSON(data, "Gmsh");
     else
-      Msg::Error("Unknown data format");
+      Msg::Error(_("Unknown data format"));
   }
   else {
     std::vector<::onelab::number> ps;
@@ -8781,7 +8780,7 @@ GMSH_API void gmsh::onelab::get(std::string &data, const std::string &name,
     }
   }
 #else
-  Msg::Error("ONELAB not available");
+  Msg::Error(_("ONELAB not available"));
 #endif
 }
 
@@ -8793,7 +8792,7 @@ GMSH_API void gmsh::onelab::getNames(std::vector<std::string> &names,
 #if defined(HAVE_ONELAB)
   ::onelab::server::instance()->getParameterNames(names, search);
 #else
-  Msg::Error("ONELAB not available");
+  Msg::Error(_("ONELAB not available"));
 #endif
 }
 
@@ -8809,7 +8808,7 @@ GMSH_API void gmsh::onelab::setNumber(const std::string &name,
   p.setValues(value);
   ::onelab::server::instance()->set(p, "Gmsh");
 #else
-  Msg::Error("ONELAB not available");
+  Msg::Error(_("ONELAB not available"));
 #endif
 }
 
@@ -8823,7 +8822,7 @@ GMSH_API void gmsh::onelab::getNumber(const std::string &name,
   ::onelab::server::instance()->get(ps, name);
   if(ps.size()) value = ps[0].getValues();
 #else
-  Msg::Error("ONELAB not available");
+  Msg::Error(_("ONELAB not available"));
 #endif
 }
 
@@ -8839,7 +8838,7 @@ GMSH_API void gmsh::onelab::setString(const std::string &name,
   p.setValues(value);
   ::onelab::server::instance()->set(p, "Gmsh");
 #else
-  Msg::Error("ONELAB not available");
+  Msg::Error(_("ONELAB not available"));
 #endif
 }
 
@@ -8853,7 +8852,7 @@ GMSH_API void gmsh::onelab::getString(const std::string &name,
   ::onelab::server::instance()->get(ps, name);
   if(ps.size()) value = ps[0].getValues();
 #else
-  Msg::Error("ONELAB not available");
+  Msg::Error(_("ONELAB not available"));
 #endif
 }
 
@@ -8863,7 +8862,7 @@ GMSH_API int gmsh::onelab::getChanged(const std::string &name)
 #if defined(HAVE_ONELAB)
   return ::onelab::server::instance()->getChanged(name);
 #else
-  Msg::Error("ONELAB not available");
+  Msg::Error(_("ONELAB not available"));
   return 0;
 #endif
 }
@@ -8874,7 +8873,7 @@ GMSH_API void gmsh::onelab::setChanged(const std::string &name, const int value)
 #if defined(HAVE_ONELAB)
   ::onelab::server::instance()->setChanged(value, name);
 #else
-  Msg::Error("ONELAB not available");
+  Msg::Error(_("ONELAB not available"));
 #endif
 }
 
@@ -8884,7 +8883,7 @@ GMSH_API void gmsh::onelab::clear(const std::string &name)
 #if defined(HAVE_ONELAB)
   ::onelab::server::instance()->clear(name);
 #else
-  Msg::Error("ONELAB not available");
+  Msg::Error(_("ONELAB not available"));
 #endif
 }
 
@@ -8929,7 +8928,7 @@ GMSH_API void gmsh::logger::start()
 {
   if(!_checkInit()) return;
   GmshMessage *msg = Msg::GetCallback();
-  if(msg) { Msg::Warning("Logger already started - ignoring"); }
+  if(msg) { Msg::Warning(_("Logger already started - ignoring")); }
   else {
     msg = new apiMsg();
     Msg::SetCallback(msg);
@@ -8955,7 +8954,7 @@ GMSH_API void gmsh::logger::stop()
     Msg::SetCallback(nullptr);
   }
   else {
-    Msg::Warning("Logger not started - ignoring");
+    Msg::Warning(_("Logger not started - ignoring"));
   }
 }
 

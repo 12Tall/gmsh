@@ -2569,7 +2569,7 @@ HXTStatus automaticMeshSizeField::updateHXT()
         HXT_CHECK(getAllFacesOfAllRegions(regions, nullptr, faces));
       }
       else {
-        Msg::Info("No volume in the model : looping over faces instead.");
+        Msg::Info(_("No volume in the model : looping over faces instead."));
         for(auto it = GModel::current()->firstFace();
             it != GModel::current()->lastFace(); ++it) {
           faces.push_back(*it);
@@ -2577,7 +2577,7 @@ HXTStatus automaticMeshSizeField::updateHXT()
       }
 
       if(regions.empty()) {
-        Msg::Error("Erreur : Pas de volume dans le modèle.");
+        Msg::Error(_("Erreur : Pas de volume dans le modèle."));
       }
 
       // Create global HXT mesh structure
@@ -2588,10 +2588,10 @@ HXTStatus automaticMeshSizeField::updateHXT()
       // Gmsh2Hxt(regions, mesh, v2c, c2v);
 
       // if(!regions.empty()){
-      //   Msg::Info("Volume found.");
+      //   Msg::Info(_("Volume found."));
       //   HXT_CHECK( getAllFacesOfAllRegions(regions, NULL, faces) );
       // } else{
-      //   Msg::Info("No volume in the model : looping over faces instead.");
+      //   Msg::Info(_("No volume in the model : looping over faces instead."));
       //   regions[0] = new GRegion(GModel::current(),-1);
       //   for(auto it = GModel::current()->firstFace(); it !=
       //   GModel::current()->lastFace(); ++it){
@@ -2608,7 +2608,7 @@ HXTStatus automaticMeshSizeField::updateHXT()
       // Gmsh2Hxt(regions, mesh, v2c, c2v);
 
       if(mesh->vertices.num == 0) {
-        Msg::Error("Surface mesh is empty");
+        Msg::Error(_("Surface mesh is empty"));
         HXT_CHECK(hxtMeshDelete(&mesh));
         Msg::Exit(1);
       }
@@ -2643,7 +2643,7 @@ HXTStatus automaticMeshSizeField::updateHXT()
       for(auto it = gm->firstFace(); it != gm->lastFace(); ++it) {
         HXTMesh *meshFace = faceMeshes[counter++];
 
-        if(meshFace == nullptr) { Msg::Error("meshFace == NULL"); }
+        if(meshFace == nullptr) { Msg::Error(_("meshFace == NULL")); }
 
         GFace *gf = *it;
         std::map<MVertex *, int> nodeIndex;
@@ -2833,7 +2833,7 @@ HXTStatus automaticMeshSizeField::updateHXT()
     }
 
     if(dim == 2) {
-      Msg::Error("2D size field is not yet operational");
+      Msg::Error(_("2D size field is not yet operational"));
 
       SBoundingBox3d bbox = GModel::current()->bounds();
       for(int i = 0; i < 3; ++i) {
@@ -2892,17 +2892,17 @@ HXTStatus automaticMeshSizeField::updateHXT()
 
     if(dim == 3) {
       if(_nPointsPerGap > 0) {
-        Msg::Info("Detecting features...");
+        Msg::Info(_("Detecting features..."));
         HXT_CHECK(featureSize(forest));
       }
 
       if(_nPointsPerCircle > 0) {
-        Msg::Info("Refining octree...");
+        Msg::Info(_("Refining octree..."));
         HXT_CHECK(forestRefine(forest));
       }
 
       if(_smoothing) {
-        Msg::Info("Smoothing size gradient...");
+        Msg::Info(_("Smoothing size gradient..."));
         HXT_CHECK(forestSizeSmoothing(forest));
       }
 
@@ -2914,7 +2914,7 @@ HXTStatus automaticMeshSizeField::updateHXT()
     else {
       HXT_CHECK(forestRefine(forest));
       if(_smoothing) {
-        Msg::Info("Smoothing size gradient...");
+        Msg::Info(_("Smoothing size gradient..."));
         HXT_CHECK(forestSizeSmoothing(forest));
       }
     }
@@ -2951,9 +2951,8 @@ void automaticMeshSizeField::update()
 #if defined(HAVE_HXT) && defined(HAVE_P4EST)
   HXTStatus s = updateHXT();
   if(s != HXT_STATUS_OK)
-    Msg::Error("Something went wrong when computing the octree");
+    Msg::Error(_("Something went wrong when computing the octree"));
 #else
-  Msg::Error(
-    "Gmsh has to be compiled with HXT and P4EST to use automaticMeshSizeField");
+  Msg::Error(_("Gmsh has to be compiled with HXT and P4EST to use automaticMeshSizeField"));
 #endif
 };

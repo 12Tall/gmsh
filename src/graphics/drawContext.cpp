@@ -104,13 +104,13 @@ void drawContext::createQuadricsAndDisplayLists()
 {
   if(!_quadric) _quadric = gluNewQuadric();
   if(!_quadric) {
-    Msg::Error("Could not create quadric");
+    Msg::Error(_("Could not create quadric"));
     return;
   }
 
   if(!_displayLists) _displayLists = glGenLists(3);
   if(!_displayLists) {
-    Msg::Error("Could not generate display lists");
+    Msg::Error(_("Could not generate display lists"));
     return;
   }
 
@@ -422,7 +422,7 @@ bool drawContext::generateTextureForImage(const std::string &name, int page,
     imageW = gmshPopplerWrapper::instance()->width();
     imageH = gmshPopplerWrapper::instance()->height();
 #else
-    Msg::Error("Gmsh must be compiled with Poppler support to load PDFs");
+    Msg::Error(_("Gmsh must be compiled with Poppler support to load PDFs"));
     return false;
 #endif
   }
@@ -454,7 +454,7 @@ bool drawContext::generateTextureForImage(const std::string &name, int page,
       delete img2;
     }
 #else
-    Msg::Error("Gmsh must be compiled with FLTK support to load JPEGs or PNGs");
+    Msg::Error(_("Gmsh must be compiled with FLTK support to load JPEGs or PNGs"));
     return false;
 #endif
   }
@@ -842,9 +842,9 @@ void drawContext::unproject(double winx, double winy, double p[3], double d[3])
   // getGetDouble'ing the matrices since unproject can be called in or after
   // draw2d
   if(!gluUnProject(winx, winy, 0.0, model, proj, vp, &x0, &y0, &z0))
-    Msg::Warning("unproject1 failed");
+    Msg::Warning(_("unproject1 failed"));
   if(!gluUnProject(winx, winy, 1.0, model, proj, vp, &x1, &y1, &z1))
-    Msg::Warning("unproject2 failed");
+    Msg::Warning(_("unproject2 failed"));
 
   p[0] = x0;
   p[1] = y0;
@@ -985,7 +985,7 @@ bool drawContext::select(int type, bool multiple, bool mesh, bool post, int x,
   }
   else if(numhits < 0) { // overflow
     delete[] selectionBuffer;
-    Msg::Warning("Too many entities selected");
+    Msg::Warning(_("Too many entities selected"));
     return false;
   }
 
@@ -1049,7 +1049,7 @@ bool drawContext::select(int type, bool multiple, bool mesh, bool post, int x,
       case 0: {
         GVertex *v = m->getVertexByTag(hits[i].ient);
         if(!v) {
-          Msg::Error("Problem in point selection processing");
+          Msg::Error(_("Problem in point selection processing"));
           return false;
         }
         vertices.push_back(v);
@@ -1058,7 +1058,7 @@ bool drawContext::select(int type, bool multiple, bool mesh, bool post, int x,
       case 1: {
         GEdge *e = m->getEdgeByTag(hits[i].ient);
         if(!e) {
-          Msg::Error("Problem in line selection processing");
+          Msg::Error(_("Problem in line selection processing"));
           return false;
         }
         if(hits[i].type2) {
@@ -1071,7 +1071,7 @@ bool drawContext::select(int type, bool multiple, bool mesh, bool post, int x,
       case 2: {
         GFace *f = m->getFaceByTag(hits[i].ient);
         if(!f) {
-          Msg::Error("Problem in surface selection processing");
+          Msg::Error(_("Problem in surface selection processing"));
           return false;
         }
         if(hits[i].type2) {
@@ -1084,7 +1084,7 @@ bool drawContext::select(int type, bool multiple, bool mesh, bool post, int x,
       case 3: {
         GRegion *r = m->getRegionByTag(hits[i].ient);
         if(!r) {
-          Msg::Error("Problem in volume selection processing");
+          Msg::Error(_("Problem in volume selection processing"));
           return false;
         }
         if(hits[i].type2) {

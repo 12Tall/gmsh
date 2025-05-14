@@ -25,12 +25,12 @@ public:
     double r = 0;
     if(result) {
       int ok = PyArg_Parse(result, "d", &r);
-      if(ok == 0) Msg::Error("The python function did not return a double.");
+      if(ok == 0) Msg::Error(_("The python function did not return a double."));
       Py_DECREF(result);
     }
     else {
       PyErr_Print();
-      Msg::Error("An error occurs in the python simple function.");
+      Msg::Error(_("An error occurs in the python simple function."));
     }
     Py_DECREF(pyargs);
     return r;

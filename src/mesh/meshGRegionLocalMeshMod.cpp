@@ -93,13 +93,13 @@ bool buildEdgeCavity(MTet4 *t, int iLocalEdge, MVertex **v1, MVertex **v2,
             faces[iFace2][2] == edges[5 - iLocalEdge][K])
       iFace = iFace2;
     else {
-      Msg::Error("Error of connexion");
+      Msg::Error(_("Error of connexion"));
       return false;
     }
     t = t->getNeigh(iFace);
     if(!t) return false;
     if(t->isDeleted()) {
-      Msg::Warning("Strange edge cavity (tet is deleted)");
+      Msg::Warning(_("Strange edge cavity (tet is deleted)"));
       return false;
     }
     if(t == cavity[0]) break;
@@ -115,7 +115,7 @@ bool buildEdgeCavity(MTet4 *t, int iLocalEdge, MVertex **v1, MVertex **v2,
       }
     }
     if(iLocalEdge == -1) {
-      Msg::Warning("Strange edge cavity (local edge not found)");
+      Msg::Warning(_("Strange edge cavity (local edge not found)"));
       return false;
     }
     // FIXME when hybrid mesh, this loops for ever
@@ -408,7 +408,7 @@ bool faceSwap(std::vector<MTet4 *> &newTets, MTet4 *t1, int iLocalFace,
     }
   }
   if(!v2) {
-    Msg::Warning("Impossible to swap face");
+    Msg::Warning(_("Impossible to swap face"));
     return false;
   }
 
@@ -531,7 +531,7 @@ bool collapseVertex(std::vector<MTet4 *> &newTets, MTet4 *t, int iVertex,
                     const localMeshModAction action, double *minQual)
 {
   if(t->isDeleted()) {
-    Msg::Warning("Impossible to collapse node");
+    Msg::Warning(_("Impossible to collapse node"));
     return false;
   }
 
@@ -624,7 +624,7 @@ bool collapseVertex(std::vector<MTet4 *> &newTets, MTet4 *t, int iVertex,
 bool smoothVertex(MTet4 *t, int iVertex, const qmTetrahedron::Measures &cr)
 {
   if(t->isDeleted()) {
-    Msg::Warning("Impossible to collapse node");
+    Msg::Warning(_("Impossible to collapse node"));
     return false;
   }
   if(t->tet()->getVertex(iVertex)->onWhat()->dim() < 3) return false;
@@ -769,7 +769,7 @@ bool smoothVertexOptimize(MTet4 *t, int iVertex,
   double xyzopti[3] = {vd.v->x(), vd.v->y(), vd.v->z()};
 
   // double val = 0.;
-  Msg::Error("Fletcher-Reeves minimizer routine must be reimplemented");
+  Msg::Error(_("Fletcher-Reeves minimizer routine must be reimplemented"));
   // minimize_N(3, smooth_obj_3D, deriv_smoothing_objective_function_3D, &vd, 4,
   //         xyzopti, val);
 

@@ -58,11 +58,11 @@ RecombineTriangle::RecombineTriangle(const MEdge &me, MElement *_t1,
     n4 = t2->getVertex(2);
 
   if(!n3) {
-    Msg::Warning("Invalid quadrangle in recombination");
+    Msg::Warning(_("Invalid quadrangle in recombination"));
     n3 = n1;
   }
   if(!n4) {
-    Msg::Warning("Invalid quadrangle in recombination");
+    Msg::Warning(_("Invalid quadrangle in recombination"));
     n4 = n2;
   }
 
@@ -181,7 +181,7 @@ bool buildMeshGenerationDataStructures(
 
   auto itfind = vSizesMap.find(nullptr);
   if(itfind != vSizesMap.end()) {
-    Msg::Error("Some NULL points exist in 2D mesh");
+    Msg::Error(_("Some NULL points exist in 2D mesh"));
     return false;
   }
 
@@ -488,7 +488,7 @@ double surfaceFaceUV(MElement *t, GFace *gf, bool maximal = true)
 {
   const int N = t->getNumVertices();
   if(N > 4) {
-    Msg::Warning("surfaceFaceUV only for first order elements");
+    Msg::Warning(_("surfaceFaceUV only for first order elements"));
     return 0;
   }
 
@@ -992,7 +992,7 @@ void laplaceSmoothing(GFace *gf, int niter, bool infinity_norm)
 
   if(!niter) return;
 
-  Msg::Debug("laplacian smoothing ...");
+  Msg::Debug(_("laplacian smoothing ..."));
 
   std::set<MVertex *> vs;
   getAllBoundaryLayerVertices(gf, vs);
@@ -1134,8 +1134,7 @@ static void _recombineIntoQuads(GFace *gf, bool blossom, bool cubicGraph = 1)
       sprintf(MATCHFILE, ".face.match");
       if(perfect_match(ncount, nullptr, ecount, &elist, &elen, nullptr,
                        MATCHFILE, 0, 0, 0, 0, &matzeit)) {
-        Msg::Warning(
-          "Perfect Match failed in quadrangulation, try something else");
+        Msg::Warning(_("Perfect Match failed in quadrangulation, try something else"));
         free(elist);
         pairs.clear();
 	_recombineIntoQuads(gf, false, cubicGraph);
@@ -1316,8 +1315,7 @@ void recombineIntoQuads(GFace *gf, bool blossom, int topologicalOptiPasses,
   {
     if(topologicalOptiPasses > 0) {
       if(!_isModelOkForTopologicalOpti(gf->model())) {
-        Msg::Info
-          ("Skipping topological optimization - mesh topology is not complete");
+        Msg::Info(_("Skipping topological optimization - mesh topology is not complete"));
       }
       else {
         int iter = 0, nbTwoQuadNodes = 1, nbDiamonds = 1;

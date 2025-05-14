@@ -10,6 +10,7 @@
 #include <vector>
 #include <atomic>
 #include "SPoint2.h"
+#include "I18n.h"
 
 #define GMSH_WINDOW_BOX FL_FLAT_BOX
 #define GMSH_SIMPLE_RIGHT_BOX (Fl_Boxtype)(FL_FREE_BOXTYPE + 1)

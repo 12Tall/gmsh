@@ -75,7 +75,7 @@ int createSizeFieldFromExistingMesh(GModel *gm, bool computeCrosses)
   printSizeField("size_field.pos", triangles, sizeField);
   int sows = sizeMapOneWaySmoothing(triangles, sizeField, 1.2);
   if(sows != 0) {
-    Msg::Warning("failed to smooth size map");
+    Msg::Warning(_("failed to smooth size map"));
     return sows;
   }
   printSizeField("smoothed_size_field.pos", triangles, sizeField);

@@ -569,7 +569,7 @@ PView *GMSH_LevelsetPlugin::execute(PView *v)
   // sanity checks
   if(vdata->getNumEntities() != wdata->getNumEntities() ||
      vdata->getNumElements() != wdata->getNumElements()) {
-    Msg::Error("Incompatible views");
+    Msg::Error(_("Incompatible views"));
     return v;
   }
   if(_valueTimeStep >= wdata->getNumTimeSteps()) {

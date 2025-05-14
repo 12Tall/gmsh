@@ -256,7 +256,7 @@ static int colorstobpp(int colors)
   else if(colors <= 256)
     bpp = 8;
   else {
-    Msg::Error("GIF: can't happen: too many colors");
+    Msg::Error(_("GIF: can't happen: too many colors"));
     bpp = 8;
   }
 
@@ -355,7 +355,7 @@ static colorhist_vector mediancut(colorhist_vector chv, int colors, int sum,
   colormap =
     (colorhist_vector)malloc(sizeof(struct colorhist_item) * newcolors);
   if(bv == (box_vector)nullptr || colormap == (colorhist_vector)nullptr)
-    Msg::Error("GIF: out of memory");
+    Msg::Error(_("GIF: out of memory"));
   for(i = 0; i < newcolors; ++i) PPM_ASSIGN(colormap[i].color, 0, 0, 0);
 
   /*
@@ -789,7 +789,7 @@ static void output(code_int code)
 
     fflush(g_outfile);
 
-    if(ferror(g_outfile)) Msg::Error("GIF: Error writing output file");
+    if(ferror(g_outfile)) Msg::Error(_("GIF: Error writing output file"));
   }
 }
 
@@ -1129,7 +1129,7 @@ void create_gif(FILE *outfile, PixelBuffer *buffer, int dither, int sort,
   int numcomp = buffer->getNumComp();
 
   if(numcomp != 3) {
-    Msg::Error("GIF only implemented for GL_RGB");
+    Msg::Error(_("GIF only implemented for GL_RGB"));
     return;
   }
 
@@ -1152,17 +1152,17 @@ void create_gif(FILE *outfile, PixelBuffer *buffer, int dither, int sort,
   /* Fuck, there are more than 256 colors in the picture: we need to quantize */
 
   if(chv == (colorhist_vector)nullptr) {
-    Msg::Debug("GIF: too many colors in image");
+    Msg::Debug(_("GIF: too many colors in image"));
 
     rows = height;
     cols = width;
 
     while(1) {
-      Msg::Debug("GIF: making histogram...");
+      Msg::Debug(_("GIF: making histogram..."));
       chv = ppm_computecolorhist(static_pixels, width, height, MAXCOL2,
                                  &static_nbcolors);
       if(chv != (colorhist_vector)nullptr) break;
-      Msg::Debug("GIF: still too many colors!");
+      Msg::Debug(_("GIF: still too many colors!"));
       newmaxval = maxval / 2;
       Msg::Debug("GIF: scaling colors from maxval=%d to maxval=%d to improve "
                  "clustering...",
@@ -1181,11 +1181,11 @@ void create_gif(FILE *outfile, PixelBuffer *buffer, int dither, int sort,
     ppm_freecolorhist(chv);
 
     /* map the colors in the image to their closest match in the new colormap */
-    Msg::Debug("GIF: mapping image to new colors...");
+    Msg::Debug(_("GIF: mapping image to new colors..."));
     usehash = 1;
 
     if(dither) {
-      Msg::Debug("GIF: Floyd-Steinberg dithering is selected...");
+      Msg::Debug(_("GIF: Floyd-Steinberg dithering is selected..."));
       /* Initialize Floyd-Steinberg error vectors. */
       thisrerr = (long *)Malloc((cols + 2) * sizeof(long));
       nextrerr = (long *)Malloc((cols + 2) * sizeof(long));
@@ -1261,7 +1261,7 @@ void create_gif(FILE *outfile, PixelBuffer *buffer, int dither, int sort,
           }
           if(usehash) {
             if(ppm_addtocolorhash(cht, pP, ind) < 0) {
-              Msg::Warning("GIF: Out of memory adding to hash table");
+              Msg::Warning(_("GIF: Out of memory adding to hash table"));
               usehash = 0;
             }
           }
@@ -1355,7 +1355,7 @@ void create_gif(FILE *outfile, PixelBuffer *buffer, int dither, int sort,
   /* Sort the colormap */
   for(i = 0; i < static_nbcolors; i++) static_permi[i] = i;
   if(sort) {
-    Msg::Debug("GIF: sorting colormap");
+    Msg::Debug(_("GIF: sorting colormap"));
     for(i = 0; i < static_nbcolors; i++)
       for(j = i + 1; j < static_nbcolors; j++)
         if(((static_red[i] * MAX_GIFCOLORS) + static_green[i]) * MAX_GIFCOLORS +

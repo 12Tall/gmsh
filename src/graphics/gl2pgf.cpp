@@ -50,7 +50,7 @@ static int assembleColmapStr(const int num, const int intType, int &samples,
     b = CTX::instance()->unpackBlue(ct->table[idx]);
     a = CTX::instance()->unpackAlpha(ct->table[idx]);
     if(a != 255)
-      Msg::Warning("PGF export does not handle transparent colormaps");
+      Msg::Warning(_("PGF export does not handle transparent colormaps"));
 
     sprintf(tmp, "rgb255=(%d,%d,%d) ", r, g, b);
     ret.append(tmp);
@@ -247,7 +247,7 @@ static int assemble2d(const int num, const int exportAxis, std::string &axisstr,
     int r2 = (int)(eulerAngles[2] + 0.5);
     if(r0 % 90 != 0 || r1 % 90 != 0 || r2 % 90 != 0) {
       fprintf(stderr, "Euler two dim: 0:%d, 1:%d, 2:%d\n", r0, r1, r2);
-      Msg::Error("Please select a plane view (X, Y, Z)");
+      Msg::Error(_("Please select a plane view (X, Y, Z)"));
       return 1;
     }
     if(r0 % 180 == 0 && r1 % 360 == 0 && r2 % 180 == 0) {
@@ -322,7 +322,7 @@ static int assemble2d(const int num, const int exportAxis, std::string &axisstr,
       axisstr.append("\tylabel={" + xlab + "},\n");
     }
     else {
-      Msg::Error("Cannot infer orientation from Euler angles...");
+      Msg::Error(_("Cannot infer orientation from Euler angles..."));
       // this should not happen
       // error=true;
       return 2;
@@ -430,7 +430,7 @@ static int assemble3d(const int num, const int exportAxis, std::string &axisstr,
   }
 
   if(opt_general_orthographic(0, GMSH_GET, 0) == 0 && exportAxis) {
-    Msg::Warning("Cannot produce output if axes are not orthogonal.");
+    Msg::Warning(_("Cannot produce output if axes are not orthogonal."));
     Msg::Error("Please switch to orthographic projection mode "
                "('Alt + o') and retry if you want to output axes.");
     return 1;
@@ -598,15 +598,15 @@ int print_pgf(const std::string &name, const int num, const int cnt,
   if(cnt == 1) { // one post processing view scale visible
     int intType = (int)opt_view_intervals_type(num, GMSH_GET, 0);
     if(assembleColmapStr(num, intType, samples, colmap_s) != 0) {
-      Msg::Error("Unable to assemble colormap for PGF output");
+      Msg::Error(_("Unable to assemble colormap for PGF output"));
       return 1;
     }
     if(assemblePostAxis(num, intType, post_axis_s) != 0) {
-      Msg::Error("Unable to assemble post processing axis for PGF output");
+      Msg::Error(_("Unable to assemble post processing axis for PGF output"));
       return 1;
     }
     if(assembleColbarStr(num, intType, samples, colbar_s) != 0) {
-      Msg::Error("Unable to assemble colorbar for PGF output");
+      Msg::Error(_("Unable to assemble colorbar for PGF output"));
       return 1;
     }
   }
@@ -652,14 +652,14 @@ int print_pgf(const std::string &name, const int num, const int cnt,
       std::string pngname = name;
       pngname.replace(pngname.end() - 3, pngname.end(), "png");
       sprintf(tmp, "convert -trim %s %s", pngname.c_str(), pngname.c_str());
-      Msg::Info("Running:");
+      Msg::Info(_("Running:"));
       Msg::Info(tmp);
       int ret = system(tmp);
       Msg::Info("Conversion returned value %d", ret);
       if(ret == 0) // success
-        Msg::Info("Automatic trim successful.");
+        Msg::Info(_("Automatic trim successful."));
       else {
-        Msg::Warning("Cannot automatically trim output png.");
+        Msg::Warning(_("Cannot automatically trim output png."));
         sprintf(tmp,
                 "One should now manually crop the margins, using e.g."
                 "gimp or `convert -trim %s %s` to get rid of any remaining"
@@ -669,7 +669,7 @@ int print_pgf(const std::string &name, const int num, const int cnt,
       }
     }
     else {
-      Msg::Warning("Cannot automatically trim output png.");
+      Msg::Warning(_("Cannot automatically trim output png."));
       sprintf(tmp,
               "One should now manually crop the margins, using e.g."
               "gimp or `convert -trim %s %s` to get rid of any remaining"
@@ -688,14 +688,14 @@ int print_pgf(const std::string &name, const int num, const int cnt,
       pngname.replace(pngname.end() - 3, pngname.end(), "png");
       sprintf(tmp, "convert -transparent white %s %s", pngname.c_str(),
               pngname.c_str());
-      Msg::Info("Running:");
+      Msg::Info(_("Running:"));
       Msg::Info(tmp);
       int ret = system(tmp);
       Msg::Info("Conversion returned value %d", ret);
       if(ret == 0) // success
-        Msg::Info("Automatic transparent white background successful.");
+        Msg::Info(_("Automatic transparent white background successful."));
       else {
-        Msg::Warning("Cannot automatically add transparency to png.");
+        Msg::Warning(_("Cannot automatically add transparency to png."));
         sprintf(tmp,
                 "One should now manually add a transparent layer in "
                 "order to not obstruct the axis. e.g. using gimp or "
@@ -705,7 +705,7 @@ int print_pgf(const std::string &name, const int num, const int cnt,
       }
     }
     else { // exit (EXIT_FAILURE);
-      Msg::Warning("Cannot automatically add transparency to output png.");
+      Msg::Warning(_("Cannot automatically add transparency to output png."));
       sprintf(tmp,
               "One should now manually add a transparent layer in "
               "order to not obstruct the axis. e.g. using gimp or "

@@ -1220,7 +1220,7 @@ bool MeshSetTransfiniteFacesAutomatic(std::set<GFace *> &candidate_faces,
   Msg::Debug("... found %li chords", chords.size());
 
   /* Determine the number of points, set the transfinite curves */
-  Msg::Debug("transfinite automatic: assigning number of points ...");
+  Msg::Debug(_("transfinite automatic: assigning number of points ..."));
   std::size_t ne = 0;
   for(std::set<GEdge *> &chord : chords) {
     double avgNbPoints = 0;

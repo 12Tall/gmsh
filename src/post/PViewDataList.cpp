@@ -64,7 +64,7 @@ void PViewDataList::setXYZV(std::vector<double> &x, std::vector<double> &y,
 void PViewDataList::addStep(std::vector<double> &y)
 {
   if(NbSP != (int)y.size()) {
-    Msg::Error("Wrong number of values while adding step in list-based view");
+    Msg::Error(_("Wrong number of values while adding step in list-based view"));
     return;
   }
   // This is not very efficient, but well... ;-)
@@ -702,7 +702,7 @@ bool PViewDataList::combineSpace(nameData &nd)
   int ts = nd.data[0]->getNumTimeSteps();
   for(std::size_t i = 1; i < nd.data.size(); i++) {
     if(!nd.data[i]->empty() && nd.data[i]->getNumTimeSteps() != ts) {
-      Msg::Error("Cannot combine views having different number of time steps");
+      Msg::Error(_("Cannot combine views having different number of time steps"));
       return false;
     }
   }
@@ -710,7 +710,7 @@ bool PViewDataList::combineSpace(nameData &nd)
   for(std::size_t i = 0; i < nd.data.size(); i++) {
     PViewDataList *l = dynamic_cast<PViewDataList *>(nd.data[i]);
     if(!l) {
-      Msg::Error("Cannot combine hybrid data");
+      Msg::Error(_("Cannot combine hybrid data"));
       return false;
     }
 
@@ -837,7 +837,7 @@ bool PViewDataList::combineTime(nameData &nd)
   for(std::size_t i = 0; i < nd.data.size(); i++) {
     data[i] = dynamic_cast<PViewDataList *>(nd.data[i]);
     if(!data[i]) {
-      Msg::Error("Cannot combine hybrid data");
+      Msg::Error(_("Cannot combine hybrid data"));
       return false;
     }
   }
@@ -973,7 +973,7 @@ int PViewDataList::_getRawData(int idxtype, std::vector<double> **l, int **ne,
   int type = 0;
   // No constant nn for polygons!
   if(idxtype > 26 && idxtype < 33)
-    Msg::Warning("No constant number of nodes for polygons and polyhedra");
+    Msg::Warning(_("No constant number of nodes for polygons and polyhedra"));
   switch(idxtype) {
   case 0:
     *l = &SP;
@@ -1206,7 +1206,7 @@ int PViewDataList::_getRawData(int idxtype, std::vector<double> **l, int **ne,
     *nn = 4;
     type = TYPE_POLYH;
     break;
-  default: Msg::Error("Wrong type in PViewDataList"); break;
+  default: Msg::Error(_("Wrong type in PViewDataList")); break;
   }
 
   if(haveInterpolationMatrices()) {

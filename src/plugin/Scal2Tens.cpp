@@ -87,7 +87,7 @@ PView *GMSH_Scal2TensPlugin::execute(PView *v)
     }
   }
   if(!vRef) {
-    Msg::Error("Scal2Tens plugin could not find any view.");
+    Msg::Error(_("Scal2Tens plugin could not find any view."));
     return v;
   }
   PViewData *dataRef = vRef->getData();

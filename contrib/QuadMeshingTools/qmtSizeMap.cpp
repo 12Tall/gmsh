@@ -104,7 +104,7 @@ int computeMinimalSizeOnCurves(GlobalBackgroundMesh &gbm,
                                bool clampMinWithTriEdges,
                                std::unordered_map<MVertex *, double> &minSize)
 {
-  Msg::Debug("compute minimal size on curves (using background mesh) ...");
+  Msg::Debug(_("compute minimal size on curves (using background mesh) ..."));
   /* Important information: all mesh elements are queried in the
    * GlobalBackgroundMesh, not in the current GModel ! */
 

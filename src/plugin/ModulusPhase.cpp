@@ -49,13 +49,13 @@ PView *GMSH_ModulusPhasePlugin::execute(PView *v)
 
   PViewData *data1 = v1->getData();
   if(data1->hasMultipleMeshes()) {
-    Msg::Error("ModulusPhase plugin cannot be run on multi-mesh views");
+    Msg::Error(_("ModulusPhase plugin cannot be run on multi-mesh views"));
     return v;
   }
 
   if(rIndex < 0 || rIndex >= data1->getNumTimeSteps() || iIndex < 0 ||
      iIndex >= data1->getNumTimeSteps()) {
-    Msg::Error("Wrong real or imaginary part index");
+    Msg::Error(_("Wrong real or imaginary part index"));
     return v1;
   }
 

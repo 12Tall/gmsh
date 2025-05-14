@@ -49,6 +49,6 @@ void untangleMesh(GRegion *gr){
 }
 #else
 void untangleMesh(GRegion *gr){
-  Msg::Error("Gmsh must be compiled with the UNTANGLE lib to be able to untangle a tet mesh");
+  Msg::Error(_("Gmsh must be compiled with the UNTANGLE lib to be able to untangle a tet mesh"));
 }
 #endif

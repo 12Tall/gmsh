@@ -162,7 +162,7 @@ void MakeSimplex::decompose(int num, double *x, double *y, double *z,
   int pyraTet[2][4] = {{0, 1, 3, 4}, {1, 2, 3, 4}};
 
   if(num < 0 || num > numSimplices() - 1) {
-    Msg::Error("Invalid decomposition");
+    Msg::Error(_("Invalid decomposition"));
     num = 0;
   }
 

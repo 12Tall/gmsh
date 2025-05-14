@@ -142,7 +142,7 @@ int GModel::_readMSH2(const std::string &name)
       }
       if(format) {
         binary = true;
-        Msg::Debug("Mesh is in binary format");
+        Msg::Debug(_("Mesh is in binary format"));
         int one;
         if(fread(&one, sizeof(int), 1, fp) != 1) {
           fclose(fp);
@@ -150,7 +150,7 @@ int GModel::_readMSH2(const std::string &name)
         }
         if(one != 1) {
           swap = true;
-          Msg::Debug("Swapping bytes from binary file");
+          Msg::Debug(_("Swapping bytes from binary file"));
         }
       }
     }
@@ -318,7 +318,7 @@ int GModel::_readMSH2(const std::string &name)
       if((int)vertexMap.size() == numVertices &&
          ((minVertex == 1 && maxVertex == numVertices) ||
           (minVertex == 0 && maxVertex == numVertices - 1))) {
-        Msg::Debug("Vertex numbering is dense");
+        Msg::Debug(_("Vertex numbering is dense"));
         vertexVector.resize(vertexMap.size() + 1);
         if(minVertex == 1)
           vertexVector[0] = nullptr;
@@ -607,7 +607,7 @@ int GModel::_readMSH2(const std::string &name)
           case TYPE_POLYG: elements[8][reg].push_back(e); break;
           case TYPE_POLYH: elements[9][reg].push_back(e); break;
           default:
-            Msg::Error("Wrong type of element");
+            Msg::Error(_("Wrong type of element"));
             fclose(fp);
             return 0;
           }
@@ -1191,7 +1191,7 @@ int GModel::_writePartitionedMSH2(const std::string &baseName, bool binary,
 
 #if 0
   if(_ghostCells.size()){
-    Msg::Info("Writing ghost cells in debug file 'ghosts.pos'");
+    Msg::Info(_("Writing ghost cells in debug file 'ghosts.pos'"));
     FILE *fp = Fopen("ghosts.pos", "w");
     fprintf(fp, "View \"ghosts\"{\n");
     for(auto it = _ghostCells.begin(); it != _ghostCells.end(); it++)

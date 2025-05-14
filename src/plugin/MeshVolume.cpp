@@ -46,7 +46,7 @@ PView *GMSH_MeshVolumePlugin::execute(PView *v)
 
   GModel *model = GModel::current();
   if(!model->getNumMeshVertices()) {
-    Msg::Error("Plugin(MeshVolume) needs a mesh");
+    Msg::Error(_("Plugin(MeshVolume) needs a mesh"));
     return v;
   }
 
@@ -58,7 +58,7 @@ PView *GMSH_MeshVolumePlugin::execute(PView *v)
     entities = groups[physical];
   }
 
-  if(entities.empty()) Msg::Warning("The specified domain is empty");
+  if(entities.empty()) Msg::Warning(_("The specified domain is empty"));
 
   double vol = 0;
   for(std::size_t i = 0; i < entities.size(); i++)

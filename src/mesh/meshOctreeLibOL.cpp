@@ -323,7 +323,7 @@ SurfaceProjector::SurfaceProjector(GFace *gf_) : gf(NULL), OctIdx(0)
     abort();
   }
   bool ok = initialize(gf_, triangles);
-  if(!ok) { Msg::Error("failed to initialize SurfaceProjector"); }
+  if(!ok) { Msg::Error(_("failed to initialize SurfaceProjector")); }
 }
 
 void SurfaceProjector::clear()
@@ -356,8 +356,7 @@ bool SurfaceProjector::setAnalyticalProjection(GFace *gf)
     }
   }
 
-  Msg::Error(
-    "Surface projector: analytical formula for given shape not supported");
+  Msg::Error(_("Surface projector: analytical formula for given shape not supported"));
   return false;
 }
 
@@ -401,7 +400,7 @@ bool SurfaceProjector::initialize(GFace *gf_,
         }
       }
     } else {
-      Msg::Warning("SurfaceProjector initialize: failed to build STL triangulation");
+      Msg::Warning(_("SurfaceProjector initialize: failed to build STL triangulation"));
       return false;
     }
   } else {
@@ -572,8 +571,7 @@ GPoint SurfaceProjector::closestPoint(const double query[3], bool evalOnCAD,
       return sphereProjection(gf, query, analyticalParameters);
     }
     else {
-      Msg::Error(
-        "SurfaceProjector::closestPoint(): no analytical formula for shape");
+      Msg::Error(_("SurfaceProjector::closestPoint(): no analytical formula for shape"));
       return failedProjection();
     }
   }

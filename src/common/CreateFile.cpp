@@ -504,14 +504,14 @@ void CreateOutputFile(const std::string &fileName, int format,
     if(GModel::current()->getOCCInternals())
       GModel::current()->writeOCCBREP(name);
     else
-      Msg::Error("No OpenCASCADE CAD data found for BREP export");
+      Msg::Error(_("No OpenCASCADE CAD data found for BREP export"));
     break;
 
   case FORMAT_XAO:
     if(GModel::current()->getOCCInternals())
       GModel::current()->writeOCCXAO(name);
     else
-      Msg::Error("No OpenCASCADE CAD data found for XAO export");
+      Msg::Error(_("No OpenCASCADE CAD data found for XAO export"));
     break;
 
   case FORMAT_STEP:
@@ -520,14 +520,14 @@ void CreateOutputFile(const std::string &fileName, int format,
     else if(GModel::current()->getOCCInternals())
       GModel::current()->writeOCCSTEP(name);
     else
-      Msg::Error("No suitable CAD data found for STEP export");
+      Msg::Error(_("No suitable CAD data found for STEP export"));
     break;
 
   case FORMAT_IGES:
     if(GModel::current()->getOCCInternals())
       GModel::current()->writeOCCIGES(name);
     else
-      Msg::Error("No suitable CAD data found for IGES export");
+      Msg::Error(_("No suitable CAD data found for IGES export"));
     break;
 
   case FORMAT_NEU:
@@ -539,7 +539,7 @@ void CreateOutputFile(const std::string &fileName, int format,
     if(GModel::current()->getParasolidInternals())
       GModel::current()->writeParasolidXMT(name);
     else
-      Msg::Error("No Parasolid CAD data found for XMT export");
+      Msg::Error(_("No Parasolid CAD data found for XMT export"));
     break;
 
 #if defined(HAVE_FLTK)
@@ -848,7 +848,7 @@ void CreateOutputFile(const std::string &fileName, int format,
 #endif
 
   default:
-    Msg::Error("Unknown output file format");
+    Msg::Error(_("Unknown output file format"));
     error = true;
     break;
   }

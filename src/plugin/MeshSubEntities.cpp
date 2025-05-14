@@ -59,7 +59,7 @@ PView *GMSH_MeshSubEntitiesPlugin::execute(PView *view)
 
   if(inputdim < 0 || inputdim > 3 || outputdim < 0 || outputdim > 3 ||
      outputdim > inputdim) {
-    Msg::Error("Bad dimensions");
+    Msg::Error(_("Bad dimensions"));
     return view;
   }
 
