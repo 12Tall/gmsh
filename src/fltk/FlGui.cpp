@@ -464,7 +464,7 @@ FlGui::FlGui(int argc, char **argv, bool quitShouldExit,
              void (*error_handler)(const char *fmt, ...))
   : _quitShouldExit(quitShouldExit), lastContextWindow(0)
 {
-  Fl::set_font(FL_HELVETICA, "WenQuanYi Micro Hei"); // 确保系统已安装
+  Fl::set_font(FL_HELVETICA, "Noto Sans CJK SC"); // 确保系统已安装
   if(error_handler) {
     Fl::error = error_handler;
     Fl::fatal = error_handler;
