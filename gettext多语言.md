@@ -138,3 +138,31 @@ int main() {
 ```  
 
 该操作甚至可以翻译数组`messages[]` 中的字符串。😮
+
+## 其他  
+### 修改FLTK 支持字体  
+默认显示汉语乱码，可以修改`FlGui::FlGui()` 构造函数，添加：
+```cpp
+FlGui::FlGui(int argc, char **argv, bool quitShouldExit,
+             void (*error_handler)(const char *fmt, ...))
+  : _quitShouldExit(quitShouldExit), lastContextWindow(0)
+{
+  Fl::set_font(FL_HELVETICA, "Noto Sans CJK SC"); // 确保系统已安装该字体
+
+  // ...
+}
+```
+
+### 批量替换文件内容  
+在vscode 中，使用`ctrl+shift+f` 可以全局查询，并按正则表达式替换内容：  
+```txt
+Msg::Error\s*\(\s*"((?:[^"\\]|\\.)*)"\s*\)
+
+匹配"" 中的字符串，支持转义字符。并替换为
+
+Msg::Error(_("$1"))
+```
+在`Msg` 中常见的消息类型有：`Warning`、`Debug`、`Error`、`Info`、`StatuBar`，其他例如窗口图标，则需要具体考虑了。
+
+### CMAKE  
+添加了`I18n.h` 之后，要记得在对应的`.cpp` 文件中实现方法，并且在同级的`CMAKELIST.txt` 中检查是否将文件添加进去，否则可能造成编译时找不到定义的错误。
